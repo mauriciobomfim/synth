@@ -1,0 +1,67 @@
+<h1>Editing index</h1>
+
+<% form_for :index, :url => { :action => "update" } do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag :id, @index %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :index_name %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :index_title %>
+  </p>
+  <p>
+    <%= f.label :context %><br />
+    <%= f.select :context_index_context, SHDM::Context.find_all.map{ |v| [ v.context_name.first, v.uri ] } %>
+  </p>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%=jqgrid("Computed Attributes", "computed_attributes", "/indexes/computed_attributes/#{CGI::escape(@index.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 250, :align => 'center' },
+		{ :field => "computed_navigation_attribute_value_expression", :label => "Value expression", :editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 100, :align => 'center' }
+	],
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => 'true', :height => 100,
+	  :edit_url => "/indexes/computed_attributes_post_data?parent=#{CGI::escape(@index.uri)}" }
+)%>
+<br />
+<%=jqgrid("Index Anchor Attributes", "index_anchor_attributes", "/indexes/index_anchor_attributes/#{CGI::escape(@index.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 250, :align => 'center' },
+		{ :field => "index_anchor_navigation_attribute_label_expression", :label => "Label expression", :editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+		{ :field => "index_anchor_navigation_attribute_target_index", :label => "Target index", :editable => true, :width => 250 ,:edittype => "select",
+		  :editoptions => { :value => SHDM::Index.find_all.map{|v| [CGI::escape(v.uri), v.index_name.first]} } },
+
+		
+		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 100, :align => 'center' }
+	],
+	{ 
+	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => 'true', :height => 100,
+	  :edit_url => "/indexes/index_anchor_attributes_post_data?parent=#{CGI::escape(@index.uri)}",
+	  :subgrid => { 
+					:uri => "/indexes/navigation_attribute_index_parameters",
+					:columns => [
+						{ :field => "id", :label => "ID", :width => 35, :resizable => false },
+						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
+						{ :field => "navigation_attribute_parameter_value", :label => "Value", :editable => true }
+				    ],
+					:add => true, 
+					:edit => true, 
+					:delete => true, 
+					:search => false, 
+					:edit_url => "/indexes/navigation_attribute_index_parameters_post_data"
+				  }
+	}
+)%>
+
+<br/>
+<%= link_to 'Back', indexes_path %>

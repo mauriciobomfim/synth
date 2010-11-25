@@ -1,0 +1,49 @@
+<style>
+	.editing { display: none; }
+	.property_label { float: left;}
+	.properties { float: left;}
+  .ui-icon-extlink { float: left; clear:both; }
+	.add_property { margin: 10px; float: right;}
+	.add_property a:hover { text-decoration: underline; cursor: pointer; }
+	.ui-menu-item { font-size: 12px; list-style-type:none; margin: 0; padding: 0; border-bottom: 1px solid;}
+	.ui-autocomplete { margin: 0px; padding: 0px; width: 500px;}		
+</style>
+
+<%= javascript_include_tag 'jquery/jquery-1.4.2.min.js' %>
+<%= javascript_include_tag 'jquery/jquery-ui-1.8.2.custom.min.js' %>
+<%= javascript_include_tag 'jquery/jquery.autocomplete.js' %>
+<%= javascript_include_tag 'jquery/jquery.inspect.js' %>
+<%= stylesheet_link_tag 'jquery.autocomplete.css' %>
+<div style="float: left;">
+	<%= render :partial => "domain_classes" %>
+	<br/>
+	<%= render :partial => "meta_classes" %>
+</div>
+
+<div class="properties">
+   <table class="hor-zebra">
+	  <tr>
+	    <th colspan="2">New resource</th>			
+	  </tr>
+		<tr><td width="10%">
+			uri
+			</td>
+			<td width="400">
+			<% form_for :resource, :url => { :action => "create" } do |f| %>
+			<%= f.label :namespace %>
+			<%= f.select :namespace, options_for_select(@namespaces, 'http://base#'), { :include_blank => true} %>
+				<%= f.text_field :id, :value => "http://base#", :style => "width: 500px;" %>
+			<% end %>
+		</td></tr>
+	</table>
+</div>
+
+<script>
+	$(window).load(function () {
+		$('input:text').focus();			
+	});
+	$('select').change(function(){ 
+		$('input:text').val($("select option:selected").val());
+		$('input:text').focus();	
+	})
+</script>

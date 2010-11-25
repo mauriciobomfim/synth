@@ -1,0 +1,4 @@
+// A wrapper for the Scriptaculous SlideUp and SlideDown effects
+
+  eval (\"new Effect.SlideUp(widgetB, { \" + parameters + \" })\");
+  eval (\"new Effect.SlideDown(widgetA, { \" + parameters + \" })\");

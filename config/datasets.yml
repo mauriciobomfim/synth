@@ -1,0 +1,2 @@
+dbpedia:
+  sparqlEndpoint: 'http://dbpedia.org/sparql'

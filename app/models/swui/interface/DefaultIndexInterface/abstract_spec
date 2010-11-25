@@ -1,0 +1,11 @@
+<AbstractInterface name=\"DefaultIndexInterface\" mapsTo=\"Composition\" tagAttributes=\"\" cssClasses=\"\">
+
+<%= include DefaultLandmarksForIndexes %>
+
+   <CompositeInterfaceElement name=\"Index\" mapsTo=\"Composition\" cssClasses=\"swui_composite\" ordered=\"true\">
+	   <CompositeInterfaceElement name=\"Entry\" mapsTo=\"Composition\" fromClass=\"IndexClass\" cssClasses=\"swui_composite\">
+<%= include DefaultJSONDisplay %>
+           </CompositeInterfaceElement>
+   </CompositeInterfaceElement>
+
+</AbstractInterface>

@@ -1,0 +1,9 @@
+// Display the composition that holds the widget using the Script.aculo.us Appear Effect
+
+if (swui_isInstanceId(widgetA)) { 
+  // if the widget is not a template
+  var item = document.getElementById(widgetA);
+  var list = item.parentNode;
+  if (list != null ) { eval (\"$(list.id).appear({\" + parameters + \"})\"); }
+
+}

@@ -1,0 +1,23 @@
+<h1>New context</h1>
+
+<% form_for :context, :url => { :action => "create" } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :context_name %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :context_title %>
+  </p>
+  <p>
+    <%= f.label :query %><br />
+    <%= f.text_area :context_query, :rows => 15, :cols => 71 %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', contexts_path %>

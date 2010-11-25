@@ -1,0 +1,194 @@
+body { background-color: #fff; 	color: #000; margin: 0; padding: 0; font-size: 0.7em; font-family: arial, helvetica, sans-serif; width: 100%;}
+
+div {
+	padding: 10px;
+	margin: 10px;
+        -moz-border-radius: 20px;
+}
+
+div.small 	{
+        padding: 2px 0;
+        margin: 2px 0;
+
+}
+
+div.medium {
+        padding: 10px 0;
+        margin:5px;
+}
+
+.interface {
+	float: left;
+	background-color: #fff;
+	border: 2px solid #000;
+        color: #000;
+}
+
+.interface input {
+	border: 1px solid #000;
+	color: #000;
+}
+
+.composite {
+	float: left;
+	background-color: #ecf3f8;
+	border: 1px solid #4082BA;
+	color: #4082BA;
+}
+
+.composite input {
+	border: 1px solid #4082BA;
+	color: #4082BA;
+}
+
+
+.indefinite {
+	float: left;
+	background-color: #ffc;
+	color: #EC9F35;
+}
+
+.indefinite input {
+	border: 1px solid #EC9F35;
+	color: #EC9F35;
+}
+
+.predefined {
+	float: left;
+	background-color: #eea;
+	color: #8A5A18;
+}
+
+.predefined input {
+	border: 1px solid #8A5A18;
+	color: #8A5A18;
+}
+
+.activator {
+	float: left;
+	background-color: #f2ffe1;
+	color: #17983F;
+}
+
+.activator input {
+	border: 1px solid #17983F;
+	color: #17983F;
+}
+
+.exhibitor {
+	float: left;
+	background-color: #e9f7c0;
+	color: #A5980B;
+}
+
+.exhibitor input {
+	border: 1px solid #A5980B;
+	color: #A5980B;
+}
+
+h1 {
+	padding: 10px 0;
+	margin: 5px 0;
+}
+
+h2, h3 {
+	padding: 0px;
+	margin: 0px;
+}
+
+h1 {
+	font-size: 1.3em;
+}
+
+h2 {
+	font-size: 1.1em;
+}
+
+h3 {
+	font-size: 0.9em;
+}
+
+p {
+	margin: 0px;
+	padding: 5px;
+}
+
+.label {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.inline {
+	display: inline;
+}
+
+
+.help {
+	font-size: .8em;
+}
+
+input {
+	margin: 3px;
+	width: 100px;
+}
+
+input.long {
+	width: 150px;
+}
+
+input.short {
+	width: 80px;
+}
+
+input.shortest {
+	width: 40px;
+}
+
+input.action  {
+	color: #050;
+	font: bold 84% 'trebuchet ms',helvetica,sans-serif; 
+	font-size: 1em;
+	margin: 2px 3px;
+	background-color: #fff;
+	border: 2px solid #050;
+	width: 70px;
+}
+
+.model {
+	//display: none;
+}
+
+.concreteMapps {
+	//display: none;
+}
+
+.htmlMapps {
+	//display: none;
+}
+
+.defContent {
+	//display: none;
+}
+
+label {
+	color: #000;
+	font: bold 84% 'trebuchet ms',helvetica,sans-serif; 
+	font-size: 1em;
+	margin: 2px 3px;
+}
+
+.floatRight {
+	float: right;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.clearFloat {
+	clear: both;
+}
+
+.invisible {
+	display: none;
+}

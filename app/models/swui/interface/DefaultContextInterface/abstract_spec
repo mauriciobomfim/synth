@@ -1,0 +1,17 @@
+<AbstractInterface name=\"DefaultContextInterface\" mapsTo=\"Composition\" cssClasses=\"swui_interface\">
+      <CompositeInterfaceElement name=\"ContextNode\" mapsTo=\"Composition\" fromClass=\"ContextClass\">
+
+<%= include DefaultLandmarks %>
+
+<%= include DefaultNavBar %>
+
+<%= include DefaultContextIndex %>
+
+<CompositeInterfaceElement name=\"Node\" mapsTo=\"Composition\" cssClasses=\"swui_composite swui_node swui_floatRight\">
+
+<%= include DefaultJSONDisplay %>
+
+</CompositeInterfaceElement>
+
+      </CompositeInterfaceElement>
+</AbstractInterface>

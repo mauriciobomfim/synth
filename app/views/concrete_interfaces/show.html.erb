@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @operation.operation_name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%=h @operation.operation_code %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%=h @operation.operation_language %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @operation.operation_type %>
+</p>
+
+
+<%= link_to 'Edit', :action => "edit", :id => @operation %> |
+<%= link_to 'Back', :action => "index" %>

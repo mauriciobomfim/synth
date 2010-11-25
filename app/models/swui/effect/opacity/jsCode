@@ -1,0 +1,3 @@
+// A wrapper for the Scriptaculous Opacity effect
+
+   eval (\"new Effect.Opacity(widgetA, { \" + parameters + \" })\");

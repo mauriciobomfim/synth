@@ -1,0 +1,35 @@
+<h1>Editing context</h1>
+
+<% form_for :context, :url => { :action => "update" } do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag :id, @context %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :context_name %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :context_title %>
+  </p>
+  <p>
+    <%= f.label :query %><br />
+    <%= f.text_area :context_query, :rows => 15, :cols => 71 %>
+  </p>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%=jqgrid("Parameters", "context_parameters", "/contexts/context_parameters/#{CGI::escape(@context.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "context_parameter_name", :label => "Name", :editable => true, :width => 360, :align => 'center' }
+	],
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => 'false', :height => 100,
+	  :edit_url => "/contexts/context_parameters_post_data?parent=#{CGI::escape(@context.uri)}" }
+)%>
+
+<br/>
+<%= link_to 'Back', contexts_path %>

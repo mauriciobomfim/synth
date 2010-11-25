@@ -1,0 +1,4 @@
+<link type=\"text/css\" rel=\"stylesheet\" href=\"http://developer.yahoo.com/yui//build/carousel/assets/skins/sam/carousel.css\">
+<script type=\"text/javascript\" src=\"http://developer.yahoo.com/yui//build/yahoo-dom-event/yahoo-dom-event.js\"></script>
+<script type=\"text/javascript\" src=\"http://developer.yahoo.com/yui//build/element/element-min.js\"></script>
+<script type=\"text/javascript\" src=\"http://developer.yahoo.com/yui//build/carousel/carousel-min.js\"></script>

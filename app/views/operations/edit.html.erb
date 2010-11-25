@@ -1,0 +1,56 @@
+<h1>Editing operation</h1>
+
+<% form_for :operation, :url => { :action => "update" } do |f| %>
+  <%= f.error_messages %>
+	<%= hidden_field_tag :id, @operation %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :operation_name %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.select :operation_type, SHDM::Operation.operation_types %>
+  </p>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_area :operation_code , :rows => 15, :cols => 71 %>
+  </p>  
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%=jqgrid("Parameters", "operation_parameters", "/operations/operation_parameters/#{CGI::escape(@operation.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "operation_parameter_name", :label => "Name", :editable => true, :width => 360, :align => 'center' },
+		{ :field => "operation_parameter_data_type", :label => "Data Type",	:editable => true, :width => 300 ,:edittype => "select",
+		  :editoptions => { :value => SHDM::OperationParameter.data_types.map{|v| [v, v]} } }
+	],
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => 'true', :height => 100,
+	  :edit_url => "/operations/operation_parameters_post_data?parent=#{CGI::escape(@operation.uri)}" }
+)%>
+<br/>
+<%=jqgrid("Pre Conditions", "pre_conditions", "/operations/pre_conditions/#{CGI::escape(@operation.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "pre_condition_name", :label => "Name", :editable => true, :width => 220, :align => 'center' },
+		{ :field => "pre_condition_expression", :label => "Expression",	:editable => true, :width => 220, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+		{ :field => "pre_condition_failure_handling", :label => "Failure handling",	:editable => true, :width => 220, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
+	],
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => 'true',:height => 100,
+	  :edit_url => "/operations/pre_conditions_post_data?parent=#{CGI::escape(@operation.uri)}" }
+)%>
+<br/>
+<%=jqgrid("Post Conditions", "post_conditions", "/operations/post_conditions/#{CGI::escape(@operation.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "post_condition_name", :label => "Name", :editable => true, :width => 300, :align => 'center' },
+		{ :field => "post_condition_expression", :label => "Expression", :editable => true, :width => 360, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
+	],
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => 'true',:height => 100,
+	  :edit_url => "/operations/post_conditions_post_data?parent=#{CGI::escape(@operation.uri)}" }
+)%>
+
+<br/>
+<%= link_to 'Back', operations_path %>

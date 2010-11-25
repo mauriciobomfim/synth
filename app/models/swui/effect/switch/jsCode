@@ -1,0 +1,4 @@
+// A wrapper for the Scriptaculous Fade and Appear effects
+
+   eval(\"$(widgetB).fade({\" + parameters + \"})\");
+   eval(\"$(widgetA).appear({\" + parameters + \"})\");

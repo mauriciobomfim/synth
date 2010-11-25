@@ -1,0 +1,3 @@
+// A wrapper for the Scriptaculous Appear effect
+
+if (document.getElementById(widgetA) != null) { eval (\"$(widgetA).appear({\" + parameters + \"})\"); }

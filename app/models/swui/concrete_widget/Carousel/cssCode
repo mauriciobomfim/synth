@@ -1,0 +1,5 @@
+/* Always be sure to give your carousel items a width and a height */
+.yui-carousel-element li {
+        width: 486px;
+        height: 304px;
+}

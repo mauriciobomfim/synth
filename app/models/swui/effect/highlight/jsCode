@@ -1,0 +1,3 @@
+// A wrapper for the Scriptaculous Highlight effect
+
+eval (\"new Effect.Highlight(widgetA, { \" + parameters + \" })\");

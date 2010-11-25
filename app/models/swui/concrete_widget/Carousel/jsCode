@@ -1,0 +1,18 @@
+var carousel = new YAHOO.widget.Carousel(swui_getRunTimeRef(\"carouselContainer\",swui_id),{ isCircular: true, numVisible: 1 });
+
+imgArray = swui_getRunTimeAttrValue(swui_id);
+if (imgArray == \"\") {  imgArray = [] }
+else { imgArray = imgArray.split(\";\") }
+
+for (var i=0; i<imgArray.length; i++) {
+   var item=getImageElement(imgArray[i],swui_getRunTimeRef(\"carousel\",swui_id)+ \"-item-\"+i);
+   eval(\"carousel.addItem(\" + item + \");\") // add an item to the Carousel
+}
+
+carousel.set(\"selectedItem\", 0);
+carousel.render(); 
+carousel.show();
+
+function getImageElement(img, id) { 
+	return \"{content:\\\"<img src='\" + img + \"'/>\\\", id:\\\"\" + id + \"\\\"}\"
+}

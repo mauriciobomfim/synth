@@ -1,0 +1,13 @@
+// A wrapper for the Scriptaculous Move effect
+
+if (widgetB == undefined) {
+    eval (\"new Effect.Move(widgetA, { \" + parameters + \" })\");
+  } else {
+    var posA = swui_findPos(document.getElementById(widgetA));
+    var posB = swui_findPos(document.getElementById(widgetB));
+    var x = posA[0]-posB[0];
+    var y = posA[1]-posB[1];
+    eval (\"new Effect.Move(widgetB, {  x: \" + x + \", y: \" + y + \" })\");
+    $(widgetB).fade({duration: 2.0});
+    $(widgetA).appear({duration: 2.0});
+  }

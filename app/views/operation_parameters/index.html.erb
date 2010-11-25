@@ -1,0 +1,10 @@
+<%=jqgrid("Parameters", "operation_parameters", "/operation_parameters",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "operation_parameter_name", :label => "Name", :editable => true, :width => 500, :align => 'center' },
+  		{ :field => "parameter_operation", :label => "Operation", :editable => true, :edittype => "select",
+		  :editoptions => { :value => SHDM::Operation.find_all.map{|v| [v.uri.gsub(/http:\/\//, ''), v.operation_name.first] } } } 
+	],
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, 
+	  :edit_url => "/operation_parameters/post_data" }
+)%>

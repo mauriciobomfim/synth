@@ -1,0 +1,28 @@
+<table class="minimalist">
+  <tr>
+    <th>Name</th>
+		<th>Description</th>
+		<th>File name</th>
+		<th>Notation</th>
+		<th>Active</th>
+	<th align="right">Actions</th>
+  </tr>
+
+<% @ontologies.sort{|a,b| a.ontology_name.first <=> b.ontology_name.first }.each do |ontology| %>
+  <tr>
+    <td><%=h ontology::symph.ontology_name %></td>
+    <td><%=h ontology::symph.ontology_description %></td>
+    <td><%=h ontology::symph.ontology_file_name %></td>
+    <td><%=h ontology::symph.ontology_file_notation %></td>
+    <td><%=h ontology::symph.ontology_active %></td>
+    <td align="right">
+		<%= link_to 'Edit', :action => "edit", :id => ontology %>
+    <%= link_to 'Destroy', { :action => "destroy", :id => ontology }, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New ontology', :action => :new %>

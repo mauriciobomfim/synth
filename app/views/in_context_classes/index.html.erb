@@ -1,0 +1,23 @@
+<table class="minimalist">
+  <tr>
+    <th>Class</th>
+    <th>Context</th>
+	<th align="right">Actions</th>
+  </tr>
+
+<% @in_context_classes.each do |in_context_class|
+	 %>
+  <tr>
+    <td><%=h in_context_class.in_context_class_class.first.compact_uri %></td>
+    <td><%=h in_context_class.in_context_class_context.first.context_name %></td>
+    <td align="right">
+			<%= link_to 'Edit', :action => "edit", :id => in_context_class %>
+    	<%= link_to 'Destroy', { :action => "destroy", :id => in_context_class }, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New in context class', new_in_context_class_path %>

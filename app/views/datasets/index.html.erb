@@ -1,0 +1,22 @@
+<table class="minimalist">
+  <tr>
+    <th>Title</th>
+		<th>SPARQL Endpoint URI</th>
+	<th align="right">Actions</th>
+  </tr>
+
+<% @datasets.each do |dataset| %>
+  <tr>
+    <td><%=h dataset.dcterms::title.first %></td>
+		<td><%=h dataset.void::sparqlEndpoint.first %></td>
+    <td align="right">
+		<%= link_to 'Edit', :action => "edit", :id => dataset %>
+    <%= link_to 'Destroy', { :action => "destroy", :id => dataset }, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New dataset', new_dataset_path %>

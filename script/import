@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+require File.expand_path('../../config/boot',  __FILE__)
+
+Rails::Initializer.run do |config|
+  config.frameworks -= [ :active_record , :active_resource, :action_mailer ]
+  config.time_zone = 'UTC'
+end
+
+require 'active_rdf'
+
+args = ARGV.map{|arg| arg.split("=")}
+file = args.delete_at(0)
+options = HashWithIndifferentAccess.new
+for arg in args do
+  options[arg.first] = arg.last
+end
+
+model = options[:model]
+format = options[:format].nil? ? :rdfxml : options[:format].to_sym
+
+jena_file   = { 
+  :type => :jena, 
+  :model => model, 
+  :ontology => :owl, 
+  :reasoner => :owl_micro, 
+  :file => "#{RAILS_ROOT}/db/jena_persistence/" 
+}
+
+main_data_source         = ActiveRDF::ConnectionPool.add_data_source jena_file
+main_data_source.enabled = true
+
+file_path = "file:#{file}"
+
+main_data_source.load(file_path, :format => format, :into => :default_model)

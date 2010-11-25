@@ -1,0 +1,7 @@
+<CompositeInterfaceElement name=\"ContextIndex\" mapsTo=\"Composition\" fromAttribute=\"swui:contextIdx\" cssClasses=\"swui_composite swui_clearFloat swui_floatLeft\">
+	<CompositeInterfaceElement name=\"ContextIndexEntry\" mapsTo=\"Composition\" fromClass=\"ContextIndexEntry\">
+		<SimpleActivator mapsTo=\"Link\" fromAttribute=\"swui:idxEntry|item|swui:target\" name=\"idxEntry-item-target\" >
+			<ElementExhibitor mapsTo=\"Text\" fromAttribute=\"swui:idxEntry|item\" name=\"idxEntry-item\" />
+		</SimpleActivator>
+	</CompositeInterfaceElement>
+</CompositeInterfaceElement>

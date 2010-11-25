@@ -1,0 +1,450 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY dr "http://www.tecweb.inf.puc-rio.br/ontologies/dr#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.tecweb.inf.puc-rio.br/ontologies/dr#"
+     xml:base="http://www.tecweb.inf.puc-rio.br/ontologies/dr"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dr="http://www.tecweb.inf.puc-rio.br/ontologies/dr#">
+    <owl:Ontology rdf:about=""/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#aFavor -->
+
+    <owl:ObjectProperty rdf:about="#aFavor">
+        <rdfs:domain rdf:resource="#Argumento"/>
+        <rdfs:range rdf:resource="#Ideia"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#apresenta -->
+
+    <owl:ObjectProperty rdf:about="#apresenta">
+        <rdfs:range rdf:resource="#ElementoDeRaciocinio"/>
+        <rdfs:domain rdf:resource="#Pessoa"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#argumenta -->
+
+    <owl:ObjectProperty rdf:about="#argumenta">
+        <rdfs:domain rdf:resource="#Argumento"/>
+        <rdfs:range rdf:resource="#Ideia"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#considera -->
+
+    <owl:ObjectProperty rdf:about="#considera">
+        <rdfs:domain rdf:resource="#Argumento"/>
+        <rdfs:range rdf:resource="#Questao"/>
+        <owl:inverseOf rdf:resource="#ehConsideradaPor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#contra -->
+
+    <owl:ObjectProperty rdf:about="#contra">
+        <rdfs:domain rdf:resource="#Argumento"/>
+        <rdfs:range rdf:resource="#Ideia"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#contrariadaPor -->
+
+    <owl:ObjectProperty rdf:about="#contrariadaPor">
+        <rdfs:range rdf:resource="#Argumento"/>
+        <rdfs:domain rdf:resource="#Ideia"/>
+        <owl:inverseOf rdf:resource="#contra"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#deriva -->
+
+    <owl:ObjectProperty rdf:about="#deriva">
+        <rdfs:domain rdf:resource="#Argumento"/>
+        <rdfs:range rdf:resource="#Justificativa"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#derivadaDe -->
+
+    <owl:ObjectProperty rdf:about="#derivadaDe">
+        <rdfs:range rdf:resource="#Argumento"/>
+        <rdfs:domain rdf:resource="#Justificativa"/>
+        <owl:inverseOf rdf:resource="#deriva"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehApresentadaPor -->
+
+    <owl:ObjectProperty rdf:about="#ehApresentadaPor">
+        <rdfs:domain rdf:resource="#ElementoDeRaciocinio"/>
+        <rdfs:range rdf:resource="#Pessoa"/>
+        <owl:inverseOf rdf:resource="#apresenta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehArgumentadaPor -->
+
+    <owl:ObjectProperty rdf:about="#ehArgumentadaPor">
+        <rdfs:range rdf:resource="#Argumento"/>
+        <rdfs:domain rdf:resource="#Ideia"/>
+        <owl:inverseOf rdf:resource="#argumenta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehConsideradaPor -->
+
+    <owl:ObjectProperty rdf:about="#ehConsideradaPor">
+        <rdfs:range rdf:resource="#Argumento"/>
+        <rdfs:domain rdf:resource="#Questao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehResolvidaPor -->
+
+    <owl:ObjectProperty rdf:about="#ehResolvidaPor">
+        <rdfs:range rdf:resource="#Decisao"/>
+        <rdfs:domain rdf:resource="#Questao"/>
+        <owl:inverseOf rdf:resource="#resolve"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehRespondidaPor -->
+
+    <owl:ObjectProperty rdf:about="#ehRespondidaPor">
+        <rdfs:range rdf:resource="#Ideia"/>
+        <rdfs:domain rdf:resource="#Questao"/>
+        <owl:inverseOf rdf:resource="#responde"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehSugeridaPor -->
+
+    <owl:ObjectProperty rdf:about="#ehSugeridaPor">
+        <rdfs:range rdf:resource="#ElementoDeRaciocinio"/>
+        <rdfs:domain rdf:resource="#Questao"/>
+        <owl:inverseOf rdf:resource="#sugere"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehUsadaPor -->
+
+    <owl:ObjectProperty rdf:about="#ehUsadaPor">
+        <rdfs:range rdf:resource="#Decisao"/>
+        <rdfs:domain rdf:resource="#Ideia"/>
+        <owl:inverseOf rdf:resource="#usa"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehVersaoDeArgumento -->
+
+    <owl:ObjectProperty rdf:about="#ehVersaoDeArgumento">
+        <rdfs:domain rdf:resource="#Argumento"/>
+        <rdfs:range rdf:resource="#Argumento"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehVersaoDeIdeia -->
+
+    <owl:ObjectProperty rdf:about="#ehVersaoDeIdeia">
+        <rdfs:range rdf:resource="#Ideia"/>
+        <rdfs:domain rdf:resource="#Ideia"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ehVersaoDeQuestao -->
+
+    <owl:ObjectProperty rdf:about="#ehVersaoDeQuestao">
+        <rdfs:domain rdf:resource="#Questao"/>
+        <rdfs:range rdf:resource="#Questao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#favorecidaPor -->
+
+    <owl:ObjectProperty rdf:about="#favorecidaPor">
+        <rdfs:range rdf:resource="#Argumento"/>
+        <rdfs:domain rdf:resource="#Ideia"/>
+        <owl:inverseOf rdf:resource="#aFavor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#pertenceA -->
+
+    <owl:ObjectProperty rdf:about="#pertenceA">
+        <rdfs:range rdf:resource="#Decisao"/>
+        <rdfs:domain rdf:resource="#Justificativa"/>
+        <owl:inverseOf rdf:resource="#possui"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#possui -->
+
+    <owl:ObjectProperty rdf:about="#possui">
+        <rdfs:domain rdf:resource="#Decisao"/>
+        <rdfs:range rdf:resource="#Justificativa"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#resolve -->
+
+    <owl:ObjectProperty rdf:about="#resolve">
+        <rdfs:domain rdf:resource="#Decisao"/>
+        <rdfs:range rdf:resource="#Questao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#responde -->
+
+    <owl:ObjectProperty rdf:about="#responde">
+        <rdfs:domain rdf:resource="#Ideia"/>
+        <rdfs:range rdf:resource="#Questao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#sugere -->
+
+    <owl:ObjectProperty rdf:about="#sugere">
+        <rdfs:domain rdf:resource="#ElementoDeRaciocinio"/>
+        <rdfs:range rdf:resource="#Questao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#usa -->
+
+    <owl:ObjectProperty rdf:about="#usa">
+        <rdfs:domain rdf:resource="#Decisao"/>
+        <rdfs:range rdf:resource="#Ideia"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#aceita -->
+
+    <owl:DatatypeProperty rdf:about="#aceita">
+        <rdfs:domain rdf:resource="#Decisao"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#data -->
+
+    <owl:DatatypeProperty rdf:about="#data">
+        <rdfs:domain rdf:resource="#Decisao"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#dataCriacao -->
+
+    <owl:DatatypeProperty rdf:about="#dataCriacao">
+        <rdfs:domain rdf:resource="#ElementoDeRaciocinio"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#email -->
+
+    <owl:DatatypeProperty rdf:about="#email">
+        <rdfs:domain rdf:resource="#Pessoa"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#foto -->
+
+    <owl:DatatypeProperty rdf:about="#foto">
+        <rdfs:domain rdf:resource="#Pessoa"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#foto_descricao -->
+
+    <owl:DatatypeProperty rdf:about="#foto_descricao">
+        <rdfs:domain rdf:resource="#Pessoa"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#homepage -->
+
+    <owl:DatatypeProperty rdf:about="#homepage">
+        <rdfs:domain rdf:resource="#Pessoa"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#nome -->
+
+    <owl:DatatypeProperty rdf:about="#nome">
+        <rdfs:domain rdf:resource="#Pessoa"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#telefones -->
+
+    <owl:DatatypeProperty rdf:about="#telefones">
+        <rdfs:domain rdf:resource="#Pessoa"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#tipo -->
+
+    <owl:DatatypeProperty rdf:about="#tipo">
+        <rdfs:domain rdf:resource="#Questao"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#wikiText -->
+
+    <owl:DatatypeProperty rdf:about="#wikiText">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#Argumento -->
+
+    <owl:Class rdf:about="#Argumento">
+        <rdfs:subClassOf rdf:resource="#ElementoDeRaciocinio"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#Decisao -->
+
+    <owl:Class rdf:about="#Decisao"/>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#ElementoDeRaciocinio -->
+
+    <owl:Class rdf:about="#ElementoDeRaciocinio"/>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia -->
+
+    <owl:Class rdf:about="#Ideia">
+        <rdfs:subClassOf rdf:resource="#ElementoDeRaciocinio"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#Justificativa -->
+
+    <owl:Class rdf:about="#Justificativa"/>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#Pessoa -->
+
+    <owl:Class rdf:about="#Pessoa"/>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/dr#Questao -->
+
+    <owl:Class rdf:about="#Questao">
+        <rdfs:subClassOf rdf:resource="#ElementoDeRaciocinio"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

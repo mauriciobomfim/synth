@@ -1,0 +1,31 @@
+== activerdf_rdflite (1.4.1) Thu, 01 Nov 2007 13:45:19 +0000
+  * adapter.load can read from remote HTTP sources if Redland is available
+  * finished adapter.close
+
+== activerdf_rdflite (1.4) 2007-09-03 15:42
+  * caching subproperty reasoning
+  * added adapter.close method (TODO: not finished)
+
+== activerdf_rdflite (1.3) Tue, 27 Feb 2007 20:53:21 +0000
+  * fixed literals with escape characters rdflite 
+  * fixed parsing of content-encoded (HTML) literals
+  * refactored rdflite to use generic NTriplesParser
+  * added test cases for encoded and escaped literals
+  
+== activerdf_rdflite (1.2.3) Tue, 13 Feb 2007 20:07:01 +0000
+  * gems published automatically from Rakefile 
+  * changing rapper invocation in fetching adapter
+  * prevent failing unit tests if ferret not installed
+  * bumped dependency of sqlite
+
+== activerdf_rdflite (1.2.2)
+  * use same bnode function in rdflite.load (same bnodes from one file get same uri)
+
+== activerdf_rdflite (1.2.1)
+  * bugfix in multijoins
+
+== activerdf_rdflite (1.2)
+  * speed up rdflite.load using precompiled SQL
+
+== activerdf_rdflite (1.1)
+  * added rdfs:subPropertyOf reasoning

@@ -1,0 +1,99 @@
+<h1>New interface</h1>
+
+<% form_for :interface, :url => { :action => "create" }, :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :interface_name %>
+  </p>
+
+	<p><label>Type</label><br />
+
+	<input type=radio id=generic_opt name=interface[type] value="SWUI::AbstractInterface" 
+	onclick="toggle_areas('generic_interface', 'context_interface', 'index_interface');toggle_widget_description();">
+	Generic Interface <span class="hint">(Interface not related to any class, context or index, such as for transition interfaces and forms)</span><br>
+
+	<input type=radio id=context_opt name=interface[type] value="SWUI::ContextInterface" 
+	onclick="toggle_areas('context_interface', 'generic_interface', 'index_interface');toggle_widget_description();">
+	Context Interface <span class="hint">(Interface for specific or any class in specific or any context)</span><br>
+
+	<input type=radio id=index_opt name=interface[type] value="SWUI::IndexInterface" 
+	onclick="toggle_areas('index_interface', 'generic_interface', 'context_interface');toggle_widget_description();"> 
+	Index Interface <span class="hint">(Interface for specific or any index)</span><br>
+
+	<input type=radio id=component_opt name=interface[type] value="SWUI::ComponentInterface" 
+	onclick="toggle_areas('generic_interface', 'context_interface', 'index_interface'); toggle_widget_description();">
+	Component Interface <span class="hint">(Reusable widgets description)</span>
+
+	<div id="generic_interface" style='line-height:1px'></div>
+
+	<div id="context_interface" style="display:none">
+		<p><label>Context</label>
+		<select name="interface[context_id]">
+		<option value="">Any</option>
+		<%= options_from_collection_for_select @contexts, "uri", "context_name" %>
+		</select></p>
+		<p><label>Class</label>
+		<select name="interface[class_id]">
+		<option value="">Any</option>
+		<%= options_from_collection_for_select @classes, "uri", "compact_uri" %>
+		</select></p>
+	</div>
+
+	<div id="index_interface" style="display:none">
+		<p><label>Index</label>
+		<select name="interface[index_id]">
+		<option value="">Any</option>
+		<%= options_from_collection_for_select @indices, "uri", "index_name" %>
+		</select></p>
+	</div>
+
+	<%= f.label :widget_description %>
+	<p>
+		<%= f.radio_button :widget_decription_type, :abstract,  { :checked => true, :onclick => "toggle_widget_description();" } %> Abstract
+		<%= f.radio_button :widget_decription_type, :concrete, { :onclick => "toggle_widget_description();" } %> Concrete
+	</p>
+	<p>
+	<%= f.text_area :abstract_spec, :rows => 20, :cols => 100 %>
+	</p>
+
+	<div id="abstract" style="display:none">
+		<%= f.label :Rethorical_description %>
+		<p>
+			<%= f.text_area :rhet_spec, :rows => 15, :cols => 100 %>
+		</p>
+	</div>
+
+	<div id="noAbstract" style="display:none"></div>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', abstract_interfaces_path %>
+
+<script lang="JavaScript">
+		document.getElementById('generic_opt').checked = true;
+		toggle_areas('generic_interface', 'index_interface', 'context_interface');
+		toggle_areas('abstract','noAbstract');
+		
+	
+		function toggle_widget_description(){
+
+			concrete = $('#interface_widget_decription_type_concrete').attr('checked');
+			if(concrete){
+				toggle_areas('noAbstract','abstract');
+				$('#interface_abstract_spec').attr('rows', 40);
+			}
+			else{
+				$('#interface_widget_decription_type_abstract').attr('checked', true);
+				if(!$('#component_opt').attr('checked'))
+					toggle_areas('abstract','noAbstract');
+				else
+					toggle_areas('noAbstract','abstract');
+				$('#interface_abstract_spec').attr('rows', 20);				
+			}
+		}
+</script>

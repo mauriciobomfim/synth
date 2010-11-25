@@ -1,0 +1,3 @@
+control = swui_getRunTimeRef(\"ratingGraph\", swui_id);
+input = swui_getRunTimeRef(undefined, swui_id);
+eval(\"new Control.Rating('\" + control + \"',{input: '\" + input + \"', multiple: true });\");

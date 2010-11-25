@@ -1,0 +1,3 @@
+// A wrapper for the Scriptaculous Fade effect
+
+if (document.getElementById(widgetA) != null) { eval(\"$(widgetA).fade({\" + parameters + \"})\"); }

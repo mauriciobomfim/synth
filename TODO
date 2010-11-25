@@ -1,0 +1,11 @@
+- Escrever o código do contexto como operações do modelo
+x- Permitir que a definição property possa informar o o label, um alias ou uma propriedade já existente (ex.: dc:title)
+- Verificar alteração no BNode
+- Checar porque owl:inverseOf implica em rdfs:range da propriedade inversa
+- implementar comportamento singular e plural para propriedades (usar owl:maxCardinality)
+- implementar callbacks e validações com activemodel do rails3
+- verificar ordenação de resultados da Query
+- verificar OWL:SymmetricProperty, RDFS::subPropertyOf
+- definir ancora arbitraria
+- refatorar alterações no RDF::Properties em uma nova class do modelo
+- Criar dependencia ao deletar recursos (deletar os dependentes)

@@ -1,0 +1,45 @@
+<h1>Edit ontology</h1>
+
+<% form_for :ontology, :url => { :action => "update" }, :html => {  :class => 'form' } do |f| %>
+  <%= f.error_messages %>
+
+  <%= hidden_field_tag :id, @ontology %>
+
+  <%= f.label :name %>
+  <p>
+    <%= @ontology.ontology_name %>
+  </p>
+
+	<%= f.label :description %>
+  <p>
+    <%= f.text_area 'ontology_description', :rows => 2 %>
+  </p>
+
+  <%= f.label :file %>
+  <p>
+		<%= @ontology.ontology_file_name %>
+  </p>
+
+	<%= f.label :notation %>
+  <p>
+		<%= @ontology.ontology_file_notation %>
+  </p>
+
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>
+<div class="ui-widget ui-widget-content ui-corner-all" style="width: 280px; padding: 10px; margin-right: auto;
+margin-left: auto;">
+
+	<% if @ontology.active? %>
+	  <p style="font-size: 14px;">Inferencing is <font color="green">ENABLED</font> for this ontology. Click on the button below if you wish to DISABLE.</p>
+		<%= button_to 'Disable inferencing', { :action => "disable_ontology", :id => @ontology }, :confirm => 'Are you sure?', :method => :post, :class => "ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style => "color: red; width: 280px; height: 50px;" %>
+	<% else %>
+	  <p style="font-size: 14px;">Inferencing is  <font color="red">DISABLED</font> for this ontology. Click on the button below if you wish to ENABLE.</p>
+		<%= button_to 'Enable inferencing', { :action => "activate_ontology", :id => @ontology }, :confirm => 'Are you sure?', :method => :post, :class => "ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only", :style => "color: green; width: 280px; height: 50px;" %>
+	<% end %>
+</div>
+<p>
+<%= link_to 'Back', :action => :index %>
+</p>

@@ -1,0 +1,23 @@
+<h1>New index</h1>
+
+<% form_for :index, :url => { :action => "create" } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :index_name %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :index_title %>
+  </p>
+  <p>
+    <%= f.label :context %><br />
+    <%= f.select :context_index_context, @contexts %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', indexes_path %>

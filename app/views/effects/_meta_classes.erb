@@ -1,0 +1,18 @@
+<table class="rounded-corner">
+  <thead>
+		<tr>
+	    <th>Meta Classes</th>
+			<th align="right"><span class="toggle_action">+</span></th>
+			<script>register_toogle();</script>
+	  </tr>
+	</thead>
+</table>
+<div class="toggleable">
+<table class="rounded-corner">
+	<% @meta_classes.sort{|a,b| a.compact_uri <=> b.compact_uri }.each do |klass| %>
+	  <tr>
+	    <td><%= link_to klass.compact_uri, :action => :index, :type => klass.uri %></a></td>    
+		</tr>
+	<% end %>
+</table>
+</div>

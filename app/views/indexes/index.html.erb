@@ -1,0 +1,22 @@
+<table class="minimalist">
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+	<th align="right">Actions</th>
+  </tr>
+
+<% @indexes.each do |index| %>
+  <tr>
+    <td><%=h index.index_name.first %></td>
+    <td><%=h index.index_title.first %></td>
+    <td align="right">
+		<%= link_to 'Edit', :action => "edit", :id => index %>
+    	<%= link_to 'Destroy', { :action => "destroy", :id => index }, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New index', new_index_path %>

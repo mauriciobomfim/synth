@@ -1,0 +1,22 @@
+<table class="minimalist">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+	<th align="center" colspan="3">Actions</th>
+  </tr>
+
+<% @interfaces.each do |interface| %>
+  <tr>
+    <td><%=h interface.interface_name.first %></td>
+    <td><%=h display_type(interface) %></td>
+    <td><%= link_to 'Edit', :action => "edit", :id => interface %></td>
+		<td><%= (interface.widget_decription_type.first != 'concrete') ? link_to('[Mappings]', :action => "xslt", :id => interface) : 'Concrete' %></td>
+    <td><%= link_to 'Destroy', { :action => "destroy", :id => interface }, :confirm => 'Are you sure?', :method => :delete %></td>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New interface', new_abstract_interface_path %>

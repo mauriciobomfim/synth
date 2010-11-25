@@ -1,0 +1,142 @@
+== activerdf (HEAD)
+  * ActiveRDF classes have been moved into their own module, ActiveRDF::.
+  * Registered predicates are being deprecated in favor of registered 
+    namespaces instead.
+
+  * Added RDF::Property to manage properties and their values.
+    If it is associated with a resource on instantiation, that property then 
+    provides access to the values belonging to the associated resource.
+    This changes the way properties are queried from RDFS::Resource. This 
+    replaces all_ property methods. resource.property now returns a 
+    RDF::Property. Values may be accessed via Enumerable methods. 
+
+  * Resource refactored, DRY'd out. 
+  * Resource.find(uri) for finding resources by uri. Returns nil if resource 
+    not found. Use instead of Resource.new(uri) if you don't wish to create
+    a new resource if one is not found.
+  * Resource#to_s now returns URI's without enclosing braces(<>).
+    Use #to_literal_s for NTriple formatted URI's
+  * Resource#all_predicates, #instance_predicates, #empty_predicates added
+  * Resource#filter now takes a single filter at a time. returns self so 
+    additional filters may be chained.  #filter_regexp now simply #regexp
+  * Resource property lookups now have the following search priority: 
+    custom methods first, namespaced properties second, 
+    registered_predicates(deprecated) then finally a search on all
+    known properties for this class.
+  * Provide some limited RDF & RDFS reasoning. Enabled with a new global
+    variable $activerdf_internal_reasoning = false (default)
+    
+  * Datatype support. ActiveRDF will by default use datatype for all 
+    literals to provide typing support. A new global boolean variable 
+    $activerdf_without_datatype will disable the use of datatypes if 
+    set to true. This may be necessary when working with literals that 
+    do not have a datatype specified in which case they will all be treated
+    as strings.
+  * Query#all_types uses regex matching to match all values, ignoring
+    datatype when $activerdf_without_datatype = false, ie enforcing type.
+    Use in datastores with mixed typed and non-typed literals
+    See discussion here: http://markmail.org/message/4rhqmb5jnaqbwfbs
+  * Query flatten argument now defaults to false
+  * Added FederationManager#contexts for querying contexts for all adapters
+  * NTriples parser now ignores comments and recognizes lang/datatype
+    
+  * renamed adapter API method #query to #execute to match semantics of Query
+  * RDFLite has been refactored. Additional rapper syntax option(-i) to #fetch,#load: 
+    fetch(url, syntax = nil), load(location, syntax = nil)
+  * Redland adapter initialization refactored. Redland store types 
+    via :location parameter now supported: 'postgres','mysql','sqlite','memory',<filename>
+    :want_new parameter changed to :new.
+  * Redland adapter no longer calls eva(i)l('"%s"' % self) on all data.
+
+  * Code reformatting
+
+  * Bugfixes for 
+    88428: queries with blocks don't work
+    48849: datatype support
+    64007: class names capitalisation leads sometimes to unintuitive results
+    106878: Dynamic finder behavior => now supported by RDF::Property when property known, nil when not found
+    62481: find_by_<Property> is now supported through chained ResourceFilter calls
+    185826: weird behavior with class compares
+
+  * reverted 461. This was a request to add additional filters to the property, specifically lang. This is now supported through RDF::Property#lang and #datatype. Support for arbitrary filters is on the todo list.
+    Namespace restriction should remain. 
+
+== activerdf (1.6.12)
+  * FederationManager passes delete correctly to adaptors
+
+== activerdf (1.6.11) Thu, 27 Nov 2008 11:27:24 +0100
+  * added support for enabling/disabling adapters (Samur Saraujo)
+  * RDFS::Resource accepts block (Aleksander Pohl)
+
+== activerdf (1.6.10) Wed, 23 Apr 2008 10:43:44 +0200
+  * convert float <-> xsd:double (Richard Dale)
+  * fix #202979: superclass mismatch in literal.rb (Slava Kravchenko)
+
+== activerdf (1.6.9) Fri, 08 Feb 2008 13:36:31 +0100
+  * automatic conversion from typed literals to Ruby internal datatypes
+  * added Resource#to_xml (José Ignacio)
+
+== activerdf (1.6.8) Thu, 01 Nov 2007 15:55:38 +0100
+  * no need for ObjectManager.construct_classes (done during namespace registration)
+  * small fix to running form source on jruby
+  * added spaces to query2sparql query creation
+  * sparql queries with a context now have a graph keyword
+
+== activerdf (1.6.7) Fri, 21 Sep 2007 12:56:09 +0100
+  * updated bnode handling to SPARQL spec
+
+== activerdf (1.6.6) Fri, 21 Sep 2007 10:06:17 +0100
+  * parse bnodes in SPARQL queries
+  * bugfix when using RDFS classes in queries
+
+== activerdf (1.6.5) Thu, 20 Sep 2007 13:39:04 +0100
+  * bugfix in SPARQL regex query (Mikael Lammentausta)
+
+== activerdf (1.6.4) 2007-09-03 15:34
+  * new method: ConnectionPool.remove_data_source(adapter) which should be called
+    by all adapter.close methods
+
+== activerdf (1.6.3) Thu, 09 Aug 2007 15:11:15 +0100
+  * added support for LANG filters and engine-specific keyword search in SPARQL
+
+== activerdf (1.6.2) Fri, 03 Aug 2007 14:07:54 +0100
+  * initial support for FILTERs in SPARQL
+
+== activerdf (1.6.1) Thu, 19 Apr 2007 22:57:01 +0100
+  * fix bug 107280: add support for full query options (including context) in dynamic finders
+
+== activerdf (1.6) Thu, 12 Apr 2007 23:12:40 +0100
+  * no need for ObjectManager.construct_classes anymore (classes exist automagically after Namespace.register)
+  * added resource.localname (alias for Namespace.localname(resource))
+
+== activerdf (1.5) Thu, 12 Apr 2007 22:42:28 +0100
+  * allows directly using classes in query: where(:s, RDF::type, SIOC::Post)
+  * extended search in Resource.find (e.g. order results, pagination)
+  * added eyal.all_age and eyal.all_foaf::name to always return Arrays
+  * added support for writing namespaced attributes (eyal.foaf::name = ...)
+
+== activerdf (1.4) Tue, 27 Feb 2007 20:50:21 +0000
+  * dynamic finders support prefixes (find_by_foaf::name)
+  * ntriples parser supports encoded literals (HTML)
+
+== activerdf (1.3.1) Mon, 19 Feb 2007 17:04:57 +0000
+  * fixed type-checking bug in query.rb
+  * added language support to literals
+
+== activerdf (1.3) Sun, 18 Feb 2007 15:09:35 +0000
+  * added support for datatyped literals in SPARQL queries
+
+== activerdf (1.2.3) Wed, 14 Feb 2007 16:07:41 +0000
+  * namespaced properties are first-class citizens: FOAF::name or RDFS::domain
+
+== activerdf (1.2.2) Tue, 13 Feb 2007 19:40:19 +0000
+  * gems published automatically from Rakefile 
+  * added support for namespaced attributes:
+    eyal.foaf::name or eyal.foaf.name (do not require predicate lookup)
+  * minor changes to activerdf loader and documentation
+
+== activerdf (1.2.1) Tue, 30 Jan 2007 19:09:59 +0000
+  * added ancestors when looking at domain/range in Resource#method_missing
+    (makes foaf.name='eyal' work without reasoning because foaf:name defined in 
+    superclass, but does not work when reasoning enabled)
+  * activerdf loader uses 'gem' instead of deprecated 'require_gem'

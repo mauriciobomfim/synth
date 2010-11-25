@@ -1,0 +1,84 @@
+<h1>New concrete widget</h1>
+
+<% form_for :concrete_widget, :url => { :action => "create" }, :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.label :name %>
+  <p>
+    <%= f.text_field :concrete_widget_name %>
+  </p>
+
+	<label>Type</label>
+	<p>
+		<input type=radio id=generic_opt name=concrete_widget[type] value="SWUI::HtmlTag" 
+		onclick="toggle_areas('html_tag', 'ajax_control');"> HTML Tag <br>	
+		<input type=radio id=context_opt name=concrete_widget[type] value="SWUI::RichControl" 
+		onclick="toggle_areas('ajax_control', 'html_tag');"> Rich Control	
+	</p>
+	
+	<label>Legal Abstract Widgets</label>
+	<p>
+		<input type=checkbox id=AbstractInterface_opt name=concrete_widget[legalAbstractWidgs][] value="AbstractInterface" > Abstract Interface <br/>
+		<input type=checkbox id=CompositeInterfaceElement_opt name=concrete_widget[legalAbstractWidgs][] value="CompositeInterfaceElement" > Composite Interface Element <br/>
+		<input type=checkbox id=ElementExhibitor_opt name=concrete_widget[legalAbstractWidgs][] value="ElementExhibitor" > Element Exhibitor <br/>
+		<input type=checkbox id=IndefiniteVariable_opt name=concrete_widget[legalAbstractWidgs][] value="IndefiniteVariable" > Indefinite Variable <br/>
+		<input type=checkbox id=PredefinedVariable_opt name=concrete_widget[legalAbstractWidgs][] value="PredefinedVariable" > Predefined Variable <br/>
+		<input type=checkbox id=SimpleActivator_opt name=concrete_widget[legalAbstractWidgs][] value="SimpleActivator" > Simple Activator 
+	</p>
+
+	<div id=html_tag style="display:none">
+		<label>Legal Tag</label>
+		<p>    
+  		<%= f.text_field :legalTags, :size => 50 %>
+		</p>
+	</div>
+
+	<div id=ajax_control style="display:none">
+		<label>HTML Code for the control</label>
+		<p>
+			<%= f.text_area :htmlCode, :cols => 80, :rows => 5 %>
+		</p>
+
+		<label>Javascript Code for the control</label>
+		<span class='hint'><br>
+			Function prototype: void swui_Rich_&lt;widgetName&gt; (String swui_id) <br/>
+			swui_id => Runtime rich control widget's id
+		</span>
+		<p>
+			<%= f.text_area :jsCode, :cols => 80, :rows => 10 %>
+		</p>
+		<span class="hint">
+			<p>
+			To refer to widgets from the Javascript code:<br/>
+			swui_getRunTimeRef(String template_id, String swui_id) <br/>
+			template_id => Design time widget's id <br/> (When template_id is undefined, function returns the reference to the widget that binds the Control to the Model)
+			</p>
+			<p>
+			To get the Model attribute value from the Javascript code:<br/>
+			swui_getRunTimeAttrValue(String swui_id) 
+			</p>
+			<p>
+			To set the Model attribute value from the Javascript code:<br/>
+			swui_setRunTimeAttrValue(String swui_id, String value)
+			</p>
+		</span>
+
+		<label>Internal CSS Style Sheet</label>
+		<p>
+			<%= f.text_area :cssCode, :cols => 80, :rows => 5 %>		
+		</p>
+
+		<label>Dependencies </label>
+		<span class="hint">Links to external scripts and style sheets</span>
+		<p>
+			<%= f.text_area :dependencies, :cols => 80, :rows => 5 %>
+		</p>
+
+	</div>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', concrete_widgets_path %>

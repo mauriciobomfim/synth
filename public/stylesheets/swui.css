@@ -1,0 +1,72 @@
+.swui_bold {
+	font-weight: bold;
+}
+
+.swui_italics {
+	font-style: italic;
+}
+
+.swui_inline {
+	display: inline;
+}
+
+.swui_invisible, .swui_ajax_invisible {
+	display: none;
+}
+
+.swui_underline {
+	text-decoration: underline;	
+}
+
+.swui_floatLeft {
+	float: left;
+        margin: inherit;
+}
+
+.swui_floatRight {
+	float: right;
+        margin: inherit;
+}
+
+.swui_clearFloat {
+	clear: both;
+}
+
+.swui_interface {
+	margin: 0px;
+	padding: 0px;
+	width: 80%;
+}
+
+.swui_composite {
+	padding: 10px 20px;
+	margin: 5px;
+}
+
+.swui_landmark {
+	border-bottom: 3px solid #e80;
+	text-align: center;
+}
+
+.swui_navBar {
+	padding-top: 0px;
+	border-bottom: 1px solid #e80;
+	padding-bottom: 35px;
+}
+
+.swui_list {
+	border-top: 1px solid #e80;
+	border-left: 1px solid #e80;
+	width: 60%;
+}
+
+.swui_node {
+	border-left: 1px solid #e80;
+	margin: 0 auto;
+	width: 65%;
+}
+
+.swui_border {
+        border: 1px solid #e80;
+}
+

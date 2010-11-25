@@ -1,0 +1,22 @@
+<table class="minimalist">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+	<th align="right">Actions</th>
+  </tr>
+
+<% @concrete_widgets.each do |concrete_widget| %>
+  <tr>
+    <td><%=h concrete_widget.concrete_widget_name.first %></td>
+    <td><%=h ActiveRDF::Namespace.localname(concrete_widget.classes.first).titleize %></td>
+    <td align="right">
+		<%= link_to 'Edit', :action => "edit", :id => concrete_widget %>
+    	<%= link_to 'Destroy', { :action => "destroy", :id => concrete_widget }, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Concrete Widget', new_concrete_widget_path %>

@@ -1,0 +1,37 @@
+.hint {
+	font-size: 0.9em;
+	font-style: italic;
+}
+
+.form p {
+	margin-top: 5px;	
+}
+
+.form label {
+	font-weight: bold;	
+}
+
+.floatLeft {
+	float: left;
+}
+.floatRight {
+	float: right;
+}
+
+.clearFloat {
+	clear: both;
+}
+
+.toggleable {
+	display: none;
+}
+
+.toggle_action{
+	font-weight: bold;	
+}
+
+.bullets-none {
+	list-style-type:none;
+	padding: 0px;
+	margin: 0px;
+}

@@ -1,0 +1,22 @@
+<table class="minimalist">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+	<th align="right">Actions</th>
+  </tr>
+
+<% @operations.each do |operation| %>
+  <tr>
+    <td><%=h operation.operation_name.first %></td>
+    <td><%=h operation.operation_type.first %></td>
+    <td align="right">
+		<%= link_to 'Edit', :action => "edit", :id => operation %>
+    	<%= link_to 'Destroy', { :action => "destroy", :id => operation }, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New operation', new_operation_path %>

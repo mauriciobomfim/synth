@@ -1,0 +1,99 @@
+<h1>Editing index</h1>
+
+<% form_for :index, :url => { :action => "update" } do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag :id, @index %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :index_name %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :index_title %>
+  </p>
+  <p>
+    <%= f.label :context %><br />
+    <%= f.select :context_index_context, @contexts, :selected => @index.context_index_context.first ? @index.context_index_context.first.uri : nil %>
+  </p>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%=jqgrid("Context Anchor Attributes", "context_anchor_attributes", "/indexes/context_anchor_attributes/#{CGI::escape(@index.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 200, :align => 'center' },
+		{ :field => "context_anchor_navigation_attribute_label_expression", :label => "Label expression", :editable => true, :width => 200, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+		{ :field => "context_anchor_navigation_attribute_target_context", :label => "Target context", :editable => true, :width => 200 ,:edittype => "select",
+		  :editoptions => { :value => SHDM::Context.find_all.map{|v| [CGI::escape(v.uri), v.context_name.first]} } },
+  	{ :field => "context_anchor_navigation_attribute_target_node_expression", :label => "Target node expression", :editable => true, :width => 200, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
+	],
+	{ 
+	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.context_anchor_attributes.to_a.empty? ? 'true' : 'false',
+	  :edit_url => "/indexes/context_anchor_attributes_post_data?parent=#{CGI::escape(@index.uri)}",
+		:subgrid => { 
+					
+					:url => "/indexes/navigation_attribute_context_parameters",
+					:columns => [
+						{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
+						{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
+				    ],
+					:add => true, 
+					:edit => true, 
+					:delete => true, 
+					:search => false, 
+					:inline_edit => true,
+					:edit_url => "/indexes/navigation_attribute_context_parameters_post_data"
+				  }
+	}
+)%>
+<br/>
+<%=jqgrid("Index Anchor Attributes", "index_anchor_attributes", "/indexes/index_anchor_attributes/#{CGI::escape(@index.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 200, :align => 'center' },
+		{ :field => "index_anchor_navigation_attribute_label_expression", :label => "Label expression", :editable => true, :width => 400, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+		{ :field => "index_anchor_navigation_attribute_target_index", :label => "Target index", :editable => true, :width => 200 ,:edittype => "select",
+		  :editoptions => { :value => SHDM::Index.find_all.map{|v| [CGI::escape(v.uri), v.index_name.first]} } },
+
+		
+		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
+	],
+	{ 
+	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.index_anchor_attributes.to_a.empty? ? 'true' : 'false',
+	  :edit_url => "/indexes/index_anchor_attributes_post_data?parent=#{CGI::escape(@index.uri)}",
+	  :subgrid => { 
+					
+					:url => "/indexes/navigation_attribute_index_parameters",
+					:columns => [
+						{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
+						{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
+				    ],
+					:add => true, 
+					:edit => true, 
+					:delete => true, 
+					:search => false, 
+					:inline_edit => true,
+					:edit_url => "/indexes/navigation_attribute_index_parameters_post_data"
+				  }
+	}
+)%>
+<br/>
+<%=jqgrid("Computed Attributes", "computed_attributes", "/indexes/computed_attributes/#{CGI::escape(@index.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 250, :align => 'center' },
+		{ :field => "computed_navigation_attribute_value_expression", :label => "Value expression", :editable => true, :width => 550, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 70 } },
+		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
+	],
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.computed_attributes.to_a.empty? ? 'true' : 'false', 
+	  :edit_url => "/indexes/computed_attributes_post_data?parent=#{CGI::escape(@index.uri)}" }	
+)%>
+<br />
+<%= link_to 'Back', indexes_path %>

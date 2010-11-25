@@ -1,0 +1,8 @@
+<CompositeInterfaceElement name=\"NavBar\" mapsTo=\"Composition\" cssClasses=\"swui_composite swui_navBar\" >
+	<SimpleActivator mapsTo=\"Link\" fromAttribute=\"swui:contextPrev|item|swui:target\" name=\"contextPrev-item-target\" cssClasses=\"swui_floatLeft\">
+		<ElementExhibitor mapsTo=\"Text\" fromAttribute=\"swui:contextPrev|item\" name=\"contextPrev-item\" cssClasses=\"swui_floatLeft\"/>
+	</SimpleActivator>
+	<SimpleActivator mapsTo=\"Link\" fromAttribute=\"swui:contextNext|item|swui:target\" cssClasses=\"swui_floatRight\" name=\"contextNext-item-target\" >
+		<ElementExhibitor mapsTo=\"Text\" fromAttribute=\"swui:contextNext|item\" cssClasses=\"swui_floatRight\" name=\"contextNext-item\" />
+	</SimpleActivator>
+</CompositeInterfaceElement>

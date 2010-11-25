@@ -1,0 +1,145 @@
+#require 'shdm/index'
+
+class IndexesController < ApplicationController
+
+  # GET /indexes
+  # GET /indexes.xml
+  def index
+    @indexes = SHDM::Index.find_all    
+  end
+
+  # GET /indexes/1
+  # GET /indexes/1.xml
+  def show
+    @index = SHDM::Index.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @index }
+    end
+  end
+
+  # GET /indexes/new
+  # GET /indexes/new.xml
+  def new
+    @contexts = SHDM::Context.find_all.map{ |v| [ v.context_name.first, v.uri ] }.delete_if{|v| v.first == "Any"}
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @index }
+    end
+  end
+
+  # GET /indexes/1/edit
+  def edit
+    @index  = SHDM::Index.find(params[:id])
+    @contexts = SHDM::Context.find_all.map{ |v| [ v.context_name.first, v.uri ] }.delete_if{|v| v.first == "Any"}
+  end
+
+  # POST /indexes
+  # POST /indexes.xml
+  def create
+    context_url = params[:index].delete(:context_index_context)
+    params[:index][:context_index_context] = SHDM::Context.find(context_url)
+    @index = SHDM::Index.create(params[:index])
+    
+    respond_to do |format|
+      if @index.save
+        flash[:notice] = 'Index was successfully created.'
+        format.html { redirect_to :action => 'edit', :id => @index }
+        format.xml  { render :xml => @index, :status => :created, :location => @index }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @index.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /indexes/1
+  # PUT /indexes/1.xml
+  def update
+    @index = SHDM::Index.find(params[:id])
+
+    context_url = params[:index].delete(:context_index_context)
+    params[:index][:context_index_context] = SHDM::Context.find(context_url)
+
+    respond_to do |format|
+      if @index.update_attributes(params[:index])
+        flash[:notice] = 'Index was successfully updated.'
+        format.html { redirect_to(indexes_url) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @index.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /indexes/1
+  # DELETE /indexes/1.xml
+  def destroy
+    @index = SHDM::Index.find(params[:id])
+    @index.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(indexes_url) }
+      format.xml  { head :ok }
+    end
+  end
+  
+  def computed_attributes
+    jqgrid_children_index('computed_attributes', [:id, 
+      :navigation_attribute_name, 
+      :computed_navigation_attribute_value_expression, 
+      :navigation_attribute_index_position])
+  end
+  
+  def computed_attributes_post_data
+    jqgrid_children_post_data(SHDM::ComputedNavigationAttribute, 'computed_attributes')
+  end
+  
+	def index_anchor_attributes
+    jqgrid_children_index('index_anchor_attributes', [:id, 
+      :navigation_attribute_name, 
+      :index_anchor_navigation_attribute_label_expression, 
+       Proc.new {|attr| attr.index_anchor_navigation_attribute_target_index.first.index_name }, 
+      :navigation_attribute_index_position])
+  end
+  
+  def index_anchor_attributes_post_data
+    jqgrid_children_post_data(SHDM::IndexAnchorNavigationAttribute, 'index_anchor_attributes')
+  end
+  
+  def context_anchor_attributes
+    jqgrid_children_index('context_anchor_attributes', [:id, 
+      :navigation_attribute_name, 
+      :context_anchor_navigation_attribute_label_expression, 
+      Proc.new {|attr| attr.context_anchor_navigation_attribute_target_context.first.context_name }, 
+      :context_anchor_navigation_attribute_target_node_expression, 
+      :navigation_attribute_index_position])
+  end
+  
+  def context_anchor_attributes_post_data
+    jqgrid_children_post_data(SHDM::ContextAnchorNavigationAttribute, 'context_anchor_attributes')
+  end
+  
+  def navigation_attribute_index_parameters
+	jqgrid_children_index('index_anchor_navigation_attribute_target_parameters', [:id, 
+	  :navigation_attribute_parameter_name, 
+	  :navigation_attribute_parameter_value_expression])
+  end
+  
+  def navigation_attribute_index_parameters_post_data
+    jqgrid_children_post_data(SHDM::NavigationAttributeParameter, 'index_anchor_navigation_attribute_target_parameters')
+  end
+	
+	def navigation_attribute_context_parameters
+	jqgrid_children_index('context_anchor_navigation_attribute_target_parameters', [:id, 
+	  :navigation_attribute_parameter_name, 
+	  :navigation_attribute_parameter_value_expression])
+  end
+  
+  def navigation_attribute_context_parameters_post_data
+    jqgrid_children_post_data(SHDM::NavigationAttributeParameter, 'context_anchor_navigation_attribute_target_parameters')
+  end
+	
+end

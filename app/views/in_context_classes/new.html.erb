@@ -1,0 +1,27 @@
+<h1>New in context class</h1>
+
+<% form_for :in_context_class, :url => { :action => "create" }, :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.label :class %>
+  <p>
+    <%= f.select :in_context_class_class, @classes %>  
+		<%= 
+			unless params[:show_meta_classes] 
+				link_to 'Show meta classes', :action => :new, :show_meta_classes => true
+			else 
+				link_to 'Hide meta classes', :action => :new 
+			end 
+		%>
+	</p>
+
+  <%= f.label :context %>
+  <p>
+    <%= f.select :in_context_class_context, @contexts  %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', in_context_classes_path %>

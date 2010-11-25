@@ -1,0 +1,21 @@
+<table class="minimalist">
+  <tr>
+    <th>Prefix</th>
+		<th>URI</th>
+	<th align="right">Actions</th>
+  </tr>
+
+<% @namespaces.keys.sort{|a,b| a.to_s<=>b.to_s}.each do |prefix| %>
+  <tr>
+    <td><%=h prefix %></td>
+		<td><%=h @namespaces[prefix] %></td>
+    <td align="right">
+    <%= link_to 'Destroy', { :action => "destroy", :id => prefix }, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Register', :action => :new %>

@@ -1,0 +1,27 @@
+<style>
+	.button {
+  color:#666699; 
+	background-color:#E8EDFF; 
+	border: 1px solid; 
+	border-color: #666699 #003399 #003399 #666699;
+	float: right;
+	}
+	.button:hover {
+		color: #003399;
+	}
+</style>
+<table class="rounded-corner">
+  <thead>
+		<tr>
+	    <th>Domain Classes</th>
+   	  <th><%= button_to 'New resource', { :controller => :resources, :action => "new" }, :class => 'button' %></th>
+	  </tr>
+	</thead>
+	<% @domain_classes.each do |klass| %>
+  <tr>
+    <td colspan="2" <%= klass.uri == @current_class_uri ? 'style="background-color: #B9C9FE;"' : '' %> >
+			<%= link_to klass.compact_uri,  :action => :index, :type => klass.uri %>
+		</td>
+	</tr>
+	<% end %>
+</table>

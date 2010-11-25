@@ -1,0 +1,23 @@
+<h1>New operation</h1>
+
+<% form_for :operation, :url => { :action => "create" } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :operation_name %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.select :operation_type, SHDM::Operation.operation_types %>
+  </p>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_area :operation_code, :rows => 15, :cols => 71 %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', operations_path %>

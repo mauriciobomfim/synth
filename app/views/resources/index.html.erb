@@ -1,0 +1,34 @@
+<div id="class_list_container" style="float: left;">
+	<%= render :partial => "domain_classes" %>
+	<br/>
+	<%= render :partial => "meta_classes" %>
+</div>
+
+<div id="resource_list_container" style="float: left;">
+	<table class="hor-zebra">
+	  <tr>
+	    <th>Instances</th> 
+	  </tr>
+	<% @resources.each do |resource| %>
+	  <tr class="<%=cycle("even", "odd") %>">
+	    <td>
+				<%= link_to (resource.rdfs::label.empty? ? resource.compact_uri : resource.rdfs::label.first ), :action => :show, :id => resource.uri %>
+				<br/>
+				<%=h resource.type.reject{|v| v == RDFS::Resource || v == OWL::Thing }.map{|c| c.compact_uri}.join(", ") %>
+		  </td>    
+		</tr>
+	<% end %>
+	
+	<% if @resources.empty? %>
+		<tr>
+			<td>
+				No matches.
+			</td>			
+		</tr>
+	<% end %>
+	
+	</table>
+	
+
+	
+</div>

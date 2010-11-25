@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @operation_parameter.operation_parameter_name %>
+</p>
+
+<p>
+  <b>Operation:</b>
+  <%=h @operation_parameter.parameter_operation.first.operation_name.first %>
+</p>
+
+
+<%= link_to 'Edit', :action => "edit", :id => @operation_parameter %> |
+<%= link_to 'Back', :action => "index" %>

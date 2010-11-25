@@ -1,0 +1,75 @@
+<h1>Editing landmark</h1>
+
+<% form_for :landmark, :url => { :action => "update" }, :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag :id, @landmark %>
+
+  <%= f.label :name %>
+  <p>
+    <%= f.text_field :landmark_name %>
+  </p>
+  <%= f.label :position %>
+  <p>
+    <%= f.text_field :landmark_position %>
+  </p>
+
+	<%= f.label :type %>
+	<p>
+		<%= @index_anchor ? 'Index anchor' : 'Context anchor' %>
+	</p>
+	
+  <% if @index_anchor %>
+		<%= f.label :label_expression %>
+		<p>
+			<%= text_field_tag 'navigation_attribute[index_anchor_navigation_attribute_label_expression]', 
+													@navigation_attribute.index_anchor_navigation_attribute_label_expression.first, :size => 30 %>
+		</p>
+		<%= f.label :target_index %>
+		<p>
+			<%= select_tag 'navigation_attribute[index_anchor_navigation_attribute_target_index]',
+											options_for_select(@indexes, @navigation_attribute.index_anchor_navigation_attribute_target_index.first.uri) %>
+		</p>
+		
+		<%=jqgrid("Target Index Parameters", "target_index_parameters", "/landmarks/target_index_parameters/#{CGI::escape(@navigation_attribute.uri)}",
+			[			
+				{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+				{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true, :width => 250, :align => 'center' },
+				{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+			],
+			{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :height => 100,
+			  :edit_url => "/landmarks/target_index_parameters_post_data?parent=#{CGI::escape(@navigation_attribute.uri)}" }
+		)%>
+	<% else %>
+		<%= f.label :label_expression %>
+		<p>
+			<%= text_field_tag 'navigation_attribute[context_anchor_navigation_attribute_label_expression]', 
+													@navigation_attribute.context_anchor_navigation_attribute_label_expression.first, :size => 30 %>
+		</p>		
+		<%= f.label :target_context %>
+		<p>
+			<%= select_tag 'navigation_attribute[context_anchor_navigation_attribute_target_context]', 
+											options_for_select(@contexts, @navigation_attribute.context_anchor_navigation_attribute_target_context.first.uri) %>
+		</p>
+		<%= f.label :target_node_expression %>
+		<p>
+			<%= text_field_tag 'navigation_attribute[context_anchor_navigation_attribute_target_node_expression]', 
+													@navigation_attribute.context_anchor_navigation_attribute_target_node_expression.first, :size => 30 %>
+		</p>
+
+		<%=jqgrid("Target Context Parameters", "target_context_parameters", "/landmarks/target_context_parameters/#{CGI::escape(@navigation_attribute.uri)}",
+			[			
+				{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+				{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true, :width => 250, :align => 'center' },
+				{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+			],
+			{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :height => 100,
+			  :edit_url => "/landmarks/target_context_parameters_post_data?parent=#{CGI::escape(@navigation_attribute.uri)}" }
+		)%>
+	<% end %>
+	
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+<br/>
+<%= link_to 'Back', landmarks_path %>

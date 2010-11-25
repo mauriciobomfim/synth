@@ -1,0 +1,41 @@
+SHDM::IndexAttribute
+SHDM::AnchorIndexAttribute
+SHDM::ContextAnchorIndexAttribute
+SHDM::IndexAnchorIndexAttribute
+
+class SHDM::IndexAttribute
+  
+  property SHDM::index_attribute_name
+	property SHDM::index_attribute_value #CHECK: This is a ruby expression. Think about change to index_attribute_node_property (more direct)
+	property SHDM::index_attribute_position, 'rdfs:range' => XSD::integer
+	property SHDM::index_attribute_index,    'rdfs:range' => SHDM::Index, 'owl:inverseOf' => SHDM::index_attributes
+		
+end
+
+class SHDM::AnchorIndexAttribute; sub_class_of SHDM::IndexAttribute
+  
+  property SHDM::anchor_index_attribute_target_expression
+	
+end
+
+class SHDM::ContextAnchorIndexAttribute; sub_class_of SHDM::IndexAttribute  
+  
+  property SHDM::context_anchor_index_attribute_target_context,    'rdfs:range' => SHDM::Context
+	property SHDM::context_anchor_index_attribute_target_parameters, 'rdfs:range' => SHDM::IndexAttributeParameter
+	#TODO: Check if position is correct, maybe use target_node
+	#property SHDM::context_anchor_index_attribute_target_context_position, 'rdfs:range' => XSD::integer
+	#property SHDM::context_anchor_index_attribute_target_context_position_expression
+	
+end
+
+class SHDM::IndexAnchorIndexAttribute; sub_class_of SHDM::IndexAttribute  
+  
+  property SHDM::index_anchor_index_attribute_target_index,      'rdfs:range' => SHDM::NavigationIndex
+	property SHDM::index_anchor_index_attribute_target_parameters, 'rdfs:range' => SHDM::IndexAttributeParameter
+
+end
+
+class SHDM::IndexAttributeParameter
+  property SHDM::index_attribute_parameter_name
+  property SHDM::index_attribute_parameter_value  
+end

@@ -1,0 +1,22 @@
+<table class="minimalist">
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+	<th align="right">Actions</th>
+  </tr>
+
+<% @contexts.each do |context| %>
+  <tr>
+    <td><%=h context.context_name.first %></td>
+    <td><%=h context.context_title.first %></td>
+    <td align="right">
+		<%= link_to 'Edit', :action => "edit", :id => context %>
+		<%= link_to 'Destroy', { :action => "destroy", :id => context }, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New context', new_context_path %>

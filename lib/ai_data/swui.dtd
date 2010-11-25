@@ -1,0 +1,52 @@
+<!ELEMENT AbstractInterface ( CompositeInterfaceElement | ElementExhibitor | IndefiniteVariable | PredefinedVariable | SimpleActivator )* >
+<!ATTLIST AbstractInterface tagAttributes CDATA #IMPLIED >
+<!ATTLIST AbstractInterface cssClasses CDATA #IMPLIED >
+<!ATTLIST AbstractInterface mapsTo CDATA #IMPLIED >
+<!ATTLIST AbstractInterface name ID #REQUIRED >
+
+<!ELEMENT CompositeInterfaceElement ( CompositeInterfaceElement | ElementExhibitor | IndefiniteVariable | PredefinedVariable | SimpleActivator )* >
+<!ATTLIST CompositeInterfaceElement tagAttributes CDATA #IMPLIED >
+<!ATTLIST CompositeInterfaceElement cssClasses CDATA #IMPLIED >
+<!ATTLIST CompositeInterfaceElement loadInterface CDATA #IMPLIED >
+<!ATTLIST CompositeInterfaceElement fromAttribute CDATA #IMPLIED >
+<!ATTLIST CompositeInterfaceElement fromClass CDATA #IMPLIED >
+<!ATTLIST CompositeInterfaceElement ordered ( true | false ) #IMPLIED >
+<!ATTLIST CompositeInterfaceElement mapsTo CDATA #IMPLIED >
+<!ATTLIST CompositeInterfaceElement name ID #REQUIRED >
+
+<!ELEMENT ElementExhibitor EMPTY >
+<!ATTLIST ElementExhibitor tagAttributes CDATA #IMPLIED >
+<!ATTLIST ElementExhibitor cssClasses CDATA #IMPLIED >
+<!ATTLIST ElementExhibitor fromAttribute CDATA #IMPLIED >
+<!ATTLIST ElementExhibitor mapsTo CDATA #IMPLIED >
+<!ATTLIST ElementExhibitor name ID #REQUIRED >
+<!ATTLIST ElementExhibitor defaultContent CDATA #IMPLIED >
+
+<!ELEMENT IndefiniteVariable EMPTY >
+<!ATTLIST IndefiniteVariable tagAttributes CDATA #IMPLIED >
+<!ATTLIST IndefiniteVariable cssClasses CDATA #IMPLIED >
+<!ATTLIST IndefiniteVariable fromAttribute CDATA #IMPLIED >
+<!ATTLIST IndefiniteVariable enabled ( true | false ) #IMPLIED >
+<!ATTLIST IndefiniteVariable mapsTo CDATA #IMPLIED >
+<!ATTLIST IndefiniteVariable name ID #REQUIRED >
+<!ATTLIST IndefiniteVariable defaultContent CDATA #IMPLIED >
+
+<!ELEMENT PredefinedVariable EMPTY >
+<!ATTLIST PredefinedVariable tagAttributes CDATA #IMPLIED >
+<!ATTLIST PredefinedVariable cssClasses CDATA #IMPLIED >
+<!ATTLIST PredefinedVariable fromAttribute CDATA #IMPLIED >
+<!ATTLIST PredefinedVariable enabled ( true | false ) #IMPLIED >
+<!ATTLIST PredefinedVariable mapsTo CDATA #IMPLIED >
+<!ATTLIST PredefinedVariable name ID #REQUIRED >
+
+<!ELEMENT SimpleActivator ( ElementExhibitor? ) >
+<!ATTLIST SimpleActivator tagAttributes CDATA #IMPLIED >
+<!ATTLIST SimpleActivator cssClasses CDATA #IMPLIED >
+<!ATTLIST SimpleActivator fromAttribute CDATA #IMPLIED >
+<!ATTLIST SimpleActivator fromAction CDATA #IMPLIED >
+<!ATTLIST SimpleActivator targetInterface CDATA #IMPLIED >
+<!ATTLIST SimpleActivator transitionInterface CDATA  #IMPLIED >
+<!ATTLIST SimpleActivator targetComposite CDATA  #IMPLIED >
+<!ATTLIST SimpleActivator enabled ( true | false ) #IMPLIED >
+<!ATTLIST SimpleActivator mapsTo CDATA #IMPLIED >
+<!ATTLIST SimpleActivator name ID #REQUIRED >

@@ -1,0 +1,1863 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:swui="http://swui#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:shdm="http://shdm#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dr="http://www.tecweb.inf.puc-rio.br/ontologies/dr#" > 
+  <rdf:Description rdf:about="http://swui#ConcreteInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#Interface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#8e40c730-6624-11df-860e-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Argumento"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ddd</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ddd</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#38865f50-6b45-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#60c6a1f0-6b45-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#3ffe0050-6b2f-11df-96f1-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxArgumentosContraPorIdeia</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxArgumentosContraPorIdeia</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#50967b30-7698-11df-a32a-00264afffe1d">
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#87e62760-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Composition</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbstractInterface</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#94e6ef30-76a8-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#0b9b2980-6627-11df-860e-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Argumento"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bbb</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eee</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_anchor_attributes">
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_anchor_attributes</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#index_attributes"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9e0fc2c0-6b46-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#c2c07600-6b46-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#c2bc8af0-6b31-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxDecisoesPorQuestao</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxDecisoesPorQuestao</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a6ea0fd0-769b-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#bf89f2f0-7595-11df-ae18-00264afffe1d">
+    <shdm:in_context_class_class rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia"/>
+    <shdm:in_context_class_computed_attributes rdf:resource="http://base#fe246860-7595-11df-ae18-00264afffe1d"/>
+    <shdm:in_context_class_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <rdf:type rdf:resource="http://shdm#InContextClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#landmark_name">
+    <rdfs:domain rdf:resource="http://shdm#Landmark"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">landmark_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b10c0f10-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Label</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;label&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d9d4bb90-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableFooter</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;tfoot&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3900f110-6b46-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#5b756ff0-6b46-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#360019b0-6b31-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxDecisoesAlfa</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxDecisoesAlfa</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5cda99b0-6b50-11df-8c3d-00264afffe1d">
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'Ideias'</shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#0c6990b0-6b43-11df-8c3d-00264afffe1d"/>
+    <rdf:type rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5364db70-76ae-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#fd9e1fa0-6b48-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#6bf2c0a0-6b49-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#77f89c50-6b33-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxIdeiasPorArgumento</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxIdeiasPorArgumento</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#0baf7840-76a3-11df-934c-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b4d5f3e0-660e-11df-b971-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">params.delete(:action)
+params.delete(:controller)
+resource = DR::Argumento.create(params)
+resource.save
+render :text =&gt; resource.inspect</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">novo_argumento</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#969f8850-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header2</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h2&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#7d38c7e0-660f-11df-b971-00264afffe1d">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bbb</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aaa</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#parameter_context">
+    <rdfs:domain rdf:resource="http://shdm#ContextParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameter_context</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#Context"/>
+    <owl:inverseOf rdf:resource="http://shdm#context_parameters"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#ea66eae0-6a9c-11df-9462-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ideia3</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#93f67170-6b33-11df-b38b-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">argumento</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9b130f10-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header3</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h3&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6a1d3070-7685-11df-b6d8-00264afffe1d">
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#dd4ced60-6b31-11df-b38b-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">questao</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e717f150-76ad-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#f9403a40-76ad-11df-bb09-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#511de910-6b73-11df-ad20-00264afffe1d">
+    <dr:responde rdf:resource="http://base"/>
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Acho que sim</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#88f71140-660f-11df-b971-00264afffe1d">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bbb</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aaa</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5b756ff0-6b46-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.dr::data</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#360019b0-6b31-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">decisao</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a545dee0-717b-11df-a671-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeiaAlfa</shdm:context_name>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveRDF::Query.new.distinct(:s).where(:s,RDF::type,DR::Ideia).sort(RDFS::label).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ideias</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#IndexNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#05a24e90-6b46-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#cc934510-6b30-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">argumento</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#26f4f580-7685-11df-b6d8-00264afffe1d">
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5a4f9e80-6b4f-11df-8c3d-00264afffe1d">
+    <shdm:landmark_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Questoes</shdm:landmark_name>
+    <shdm:landmark_navigation_attribute rdf:resource="http://base#63fc1ee0-6b4f-11df-8c3d-00264afffe1d"/>
+    <shdm:landmark_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0</shdm:landmark_position>
+    <rdf:type rdf:resource="http://shdm#Landmark"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6b605040-76b0-11df-9692-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">item</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#ComputedNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#266d2d90-6b71-11df-ad20-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Questao"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Outra nova questão?"</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#rhet_spec">
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rhet_spec</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e41b23a0-6b4a-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#f64c1690-6b33-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ideia</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f350a7b0-6b71-11df-ad20-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">questao = DR::Questao.new(params[:questao])
+label = params[:label]
+
+@ideia = DR::Ideia.create('rdfs:label' =&gt;label, 'dr:responde' =&gt; questao)
+@ideia.save
+
+render :text =&gt; "'#{@ideia.label}' responde: '#{questao.label}'"</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">create_idea_in_question</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_title">
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_title</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#navigation_attribute_parameter_name">
+    <rdfs:domain rdf:resource="http://shdm#NavigationAttributeParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_attribute_parameter_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#ajaxcontrols">
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ajaxcontrols</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#cssCode">
+    <rdfs:domain rdf:resource="http://swui#RichControl"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cssCode</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d53ed510-6a10-11df-9462-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ideia2</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f09466f0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextArea</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteVariable</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;textarea&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#aca0ecc0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Image</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;img&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#IndexInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5ecbcd40-6b4e-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#ddba9d20-6b4e-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#aa049fc0-6b36-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SeeAlso</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SeeAlso</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#53532d80-6b50-11df-8c3d-00264afffe1d">
+    <shdm:landmark_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ideias</shdm:landmark_name>
+    <shdm:landmark_navigation_attribute rdf:resource="http://base#5cda99b0-6b50-11df-8c3d-00264afffe1d"/>
+    <shdm:landmark_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</shdm:landmark_position>
+    <rdf:type rdf:resource="http://shdm#Landmark"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#7e84e0d0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComboBox</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;select&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3a44e950-6b73-11df-ad20-00264afffe1d">
+    <dr:responde rdf:resource="http://base"/>
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Acho que sim?</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#landmark_position">
+    <rdfs:domain rdf:resource="http://shdm#Landmark"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">landmark_position</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6347c1e0-76a6-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#14968450-6611-11df-b971-00264afffe1d">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bbb</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aaa</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_index_context">
+    <rdfs:domain rdf:resource="http://shdm#ContextIndex"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_index_context</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3984d6d0-6b35-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuestaoPorId</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#515a5f00-6b35-11df-b38b-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::Questao.find(@parameters_values[:id])</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Questão por id</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#1fde3b60-76aa-11df-bb09-00264afffe1d">
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;CompositeInterfaceElement name="NavBar" mapsTo="Composition" cssClasses="swui_composite swui_navBar" &gt;
+	&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:contextPrev|item|swui:target" name="contextPrev-item-target" cssClasses="swui_floatLeft"&gt;
+		&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:contextPrev|item" name="contextPrev-item" cssClasses="swui_floatLeft"/&gt;
+	&lt;/SimpleActivator&gt;
+	&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:contextNext|item|swui:target" cssClasses="swui_floatRight" name="contextNext-item-target" &gt;
+		&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:contextNext|item" cssClasses="swui_floatRight" name="contextNext-item" /&gt;
+	&lt;/SimpleActivator&gt;
+&lt;/CompositeInterfaceElement&gt;</swui:abstract_spec>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</swui:dynamic>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultNavBar</swui:interface_name>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3f81d930-6b34-11df-b38b-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">questao</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6bf2c0a0-6b49-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#77f89c50-6b33-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ideia</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#eb76b350-6b43-11df-8c3d-00264afffe1d">
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_target_index rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#728fd490-6b3d-11df-b38b-00264afffe1d</shdm:index_anchor_navigation_attribute_target_index>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">teste</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d892e170-769a-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#2e7a1240-6b72-11df-ad20-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Questao"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Isso é uma nova questão?"</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#7793f400-6b68-11df-8c3d-00264afffe1d">
+    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:computed_navigation_attribute_value_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">name</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a5738010-6b50-11df-8c3d-00264afffe1d">
+    <shdm:landmark_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Argumentos</shdm:landmark_name>
+    <shdm:landmark_navigation_attribute rdf:resource="http://base#af13f280-6b50-11df-8c3d-00264afffe1d"/>
+    <shdm:landmark_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</shdm:landmark_position>
+    <rdf:type rdf:resource="http://shdm#Landmark"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#748b2ad0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Button</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimpleActivator</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;input type='button'&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#anchor_navigation_attribute_target_expression">
+    <rdfs:domain rdf:resource="http://shdm#AnchorNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anchor_navigation_attribute_target_expression</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5f6284a0-6b72-11df-ad20-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Questao"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Isso é uma nova questão?"</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_code">
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_code</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c69fda70-6b43-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#d55774e0-6a0a-11df-9462-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">argumentosAFavor</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#eed70390-6a0a-11df-9462-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ideia</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d55774e0-6a0a-11df-9462-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArgumentosAFavorPorIdeia</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#eed70390-6a0a-11df-9462-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::Argumento.find_by.aFavor(DR::Ideia.new(@parameters_values[:ideia])).execute
+</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Argumentos a favor por ideia</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#7a010660-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckBox</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PredefinedVariable</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;input type='checkbox'&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d9e041a0-769d-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f64c1690-6b33-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeiasPorQuestao</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#3f81d930-6b34-11df-b38b-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::Ideia.find_by.responde(DR::Questao.new(@parameters_values[:questao])).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Idéias por questão</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#07dc3e40-76a5-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_parameter_index">
+    <rdfs:domain rdf:resource="http://shdm#IndexParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_parameter_index</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#ContextIndex"/>
+    <owl:inverseOf rdf:resource="http://shdm#navigation_context_index_parameters"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#be687810-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderedList</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;ol&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#fe246860-7595-11df-ae18-00264afffe1d">
+    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:computed_navigation_attribute_value_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">label</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9dad2470-6624-11df-860e-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Argumento"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ccc</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ccc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5b49f760-76b0-11df-9692-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#6b605040-76b0-11df-9692-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#60c6a1f0-6b45-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#3ffe0050-6b2f-11df-96f1-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">argumentosContra</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_query">
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_query</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#773c8860-6b6c-11df-8c3d-00264afffe1d">
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;%
+	    ModelUtils.traverseJSON(jsonData,list) do |type,key,value,hash,list| 
+              if !(key.include? "swui:")
+                name = key
+                name = name.gsub(/\|/,"-")
+                name = name.gsub(/_/,"-")
+                if (type=="Item")
+                    buffer &lt;&lt; "&lt;CompositeInterfaceElement mapsTo=\"Composition\" name=\"#{name}Attr\" &gt;" 
+		    buffer &lt;&lt; "&lt;ElementExhibitor name=\"#{name}Lbl\" mapsTo=\"Text\" defaultContent=\"#{name.capitalize}: \" cssClasses=\"swui_bold\"/&gt;" if !list
+	            if (hash.has_key? "#{key}|swui:target")
+		      buffer &lt;&lt; "&lt;SimpleActivator mapsTo=\"Link\" name=\"#{name}Link\" fromAttribute=\"#{key}|swui:target\"&gt;" 
+	            end
+                    widget = "&lt;ElementExhibitor mapsTo=\"Text\" name=\"#{name}\" fromAttribute=\"#{key}\"/&gt;" 
+		    widget.gsub!(/mapsTo="Text"/,"mapsTo=\"Image\"") if (value.match(/.+\.(gif|jpeg|jpg|png|tiff)$/))
+                    buffer &lt;&lt; widget
+	            if (hash.has_key? "#{key}|swui:target")
+                      buffer &lt;&lt; "&lt;/SimpleActivator&gt;"
+	            end
+                    buffer &lt;&lt; "&lt;/CompositeInterfaceElement&gt;" 
+                end
+                if (type=="OpenList")
+	          buffer &lt;&lt; "&lt;CompositeInterfaceElement mapsTo=\"Composition\" name=\"#{name}List\" fromAttribute=\"#{key}\" cssClasses=\"swui_composite\" ordered=\"true\"&gt;" 
+		  buffer &lt;&lt; "&lt;ElementExhibitor name=\"#{name}ListLbl\" mapsTo=\"Text\" defaultContent=\"#{name.capitalize}: \" cssClasses=\"swui_bold\"/&gt;"
+                  buffer &lt;&lt; "&lt;CompositeInterfaceElement mapsTo=\"Composition\" name=\"#{name}\" fromClass=\"#{name}\" &gt;"
+                end
+	        buffer &lt;&lt; "&lt;/CompositeInterfaceElement&gt; &lt;/CompositeInterfaceElement&gt;" if (type=="CloseList")
+              end
+	    end
+%&gt;</swui:abstract_spec>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</swui:dynamic>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultJSONDisplay</swui:interface_name>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#HtmlTag">
+    <rdfs:subClassOf rdf:resource="http://swui#ConcreteWidget"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#662a3f20-6b73-11df-ad20-00264afffe1d">
+    <dr:responde rdf:resource="http://base#5f6284a0-6b72-11df-ad20-00264afffe1d"/>
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Acho que sim</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3a6b9c20-76a0-11df-934c-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#eb108ea0-76a0-11df-934c-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9bbbfed0-6b32-11df-b38b-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pessoa</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a3eab340-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header5</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h5&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c3095060-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paragraph</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;p&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#544fa810-7697-11df-a32a-00264afffe1d">
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_post_conditions">
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_post_conditions</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#PostConditions"/>
+    <owl:inverseOf rdf:resource="http://shdm#post_condition_operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_context">
+    <rdfs:domain rdf:resource="http://shdm#InContextClass"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_context</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#Context"/>
+    <owl:inverseOf rdf:resource="http://shdm#context_in_context_class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#dependencies">
+    <rdfs:domain rdf:resource="http://swui#RichControl"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dependencies</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#interface_ref">
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interface_ref</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#bdfea710-769d-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#d9e041a0-769d-11df-97f6-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d5ad1c30-6b4d-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#0a07f900-6b4e-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#b2ddff00-660f-11df-b971-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResourcesAlfa</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResourcesAlfa</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#2c1a6ea0-6b36-11df-b38b-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pessoa</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_navigation_attributes">
+    <rdfs:domain rdf:resource="http://shdm#InContextClass"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_navigation_attributes</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9d284b00-76a1-11df-934c-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#af01d7b0-76a1-11df-934c-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c6bf48d0-6a10-11df-9462-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ideia1</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a9396190-769c-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#c1765e20-769c-11df-97f6-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_type">
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#IndexAnchorNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#eb384220-70d2-11df-87de-00264afffe1d">
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;CompositeInterfaceElement name="Landmarks" mapsTo="Composition" cssClasses="swui_composite swui_landmark" &gt;
+	&lt;CompositeInterfaceElement name="Landmark" mapsTo="Paragraph" fromClass="Landmark" cssClasses="swui_composite swui_inline" &gt;
+		&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:landmark|swui:target" name="landmarks-landmark-target" &gt;
+			&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:landmark" name="landmarks-landmark" /&gt;
+		&lt;/SimpleActivator&gt;
+	&lt;/CompositeInterfaceElement&gt;
+&lt;/CompositeInterfaceElement&gt;</swui:abstract_spec>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</swui:dynamic>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultLandmarksForIndexes</swui:interface_name>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b57495b0-6b70-11df-ad20-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">@questao = DR::Questao.create('rdfs:label' =&gt; params["label"])
+@questao.save
+
+render :text =&gt; @questao.label.first + "  " + @questao.uri</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">create_new_question</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#8b8a93a0-6a10-11df-9462-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">class_name = params.delete(:class) or 'RDFS::Resource'
+params.delete(:controller)
+params.delete(:action)
+klass = class_name.constantize
+r = klass.create(params).save
+render :text =&gt; r</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new_resource</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_attributes">
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_attributes</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#index_attributes"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#ContextInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_anchor_navigation_attribute_target_index">
+    <rdfs:domain rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_anchor_navigation_attribute_target_index</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#aa049fc0-6b36-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SeeAlso</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#df460c00-6b36-11df-b38b-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RDFS::Resource.find_by.rdfs::seeAlso(RDFS::Resource.new(@parameters_values[:resource])).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">See also</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3f5d7f70-6a0f-11df-9462-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nodes = RDFS::Class.domain_classes
+render :text =&gt; nodes.map{|v| v.uri }.join('&lt;br/&gt;')</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">classes</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#542cfc80-76a5-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#66ddaf50-76a5-11df-bb09-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#285ca460-769c-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9f83fdc0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header4</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h4&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f98cd990-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnorderedList</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;ul&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b5a2fc50-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Link</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimpleActivator</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;a&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9975b980-6b4c-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#d3e486a0-6b4c-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#b7259850-6b34-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pessoas</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pessoas</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#2851c150-6b4b-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#64751c40-6b4b-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#fb341490-6b34-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxQuestaoAlfa</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxQuestaoAlfa</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#legalTags">
+    <rdfs:domain rdf:resource="http://swui#HtmlTag"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">legalTags</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#concrete_interfaces">
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete_interfaces</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#transitions">
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">transitions</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#843debe0-76ab-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3bcd7a60-6b4d-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#794a98f0-6b4d-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#fb341490-6b34-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Questoes</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Questoes</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_anchor_navigation_attribute_target_parameters">
+    <rdfs:domain rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_anchor_navigation_attribute_target_parameters</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttributeParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3ffe0050-6b2f-11df-96f1-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArgumentosContraPorIdeia</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#6f993230-6b2f-11df-96f1-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::Argumento.find_by.contra(DR::Ideia.new(@parameters_values[:ideia])).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Argumentos contra por idéia</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#navigation_attribute_index_position">
+    <rdfs:domain rdf:resource="http://shdm#NavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_attribute_index_position</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_pre_conditions">
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_pre_conditions</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#PreConditions"/>
+    <owl:inverseOf rdf:resource="http://shdm#pre_condition_operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#fee14210-6626-11df-860e-00264afffe1d">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eee</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#ec24d7d0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Text</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;span&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#360019b0-6b31-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecisaoAlfa</shdm:context_name>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveRDF::Query.new.distinct(:s).where(:s,RDF::type,DR::Decisao).sort(DR::data).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Decisão alfa</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#79e7a5a0-6b34-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JustificativaAlfa</shdm:context_name>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveRDF::Query.new.distinct(:s).where(:s,RDF::type,DR::Justificativa).sort(DR::texto).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Justificativa Alfa</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#56d6d400-6b66-11df-8c3d-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">params.delete(:controller)
+params.delete(:action)
+
+index_id = params.delete(:id)
+index = SHDM::Index.find(index_id)
+index = index.nil? ? SHDM::Index.find_all.first : index
+
+@index = index.new(params)
+
+@page_title = "#{@index.index_title.first}"
+
+render :text =&gt; render_index(@index)</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#17f4a630-6b71-11df-ad20-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Questao"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Uma nova questão?"</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_name">
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#515a5f00-6b35-11df-b38b-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b7259850-6b34-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PessoaAlfa</shdm:context_name>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveRDF::Query.new.distinct(:s).where(:s,RDF::type,DR::Pessoa).sort(DR::nome).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pessoa Alfa</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f7ca9350-661c-11df-b971-00264afffe1d">
+    <dr:aFavor rdf:resource="http://base#c6bf48d0-6a10-11df-9462-00264afffe1d"/>
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Argumento"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">zzz</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xxx</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#065c3780-76b1-11df-9692-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">item</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_parameter_data_type">
+    <rdfs:domain rdf:resource="http://shdm#OperationParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_parameter_data_type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_index_anchor_attributes">
+    <rdfs:domain rdf:resource="http://shdm#InContextClass"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_index_anchor_attributes</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#in_context_class_navigation_attributes"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#ca667e40-769a-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#d892e170-769a-11df-97f6-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_navigation_attribute_index_parameters">
+    <rdfs:domain rdf:resource="http://shdm#IndexNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_navigation_attribute_index_parameters</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttributeParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9208c220-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header1</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h1&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d898ed30-76a0-11df-934c-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#eb108ea0-76a0-11df-934c-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#concrete_widget_name">
+    <rdfs:domain rdf:resource="http://swui#ConcreteWidget"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete_widget_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9726cfe0-7662-11df-ab19-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">params.delete(:controller)
+params.delete(:action)
+
+context_id = params.delete(:id)
+node_id     = params.delete(:node)
+@context   = SHDM::Context.new(context_id)
+@node       = NodeDecorator.new(RDFS::Resource.new(node_id), @context) if node_id
+
+render :text =&gt; render_context(@context, @node)</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#301a8070-660f-11df-b971-00264afffe1d">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bbb</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aaa</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#ec43db70-6b50-11df-8c3d-00264afffe1d">
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'Resources'</shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#d5ad1c30-6b4d-11df-8c3d-00264afffe1d"/>
+    <rdf:type rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#fb341490-6b34-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuestaoAlfa</shdm:context_name>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveRDF::Query.new.distinct(:s).where(:s,RDF::type,DR::Questao).sort(RDFS::label).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Questão alfa</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#64751c40-6b4b-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#fb341490-6b34-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">questao</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#1a81bcb0-6b50-11df-8c3d-00264afffe1d">
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'Pessoas'</shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#9975b980-6b4c-11df-8c3d-00264afffe1d"/>
+    <rdf:type rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#decorations">
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">decorations</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5c8af470-6b8f-11df-ad20-00264afffe1d">
+    <dr:aFavor rdf:resource="http://base"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">labeldoargumento</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e30973e0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableHeader</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;thead&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_navigation_attribute_label_expression">
+    <rdfs:domain rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_navigation_attribute_label_expression</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_anchor_navigation_attribute_label_expression">
+    <rdfs:domain rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_anchor_navigation_attribute_label_expression</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#0c6990b0-6b43-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#3af80d80-6b43-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ideias</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Idéias</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#944751a0-7699-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#a80fb600-7699-11df-97f6-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3af80d80-6b43-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">name</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_navigation_attribute_index">
+    <rdfs:domain rdf:resource="http://shdm#IndexNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_navigation_attribute_index</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e784c2d0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableRow</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;tr&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d936d790-70d1-11df-87de-00264afffe1d">
+    <swui:concrete_interface_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/*
+University CSS
+*/
+
+body {
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: .9em;
+	margin: 5px;
+	padding: 5px;
+}
+
+label {
+      font-style:italic;
+      font-weight: bold;
+}
+
+div.landmark {
+	margin-top: 15px;
+	margin-bottom: 30px;
+	text-align: center;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #146eb4;
+}
+
+div.lmItem {
+	padding: 0 30px 0 30px;
+	display: inline;
+}
+
+div.rightColumn {
+	margin: 10px 20px;
+	float: left;
+	width: 60%;
+}
+
+a:link, a:visited , a:hover, a:active {
+        color: #050; 
+}
+
+img {
+	display: block;
+        border: none;
+}
+
+.list {
+	border: solid 1px #e80; 
+	color: #e80;
+	padding: 0 30px 30px 30px;
+	margin: 30px 0 30px 0;
+}
+
+
+.label {
+	font-weight: bold;	
+}
+
+p.label {
+        margin-top: 5px;
+}
+.act {
+       font-size: 1.1em;
+       padding: 0 8px;
+       background-color: #e80; 
+       color: #fff;
+       margin: 5px;
+}
+
+.navBar {
+	margin: 0 auto;
+	padding: 0 40px 30px 40px;;
+	width: 70%
+}
+
+.node {
+	margin: 30px;
+	padding: 20px;
+	width: 70%
+}
+
+.centered {
+	margin: 0 auto;
+}
+
+.ctxIndex {
+	margin-left: 5px;
+}
+
+.border_top {
+	border-top: 1px solid #e80;
+
+}
+
+form {
+	margin: 0 10px;
+	padding: 10px;
+}
+
+input {
+	margin: 0 10px;
+}
+
+input.btn { 
+	color:#000;
+	font: bold 84% Arial, Helvetica, Sans-serif;
+	background-color:#fff; 
+	border: solid 1px #e80;
+}
+
+form .label {
+	color:#050;
+}
+
+tr .label {
+        padding: 5px 10px;
+}
+
+.interface {
+       padding-top:30px;
+}
+
+#QueryResultsList {
+       padding-left: 20px;
+}
+
+img.logo {
+       height: 20px;
+       width: 82px;
+}
+
+.narrow {
+	border-left: 1px solid #e80;
+	margin: 0 auto;
+	width: 40%;
+}</swui:concrete_interface_code>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MainCSS</swui:interface_name>
+    <rdf:type rdf:resource="http://swui#ConcreteInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_parameter_name">
+    <rdfs:domain rdf:resource="http://shdm#ContextParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_parameter_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#de79a410-7696-11df-a32a-00264afffe1d">
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_navigation_attribute_target_node_expression">
+    <rdfs:domain rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_navigation_attribute_target_node_expression</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#eb145970-6a0e-11df-9462-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nodes = RDF::Property.find_all
+render :text =&gt; nodes.map{|v| v.uri }.join('&lt;br/&gt;')</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">properties</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#events">
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">events</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b9e7aae0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ListItem</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;li&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#66ddaf50-76a5-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#db5de0a0-758f-11df-ae18-00264afffe1d">
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;CompositeInterfaceElement name="Landmarks" mapsTo="Composition" fromAttribute="swui:landmarks" cssClasses="swui_composite swui_landmark" &gt;
+	&lt;CompositeInterfaceElement name="Landmark" mapsTo="Paragraph" fromClass="Landmark" cssClasses="swui_composite swui_inline" &gt;
+		&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:landmarks|swui:landmark|swui:target" name="landmarks-landmark-target" &gt;
+			&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:landmarks|swui:landmark" name="landmarks-landmark" /&gt;
+		&lt;/SimpleActivator&gt;
+	&lt;/CompositeInterfaceElement&gt;
+&lt;/CompositeInterfaceElement&gt;</swui:abstract_spec>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</swui:dynamic>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultLandmarks</swui:interface_name>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#bb3b2b20-6b35-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuestoesPorIdeia</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#db5d7ca0-6b35-11df-b38b-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::Questao.find_by.sugere(DR::Ideia.new(@parameters_values[:ideia])).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Questões por idéia</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#domain_class">
+    <rdfs:domain rdf:resource="http://swui#ContextInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">domain_class</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#508fb8e0-76a2-11df-934c-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#6659b9a0-76a2-11df-934c-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#computed_attributes">
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">computed_attributes</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#ComputedNavigationAttribute"/>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#index_attributes"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#37706e70-76a9-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_title">
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_title</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#8cfbba80-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Form</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;form&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#925f45d0-769b-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#a6ea0fd0-769b-11df-97f6-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#de682660-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableHeadCell</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;th&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_attributes">
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_attributes</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#bf559ac0-6b48-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#79b42470-6b32-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">elementos</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_navigation_attribute_target_context">
+    <rdfs:domain rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_navigation_attribute_target_context</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#0a07f900-6b4e-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#b2ddff00-660f-11df-b971-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">label</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b2ddff00-660f-11df-b971-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResourceAlfa</shdm:context_name>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveRDF::Query.new.distinct(:s).where(:s,RDF::type,RDFS::Resource).sort(RDFS::label).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resource alfa</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a4dadbd0-6b4b-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#dd171180-6b4b-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#bb3b2b20-6b35-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxQuestoesPorIdeia</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxQuestoesPorIdeia</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#effects">
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">effects</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#AnchorNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6659b9a0-76a2-11df-934c-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b400a970-6b67-11df-8c3d-00264afffe1d">
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;AbstractInterface name="DefaultIndexInterface" mapsTo="Composition" tagAttributes="" cssClasses=""&gt;
+
+
+&lt;%= include DefaultLandmarksForIndexes %&gt;
+
+   &lt;CompositeInterfaceElement name="Index" mapsTo="Composition" cssClasses="swui_composite" ordered="true"&gt;
+	   &lt;CompositeInterfaceElement name="Entry" mapsTo="Composition" fromClass="IndexClass" cssClasses="swui_composite"&gt;
+&lt;%= include DefaultJSONDisplay %&gt;
+           &lt;/CompositeInterfaceElement&gt;
+   &lt;/CompositeInterfaceElement&gt;
+
+&lt;/AbstractInterface&gt;</swui:abstract_spec>
+    <swui:ajaxcontrols rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:ajaxcontrols>
+    <swui:concrete_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div id='DefaultIndexInterface' typeof='swui:AbstractInterface' class='swui_invisible'&gt;
+&lt;div id='Landmarks' class='swui_composite swui_landmark'&gt;
+&lt;p id='Landmark' typeof='Landmark' class='swui_invisible swui_composite swui_inline'&gt;
+&lt;a id='landmarks-landmark-target' property='swui:landmark|swui:target' onclick="javascript: navTarget(this.href, 'DefaultIndexInterface', '');return false;"&gt;
+ swui:landmark|swui:target
+&lt;span id='landmarks-landmark' property='swui:landmark'&gt;
+ swui:landmark
+&lt;/span&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id='Index' class='swui_composite swui_ordered'&gt;
+&lt;div id='Entry' typeof='IndexClass' class='swui_invisible swui_composite'&gt;
+&lt;div id='nameAttr'&gt;
+&lt;span id='name' property='name'&gt;
+ name
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</swui:concrete_code>
+    <swui:decorations rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:decorations>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</swui:dynamic>
+    <swui:effects rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effects>
+    <swui:events rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:events>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultIndexInterface</swui:interface_name>
+    <swui:interface_ref rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:interface_ref>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <swui:transitions rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:transitions>
+    <rdf:type rdf:resource="http://swui#IndexInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f5229450-76b0-11df-9692-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#065c3780-76b1-11df-9692-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#85d227d0-76a8-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#94e6ef30-76a8-11df-bb09-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#794a98f0-6b4d-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#fb341490-6b34-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">name</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d53f2de0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableCell</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;td&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#computed_navigation_attribute_value_expression">
+    <rdfs:domain rdf:resource="http://shdm#ComputedNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">computed_navigation_attribute_value_expression</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#dd171180-6b4b-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#bb3b2b20-6b35-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">questoes</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#jsCode">
+    <rdfs:domain rdf:resource="http://swui#RichControl"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jsCode</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#0d5326a0-660f-11df-b971-00264afffe1d">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bbb</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aaa</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#RichControl">
+    <rdfs:subClassOf rdf:resource="http://swui#ConcreteWidget"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e2fab0c0-6b50-11df-8c3d-00264afffe1d">
+    <shdm:landmark_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resources</shdm:landmark_name>
+    <shdm:landmark_navigation_attribute rdf:resource="http://base#ec43db70-6b50-11df-8c3d-00264afffe1d"/>
+    <shdm:landmark_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</shdm:landmark_position>
+    <rdf:type rdf:resource="http://shdm#Landmark"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#8aff1d00-6b43-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#c69fda70-6b43-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#d55774e0-6a0a-11df-9462-00264afffe1d"/>
+    <shdm:index_anchor_attributes rdf:resource="http://base#eb76b350-6b43-11df-8c3d-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxArgumentosAFavorPorIdeia</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxArgumentosAFavorPorIdeia</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f50f14b0-76a2-11df-934c-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#0baf7840-76a3-11df-934c-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#15006640-6b8e-11df-ad20-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ideia   = DR::Ideia.new(params[:ideia])
+label   = params[:label]
+relation = params[:afavor] == "true" ? 'dr:aFavor' : 'dr:contra'
+
+@argumento = DR::Argumento.create({'rdfs:label' =&gt; label, relation =&gt; ideia})
+
+render :text =&gt; "#{@argumento.rdfs::label} #{relation}: #{ideia.rdfs::label.first}"</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">create_argument_in_idea</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_name">
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c2bc8af0-6b31-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecisoesPorQuestao</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#dd4ced60-6b31-11df-b38b-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::Decisao.find_by.resolve(DR::Questao.new(@parameters_values[:questao])).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Decisões por questão</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5613d0f0-6b4c-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#0a81f7e0-6b36-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">questao</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#ContextIndex">
+    <rdfs:subClassOf rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#11c87ac0-6612-11df-b971-00264afffe1d">
+    <dr:aFavor rdf:resource="http://base#c6bf48d0-6a10-11df-9462-00264afffe1d"/>
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Argumento"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bbb</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aaa</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#1651ce80-769c-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#285ca460-769c-11df-97f6-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#abstract_spec">
+    <rdfs:domain rdf:resource="http://swui#AbsInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">abstract_spec</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#39b0ac60-76a7-11df-bb09-00264afffe1d">
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;CompositeInterfaceElement name="ContextIndex" mapsTo="Composition" fromAttribute="swui:contextIdx" cssClasses="swui_composite swui_clearFloat swui_floatLeft"&gt;
+	&lt;CompositeInterfaceElement name="ContextIndexEntry" mapsTo="Composition" fromClass="ContextIndexEntry"&gt;
+		&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:idxEntry|item|swui:target" name="idxEntry-item-target" &gt;
+			&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:idxEntry|item" name="idxEntry-item" /&gt;
+		&lt;/SimpleActivator&gt;
+	&lt;/CompositeInterfaceElement&gt;
+&lt;/CompositeInterfaceElement&gt;</swui:abstract_spec>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</swui:dynamic>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultContextIndex</swui:interface_name>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#pre_condition_failure_handling">
+    <rdfs:domain rdf:resource="http://shdm#PreCondition"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pre_condition_failure_handling</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e682ff90-6a10-11df-9462-00264afffe1d">
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ideia3</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#concrete_code">
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete_code</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#728fd490-6b3d-11df-b38b-00264afffe1d">
+    <shdm:computed_attributes rdf:resource="http://base#7793f400-6b68-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#902b0210-6aa5-11df-96f1-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Argumentos</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Argumentos</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#af01d7b0-76a1-11df-934c-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#ContextAnchorNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_context_anchor_attributes">
+    <rdfs:domain rdf:resource="http://shdm#InContextClass"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_context_anchor_attributes</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#in_context_class_navigation_attributes"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c2c07600-6b46-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.dr::data</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#c2bc8af0-6b31-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">decisao</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#2875fbf0-76a0-11df-934c-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#3a6b9c20-76a0-11df-934c-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#index">
+    <rdfs:domain rdf:resource="http://swui#IndexInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#db5d7ca0-6b35-11df-b38b-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ideia</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#AbstractInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#AbsInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#cc461f00-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Table</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;table&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#8a1933c0-6b99-11df-ad20-00264afffe1d">
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">argumento = DR::Argumento(params[:argumento])
+ideia = DR::Ideia(params[:ideia])
+relacao = params[:afavor].downcase == "true" ? 'aFavor' : 'contra'
+
+argumento.send(relacao).delete(ideia)
+
+render :text =&gt; (argumento.afavor.to_a + argumento.contra.to_a).join(', ')</shdm:operation_code>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">remove_argument_from_idea</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#label">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_class">
+    <rdfs:domain rdf:resource="http://shdm#InContextClass"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_class</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c7a74280-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RadioButton</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PredefinedVariable</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;input type='radio'&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#98262c80-6611-11df-b971-00264afffe1d">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bbb</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aaa</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_parameter_class">
+    <rdfs:domain rdf:resource="http://shdm#ContextParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_parameter_class</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#anchor_navigation_attribute_label_expression">
+    <rdfs:domain rdf:resource="http://shdm#AnchorNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anchor_navigation_attribute_label_expression</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#htmlCode">
+    <rdfs:domain rdf:resource="http://swui#RichControl"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">htmlCode</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#cc934510-6b30-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArgumentosPorJustificativa</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#e753b830-6b30-11df-b38b-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::Argumento.find_by.deriva(DR::Justificativa.new(@parameters_values[:justificativa])).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Argumentos por justificativa</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#AbsInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#Interface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f9403a40-76ad-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#94709ba0-7685-11df-b6d8-00264afffe1d">
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c1765e20-769c-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_in_context_class">
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_in_context_class</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#InContextClass"/>
+    <owl:inverseOf rdf:resource="http://shdm#in_context_class_context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#0a81f7e0-6b36-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuestoesPorPessoa</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#2c1a6ea0-6b36-11df-b38b-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::Questao.find_by.ehApresentadaPor(DR::Pessoa.new(@parameters_values[:pessoa])).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Questões por pessoa</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_parameter_name">
+    <rdfs:domain rdf:resource="http://shdm#OperationParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_parameter_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#pre_condition_name">
+    <rdfs:domain rdf:resource="http://shdm#PreCondition"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pre_condition_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6831e380-6624-11df-860e-00264afffe1d">
+    <dr:aFavor rdf:resource="http://base#d53ed510-6a10-11df-9462-00264afffe1d"/>
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Argumento"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ddd</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bbb</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#ComponentInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#AbsInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#context">
+    <rdfs:domain rdf:resource="http://swui#ContextInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d3e486a0-6b4c-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#b7259850-6b34-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">name</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#df460c00-6b36-11df-b38b-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">resource</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6f993230-6b2f-11df-96f1-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ideia</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f58ff290-76a4-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#07dc3e40-76a5-11df-bb09-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#19fad640-6b4c-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#5613d0f0-6b4c-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#0a81f7e0-6b36-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxQuestoesPorPessoa</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxQuestoesPorPessoa</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#dfc3c9b0-6b45-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#05a24e90-6b46-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#cc934510-6b30-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxArgumentosPorJustificativa</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxArgumentosPorJustificativa</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#77f89c50-6b33-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeiasPorArgumento</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#93f67170-6b33-11df-b38b-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::Ideia.find_by.favorecidaPor(DR::Argumento.new(@parameters_values[:argumento])).execute + DR::Ideia.find_by.contrariadaPor(DR::Argumento.new(@parameters_values[:argumento])).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ideias por argumento</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#concrete_interface_code">
+    <rdfs:domain rdf:resource="http://swui#ConcreteInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete_interface_code</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_language">
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_language</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_navigation_attribute_target_parameters">
+    <rdfs:domain rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_navigation_attribute_target_parameters</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttributeParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f4fb6a90-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextBox</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteVariable</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;input type='text'&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#595726e0-7696-11df-a32a-00264afffe1d">
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#104be810-6b50-11df-8c3d-00264afffe1d">
+    <shdm:landmark_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pessoas</shdm:landmark_name>
+    <shdm:landmark_navigation_attribute rdf:resource="http://base#1a81bcb0-6b50-11df-8c3d-00264afffe1d"/>
+    <shdm:landmark_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:landmark_position>
+    <rdf:type rdf:resource="http://shdm#Landmark"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_parameter_name">
+    <rdfs:domain rdf:resource="http://shdm#IndexParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_parameter_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#navigation_attribute_parameter_value_expression">
+    <rdfs:domain rdf:resource="http://shdm#NavigationAttributeParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_attribute_parameter_value_expression</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3fea7000-76ae-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#5364db70-76ae-11df-bb09-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#legalAbstractWidgs">
+    <rdfs:domain rdf:resource="http://swui#ConcreteWidget"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">legalAbstractWidgs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#pre_condition_expression">
+    <rdfs:domain rdf:resource="http://shdm#PreCondition"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pre_condition_expression</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_parameter_class">
+    <rdfs:domain rdf:resource="http://shdm#IndexParameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_parameter_class</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#511825f0-76a6-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#6347c1e0-76a6-11df-bb09-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_name">
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e753b830-6b30-11df-b38b-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">justificativa</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_parameters">
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_parameters</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#OperationParameter"/>
+    <owl:inverseOf rdf:resource="http://shdm#parameter_operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_computed_attributes">
+    <rdfs:domain rdf:resource="http://shdm#InContextClass"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_computed_attributes</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#ComputedNavigationAttribute"/>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#in_context_class_navigation_attributes"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#7135a330-76ab-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#843debe0-76ab-11df-bb09-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c4d0d810-6b49-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#e41b23a0-6b4a-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#f64c1690-6b33-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxIdeiasPorQuestao</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxIdeiasPorQuestao</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#interface_name">
+    <rdfs:domain rdf:resource="http://swui#Interface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interface_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#46aa1450-6b63-11df-8c3d-00264afffe1d">
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;AbstractInterface name="DefaultContextInterface" mapsTo="Composition" cssClasses="swui_interface"&gt;
+      &lt;CompositeInterfaceElement name="ContextNode" mapsTo="Composition" fromClass="ContextClass"&gt;
+
+&lt;%= include DefaultLandmarks %&gt;
+
+&lt;%= include DefaultNavBar %&gt;
+
+&lt;%= include DefaultContextIndex %&gt;
+
+&lt;CompositeInterfaceElement name="Node" mapsTo="Composition" cssClasses="swui_composite swui_node swui_floatRight"&gt;
+
+&lt;%= include DefaultJSONDisplay %&gt;
+
+&lt;/CompositeInterfaceElement&gt;
+
+      &lt;/CompositeInterfaceElement&gt;
+&lt;/AbstractInterface&gt;</swui:abstract_spec>
+    <swui:ajaxcontrols rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:ajaxcontrols>
+    <swui:concrete_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div id='DefaultContextInterface' typeof='swui:AbstractInterface' class='swui_invisible swui_interface'&gt;
+&lt;div id='ContextNode' typeof='ContextClass' class='swui_invisible'&gt;
+&lt;div id='Landmarks' property='swui:landmarks' class='swui_composite swui_landmark'&gt;
+ swui:landmarks
+&lt;p id='Landmark' typeof='Landmark' class='swui_invisible swui_composite swui_inline'&gt;
+&lt;a id='landmarks-landmark-target' property='swui:landmarks|swui:landmark|swui:target' onclick="javascript: navTarget(this.href, 'DefaultContextInterface', '');return false;"&gt;
+ swui:landmarks|swui:landmark|swui:target
+&lt;span id='landmarks-landmark' property='swui:landmarks|swui:landmark'&gt;
+ swui:landmarks|swui:landmark
+&lt;/span&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id='NavBar' class='swui_composite swui_navBar'&gt;
+&lt;a id='contextPrev-item-target' property='swui:contextPrev|item|swui:target' onclick="javascript: navTarget(this.href, 'DefaultContextInterface', '');return false;" class='swui_floatLeft'&gt;
+ swui:contextPrev|item|swui:target
+&lt;span id='contextPrev-item' property='swui:contextPrev|item' class='swui_floatLeft'&gt;
+ swui:contextPrev|item
+&lt;/span&gt;
+&lt;/a&gt;
+&lt;a id='contextNext-item-target' property='swui:contextNext|item|swui:target' onclick="javascript: navTarget(this.href, 'DefaultContextInterface', '');return false;" class='swui_floatRight'&gt;
+ swui:contextNext|item|swui:target
+&lt;span id='contextNext-item' property='swui:contextNext|item' class='swui_floatRight'&gt;
+ swui:contextNext|item
+&lt;/span&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;div id='ContextIndex' property='swui:contextIdx' class='swui_composite swui_clearFloat swui_floatLeft'&gt;
+ swui:contextIdx
+&lt;div id='ContextIndexEntry' typeof='ContextIndexEntry' class='swui_invisible'&gt;
+&lt;a id='idxEntry-item-target' property='swui:idxEntry|item|swui:target' onclick="javascript: navTarget(this.href, 'DefaultContextInterface', '');return false;"&gt;
+ swui:idxEntry|item|swui:target
+&lt;span id='idxEntry-item' property='swui:idxEntry|item'&gt;
+ swui:idxEntry|item
+&lt;/span&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id='Node' class='swui_composite swui_node swui_floatRight'&gt;
+&lt;div id='labelAttr'&gt;
+&lt;span id='labelLbl' property='swui:literal' class='swui_bold'&gt;
+ Label: 
+&lt;/span&gt;
+&lt;span id='label' property='label'&gt;
+ label
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</swui:concrete_code>
+    <swui:decorations rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:decorations>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</swui:dynamic>
+    <swui:effects rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effects>
+    <swui:events rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:events>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultContextInterface</swui:interface_name>
+    <swui:interface_ref rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:interface_ref>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <swui:transitions rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:transitions>
+    <rdf:type rdf:resource="http://swui#ContextInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a853d9c0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header6</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h6&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#af13f280-6b50-11df-8c3d-00264afffe1d">
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'Argumentos'</shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#728fd490-6b3d-11df-b38b-00264afffe1d"/>
+    <rdf:type rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#902b0210-6aa5-11df-96f1-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArgumentoAlfa</shdm:context_name>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveRDF::Query.new.distinct(:s).where(:s,RDF::type,DR::Argumento).sort(RDFS::label).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Argumento Alfa</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#navigation_attribute_name">
+    <rdfs:domain rdf:resource="http://shdm#NavigationAttribute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_attribute_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#63fc1ee0-6b4f-11df-8c3d-00264afffe1d">
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'Questões'</shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#3bcd7a60-6b4d-11df-8c3d-00264afffe1d"/>
+    <rdf:type rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#dynamic">
+    <rdfs:domain rdf:resource="http://swui#AbsInterface"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dynamic</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a0e4fed0-6b72-11df-ad20-00264afffe1d">
+    <dr:responde rdf:resource="http://base"/>
+    <rdf:type rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/dr#Ideia"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Acho que sim?</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_parameters">
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_parameters</rdfs:label>
+    <rdfs:range rdf:resource="http://shdm#ContextParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#post_condition_name">
+    <rdfs:domain rdf:resource="http://shdm#PostCondition"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">post_condition_name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#27bfdc40-76a9-11df-bb09-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#37706e70-76a9-11df-bb09-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#dd67ce20-6b8e-11df-ad20-00264afffe1d">
+    <dr:aFavor rdf:resource="http://base"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">labeldoargumento</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#98eb0280-6b48-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#bf559ac0-6b48-11df-8c3d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#79b42470-6b32-11df-b38b-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxElementosPorPessoa</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdxElementosPorPessoa</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#82ec80b0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComboItem</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PredefinedVariable</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;option&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#ddba9d20-6b4e-11df-8c3d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://base#aa049fc0-6b36-11df-b38b-00264afffe1d</shdm:context_anchor_navigation_attribute_target_context>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.id</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">seealso</shdm:navigation_attribute_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#79b42470-6b32-11df-b38b-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementosPorPessoa</shdm:context_name>
+    <shdm:context_parameters rdf:resource="http://base#9bbbfed0-6b32-11df-b38b-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DR::ElementoDeRaciocinio.find_by.ehApresentadaPor(DR::Pessoa.new(@parameters_values[:pessoa])).execute</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Elementos por pessoa</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a80fb600-7699-11df-97f6-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:context_anchor_navigation_attribute_target_node_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#post_condition_expression">
+    <rdfs:domain rdf:resource="http://shdm#PostCondition"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">post_condition_expression</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f850e2f0-7686-11df-a32a-00264afffe1d">
+    <shdm:context_index_context rdf:resource="http://base#a545dee0-717b-11df-a671-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">000</shdm:index_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d0c369c0-6136-11df-9c98-00264afffe1d">
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableBody</swui:concrete_widget_name>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;tbody&gt;</swui:legalTags>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#landmark_navigation_attribute">
+    <rdfs:domain rdf:resource="http://shdm#Landmark"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">landmark_navigation_attribute</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

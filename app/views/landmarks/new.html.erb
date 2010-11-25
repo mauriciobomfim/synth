@@ -1,0 +1,49 @@
+<h1>New landmark</h1>
+
+<% form_for :landmark, :url => { :action => "create" }, :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.label :name %>
+  <p>
+    <%= f.text_field :landmark_name %>
+  </p>
+  <%= f.label :position %>
+  <p>
+    <%= f.text_field :landmark_position %>
+  </p>
+	<%= f.label :type %>
+	<p>
+		<%= f.radio_button :type, 'index_anchor', :checked => true, :onclick => "toggle_areas('index_anchor_fields', 'context_anchor_fields')" %>Index anchor<br/>
+		<%= f.radio_button :type, 'context_anchor', :onclick => "toggle_areas('context_anchor_fields', 'index_anchor_fields')" %>Context anchor
+	</p>
+	<div id="index_anchor_fields">
+  	<%= f.label :label_expression %>
+		<p>
+			<%= text_field_tag 'index_anchor_navigation_attribute[index_anchor_navigation_attribute_label_expression]', nil, :size => 30 %>
+		</p>
+		<%= f.label :target_index %>
+		<p>
+			<%= select_tag 'index_anchor_navigation_attribute[index_anchor_navigation_attribute_target_index]', options_for_select(@indexes) %>
+		</p>
+	</div>
+	
+	<div id="context_anchor_fields" style="display:none;">
+		<%= f.label :label_expression %>
+		<p>
+			<%= text_field_tag 'context_anchor_navigation_attribute[context_anchor_navigation_attribute_label_expression]', nil, :size => 30 %>
+		</p>		
+		<%= f.label :target_context %>
+		<p>
+			<%= select_tag 'context_anchor_navigation_attribute[context_anchor_navigation_attribute_target_context]', options_for_select(@contexts) %>
+		</p>
+		<%= f.label :target_node_expression %>
+		<p>
+			<%= text_field_tag 'context_anchor_navigation_attribute[context_anchor_navigation_attribute_target_node_expression]', nil, :size => 30 %>
+		</p>
+	</div>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', landmarks_path %>

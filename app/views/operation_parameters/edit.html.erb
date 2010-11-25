@@ -1,0 +1,35 @@
+<h1>Editing operation</h1>
+
+<% form_for :operation, :url => { :action => "update" } do |f| %>
+  <%= f.error_messages %>
+	<%= hidden_field_tag :id, @operation %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :operation_name %>
+  </p>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_area :operation_code %>
+  </p>
+  <p>
+    <%= f.label :language %><br />
+    <%= f.text_field :operation_language %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :operation_type %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+<hr>
+<%=jqgrid("Parameters", "operation_parameters", "/operations/parameters",
+	[
+		{ :field => "operation_parameter_name", :label => "Name", :width => 500, :align => 'center' }
+	],
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :edit_url => "/users/parameters_post_data" }
+)%>
+<hr>
+<%= link_to 'Show', :action => "show", :id => @operation %> |
+<%= link_to 'Back', operations_path %>

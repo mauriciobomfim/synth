@@ -1,0 +1,28 @@
+<h1>New effect</h1>
+
+<% form_for :effect, :url => { :action => "create" }, :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.label :name %>
+  <p>
+    <%= f.text_field :effect_name %>
+  </p>
+
+	<%= f.label 'Javascript Code for the effect' %>
+	Function prototype: void swui_Effect_<effectName> (String widgetA, String widgetB, String parameters) 	
+	<p>
+    <%= f.text_area :effect_jsCode, :cols => 100, :rows => 15 %>
+  </p>
+
+	<%= f.label :dependencies %>
+	Links to external scripts
+	<p>
+    <%= f.text_area :effect_dependencies, :cols => 100, :rows => 10 %>
+  </p>
+	
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', effects_path %>

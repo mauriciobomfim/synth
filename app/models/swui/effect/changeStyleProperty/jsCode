@@ -1,0 +1,7 @@
+// It changes widget style's properties
+
+// parameters argument must be supplied in the following format: \"property:value\"
+
+   var propertyName = swui_piece(parameters, \":\", 0, 1);
+   var propertyValue = swui_piece(parameters, \":\", 1);
+   eval(\"document.getElementById('\" + widgetA + \"').style.\" + propertyName + \"='\" + propertyValue + \"'\")

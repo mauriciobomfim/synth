@@ -1,0 +1,462 @@
+<rdf:RDF
+    xmlns:swui="http://swui#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:void="http://rdfs.org/ns/void#"
+    xmlns:shdm="http://shdm#"
+    xmlns:symph="http://symph#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://swui#ConcreteInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#Interface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#concrete_widget_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete_widget_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#ConcreteWidget"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_anchor_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_anchor_attributes</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#index_attributes"/>
+    <rdfs:range rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#decorations">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">decorations</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_navigation_attribute_label_expression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_navigation_attribute_label_expression</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#landmark_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">landmark_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Landmark"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_anchor_navigation_attribute_label_expression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_anchor_navigation_attribute_label_expression</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#effect_jsCode">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">effect_jsCode</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#Effect"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_navigation_attribute_index">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_navigation_attribute_index</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#IndexNavigationAttribute"/>
+    <rdfs:range rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#anyContext">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Any</shdm:context_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#parameter_context">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameter_context</rdfs:label>
+    <owl:inverseOf rdf:resource="http://shdm#context_parameters"/>
+    <rdfs:range rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_parameter_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_parameter_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#ContextParameter"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_navigation_attribute_target_node_expression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_navigation_attribute_target_node_expression</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#events">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">events</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#IndexNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#domain_class">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">domain_class</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#ContextInterface"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#computed_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">computed_attributes</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#index_attributes"/>
+    <rdfs:range rdf:resource="http://shdm#ComputedNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#ComputedNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#rhet_spec">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rhet_spec</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_title">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_title</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_index_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_index_attributes</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#in_context_class_navigation_attributes"/>
+    <rdfs:range rdf:resource="http://shdm#IndexNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_title">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_title</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_attributes</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#effect_dependencies">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">effect_dependencies</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#Effect"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#navigation_attribute_parameter_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_attribute_parameter_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#NavigationAttributeParameter"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_navigation_attribute_target_context">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_navigation_attribute_target_context</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+    <rdfs:range rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#effects">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">effects</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#cssCode">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cssCode</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#RichControl"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#ajaxcontrols">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ajaxcontrols</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#AnchorNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://symph#ontology_file_notation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ontology_file_notation</rdfs:label>
+    <rdfs:domain rdf:resource="http://symph#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#widget_decription_type">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">widget_decription_type</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbsInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#computed_navigation_attribute_value_expression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">computed_navigation_attribute_value_expression</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#ComputedNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#IndexInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#jsCode">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jsCode</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#RichControl"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://symph#ontology_description">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ontology_description</rdfs:label>
+    <rdfs:domain rdf:resource="http://symph#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#RichControl">
+    <rdfs:subClassOf rdf:resource="http://swui#ConcreteWidget"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#landmark_position">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">landmark_position</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Landmark"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_index_context">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_index_context</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#ContextIndex"/>
+    <rdfs:range rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#effect_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">effect_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#Effect"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#ContextIndex">
+    <rdfs:subClassOf rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://symph#ontology_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ontology_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://symph#Ontology"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#abstract_spec">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">abstract_spec</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbsInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#anchor_navigation_attribute_target_expression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anchor_navigation_attribute_target_expression</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#AnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_code">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_code</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#pre_condition_failure_handling">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pre_condition_failure_handling</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#PreCondition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#concrete_code">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete_code</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#ContextAnchorNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_context_anchor_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_context_anchor_attributes</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#in_context_class_navigation_attributes"/>
+    <rdfs:range rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#index">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#IndexInterface"/>
+    <rdfs:range rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#AbstractInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#AbsInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_parameter_index">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_parameter_index</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#IndexParameter"/>
+    <owl:inverseOf rdf:resource="http://shdm#navigation_context_index_parameters"/>
+    <rdfs:range rdf:resource="http://shdm#ContextIndex"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_class">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_class</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#InContextClass"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_query">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_query</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#HtmlTag">
+    <rdfs:subClassOf rdf:resource="http://swui#ConcreteWidget"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_parameter_class">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_parameter_class</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#ContextParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#anchor_navigation_attribute_label_expression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anchor_navigation_attribute_label_expression</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#AnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#htmlCode">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">htmlCode</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#RichControl"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#AbsInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#Interface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_in_context_class">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_in_context_class</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+    <owl:inverseOf rdf:resource="http://shdm#in_context_class_context"/>
+    <rdfs:range rdf:resource="http://shdm#InContextClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_parameter_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_parameter_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#OperationParameter"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#pre_condition_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pre_condition_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#PreCondition"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#ComponentInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#AbsInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#context">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#ContextInterface"/>
+    <rdfs:range rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_post_conditions">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_post_conditions</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <owl:inverseOf rdf:resource="http://shdm#post_condition_operation"/>
+    <rdfs:range rdf:resource="http://shdm#PostCondition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_context">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_context</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#dependencies">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dependencies</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#RichControl"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#concrete_interface_code">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete_interface_code</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#ConcreteInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#interface_ref">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interface_ref</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_language">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_language</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_navigation_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_navigation_attributes</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#InContextClass"/>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_type">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_type</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#IndexAnchorNavigationAttribute">
+    <rdfs:subClassOf rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_navigation_attribute_target_parameters">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_navigation_attribute_target_parameters</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttributeParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://symph#ontology_active">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ontology_active</rdfs:label>
+    <rdfs:domain rdf:resource="http://symph#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_parameter_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_parameter_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#IndexParameter"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#navigation_attribute_parameter_value_expression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_attribute_parameter_value_expression</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#NavigationAttributeParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#legalAbstractWidgs">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">legalAbstractWidgs</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#ConcreteWidget"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_parameter_class">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_parameter_class</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#IndexParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_anchor_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_attributes</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#index_attributes"/>
+    <rdfs:range rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#pre_condition_expression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pre_condition_expression</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#PreCondition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#ContextInterface">
+    <rdfs:subClassOf rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_anchor_navigation_attribute_target_index">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_anchor_navigation_attribute_target_index</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+    <rdfs:range rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_parameters">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_parameters</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <owl:inverseOf rdf:resource="http://shdm#parameter_operation"/>
+    <rdfs:range rdf:resource="http://shdm#OperationParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_computed_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_computed_attributes</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#in_context_class_navigation_attributes"/>
+    <rdfs:range rdf:resource="http://shdm#ComputedNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#legalTags">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">legalTags</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#HtmlTag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#concrete_interfaces">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete_interfaces</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#transitions">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">transitions</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbstractInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_anchor_navigation_attribute_target_parameters">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_anchor_navigation_attribute_target_parameters</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttributeParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#navigation_attribute_index_position">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_attribute_index_position</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#NavigationAttribute"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_pre_conditions">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_pre_conditions</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Operation"/>
+    <owl:inverseOf rdf:resource="http://shdm#pre_condition_operation"/>
+    <rdfs:range rdf:resource="http://shdm#PreCondition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#interface_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interface_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#Interface"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#navigation_attribute_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_attribute_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#NavigationAttribute"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://swui#dynamic">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dynamic</rdfs:label>
+    <rdfs:domain rdf:resource="http://swui#AbsInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#context_parameters">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_parameters</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+    <rdfs:range rdf:resource="http://shdm#ContextParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://symph#ontology_file_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ontology_file_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://symph#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#post_condition_name">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">post_condition_name</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#PostCondition"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#in_context_class_index_anchor_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_index_anchor_attributes</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#in_context_class_navigation_attributes"/>
+    <rdfs:range rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#operation_parameter_data_type">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">operation_parameter_data_type</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#OperationParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#post_condition_expression">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">post_condition_expression</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#PostCondition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_navigation_attribute_index_parameters">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_navigation_attribute_index_parameters</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#IndexNavigationAttribute"/>
+    <rdfs:range rdf:resource="http://shdm#NavigationAttributeParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#landmark_navigation_attribute">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">landmark_navigation_attribute</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Landmark"/>
+  </rdf:Description>
+</rdf:RDF>

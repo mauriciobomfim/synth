@@ -1,0 +1,7 @@
+<AbstractInterface name=\"DefaultAbstractInterface\" mapsTo=\"Composition\" cssClasses=\"swui_interface\">
+  <CompositeInterfaceElement name=\"List\" mapsTo=\"Composition\" ordered=\"true\">
+  <CompositeInterfaceElement name=\"Node\" mapsTo=\"Composition\" fromClass=\"NodeClass\">
+<%= include DefaultJSONDisplay %>
+  </CompositeInterfaceElement>
+  </CompositeInterfaceElement>
+</AbstractInterface>

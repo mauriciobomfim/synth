@@ -1,0 +1,181 @@
+body { background-color: #fff; color: #333; margin: 0px; height: 75% }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   12px;
+  line-height: 15px;
+}
+
+a { color: #000; }
+
+.error { color: red; font-weight: bold }
+
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+h1, h2, h3 { color: #333; font-family: georgia, verdana; }
+h1 { font-size: 28px }
+h2 { font-size: 19px }
+h3 { font-size: 16px }
+
+a.nav, a.nav:link, a.nav:visited { color: #000; }
+a.nav:hover { color: #fff; background-color:#000; }
+
+li { margin-bottom: 7px }
+
+blockquote {
+  display: block;
+  margin: 0px 0px 20px 0px;
+  padding: 0px 30px;
+  font-size:11px;
+  line-height:17px;
+  font-style: italic;  
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+ol.setup {
+  font-size: 19px;
+  font-family: georgia, verdana;
+  padding-left: 25px;
+}
+
+ol.setup li {
+  margin-bottom: 20px
+}
+
+//div { border: solid 1px black; }
+//span { border: dashed 1px black; }
+
+#landmarks
+{
+  background-color: lightgrey;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+#debug {
+position:absolute;
+right: 5px;
+top: 0px;
+font-size: 8px;
+}
+
+#breadcrumb {
+margin: 5px;
+font-size: 9px;
+left: 0px;
+right: 0px;
+}
+
+#content {
+}
+
+#index
+{
+  padding: 10px;
+}
+
+#index_title
+{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.index_class
+{
+font-size: 12px;
+color: lightgrey;
+}
+  
+.context_class
+{
+font-size: 11px;
+color: grey;
+width: 100%;
+text-align: center;
+}
+
+#index_count
+{
+  font-size: 10px;
+  color: grey;
+}
+
+#context
+{
+
+}
+
+#context_title
+{
+  font-size: 15px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+#context_index
+{
+  position: absolute;
+  top: 109px;
+  left: 0px;
+  bottom: 0px;
+  margin-right: 10px;
+  background-color: lightgrey;
+}
+
+#context_index td
+{
+  font-size: 9px;
+  width: 120px;
+} 
+
+th
+{
+font-size: 10px;
+}
+
+.index_entry_selected
+{
+  background-color: orange;
+}
+
+.node_attribute_label
+{
+  font-weight: bold;
+}
+
+#context_body
+{
+  margin-left: 130px;
+  padding: 5px;
+}
+
+#context_navigation
+{
+  left: 0px;
+  right: 0px;
+  border-top: solid 1px lightgrey;
+  border-bottom: solid 1px lightgrey;
+  font-size: 10px;
+  width: 100%;
+}
+
+#next_link
+{
+  position: absolute;
+  right: 0px;
+}
+
+.node_attribute_value .index_entry_attribute
+{
+  font-size: 10px;
+  line-height: 10px;
+}
+
+#actions { background-color: lightsteelblue; padding:2px;font-size: 10px; border: 1px solid grey}

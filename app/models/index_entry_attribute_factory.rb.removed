@@ -1,0 +1,86 @@
+class IndexEntryAttribute
+  
+  def initialize(index_attribute, index_entry)
+     @index_attribute = index_attribute
+     @index_entry = index_entry
+  end
+
+  def value
+     @index_entry.node.instance_eval(@index_attribute.index_attribute_value.first)
+  end
+  
+end
+
+class AnchorIndexEntryAttribute < IndexEntryAttribute
+  
+  def target
+    @index_entry.node.instance_eval(@index_attribute.anchor_index_attribute_target_expression.first)
+  end
+
+end
+
+class ContextAnchorIndexEntryAttribute < IndexEntryAttribute
+  
+  def target_url
+    target_context.url(target_parameters)
+  end
+
+  def target_context
+    @index_attribute.context_anchor_index_attribute_target_context.first
+  end
+  
+  def target_parameters
+    target_parameters_hash = Hash.new
+    for parameter in @index_attribute.context_anchor_index_attribute_target_parameters do
+      value = @index_entry.node.instance_eval(parameter.index_attribute_parameter_value.first)
+      target_parameters_hash[parameter.index_attribute_parameter_name.first.to_sym] = value
+    end
+    target_parameters_hash
+  end
+  
+end
+
+class IndexAnchorIndexEntryAttribute < IndexEntryAttribute
+  
+  def target_url
+    target_index.url(target_parameters)
+  end
+
+  def target_index
+    @index_attribute.index_anchor_index_attribute_target_index.first
+  end
+  
+  def target_parameters
+    target_parameters_hash = Hash.new
+    for parameter in @index_attribute.index_anchor_index_attribute_target_parameters do
+      value = @index_entry.node.instance_eval(parameter.index_attribute_parameter_value.first)
+      target_parameters_hash[parameter.index_attribute_parameter_name.first.to_sym] = value
+    end
+    target_parameters_hash
+  end
+  
+end
+
+module IndexEntryAttributeFactory
+  
+  def self.create(index_attribute, index_entry)
+   
+   
+    klasses = index_attribute.classes
+  
+    klass = case 
+    when klasses.include?(SHDM::ContextAnchorIndexAttribute)
+      ContextAnchorIndexEntryAttribute
+    when klasses.include?(SHDM::IndexAnchorIndexAttribute)
+      IndexAnchorIndexEntryAttribute
+    when klasses.include?(SHDM::AnchorIndexAttribute)
+      AnchorIndexEntryAttribute
+    else
+      IndexEntryAttribute
+    end
+  
+    klass.new(index_attribute, index_entry)
+  
+  end
+
+end

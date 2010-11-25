@@ -1,0 +1,29 @@
+<%
+	    ModelUtils.traverseJSON(jsonData,list) do |type,key,value,hash,list| 
+              if !(key.include? \"swui:\")
+                name = key
+                name = name.gsub(/\\|/,\"-\")
+                name = name.gsub(/_/,\"-\")
+                if (type==\"Item\")
+                    buffer << \"<CompositeInterfaceElement mapsTo=\\\"Composition\\\" name=\\\"\#{name}Attr\\\" >\" 
+		    buffer << \"<ElementExhibitor name=\\\"\#{name}Lbl\\\" mapsTo=\\\"Text\\\" defaultContent=\\\"\#{name.capitalize}: \\\" cssClasses=\\\"swui_bold\\\"/>\" if !list
+	            if (hash.has_key? \"\#{key}|swui:target\")
+		      buffer << \"<SimpleActivator mapsTo=\\\"Link\\\" name=\\\"\#{name}Link\\\" fromAttribute=\\\"\#{key}|swui:target\\\">\" 
+	            end
+                    widget = \"<ElementExhibitor mapsTo=\\\"Text\\\" name=\\\"\#{name}\\\" fromAttribute=\\\"\#{key}\\\"/>\" 
+		    widget.gsub!(/mapsTo=\"Text\"/,\"mapsTo=\\\"Image\\\"\") if (value.match(/.+\\.(gif|jpeg|jpg|png|tiff)$/))
+                    buffer << widget
+	            if (hash.has_key? \"\#{key}|swui:target\")
+                      buffer << \"</SimpleActivator>\"
+	            end
+                    buffer << \"</CompositeInterfaceElement>\" 
+                end
+                if (type==\"OpenList\")
+	          buffer << \"<CompositeInterfaceElement mapsTo=\\\"Composition\\\" name=\\\"\#{name}List\\\" fromAttribute=\\\"\#{key}\\\" cssClasses=\\\"swui_composite\\\" ordered=\\\"true\\\">\" 
+		  buffer << \"<ElementExhibitor name=\\\"\#{name}ListLbl\\\" mapsTo=\\\"Text\\\" defaultContent=\\\"\#{name.capitalize}: \\\" cssClasses=\\\"swui_bold\\\"/>\"
+                  buffer << \"<CompositeInterfaceElement mapsTo=\\\"Composition\\\" name=\\\"\#{name}\\\" fromClass=\\\"\#{name}\\\" >\"
+                end
+	        buffer << \"</CompositeInterfaceElement> </CompositeInterfaceElement>\" if (type==\"CloseList\")
+              end
+	    end
+%>

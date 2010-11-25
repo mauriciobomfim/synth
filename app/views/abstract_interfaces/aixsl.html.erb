@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <xsl:template match="/">
+            <html>
+
+                  <head>
+                        <title>Abstract-Concrete Mapping</title>
+                        <link href="/stylesheets/xsl.css" rel="stylesheet" type="text/css" />
+                        <link href="/stylesheets/admin.css" rel="stylesheet" type="text/css"/>
+                        <script src="/javascripts/admin.js" type="text/javascript"></script>
+                        <script src="/javascripts/prototype.js" type="text/javascript"></script>
+                        <script src="/javascripts/swui/swui_common.js" type="text/javascript"></script>
+                        <script src="/javascripts/xsl.js" type="text/javascript"></script>
+                  </head>
+
+                  <body>
+                                                                 
+                        <div id="content">
+                              <form name="xsltForm" action="/abstract_interfaces/update" method="post">
+                                    <%= token_tag() %>
+                                    <xsl:call-template name="saveButton"/>
+                                    
+                                    <h1 class="clearFloat">Abstract-Concrete Mapping</h1>
+                                    <input type="hidden" name="xslt" value="true" />
+                                    
+                                    <xsl:for-each select="AbstractInterface">
+                                          <div class="small">
+                                                <label class="floatLeft"> CSS Style Sheets: </label>
+                                                <input type="text" id="cssSheets" name="abs_interface[concrete_interfaces]" value=""/>
+                                                <span class="help"> (semi-colon separated list) </span>
+                                          </div>
+                                          
+                                          <script type="text/javascript"> loadCssSheets() </script>
+                                          
+                                          <xsl:call-template name="interface"/>
+                                          
+                                    </xsl:for-each>
+                                    
+                                    <xsl:for-each select="CompositeInterfaceElement">
+                                          <xsl:call-template name="componentInterface"/>
+                                    </xsl:for-each>
+                                   
+                                    <xsl:call-template name="saveButton"/>
+                              </form>
+                        </div>
+                        
+                  </body>
+                  
+            </html>
+            
+      </xsl:template>
+      <xsl:template name="saveButton">
+            <div class="small clearFloat">
+                  <div class="small floatLeft action">
+                        <a href="/abs_interface/list"> &lt;&lt; Back </a>
+                  </div>
+                  <div class="small floatRight">
+                        <input type="button" class="action" value="Save" onclick="javascript: document.xsltForm.submit()"/>
+                  </div>
+            </div>
+      </xsl:template>
+      <xsl:template name="interface">
+            <div class="interface">
+                  <input type="hidden" id="interface_name" name="abs_interface[name]" >
+                        <xsl:attribute name="value">
+                              <xsl:value-of select="@name"/>
+                        </xsl:attribute>
+                  </input>
+                  <xsl:call-template name="element"/>
+                  <xsl:call-template name="content"/>
+            </div>
+      </xsl:template>
+      <xsl:template name="componentInterface">
+            <div class="composite">
+                  <input type="hidden" id="interface_name" name="abs_interface[name]" >
+                        <xsl:attribute name="value">
+                              <xsl:value-of select="@name"/>
+                        </xsl:attribute>
+                  </input>
+                  <xsl:call-template name="element"/>
+                  <xsl:call-template name="content"/>
+            </div>
+      </xsl:template>
+      <xsl:template name="composite">
+            <div class="composite">
+                  <xsl:call-template name="element"/>
+                  <xsl:choose>
+                        <xsl:when test="@loadInterface != ''">
+                              <xsl:call-template name="loadInterface"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                              <p class="model">
+                                    <h2> Model Binding: </h2>
+                                    <xsl:call-template name="class"/>
+                                    <br/>
+                                    <xsl:call-template name="attribute"/>
+                                    <br/>
+                                    <xsl:call-template name="ordered"/>
+                              </p>
+                        </xsl:otherwise>
+                  </xsl:choose>
+                  <xsl:call-template name="content"/>
+            </div>
+      </xsl:template>
+      <xsl:template name="content">
+            <xsl:for-each select="ElementExhibitor">
+                  <xsl:call-template name="exhibitor"/>
+            </xsl:for-each>
+            <xsl:for-each select="IndefiniteVariable">
+                  <xsl:call-template name="indefinite"/>
+            </xsl:for-each>
+            <xsl:for-each select="PredefinedVariable">
+                  <xsl:call-template name="predefined"/>
+            </xsl:for-each>
+            <xsl:for-each select="SimpleActivator">
+                  <xsl:call-template name="activator"/>
+            </xsl:for-each>
+            <xsl:for-each select="CompositeInterfaceElement">
+                  <xsl:call-template name="composite"/>
+            </xsl:for-each>
+      </xsl:template>
+      <xsl:template name="exhibitor">
+            <div class="exhibitor">
+                  <xsl:call-template name="element"/>
+                  <p class="model">
+                        <h2> Model Binding: </h2>
+                        <xsl:call-template name="attribute"/>
+                        <br/>
+                        <xsl:call-template name="text"/>
+                  </p>
+            </div>
+      </xsl:template>
+      <xsl:template name="indefinite">
+            <div class="indefinite">
+                  <xsl:call-template name="element"/>
+                  <p class="model">
+                        <h2> Model Binding: </h2>
+                        <xsl:call-template name="attribute"/>
+                        <br/>
+                        <xsl:call-template name="text"/>
+                  </p>
+            </div>
+      </xsl:template>
+      <xsl:template name="predefined">
+            <div class="predefined">
+                  <xsl:call-template name="element"/>
+                  <p class="model">
+                        <h2> Model Binding: </h2>
+                        <xsl:call-template name="attribute"/>
+                  </p>
+            </div>
+      </xsl:template>
+      <xsl:template name="activator">
+            <div class="activator">
+                  <xsl:call-template name="element"/>
+                  <xsl:call-template name="targetInterface"/>
+                  <xsl:call-template name="transitionInterface"/>
+                  <p class="model">
+                        <h2> Model Binding: </h2>
+                        <xsl:call-template name="attribute"/>
+                        <br/>
+                        <xsl:call-template name="action"/>
+                  </p>
+                  <xsl:for-each select="ElementExhibitor">
+                        <xsl:call-template name="exhibitor"/>
+                  </xsl:for-each>
+            </div>
+      </xsl:template>
+      <xsl:template name="element">
+            <p>
+                  <span class="label inline"> Widget Type: </span>
+                  <span>
+                        <xsl:value-of select="name(.)"/>
+                  </span>
+                  <br/>
+                  <span class="label inline"> Name: </span>
+                  <span>
+                        <xsl:value-of select="@name"/>
+                  </span>
+                  <br/>
+            </p>
+            <xsl:call-template name="concreteMappings"/>
+      </xsl:template>
+      <xsl:template name="concreteMappings">
+            <xsl:variable name="path">
+                  <xsl:for-each select="ancestor-or-self::*">
+                        <xsl:text>/</xsl:text>
+                        <xsl:value-of select="name()" />
+                  </xsl:for-each>
+                  <xsl:text>#</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <xsl:variable name="htmlId">
+                  <xsl:text>html_</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <xsl:variable name="ajaxId">
+                  <xsl:text>ajax_</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <xsl:variable name="concreteWidgetId">
+                  <xsl:text>concreteWidget_</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <xsl:variable name="tagAttrId">
+                  <xsl:text>tagAttr_</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <xsl:variable name="cssClassId">
+                  <xsl:text>cssClass_</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <xsl:variable name="functionCallEnd">
+                  <xsl:text>"</xsl:text>
+                  <xsl:value-of select="@name"/>
+                  <xsl:text>");</xsl:text>
+            </xsl:variable>
+            <div class="small concreteMapps">
+                  <h2> Concrete Mappings: </h2>
+                  <span class="label"> Concrete Widget: </span>
+                  <input type="text" class="short">
+                        <xsl:attribute name="id">
+                              <xsl:value-of select="$concreteWidgetId"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="onchange">
+                              <xsl:value-of select="concat('javascript: switchAreas(',$functionCallEnd)"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="value">
+                              <xsl:value-of select="@mapsTo"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                              <xsl:value-of select="concat($path,'#mapsTo')"/>
+                        </xsl:attribute>
+                  </input>
+                  <div class="small" style="display:none">
+                        <xsl:attribute name="id">
+                              <xsl:value-of select="$htmlId"/>
+                        </xsl:attribute>
+                        <div class="small htmlMapps">
+                              <div class="small">
+                                    <span class="label"> HTML attributes: </span>
+                                    <input type="text" class="long">
+                                          <xsl:attribute name="value">
+                                                <xsl:value-of select="@tagAttributes"/>
+                                          </xsl:attribute>
+                                          <xsl:attribute name="name">
+                                                <xsl:value-of select="concat($path,'#tagAttributes')"/>
+                                          </xsl:attribute>
+                                          <xsl:attribute name="id">
+                                                <xsl:value-of select="$tagAttrId"/>
+                                          </xsl:attribute>
+                                    </input>
+                                    <br/>
+                                    <span class="help"> (vertical bar "|" separated list) </span>
+                              </div>
+                              <div class="small">
+                                    <span class="label"> CSS classes: </span>
+                                    <input type="text" class="long">
+                                          <xsl:attribute name="value">
+                                                <xsl:value-of select="@cssClasses"/>
+                                          </xsl:attribute>
+                                          <xsl:attribute name="name">
+                                                <xsl:value-of select="concat($path,'#cssClasses')"/>
+                                          </xsl:attribute>
+                                          <xsl:attribute name="id">
+                                                <xsl:value-of select="$cssClassId"/>
+                                          </xsl:attribute>
+                                    </input>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="small" style="display:none">
+                        <xsl:attribute name="id">
+                              <xsl:value-of select="$ajaxId"/>
+                        </xsl:attribute>
+                  </div>
+                  <script type="text/javascript">
+                        widgetsIdsArray('<xsl:value-of select="@name"/>') </script>
+            </div>
+      </xsl:template>
+      <xsl:template name="text">
+            <xsl:variable name="path">
+                  <xsl:for-each select="ancestor-or-self::*">
+                        <xsl:text>/</xsl:text>
+                        <xsl:value-of select="name()" />
+                  </xsl:for-each>
+                  <xsl:text>#</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <div class="small defContent">
+                  <span class="label"> Default Content: </span>
+                  <input type="text" >
+                        <xsl:attribute name="value">
+                              <xsl:value-of select="@defaultContent"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                              <xsl:value-of select="concat($path,'#defaultContent')"/>
+                        </xsl:attribute>
+                  </input>
+            </div>
+      </xsl:template>
+      <xsl:template name="action">
+            <xsl:variable name="path">
+                  <xsl:for-each select="ancestor-or-self::*">
+                        <xsl:text>/</xsl:text>
+                        <xsl:value-of select="name()" />
+                  </xsl:for-each>
+                  <xsl:text>#</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <span class="label"> Target Action: </span>
+            <input type="text" class="long">
+                  <xsl:attribute name="value">
+                        <xsl:value-of select="@fromAction"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="name">
+                        <xsl:value-of select="concat($path,'#fromAction')"/>
+                  </xsl:attribute>
+            </input>
+      </xsl:template>
+      <xsl:template name="ordered">
+            <xsl:variable name="path">
+                  <xsl:for-each select="ancestor-or-self::*">
+                        <xsl:text>/</xsl:text>
+                        <xsl:value-of select="name()" />
+                  </xsl:for-each>
+                  <xsl:text>#</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <span class="label"> Ordered? </span>
+            <input type="text" class="shortest">
+                  <xsl:attribute name="value">
+                        <xsl:value-of select="@ordered"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="name">
+                        <xsl:value-of select="concat($path,'#ordered')"/>
+                  </xsl:attribute>
+            </input>
+      </xsl:template>
+      <xsl:template name="attribute">
+            <xsl:variable name="path">
+                  <xsl:for-each select="ancestor-or-self::*">
+                        <xsl:text>/</xsl:text>
+                        <xsl:value-of select="name()" />
+                  </xsl:for-each>
+                  <xsl:text>#</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <span class="label"> Attribute: </span>
+            <input type="text" class="long">
+                  <xsl:attribute name="value">
+                        <xsl:value-of select="@fromAttribute"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="name">
+                        <xsl:value-of select="concat($path,'#fromAttribute')"/>
+                  </xsl:attribute>
+            </input>
+      </xsl:template>
+      <xsl:template name="class">
+            <xsl:variable name="path">
+                  <xsl:for-each select="ancestor-or-self::*">
+                        <xsl:text>/</xsl:text>
+                        <xsl:value-of select="name()" />
+                  </xsl:for-each>
+                  <xsl:text>#</xsl:text>
+                  <xsl:value-of select="@name" />
+            </xsl:variable>
+            <span class="label"> Class: </span>
+            <input type="text" >
+                  <xsl:attribute name="value">
+                        <xsl:value-of select="@fromClass"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="name">
+                        <xsl:value-of select="concat($path,'#fromClass')"/>
+                  </xsl:attribute>
+            </input>
+      </xsl:template>
+      <xsl:template name="targetInterface">
+            <xsl:if test="@targetInterface != ''">
+                  <p class="targetinterface">
+                        <h2> Target Interface: </h2>
+                        <span class="label"> Target Interface: </span>
+                        <span>
+                              <xsl:value-of select="@targetInterface"/>
+                        </span>
+                  </p>
+            </xsl:if>
+      </xsl:template>
+      <xsl:template name="transitionInterface">
+            <xsl:if test="@transitionInterface != ''">
+                  <p class="transitioninterface">
+                        <h2> Transition Interface: </h2>
+                        <span class="label"> Transition Interface: </span>
+                        <span>
+                              <xsl:value-of select="@transitionInterface"/>
+                        </span>
+                  </p>
+            </xsl:if>
+      </xsl:template>
+      <xsl:template name="loadInterface">
+            <xsl:if test="@loadInterface != ''">
+                  <span class="label"> It is a placeholder for the </span>
+                  <span>
+                        <xsl:value-of select="@loadInterface"/>
+                  </span>
+                  <span class="label"> interface. </span>
+            </xsl:if>
+      </xsl:template>
+</xsl:stylesheet>

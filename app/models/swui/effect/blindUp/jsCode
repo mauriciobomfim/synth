@@ -1,0 +1,3 @@
+// A wrapper for the Scriptaculous BlindUp effect
+
+if (document.getElementById(widgetA) != null) { eval (\"Effect.BlindUp(widgetA, { \" + parameters + \"})\"); }

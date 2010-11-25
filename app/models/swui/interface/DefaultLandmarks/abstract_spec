@@ -1,0 +1,7 @@
+<CompositeInterfaceElement name=\"Landmarks\" mapsTo=\"Composition\" fromAttribute=\"swui:landmarks\" cssClasses=\"swui_composite swui_landmark\" >
+	<CompositeInterfaceElement name=\"Landmark\" mapsTo=\"Paragraph\" fromClass=\"Landmark\" cssClasses=\"swui_composite swui_inline\" >
+		<SimpleActivator mapsTo=\"Link\" fromAttribute=\"swui:landmarks|swui:landmark|swui:target\" name=\"landmarks-landmark-target\" >
+			<ElementExhibitor mapsTo=\"Text\" fromAttribute=\"swui:landmarks|swui:landmark\" name=\"landmarks-landmark\" />
+		</SimpleActivator>
+	</CompositeInterfaceElement>
+</CompositeInterfaceElement>

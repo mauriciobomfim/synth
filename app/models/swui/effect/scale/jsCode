@@ -1,0 +1,24 @@
+// A wrapper for the Scriptaculous Scale effect
+
+   // looks for percent parameter
+   var i=0;
+   var paramList = parameters;
+   var percent = \"\";
+   parameters = \"\";
+   while (true) {
+      param = piece(paramList, \",\", i, i+1)
+      if (param == \"\") { break; }
+      paramName = piece(param, \":\", 0, 1);
+      if (paramName == \"percent\") {
+         percent = piece(param, \":\", 1);
+      } else {
+         if (parameters != \"\") { parameters += \", \"; }
+         parameters += param;
+      }
+      i++;
+   }
+   if (percent != \"\") {
+      eval (\"new Effect.Scale(widgetA, percent, { \" + parameters + \" });\");
+   } else {
+      alert (\"Percent parameter for Scale effect was not defined!\");
+   }

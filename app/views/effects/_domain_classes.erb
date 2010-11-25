@@ -1,0 +1,12 @@
+<table class="rounded-corner">
+  <thead>
+		<tr>
+	    <th>Domain Classes</th> 
+	  </tr>
+	</thead>
+	<% @domain_classes.sort{|a,b| a.compact_uri <=> b.compact_uri }.each do |klass| %>
+  <tr>
+    <td><%= link_to klass.compact_uri, :action => :index, :type => klass.uri %></a></td>
+	</tr>
+	<% end %>
+</table>

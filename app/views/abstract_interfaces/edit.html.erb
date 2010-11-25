@@ -1,0 +1,121 @@
+<h1>Editing interface</h1>
+
+<% form_for :interface, :url => { :action => "update" }, :html => { :class => 'form' } do |f| %>
+ <%= f.error_messages %>
+  <%= hidden_field_tag :id, @interface %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :interface_name %>
+  </p>
+	<label>Type</label>
+  <p>
+	
+	<input type=radio id=generic_opt name=interface[type] value="SWUI::AbstractInterface" 
+	onclick="toggle_areas('generic_interface', 'context_interface', 'index_interface');toggle_widget_description();">
+	Generic Interface <span class="hint">(Interface not related to any class, context or index, such as for transition interfaces and forms)</span><br>
+
+	<input type=radio id=context_opt name=interface[type] value="SWUI::ContextInterface" 
+	onclick="toggle_areas('context_interface', 'generic_interface', 'index_interface');toggle_widget_description();">
+	Context Interface <span class="hint">(Interface for specific or any class in specific or any context)</span><br>
+
+	<input type=radio id=index_opt name=interface[type] value="SWUI::IndexInterface" 
+	onclick="toggle_areas('index_interface', 'generic_interface', 'context_interface');toggle_widget_description();"> 
+	Index Interface <span class="hint">(Interface for specific or any index)</span><br>
+
+	<input type=radio id=component_opt name=interface[type] value="SWUI::ComponentInterface" 
+	onclick="toggle_areas('generic_interface', 'context_interface', 'index_interface'); toggle_widget_description();">
+	Component Interface <span class="hint">(Reusable widgets description)</span>
+	
+
+	<div id="generic_interface" style='line-height:1px'></div>
+
+	<div id="context_interface" style="display:none">
+		<label>Context</label>
+		<p>
+		<select name="interface[context_id]">
+		<option value="">Any</option>
+		<%= options_from_collection_for_select @contexts, "uri", "context_name", (@interface.context.empty? ? nil : @interface.context.first.uri) %>
+		</select></p>
+		<label>Class</label>
+		<p>
+		<select name="interface[class_id]">
+		<option value="">Any</option>
+		<%= options_from_collection_for_select @classes, "uri", "compact_uri", (@interface.domain_class.empty? ? nil : @interface.domain_class.first.uri) %>
+		</select></p>
+	</div>
+
+	<div id="index_interface" style="display:none">
+		<label>Index</label>
+		<p>
+		<select name="interface[index_id]">
+		<option value="">Any</option>
+		<%= options_from_collection_for_select @indices, "uri", "index_name", (@interface.index.empty? ? nil : @interface.index.first.uri) %>
+		</select></p>
+	</div>
+
+	
+	<%= f.label :widget_description %>
+
+	<p>
+		<%= f.radio_button :widget_decription_type, :abstract,  { :onclick => "toggle_widget_description();" } %> Abstract
+		<%= f.radio_button :widget_decription_type, :concrete, { :onclick => "toggle_widget_description();" } %> Concrete
+	</p>
+	<p>
+		<%= f.text_area :abstract_spec, :rows => 20, :cols => 100 %>
+	</p>
+
+
+	<div id="abstract" style="display:none">
+	
+	<%= f.label :Rethorical_description %><br />
+	<p>
+		<%= f.text_area :rhet_spec, :rows => 15, :cols => 100 %>
+	</p>
+	</div>
+
+	<div id="noAbstract" style="display:none"></div>
+
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', abstract_interfaces_path %>
+
+<script lang="JavaScript">
+	<% if @interface.is_a?(SWUI::ContextInterface) %>
+		document.getElementById('context_opt').checked = true;
+		toggle_areas('context_interface', 'generic_interface', 'index_interface');
+		toggle_widget_description();
+	<% elsif @interface.is_a?(SWUI::IndexInterface) %>
+		document.getElementById('index_opt').checked = true;
+		toggle_areas('index_interface', 'generic_interface', 'context_interface');
+		toggle_widget_description();
+	<% elsif @interface.is_a?(SWUI::ComponentInterface) %>
+		document.getElementById('component_opt').checked = true;
+		toggle_areas('generic_interface', 'index_interface', 'context_interface');
+		toggle_widget_description();
+	<% elsif @interface.is_a?(SWUI::AbstractInterface) %>
+		document.getElementById('generic_opt').checked = true;
+		toggle_areas('generic_interface', 'index_interface', 'context_interface');
+		toggle_widget_description();
+	<% end %>
+	
+	function toggle_widget_description(){
+		
+		concrete = $('#interface_widget_decription_type_concrete').attr('checked');
+		if(concrete){
+			toggle_areas('noAbstract','abstract');
+			$('#interface_abstract_spec').attr('rows', 40);
+		}
+		else{
+			$('#interface_widget_decription_type_abstract').attr('checked', true);
+			if(!$('#component_opt').attr('checked'))
+				toggle_areas('abstract','noAbstract');
+			else
+				toggle_areas('noAbstract','abstract');
+			$('#interface_abstract_spec').attr('rows', 20);				
+		}
+	}
+	
+</script>
