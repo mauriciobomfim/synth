@@ -1,6 +1,26 @@
 #!/usr/bin/env ruby
 
-#jruby -S script/import path/para/o/arquivo.rdf model=nomedabase format=rdfxml
+#path/to/jruby -S script/import path/to/source_file.rdf model=application_name format=rdfxml
+
+args = ARGV.map{|arg| arg.split("=")}
+file = args.delete_at(0)
+options = {}
+for arg in args do
+  options[arg.first] = arg.last
+end
+
+model  = options['model']
+format = options['format'].nil? ? :rdfxml : options['format'].to_sym
+
+unless File.exists?("applications/#{model}")
+  raise "There is no '#{model}' application here. Check if the name is correct."
+end
+
+unless [:rdfxml, :n3, :ntriples, :turtle].include?(format)
+  raise "'#{format.to_s}' format is not valid"
+end
+
+puts "Loading Rails environment..."
 
 require File.expand_path('../../config/boot',  __FILE__)
 
@@ -11,17 +31,11 @@ end
 
 require 'active_rdf'
 
-args = ARGV.map{|arg| arg.split("=")}
-file = args.delete_at(0)
-options = HashWithIndifferentAccess.new
-for arg in args do
-  options[arg.first] = arg.last
-end
-
-model  = options[:model]
-format = options[:format].nil? ? :rdfxml : options[:format].to_sym
 app    = Application.find(model)
-
 app.start
 
+puts "Importing..."
+
 app.db.load("file:#{file}", :format => format, :into => :default_model)
+
+puts "Finished."
