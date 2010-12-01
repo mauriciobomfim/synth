@@ -59,10 +59,12 @@ module ActiveRDF
 
       if $ENABLE_QUERY_CACHING
         unless @@query_cache[q.to_s.hash].nil?
+		  puts "CACHE: #{q.to_s}" if $QUERY_DEBUG
           return @@query_cache[q.to_s.hash]
         end
       end
-      
+      puts q.to_s if $QUERY_DEBUG
+
       if ConnectionPool.read_adapters.empty?
         raise ActiveRdfError, "cannot execute query without data sources"
       end

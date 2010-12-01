@@ -56,11 +56,9 @@ class Query2FederatedSPARQL < ActiveRDF::Query2SPARQL
         elsif query.ask?
           str << "ASK { #{where_clauses(query)} } "
         end
-        puts str if $QUERY_DEBUG
         return str
       end
     end
-    puts main_query if $QUERY_DEBUG
     return main_query
     
   end
