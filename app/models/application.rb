@@ -4,7 +4,7 @@ class Application
   ACTIVE_FILE_NAME  = "active"
   ACTIVE_FILE_PATH  = "#{APPLICATIONS_PATH}/#{ACTIVE_FILE_NAME}"
 
-  attr_accessor :name
+  attr_accessor :name, :db
 
   def self.all
     Dir.entries(APPLICATIONS_PATH).reject{|app| [ACTIVE_FILE_NAME].include?(app) || app.match(/^\./) }.map{ |name| new(name) }
@@ -48,7 +48,7 @@ class Application
   end
 
   def active?
-    File.read(ACTIVE_FILE_PATH) == name
+    File.read(ACTIVE_FILE_PATH).chomp == name
   end
   
   def start
