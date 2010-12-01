@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+
+#jruby -S script/import path/para/o/arquivo.rdf model=nomedabase format=rdfxml
+
 require File.expand_path('../../config/boot',  __FILE__)
 
 Rails::Initializer.run do |config|
@@ -15,20 +18,10 @@ for arg in args do
   options[arg.first] = arg.last
 end
 
-model = options[:model]
+model  = options[:model]
 format = options[:format].nil? ? :rdfxml : options[:format].to_sym
+app    = Application.find(model)
 
-jena_file   = { 
-  :type => :jena, 
-  :model => model, 
-  :ontology => :owl, 
-  :reasoner => :owl_micro, 
-  :file => "#{RAILS_ROOT}/db/jena_persistence/" 
-}
+app.start
 
-main_data_source         = ActiveRDF::ConnectionPool.add_data_source jena_file
-main_data_source.enabled = true
-
-file_path = "file:#{file}"
-
-main_data_source.load(file_path, :format => format, :into => :default_model)
+app.db.load("file:#{file}", :format => format, :into => :default_model)
