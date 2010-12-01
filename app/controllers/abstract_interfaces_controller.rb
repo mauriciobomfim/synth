@@ -5,7 +5,7 @@ include REXML
 class AbstractInterfacesController < ApplicationController
   
   def index
-    @interfaces = SWUI::AbsInterface.find_all.clone.sort{|a,b| a.interface_name.first <=> b.interface_name.first }
+    @interfaces = SWUI::AbsInterface.alpha(SWUI::interface_name)
   end
     
   # GET /interfaces/1
