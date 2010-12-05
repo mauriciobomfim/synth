@@ -29,7 +29,7 @@
 			uri
 			</td>
 			<td width="400">
-			<% form_for :resource, :url => { :action => "create" } do |f| %>
+			<% form_for :resource, :url => { :action => "create" }, :html => { :onsubmit => "$('#loading').show();" } do |f| %>
 			<%= f.label :namespace %>
 			<%= f.select :namespace, options_for_select(@namespaces, 'http://base#'), { :include_blank => true} %>
 				<%= f.text_field :id, :value => "http://base#", :style => "width: 500px;" %>

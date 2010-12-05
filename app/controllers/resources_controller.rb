@@ -132,7 +132,7 @@ class ResourcesController < ApplicationController
     @resource.destroy
 
     respond_to do |format|
-      format.html { redirect_to :action => :index, :type => type }
+      format.html { redirect_to :action => :index }
       format.xml  { head :ok }
     end
   end
