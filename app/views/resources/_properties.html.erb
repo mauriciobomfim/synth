@@ -79,13 +79,12 @@
 			$('.add_property').click(add_property);
 			
 			function add_property(){
-				var row = (<r><![CDATA[
-					 <tr class="property_row">
-					    <td width="25%">
-								<span class="property_label"><input type="text"/></span>
-						  </td>
-					 </tr>
-				]]></r>).toString();
+				var row = '\
+					 <tr class="property_row">\
+					    <td width="25%">\
+								<span class="property_label"><input type="text"/></span>\
+						  </td>\
+					 </tr>';
 				var new_property = $('.hor-zebra tbody').append(row)
 				new_property.find(':input').focus()
 
@@ -97,25 +96,24 @@
 						url: "/resources/search", 
 						minChars: 3,
 						onItemSelect: function(selected){ 
-								var new_row = (<r><![CDATA[
-									<td width="25%">
-									<span class="property_label">
-											<a property="]]></r>).toString() + selected['data'] + '" href="/resources/'+selected['data']+'">'+selected['value']+(<r><![CDATA[</a>
-									</span>
-									<span class="add_value ui-icon ui-icon-plus"></span>
-									</td>
-									<td>
-										<ul class="bullets-none">
-											<li>
-												<div class="editable">
-													<div class="editing">
-														<input type="text" name="property" id="]]></r>).toString() + selected['data'] + (<r><![CDATA[" value=""/>
-													</div>
-												</div>							
-											</li>
-										</ul>
-									</td>
-								]]></r>).toString();
+								var new_row = '\
+									<td width="25%">\
+									<span class="property_label">\
+											<a property="' + selected['data'] + '" href="/resources/'+selected['data']+'">'+selected['value']+'</a>\
+									</span>\
+									<span class="add_value ui-icon ui-icon-plus"></span>\
+									</td>\
+									<td>\
+										<ul class="bullets-none">\
+											<li>\
+												<div class="editable">\
+													<div class="editing">\
+														<input type="text" name="property" id="' + selected['data'] + '" value=""/>\
+													</div>\
+												</div>\
+											</li>\
+										</ul>\
+									</td>';
 								new_property.find('tr').last().html(new_row);								
 								var input = new_property.find('tr').last().find('.editing').show().find(':input')
 								input.focusout( function(){ input = $(this);
@@ -131,11 +129,11 @@
 
 			function add_value(){
 				original = "";
-				var input_value = (<r><![CDATA[<li>
-					<div class="editable">
-					<div class="showing"></div>
-					<div class="editing">
-						<input type="text" name="property" value="" id=']]></r>).toString()+$(this).parent().find('.property_label a').attr('property')+'\'/></div></div></li>';
+				var input_value = '\
+					<div class="editable">\
+					<div class="showing"></div>\
+					<div class="editing">\
+						<input type="text" name="property" value="" id=\''+$(this).parent().find('.property_label a').attr('property')+'\'/></div></div></li>';
 
 				var parent = $(this).parent().parent().find('.editable').last().parent().parent();
 
@@ -180,8 +178,10 @@
 			      	//var values = $(this).parent().parent().find(':input').map(function(){return this.value}).toArray();
 							if(original != "" && value.trim() == ""){
 								if(confirm("Are you sure you want to delete this property value?")){
+ 								  $('#loading').show();
 									$.post("/resources/update_property",{id: '<%= @resource.uri %>', property: $(this).find(':input').attr('id') , value: value, original: original},function(txt){
-											$('.properties').html(txt);
+											$('#loading').hide();
+											$('.properties').html(txt); 										  
 								 	});
 								}
 								else{
@@ -190,7 +190,9 @@
 
 							}
 							else if(value.trim() != ""){
+								$('#loading').show();
 								$.post("/resources/update_property",{id: '<%= @resource.uri %>', property: $(this).find(':input').attr('id') , value: value, original: original},function(txt){
+										$('#loading').hide();
 										$('.properties').html(txt);
 							 	});
 							}
