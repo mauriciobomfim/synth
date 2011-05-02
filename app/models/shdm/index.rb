@@ -11,8 +11,10 @@ class SHDM::Index
   property SHDM::index_name
   property SHDM::index_title, 'rdfs:subPropertyOf' => RDFS::label
   property SHDM::index_attributes, 'rdfs:range' => SHDM::NavigationAttribute #TODO: change the name to navigation_attributes and subproperties
-	property SHDM::computed_attributes, 'rdfs:range' => SHDM::ComputedNavigationAttribute, 'rdfs:subPropertyOf' => SHDM::index_attributes
-	property SHDM::index_anchor_attributes, 'rdfs:range' => SHDM::IndexAnchorNavigationAttribute, 'rdfs:subPropertyOf' => SHDM::index_attributes
+  
+  property SHDM::index_index_attributes, 'rdfs:range'    => SHDM::IndexNavigationAttribute, 'rdfs:subPropertyOf' => SHDM::index_attributes	
+	property SHDM::computed_attributes, 'rdfs:range'       => SHDM::ComputedNavigationAttribute, 'rdfs:subPropertyOf' => SHDM::index_attributes
+	property SHDM::index_anchor_attributes, 'rdfs:range'   => SHDM::IndexAnchorNavigationAttribute, 'rdfs:subPropertyOf' => SHDM::index_attributes
   property SHDM::context_anchor_attributes, 'rdfs:range' => SHDM::ContextAnchorNavigationAttribute, 'rdfs:subPropertyOf' => SHDM::index_attributes
 
   before_destroy :remove_dependents
