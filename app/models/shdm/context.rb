@@ -102,7 +102,7 @@ class SHDM::Context
         unless label.nil? || label.to_a.empty?
           label
         else
-          self.uri
+          self.compact_uri
         end
       "
       # Runtime representation of an Index. It should not be an instance of RDFS::Resource, so I'm using an OpenStruct object. 
