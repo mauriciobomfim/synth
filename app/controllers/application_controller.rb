@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
         end
         new_children << child_c
      end
-     render :text => new_children.to_jqgrid_json(attributes, 1, total_entries + 1, total_entries)    
+     render :text => new_children.to_jqgrid_json(attributes, 1, total_entries + 1, total_entries).gsub("\n", "\\n")
    end
 
    def jqgrid_children_post_data(children_class, children_attribute=nil)
