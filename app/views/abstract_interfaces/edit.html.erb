@@ -12,7 +12,7 @@
 	
 	<input type=radio id=generic_opt name=interface[type] value="SWUI::AbstractInterface" 
 	onclick="toggle_areas('generic_interface', 'context_interface', 'index_interface');toggle_widget_description();">
-	Generic Interface <span class="hint">(Interface not related to any class, context or index, such as for transition interfaces and forms)</span><br>
+	Generic Interface <span class="hint">(Interface not related to any class, context or index<!--, such as for transition interfaces and forms) --></span><br>
 
 	<input type=radio id=context_opt name=interface[type] value="SWUI::ContextInterface" 
 	onclick="toggle_areas('context_interface', 'generic_interface', 'index_interface');toggle_widget_description();">
@@ -34,13 +34,13 @@
 		<p>
 		<select name="interface[context_id]">
 		<option value="">Any</option>
-		<%= options_from_collection_for_select @contexts, "uri", "context_name", (@interface.context.empty? ? nil : @interface.context.first.uri) %>
+		<%= options_from_collection_for_select @contexts, "uri", "context_name", ((@interface.context.nil? || @interface.context.empty?) ? nil : @interface.context.first.uri) %>
 		</select></p>
 		<label>Class</label>
 		<p>
 		<select name="interface[class_id]">
 		<option value="">Any</option>
-		<%= options_from_collection_for_select @classes, "uri", "compact_uri", (@interface.domain_class.empty? ? nil : @interface.domain_class.first.uri) %>
+		<%= options_from_collection_for_select @classes, "uri", "compact_uri", ((@interface.domain_class.nil? || @interface.domain_class.empty?) ? nil : @interface.domain_class.first.uri) %>
 		</select></p>
 	</div>
 
@@ -49,7 +49,7 @@
 		<p>
 		<select name="interface[index_id]">
 		<option value="">Any</option>
-		<%= options_from_collection_for_select @indices, "uri", "index_name", (@interface.index.empty? ? nil : @interface.index.first.uri) %>
+		<%= options_from_collection_for_select @indices, "uri", "index_name", ((@interface.index.nil? || @interface.index.empty?) ? nil : @interface.index.first.uri) %>
 		</select></p>
 	</div>
 
@@ -61,7 +61,7 @@
 		<%= f.radio_button :widget_decription_type, :concrete, { :onclick => "toggle_widget_description();" } %> Concrete
 	</p>
 	<p>
-		<%= f.text_area :abstract_spec, :rows => 20, :cols => 100 %>
+		<%= f.text_area :abstract_spec, :rows => 5, :cols => 80 %>
 	</p>
 
 
@@ -69,7 +69,7 @@
 	
 	<%= f.label :Rethorical_description %><br />
 	<p>
-		<%= f.text_area :rhet_spec, :rows => 15, :cols => 100 %>
+		<%= f.text_area :rhet_spec, :rows => 5, :cols => 80 %>
 	</p>
 	</div>
 
