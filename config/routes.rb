@@ -3,8 +3,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :applications
   map.resources :operations
   map.resources :contexts
-  map.resources :indexes, :collection => { :navigation_attribute_index_parameters => :get, :navigation_attribute_index_parameters_post_data => :get,
-                                           :navigation_attribute_context_parameters => :get, :navigation_attribute_context_parameters_post_data => :get }
+  map.resources :indexes, :collection => { :navigation_attribute_index_parameters                 => :get, 
+                                           :navigation_attribute_index_parameters_post_data       => :get,
+                                           :navigation_attribute_context_parameters               => :get, 
+                                           :navigation_attribute_context_parameters_post_data     => :get,
+                                           :index_navigation_attribute_index_parameters           => :get,
+                                           :index_navigation_attribute_index_parameters_post_data => :get                                           
+                                         }
 
 
   map.resources :landmarks
@@ -13,9 +18,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :effects
   map.resources :concrete_widgets
   map.resources :concrete_interfaces
-  map.resources :in_context_classes, :collection => { :navigation_attribute_index_parameters => :get, :navigation_attribute_index_parameters_post_data => :get,
-                                          :navigation_attribute_context_parameters => :get, :navigation_attribute_context_parameters_post_data => :get,
-                                          :index_navigation_attribute_index_parameters => :get, :index_navigation_attribute_index_parameters_post_data => :get
+  map.resources :in_context_classes, :collection => { :navigation_attribute_index_parameters                 => :get, 
+                                                      :navigation_attribute_index_parameters_post_data       => :get,
+                                                      :navigation_attribute_context_parameters               => :get,
+                                                      :navigation_attribute_context_parameters_post_data     => :get,
+                                                      :index_navigation_attribute_index_parameters           => :get,
+                                                      :index_navigation_attribute_index_parameters_post_data => :get
                                         }
   map.resources :resources, :requirements => { :id => /.*/ }, :collection => { :search => :get }
   map.resources :classes,   :requirements => { :id => /.*/ }
