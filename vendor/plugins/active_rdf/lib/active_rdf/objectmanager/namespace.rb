@@ -160,6 +160,7 @@ module ActiveRDF
     Namespace.register(:owl, 'http://www.w3.org/2002/07/owl#')
     Namespace.register(:dc, 'http://purl.org/dc/elements/1.1/')
     Namespace.register(:dcterms, 'http://purl.org/dc/terms/')
+    Namespace.register :xsd, 'http://www.w3.org/2001/XMLSchema#'
   end
   
   Namespace.load_defaults
