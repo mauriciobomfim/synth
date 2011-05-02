@@ -9,14 +9,14 @@ for arg in args do
   options[arg.first] = arg.last
 end
 
-model  = options['model']
-format = options['format'].nil? ? :rdfxml : options['format'].to_sym
+model   = options['model']
+format  = options['format'].nil? ? 'rdfxml' : options['format']
 
 unless File.exists?("applications/#{model}")
   raise "There is no '#{model}' application here. Check if the name is correct."
 end
 
-unless [:rdfxml, :n3, :ntriples, :turtle].include?(format)
+unless ['rdfxml', 'n3', 'ntriples', 'turtle'].include?(format)
   raise "'#{format.to_s}' format is not valid"
 end
 
@@ -31,11 +31,13 @@ end
 
 require 'active_rdf'
 
+context = options['context'].nil? ? nil : RDFS::Resource.new(options['context'])
+
 app    = Application.find(model)
 app.start
 
 puts "Importing..."
 
-app.db.load("file:#{file}", :format => format, :into => :default_model)
+app.db.load("#{file}", format, context)
 
 puts "Finished."
