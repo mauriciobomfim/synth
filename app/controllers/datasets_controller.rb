@@ -1,7 +1,7 @@
 class DatasetsController < ApplicationController
   
   def index
-    @datasets = VOID::Dataset.find_all
+    @datasets = VOID::Dataset.alpha(DCTERMS::title) || []
   end
     
   # GET /datasets/1
