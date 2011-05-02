@@ -1,6 +1,13 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+  def controller_label
+    { 
+      'abstract_interfaces' => 'Interfaces',
+      'concrete_interfaces' => 'Style Sheets'
+    }
+  end
+  
   def tab_hash
     tab_hash = {}
     for index, value in tab_index_hash do
@@ -42,7 +49,14 @@ module ApplicationHelper
 
   def include(interface_name)
     interface = SWUI::Interface.find_by.interface_name(interface_name).execute.first
-    @controller.send(:render_to_string, :inline => interface.abstract_spec.first)
+
+    unless interface.nil?
+      @controller.send(:render_to_string, :inline => interface.abstract_spec.first)
+    else
+      "'#{interface_name}' included interface does not exist."
+    end
+    
+    #@controller.send(:render_to_string, :inline => get_interface_spec(interface_name))
   end
   
 end
