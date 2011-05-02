@@ -115,6 +115,13 @@ class RDFS::Resource
   
   attr_reader :datasets
   
+  def self.subclasses
+    subclasses = ActiveRDF::Query.new.distinct(:s).where(:s, RDFS::subClassOf, self).execute.to_a
+    subclasses.delete(self)
+    subclasses.collect{|type_res| ActiveRDF::ObjectManager.construct_class(type_res)}
+  end  
+  
+  
   def update_attributes(options)
     
     #before callback
