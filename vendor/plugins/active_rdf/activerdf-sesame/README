@@ -1,0 +1,33 @@
+The Sesame2 adapter for ActiveRDF connects ActiveRDF with the Sesame2 RDF store. 
+
+== Benefits and disadvantages
+Using Sesame2 through this adapter has the following benefits :
+ * Good performance, because java code is used for all communication
+ * Support for RDF Schema inferencing
+ * Support for quads/named graphs (as soon as I get around to implementing them in the adapter)
+
+The disadvantages currently are:
+ * Requires installation of jruby and manual setting of the Java CLASSPATH
+ * No OWL inferencing (but on other ActiveRDF adapter currently has this anyway)
+ * No support for a database backend (Sesame2 uses its own native storage 
+ interanlly, which is recommended anyway)
+
+The adapter uses Sesame 2 Alpha 4, which is distributed as a jar inside this gem. 
+
+== License
+The adapter is distributed under LGPL, the Sesame2 jar is under the Aduna 
+license. See LICENSE for more information.
+
+== Installation
+For installation instructions visit: http://wiki.activerdf.org/ActiveRDF_and_RoR_and_Sesame
+
+== More info
+For more information about ActiveRDF visit: 
+* http://www.activerdf.org/
+* http://wiki.activerdf.org/ActiveRDF
+
+For more information about Sesame 2, visit:
+* http://www.openrdf.org/
+
+== Athors
+* Benjamin Heitmann <benjamin.heitmann@deri.org>
