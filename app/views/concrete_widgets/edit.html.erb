@@ -36,7 +36,7 @@
 	<div id=ajax_control style="display:none">
 		<label>HTML Code for the control</label>
 		<p>
-			<%= f.text_area :htmlCode, :cols => 80, :rows => 5 %>
+			<%= f.text_area :htmlCode, :cols => 70, :rows => 5 %>
 		</p>
 
 		<label>Javascript Code for the control</label>
@@ -45,13 +45,14 @@
 			swui_id => Runtime rich control widget's id
 		</span>
 		<p>
-			<%= f.text_area :jsCode, :cols => 80, :rows => 10 %>
+			<%= f.text_area :jsCode, :cols => 70, :rows => 10 %>
 		</p>
 		<span class="hint">
 			<p>
 			To refer to widgets from the Javascript code:<br/>
 			swui_getRunTimeRef(String template_id, String swui_id) <br/>
-			template_id => Design time widget's id <br/> (When template_id is undefined, function returns the reference to the widget that binds the Control to the Model)
+			template_id => Design time widget's id <br/> (When template_id is undefined, function returns 
+			<br/>the reference to the widget that binds the Control to the Model)
 			</p>
 			<p>
 			To get the Model attribute value from the Javascript code:<br/>
@@ -65,13 +66,13 @@
 
 		<label>Internal CSS Style Sheet</label>
 		<p>
-			<%= f.text_area :cssCode, :cols => 80, :rows => 5 %>		
+			<%= f.text_area :cssCode, :cols => 70, :rows => 5 %>		
 		</p>
 
 		<label>Dependencies </label>
 		<span class="hint">Links to external scripts and style sheets</span>
 		<p>
-			<%= f.text_area :dependencies, :cols => 80, :rows => 5 %>
+			<%= f.text_area :dependencies, :cols => 70, :rows => 5 %>
 		</p>
 
 	</div>

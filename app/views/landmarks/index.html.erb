@@ -13,7 +13,7 @@
 		<td><%=h ActiveRDF::Namespace.localname(landmark.landmark_navigation_attribute.first.classes.first).gsub('NavigationAttribute','').titleize %></td>
     <td align="right">
  			<%= link_to 'Edit', :action => "edit", :id => landmark %>
-	   	<%= link_to 'Destroy', { :action => "destroy", :id => landmark }, :confirm => 'Are you sure?', :method => :delete %>
+	   	<%= link_to 'Remove', { :action => "destroy", :id => landmark }, :confirm => 'Are you sure?', :method => :delete %>
  		</td>
   </tr>
 <% end %>
@@ -21,4 +21,4 @@
 
 <br />
 
-<%= link_to 'New landmark', new_landmark_path %>
+<%= link_to 'Add landmark', new_landmark_path %>

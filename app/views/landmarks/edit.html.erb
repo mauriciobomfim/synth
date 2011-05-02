@@ -1,4 +1,4 @@
-<h1>Editing landmark</h1>
+<h1>Edit landmark</h1>
 
 <% form_for :landmark, :url => { :action => "update" }, :html => { :class => 'form' } do |f| %>
   <%= f.error_messages %>
@@ -29,7 +29,10 @@
 			<%= select_tag 'navigation_attribute[index_anchor_navigation_attribute_target_index]',
 											options_for_select(@indexes, @navigation_attribute.index_anchor_navigation_attribute_target_index.first.uri) %>
 		</p>
-		
+		<p>
+	    <%= f.submit 'Save' %>
+	  </p>
+	  
 		<%=jqgrid("Target Index Parameters", "target_index_parameters", "/landmarks/target_index_parameters/#{CGI::escape(@navigation_attribute.uri)}",
 			[			
 				{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -55,6 +58,9 @@
 			<%= text_field_tag 'navigation_attribute[context_anchor_navigation_attribute_target_node_expression]', 
 													@navigation_attribute.context_anchor_navigation_attribute_target_node_expression.first, :size => 30 %>
 		</p>
+	  <p>
+	    <%= f.submit 'Save' %>
+	  </p>
 
 		<%=jqgrid("Target Context Parameters", "target_context_parameters", "/landmarks/target_context_parameters/#{CGI::escape(@navigation_attribute.uri)}",
 			[			
@@ -67,9 +73,6 @@
 		)%>
 	<% end %>
 	
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
 <% end %>
 <br/>
 <%= link_to 'Back', landmarks_path %>

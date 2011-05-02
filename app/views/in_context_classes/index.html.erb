@@ -12,7 +12,7 @@
     <td><%=h in_context_class.in_context_class_context.first.context_name %></td>
     <td align="right">
 			<%= link_to 'Edit', :action => "edit", :id => in_context_class %>
-    	<%= link_to 'Destroy', { :action => "destroy", :id => in_context_class }, :confirm => 'Are you sure?', :method => :delete %>
+    	<%= link_to 'Remove', { :action => "destroy", :id => in_context_class }, :confirm => 'Are you sure?', :method => :delete %>
 	</td>
   </tr>
 <% end %>
@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New in context class', new_in_context_class_path %>
+<%= link_to 'Add in context class', new_in_context_class_path %>

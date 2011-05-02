@@ -11,7 +11,7 @@
 		<td><%=h application.active? %></td>
     <td align="right">
 			<%= link_to 'Activate', { :action => "activate", :id => application.name }, :confirm => 'Are you sure?', :method => :post %>
-    	<%= link_to 'Destroy', { :action => "destroy", :id => application.name }, :confirm => 'Are you sure?', :method => :delete %>
+    	<%= link_to 'Remove', { :action => "destroy", :id => application.name }, :confirm => 'Are you sure?', :method => :delete %>
 		</td>
   </tr>
 <% end %>

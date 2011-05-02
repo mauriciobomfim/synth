@@ -94,7 +94,7 @@
 		<div id="vertical_tabs">		
 			<ul>
 				<% for controller in tab_index_hash[tab_hash[controller_name]] %>
-		        	<li><a href="<%= vertical_tab_url_for(controller) %>"><span><%= controller.titleize %></span></a></li>
+		        	<li><a href="<%= vertical_tab_url_for(controller) %>"><span><%= controller_label[controller] or controller.titleize %></span></a></li>
 				<% end %>
 		    </ul>
 		

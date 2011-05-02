@@ -9,15 +9,15 @@
   </p>
 
 	<%= f.label 'Javascript Code for the effect' %>
-	Function prototype: void swui_Effect_<effectName> (String widgetA, String widgetB, String parameters) 	
+	Function prototype: void swui_Effect_<effectName> <br/>(String widgetA, String widgetB, String parameters) 	
 	<p>
-    <%= f.text_area :effect_jsCode, :cols => 100, :rows => 15 %>
+    <%= f.text_area :effect_jsCode, :cols => 80, :rows => 15 %>
   </p>
 
 	<%= f.label :dependencies %>
 	Links to external scripts
 	<p>
-    <%= f.text_area :effect_dependencies, :cols => 100, :rows => 10 %>
+    <%= f.text_area :effect_dependencies, :cols => 80, :rows => 10 %>
   </p>
 	
   <p>

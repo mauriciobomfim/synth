@@ -11,7 +11,7 @@
 		<td><%=h dataset.void::sparqlEndpoint.first %></td>
     <td align="right">
 		<%= link_to 'Edit', :action => "edit", :id => dataset %>
-    <%= link_to 'Destroy', { :action => "destroy", :id => dataset }, :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to 'Remove', { :action => "destroy", :id => dataset }, :confirm => 'Are you sure?', :method => :delete %>
 	</td>
   </tr>
 <% end %>
@@ -19,4 +19,4 @@
 
 <br />
 
-<%= link_to 'New dataset', new_dataset_path %>
+<%= link_to 'Add dataset', new_dataset_path %>

@@ -1,4 +1,4 @@
-<h1>Editing operation</h1>
+<h1>Edit operation</h1>
 
 <% form_for :operation, :url => { :action => "update" } do |f| %>
   <%= f.error_messages %>
@@ -16,7 +16,7 @@
     <%= f.text_area :operation_code , :rows => 15, :cols => 71 %>
   </p>  
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Save' %>
   </p>
 <% end %>
 

@@ -11,7 +11,7 @@
     <td><%=h operation.operation_type.first %></td>
     <td align="right">
 		<%= link_to 'Edit', :action => "edit", :id => operation %>
-    	<%= link_to 'Destroy', { :action => "destroy", :id => operation }, :confirm => 'Are you sure?', :method => :delete %>
+    	<%= link_to 'Remove', { :action => "destroy", :id => operation }, :confirm => 'Are you sure?', :method => :delete %>
 	</td>
   </tr>
 <% end %>
@@ -19,4 +19,4 @@
 
 <br />
 
-<%= link_to 'New operation', new_operation_path %>
+<%= link_to 'Add operation', new_operation_path %>

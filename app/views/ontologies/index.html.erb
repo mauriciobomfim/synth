@@ -17,7 +17,7 @@
     <td><%=h ontology::symph.ontology_active %></td>
     <td align="right">
 		<%= link_to 'Edit', :action => "edit", :id => ontology %>
-    <%= link_to 'Destroy', { :action => "destroy", :id => ontology }, :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to 'Remove', { :action => "destroy", :id => ontology }, :confirm => 'Are you sure?', :method => :delete %>
 	</td>
   </tr>
 <% end %>
@@ -25,4 +25,4 @@
 
 <br />
 
-<%= link_to 'New ontology', :action => :new %>
+<%= link_to 'Add ontology', :action => :new %>

@@ -1,4 +1,4 @@
-<h1>Editing context</h1>
+<h1>Edit context</h1>
 
 <% form_for :context, :url => { :action => "update" } do |f| %>
   <%= f.error_messages %>
@@ -14,11 +14,11 @@
   </p>
   <p>
     <%= f.label :query %><br />
-    <%= f.text_area :context_query, :rows => 15, :cols => 71 %>
+    <%= f.text_area :context_query, :rows => 5, :cols => 45 %>
   </p>
 
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Save' %>
   </p>
 <% end %>
 
@@ -27,9 +27,19 @@
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
 		{ :field => "context_parameter_name", :label => "Name", :editable => true, :width => 360, :align => 'center' }
 	],
-	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => 'false', :height => 100,
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => 'false', :height => 50,
 	  :edit_url => "/contexts/context_parameters_post_data?parent=#{CGI::escape(@context.uri)}" }
 )%>
-
+<br/>
+<%=jqgrid("Pre Conditions", "pre_conditions", "/contexts/pre_conditions/#{CGI::escape(@context.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "pre_condition_name", :label => "Name", :editable => true, :width => 220, :align => 'center' },
+		{ :field => "pre_condition_expression", :label => "Expression",	:editable => true, :width => 220, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+		{ :field => "pre_condition_failure_handling", :label => "Failure handling",	:editable => true, :width => 220, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
+	],
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @context.context_pre_conditions.to_a.empty? ? 'true' : 'false',:height => 100,
+	  :edit_url => "/contexts/pre_conditions_post_data?parent=#{CGI::escape(@context.uri)}" }
+)%>
 <br/>
 <%= link_to 'Back', contexts_path %>

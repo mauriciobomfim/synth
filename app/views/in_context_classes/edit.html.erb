@@ -22,21 +22,50 @@
   </p>
 
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Save' %>
   </p>
+
 <% end %>
 
+<%=jqgrid("Index Attributes", "index_attributes", "/in_context_classes/index_attributes/#{CGI::escape(@in_context_class.uri)}",
+	[
+		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 350, :align => 'center' },
+		{ :field => "index_navigation_attribute_index", :label => "Index", :editable => true, :width => 350 ,:edittype => "select",
+		  :editoptions => { :value => SHDM::Index.find_all.map{|v| [CGI::escape(v.uri), v.index_name.first]} } }
+	],
+	{ 
+	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_index_attributes.to_a.empty? ? 'true' : 'false', :height => 70,
+	  :edit_url => "/in_context_classes/index_attributes_post_data?parent=#{CGI::escape(@in_context_class.uri)}",
+		:subgrid => { 
+					
+					:url => "/in_context_classes/index_navigation_attribute_index_parameters",
+					:columns => [
+						{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
+						{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
+				    ],
+					:add => true, 
+					:edit => true, 
+					:delete => true, 
+					:search => false, 
+					:inline_edit => true,
+					:edit_url => "/in_context_classes/index_navigation_attribute_index_parameters_post_data"
+		}
+	}
+)%>
+<br />
 <%=jqgrid("Context Anchor Attributes", "context_anchor_attributes", "/in_context_classes/context_anchor_attributes/#{CGI::escape(@in_context_class.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 200, :align => 'center' },
-		{ :field => "context_anchor_navigation_attribute_label_expression", :label => "Label expression", :editable => true, :width => 200, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
-		{ :field => "context_anchor_navigation_attribute_target_context", :label => "Target context", :editable => true, :width => 200 ,:edittype => "select",
+		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 100, :align => 'center' },
+		{ :field => "context_anchor_navigation_attribute_label_expression", :label => "Label expression", :editable => true, :width => 300, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+		{ :field => "context_anchor_navigation_attribute_target_context", :label => "Target context", :editable => true, :width => 100 ,:edittype => "select",
 		  :editoptions => { :value => SHDM::Context.find_all.map{|v| [CGI::escape(v.uri), v.context_name.first]} } },
   	{ :field => "context_anchor_navigation_attribute_target_node_expression", :label => "Target node expression", :editable => true, :width => 200, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
 	],
 	{ 
-	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_context_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 100,
+	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_context_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
 	  :edit_url => "/in_context_classes/context_anchor_attributes_post_data?parent=#{CGI::escape(@in_context_class.uri)}",
 		:subgrid => { 
 					
@@ -60,12 +89,12 @@
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
 		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 200, :align => 'center' },
-		{ :field => "index_anchor_navigation_attribute_label_expression", :label => "Label expression", :editable => true, :width => 200, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
+		{ :field => "index_anchor_navigation_attribute_label_expression", :label => "Label expression", :editable => true, :width => 300, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
 		{ :field => "index_anchor_navigation_attribute_target_index", :label => "Target index", :editable => true, :width => 200 ,:edittype => "select",
 		  :editoptions => { :value => SHDM::Index.find_all.map{|v| [CGI::escape(v.uri), v.index_name.first]} } }
 	],
 	{ 
-	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_index_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 100,
+	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_index_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
 	  :edit_url => "/in_context_classes/index_anchor_attributes_post_data?parent=#{CGI::escape(@in_context_class.uri)}",
 	  :subgrid => { 
 
@@ -88,39 +117,12 @@
 <%=jqgrid("Computed Attributes", "computed_attributes", "/in_context_classes/computed_attributes/#{CGI::escape(@in_context_class.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 250, :align => 'center' },
-		{ :field => "computed_navigation_attribute_value_expression", :label => "Value expression", :editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
+		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 220, :align => 'center' },
+		{ :field => "computed_navigation_attribute_value_expression", :label => "Value expression", :editable => true, :width => 500, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
 	],
-	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_computed_attributes.to_a.empty? ? 'true' : 'false', :height => 100,
+	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_computed_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
 	  :edit_url => "/in_context_classes/computed_attributes_post_data?parent=#{CGI::escape(@in_context_class.uri)}" }
 )%>
-<br />
-<%=jqgrid("Index Attributes", "index_attributes", "/in_context_classes/index_attributes/#{CGI::escape(@in_context_class.uri)}",
-	[
-		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 200, :align => 'center' },
-		{ :field => "index_navigation_attribute_index", :label => "Index", :editable => true, :width => 200 ,:edittype => "select",
-		  :editoptions => { :value => SHDM::Index.find_all.map{|v| [CGI::escape(v.uri), v.index_name.first]} } }
-	],
-	{ 
-	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_index_attributes.to_a.empty? ? 'true' : 'false', :height => 100,
-	  :edit_url => "/in_context_classes/index_attributes_post_data?parent=#{CGI::escape(@in_context_class.uri)}",
-		:subgrid => { 
-					
-					:url => "/in_context_classes/index_navigation_attribute_index_parameters",
-					:columns => [
-						{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
-						{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
-				    ],
-					:add => true, 
-					:edit => true, 
-					:delete => true, 
-					:search => false, 
-					:inline_edit => true,
-					:edit_url => "/in_context_classes/index_navigation_attribute_index_parameters_post_data"
-		}
-	}
-)%>
+
 <br/>
 <%= link_to 'Back', in_context_classes_path %>
