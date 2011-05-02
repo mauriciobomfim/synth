@@ -5,7 +5,7 @@ class ContextsController < ApplicationController
   # GET /contexts
   # GET /contexts.xml
   def index
-    @contexts = SHDM::Context.find_all
+    @contexts = SHDM::Context.alpha
     @contexts.delete(SHDM::anyContext)
   end
 
@@ -86,6 +86,14 @@ class ContextsController < ApplicationController
   
   def context_parameters_post_data
     jqgrid_children_post_data(SHDM::ContextParameter, 'context_parameters')
+  end
+  
+  def pre_conditions
+    jqgrid_children_index('context_pre_conditions', [:id, :pre_condition_name, :pre_condition_expression, :pre_condition_failure_handling])
+  end
+  
+  def pre_conditions_post_data
+    jqgrid_children_post_data(SHDM::PreCondition, 'context_pre_conditions')
   end
   
 end
