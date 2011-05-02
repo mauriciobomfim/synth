@@ -21,6 +21,16 @@ module ActiveRDF
       # TODO: allow addition of full graphs
       raise ActiveRdfError, "cannot write without a write-adapter" unless ConnectionPool.write_adapter
       ConnectionPool.write_adapter.add(s,p,o)
+      self.invalidates_cache
+      $page_cache.clear unless $page_cache.nil?
+    end
+    
+    # deletes all triples from datastore
+    # * context => context (optional)
+    def FederationManager.clear(context = nil)
+      ConnectionPool.write_adapter.clear(context)
+      self.invalidates_cache
+      $page_cache.clear unless $page_cache.nil?
     end
     
     def FederationManager.set_namespace(prefix, uri)
@@ -50,6 +60,8 @@ module ActiveRDF
       o = nil if o.is_a? Symbol
 
       ConnectionPool.write_adapter.delete(s,p,o)
+      self.invalidates_cache
+      $page_cache.clear unless $page_cache.nil?      
     end
 
     # executes read-only queries
@@ -120,6 +132,7 @@ module ActiveRDF
           end
         end
       end
+      results.compact! #Added here to avoid nil results errors
       @@query_cache[q.to_s.hash] = results if $ENABLE_QUERY_CACHING
       results
     end
