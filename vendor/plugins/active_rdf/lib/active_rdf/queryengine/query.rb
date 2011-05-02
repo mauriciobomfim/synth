@@ -10,8 +10,16 @@ module ActiveRDF
     attr_reader :select_clauses, :where_clauses, :filter_clauses, :sort_clauses, :limits, :offsets, :keywords
 
     bool_accessor :distinct, :ask, :select, :count, :keyword, :all_types
+    
+    attr_accessor :resource_class
+    
+    def datasets(*datasets)
+      @on_datasets.concat(datasets).uniq!
+      self
+    end
 
-    def initialize
+    def initialize(resource_type = RDFS::Resource)
+      @on_datasets = []
       @distinct = false
       @select_clauses = []
       @where_clauses = []
@@ -23,8 +31,9 @@ module ActiveRDF
       @reasoning = nil
       @all_types = false
       @nil_clause_idx = -1
+      @resource_class = resource_type
     end
-
+    
     def initialize_copy(orig)
       # dup the instance variables so we're not messing with the original query's values
       instance_variables.each do |iv|
