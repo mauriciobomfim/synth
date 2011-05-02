@@ -23,7 +23,7 @@
 <div class="properties">
    <table class="hor-zebra">
 	  <tr>
-	    <th colspan="2">New resource</th>			
+	    <th colspan="3">New resource</th>			
 	  </tr>
 		<tr><td width="10%">
 			uri
@@ -33,8 +33,8 @@
 			<%= f.label :namespace %>
 			<%= f.select :namespace, options_for_select(@namespaces, 'http://base#'), { :include_blank => true} %>
 				<%= f.text_field :id, :value => "http://base#", :style => "width: 500px;" %>
-			<% end %>
-		</td></tr>
+		</td><td valign="bottom"><%= f.submit "Create" %></td></tr>
+					<% end %>
 	</table>
 </div>
 
