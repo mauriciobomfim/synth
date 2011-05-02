@@ -80,6 +80,7 @@ class JenaAdapter < ActiveRDF::ActiveRdfAdapter
     
     dbparams = params[:database]
     tdb = params[:tdb]
+    owlim = params[:owlim]
     
     self.ontology_type = params[:ontology]
     self.reasoner = params[:reasoner]
@@ -118,6 +119,19 @@ class JenaAdapter < ActiveRDF::ActiveRdfAdapter
     if tdb
       self.base_model = Java::ComHpHplJenaTDB::TDBFactory.createModel("#{tdb}/#{self.model_name}")
       self.model_maker = Jena::Model::ModelFactory.createMemModelMaker
+    elsif owlim
+      schema = Java::ComOntotextTrree::OwlimSchemaRepository.new()
+      schema.setParameter("storage-folder", owlim)
+      schema.setParameter("repository-type", "file-repository")
+      schema.setParameter("ruleset", "owl-max-optimized")
+      repository = Java::OrgOpenrdfRepositorySail::SailRepository.new(schema)
+      repository.init()
+      connection = repository.getConnection()
+      dataset = Java::ComOntotextJena::SesameDataset.new(connection)
+      graph_model = Jena::Model::ModelFactory.createModelForGraph(dataset.getDefaultGraph())
+      #TENTAR INVERTER, criar o model synth.owl com submodel do owlim
+    
+      self.base_model = Jena::Model::ModelFactory.createOntologyModel(Jena::Ontology::OntModelSpec::RDFS_MEM, graph_model)
     else      
       if dbparams
         if dbparams[:datasource]
@@ -249,7 +263,7 @@ class JenaAdapter < ActiveRDF::ActiveRdfAdapter
     # no-op
   end
 
-  def add_ontology(name, uri, format=:rdfxml)
+  def add_ontology(name, file, format=:rdfxml)
     
     jena_format = case format.to_sym
     when :rdfxml
@@ -260,13 +274,15 @@ class JenaAdapter < ActiveRDF::ActiveRdfAdapter
       "N3"
     end
     begin
-      submodel = Jena::Model::ModelFactory.createDefaultModel.read(uri, jena_format)    
+      submodel = Jena::Model::ModelFactory.createDefaultModel.read('file:'+file, jena_format)    
       @ontologies[name] = submodel
       self.model.addSubModel(submodel)
       self.load_namespaces
       ActiveRDF::FederationManager.invalidates_cache
       $page_cache.clear unless $page_cache.nil?
-    rescue
+    rescue => ex
+      puts "ERROR"
+      puts ex
       false
     end
 
