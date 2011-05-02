@@ -1,4 +1,5 @@
 ActiveRDF::Namespace.register(:symph, "http://symph#")
+ActiveRDF::Namespace.register(:synth, "http://synth#")
 
 SYMPH::Ontology
 
