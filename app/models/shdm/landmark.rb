@@ -7,9 +7,9 @@ class SHDM::Landmark
   property SHDM::landmark_navigation_attribute
 
   def attribute
-    @attribute ||= NodeAttributeFactory.create(landmark_navigation_attribute.first, {})
+    @attribute ||= NodeAttributeFactory.create(landmark_navigation_attribute.first, self)
   end
-    
+  
   def label
     attribute.label
   end
