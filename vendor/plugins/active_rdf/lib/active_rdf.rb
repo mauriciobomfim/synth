@@ -59,7 +59,7 @@ if Gem::cache.find_name('activerdf').empty?
   # we are not running as a gem
   $activerdflog.info 'ActiveRDF is NOT installed as a Gem'
   if RUBY_PLATFORM =~ /java/
-    load_adapter this_dir + '/../activerdf-jena/lib/activerdf_jena/init'
+    #load_adapter this_dir + '/../activerdf-jena/lib/activerdf_jena/init'
     load_adapter this_dir + '/../activerdf-sparql/lib/activerdf_sparql/sparql'
     load_adapter this_dir + '/../activerdf-sesame/lib/activerdf_sesame/init'
   else
