@@ -24,17 +24,17 @@ module SwuiController
     end
     
   end
-
-  def render_context(navContext, current_node=nil)
+  
+  def render_context(navContext, current_node=nil, interface_name=nil)
 
     current_node = current_node
     
     init = Time.now
     interface = nil
-    interfaceName = params['swuiInterface'] 
+    interfaceName = interface_name || params['swuiInterface'] 
 
     unless interfaceName.nil? || interfaceName.empty?
-      interface = SWUI::ContextInterface.find_by.interface_name(interfaceName).execute.first rescue nil
+      interface = SWUI::ContextInterface.find_by.swui::interface_name(interfaceName).execute.first rescue nil
     end
 
     if interface.nil? then
@@ -43,7 +43,7 @@ module SwuiController
           interface ||= SWUI::ContextInterface.find_by.swui::domain_class(current_node.classes.first).execute.first
         end
         interface ||= SWUI::ContextInterface.find_by.swui::context(navContext.context).execute.first
-        interface ||= SWUI::ContextInterface.find_by.interface_name("DefaultContextInterface").execute.first
+        interface ||= SWUI::ContextInterface.find_by.swui::interface_name("DefaultContextInterface").execute.first
     end
     
     if interface.nil? then
@@ -61,15 +61,15 @@ module SwuiController
     end
   end
   
-  def render_index(navIndex) 
+  def render_index(navIndex, interface_name=nil) 
 
     interface = nil
-    interfaceName = params['swuiInterface'] 
+    interfaceName = interface_name || params['swuiInterface'] 
     unless interfaceName.nil? || interfaceName.empty?
       interface = SWUI::IndexInterface.find_by.swui::interface_name(interfaceName).execute.first  rescue nil
     end
     interface ||= SWUI::IndexInterface.find_by.swui::index(navIndex.index).execute.first
-    interface ||= SWUI::IndexInterface.find_by.interface_name("DefaultIndexInterface").execute.first
+    interface ||= SWUI::IndexInterface.find_by.swui::interface_name("DefaultIndexInterface").execute.first
 
     if interface.nil? then
         return "Interface #{interfaceName} not found."
@@ -77,7 +77,7 @@ module SwuiController
       if interface.widget_decription_type.first == "concrete"
         render_to_string :inline => interface.abstract_spec.first
       else
-        interfaceName = interface.interface_name.first if interfaceName.nil?
+        interfaceName = interface.swui::interface_name.first if interfaceName.nil?
         landmarks = SHDM::Landmark.alpha(SHDM::landmark_position)
         idxData = formatJSONIndexData(navIndex.entries, landmarks)
         return render_data(idxData, interfaceName, interface)
@@ -90,12 +90,12 @@ module SwuiController
     defaultInterface = interfaceName
     interfaceName = params['swuiInterface']
     unless interfaceName.nil?||interfaceName.empty?
-      interface = SWUI::AbstractInterface.find_by.interface_name(interfaceName).execute.first  rescue nil
+      interface = SWUI::AbstractInterface.find_by.swui::interface_name(interfaceName).execute.first  rescue nil
     end
       
     if  interface.nil? then
-        interface = SWUI::AbstractInterface.find_by.interface_name(defaultInterface).execute.first rescue nil
-        interface = SWUI::AbstractInterface.find_by.interface_name("DefaultAbstractInterface").execute.first if interface.nil?
+        interface = SWUI::AbstractInterface.find_by.swui::interface_name(defaultInterface).execute.first rescue nil
+        interface = SWUI::AbstractInterface.find_by.swui::interface_name("DefaultAbstractInterface").execute.first if interface.nil?
     end
 
     if interface.nil? then
@@ -118,7 +118,7 @@ module SwuiController
         return data
       else
         puts 'antes find_by'
-        interface = SWUI::AbstractInterface.find_by.interface_name(interfaceName).execute.first if interface.nil?
+        interface = SWUI::AbstractInterface.find_by.swui::interface_name(interfaceName).execute.first if interface.nil?
         puts 'depois find_by'
         if interface.nil? then
           return  "Interface #{interfaceName} not found."
@@ -585,5 +585,18 @@ module SwuiController
       FileAccessUtils.writeFileContent("#{@@tmpdir+transactionId}-0",(seq+1).to_s)   # saves the next position in the queue
   end
 
+  def get_interface_spec(interface_name)
+    interface = SWUI::Interface.find_by.swui::interface_name(interface_name).execute.first
+    unless interface.nil?
+      interface.swui::abstract_spec.first
+    else
+      "The interface '#{interface_name}' was not found."
+    end
+  end
+  
+  def render_interface(interface_name)
+    spec = get_interface_spec(interface_name)
+    render_to_string :inline => spec
+  end
   
 end
