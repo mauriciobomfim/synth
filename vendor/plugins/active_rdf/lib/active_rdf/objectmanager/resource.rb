@@ -163,7 +163,7 @@ module RDFS
     # use self.class, which does not do a database query, but simply returns
     # RDFS::Resource.
     def type
-      RDF::Property.new(RDF::type, self)
+      RDF::Property.new(RDF::type, self) 
     end
 
     def type=(type)
@@ -197,7 +197,8 @@ module RDFS
     # returns array of RDFS::Resources for properties that belong to this resource
     def class_predicates
       new_query.distinct(:p).where(:p,RDFS::domain,:t).where(self,RDF::type,:t).execute |
-        new_query.distinct(:p).where(:p,RDFS::domain,RDFS::Resource).execute  # all resources share RDFS::Resource properties
+      new_query.distinct(:p).where(:p,RDFS::domain,:x).where(self.class, RDFS::subClassOf, :x).execute | #Adding RDFS Extensional Entailment Rule (ext1)
+      new_query.distinct(:p).where(:p,RDFS::domain,RDFS::Resource).execute  # all resources share RDFS::Resource properties
     end
     alias class_level_predicates class_predicates
 
@@ -238,7 +239,9 @@ module RDFS
 
     # for resources of type RDFS::Class, returns array of RDFS::Resources for the known properties of their objects
     def instance_predicates
-      ip = new_query.distinct(:p).where(:p,RDFS::domain,self).execute
+      #ip = new_query.distinct(:p).where(:p,RDFS::domain,self).execute #changed for the query below
+      ip = new_query.distinct(:p).where(:p,RDFS::domain,:x).where(self, RDFS::subClassOf, :x).execute #Adding RDFS Extensional Entailment Rule (ext1)
+      
       if ip.size > 0
         ip |= new_query.distinct(:p).where(:p,RDFS::domain,RDFS::Resource).execute  # all resources share RDFS::Resource properties
       else []
