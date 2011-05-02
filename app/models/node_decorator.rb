@@ -46,7 +46,7 @@ class NodeDecorator
   end
     
   def node_position
-    @node_position ||= context.nodes.index(self)
+    @node_position ||= context.nodes.index(self) || 0
   end
     
   def next_node
