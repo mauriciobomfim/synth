@@ -33,7 +33,12 @@ end
 class ContextAnchorNodeAttribute < NodeAttribute
 
   def label
-    @resource.instance_eval(@navigation_attribute.context_anchor_navigation_attribute_label_expression.first)
+    expression = @navigation_attribute.context_anchor_navigation_attribute_label_expression.first.to_s
+    begin
+      @resource.instance_eval(expression)
+    rescue
+      "There is some error in your Context Anchor label expression: #{expression}"
+    end
   end
 
   def target_url
@@ -64,7 +69,12 @@ end
 class IndexAnchorNodeAttribute < NodeAttribute
 
   def label
-    @resource.instance_eval(@navigation_attribute.index_anchor_navigation_attribute_label_expression.first)
+    expression = @navigation_attribute.index_anchor_navigation_attribute_label_expression.first.to_s
+    begin    
+      @resource.instance_eval(expression)
+    rescue
+      "There is some error in your Index Anchor label expression: #{expression}"
+    end      
   end
 
   def target_url
@@ -102,7 +112,12 @@ end
 class ComputedNodeAttribute < NodeAttribute
 
   def value
-    @resource.instance_eval(@navigation_attribute.computed_navigation_attribute_value_expression.first)
+    expression = @navigation_attribute.computed_navigation_attribute_value_expression.first.to_s
+    begin
+      @resource.instance_eval(expression)
+    rescue
+      "There is some error in your Computed Attribute expression: #{expression}"
+    end
   end
   
   def label
