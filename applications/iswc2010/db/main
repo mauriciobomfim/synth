@@ -1,5 +1,6 @@
 <rdf:RDF
     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+    xmlns:my="http://my#"
     xmlns:symph="http://symph#"
     xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -115,6 +116,13 @@
     <foaf:member rdf:resource="http://data.semanticweb.org/person/benjamin-zapilko"/>
     <foaf:member rdf:resource="http://data.semanticweb.org/person/york-sure"/>
     <foaf:name>GESIS - Leibniz Institute for the Social Sciences</foaf:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#dbab1b40-3b19-11e0-a7b4-00264afffe1d">
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Where</shdm:navigation_attribute_name>
+    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc = self.swc::hasLocation.first 
+loc ||= self.swc::isSubEventOf.map{|se| se.swc::hasLocation.first }.first
+loc.nil? ? 'Auditorium' : loc.rdfs::label</shdm:computed_navigation_attribute_value_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</shdm:navigation_attribute_index_position>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/david-huynh">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
@@ -617,6 +625,14 @@
     <swc:isRoleAt rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-dc-3"/>
     <rdfs:label>Session Chair of Doctoral Consoritium/3: Reasoning and Querying</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#d7273070-4061-11e0-97b7-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters[:event]</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</shdm:navigation_attribute_index_position>
+    <shdm:context_anchor_navigation_attribute_target_parameters rdf:resource="http://base#f652c5e0-4061-11e0-97b7-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#08fc9050-4061-11e0-97b7-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Event</shdm:navigation_attribute_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-278">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
     <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/278"/>
@@ -776,13 +792,6 @@
     <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
     <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paragraph</swui:concrete_widget_name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/organization/royal-irish-academy">
-    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
-    <rdfs:label>Royal Irish Academy</rdfs:label>
-    <foaf:based_near rdf:resource="http://data.semanticweb.org/organization/royal-irish-academy/location"/>
-    <foaf:member rdf:resource="http://data.semanticweb.org/person/faith-lawrence"/>
-    <foaf:name>Royal Irish Academy</foaf:name>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/yang-yang">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <foaf:made rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/457"/>
@@ -794,6 +803,13 @@
     <foaf:name>Yang Yang</foaf:name>
     <rdfs:label>Yang Yang</rdfs:label>
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Canada"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/organization/royal-irish-academy">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    <rdfs:label>Royal Irish Academy</rdfs:label>
+    <foaf:based_near rdf:resource="http://data.semanticweb.org/organization/royal-irish-academy/location"/>
+    <foaf:member rdf:resource="http://data.semanticweb.org/person/faith-lawrence"/>
+    <foaf:name>Royal Irish Academy</foaf:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/leigh-dodds">
     <foaf:firstName>Leigh</foaf:firstName>
@@ -864,11 +880,11 @@
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/accenture-technology-labs"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#13afb2a0-eaeb-11df-8a12-00264afffe1d">
-    <symph:ontology_active rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</symph:ontology_active>
+    <symph:ontology_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrc</symph:ontology_name>
     <symph:ontology_file_notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rdfxml</symph:ontology_file_notation>
     <symph:ontology_file_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrc_v0.3.owl</symph:ontology_file_name>
     <symph:ontology_description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></symph:ontology_description>
-    <symph:ontology_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swrc</symph:ontology_name>
+    <symph:ontology_active rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</symph:ontology_active>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/rob-shearer">
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-oxford"/>
@@ -910,8 +926,8 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://base#6f4e6000-e07f-11df-aab6-00264afffe1d">
     <rdf:type rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
-    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#331b9bc0-e07f-11df-aab6-00264afffe1d"/>
-    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'Classes'</shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'Events'</shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#a39aa7c0-3add-11e0-a7b4-00264afffe1d"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/sean-bechhofer">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
@@ -1036,6 +1052,14 @@
     <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T15-00-00"/>
     <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T14-30-00"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#06e81420-3bbf-11e0-bd2d-00264afffe1d">
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">selects {&#xD;
+   a FOAF::Organization&#xD;
+   order RDFS::label&#xD;
+}</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Organizations</shdm:context_title>
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllOrganization</shdm:context_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/471/authorlist">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
     <rdf:_1 rdf:resource="http://data.semanticweb.org/person/marcelo-cohen"/>
@@ -1091,6 +1115,10 @@
     <rdfs:label>Location of Oxford University</rdfs:label>
     <geo:lat>51.752276</geo:lat>
     <geo:long>-1.255824</geo:long>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5a2cf0e0-3bbc-11e0-bd2d-00264afffe1d">
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters[:event]</shdm:navigation_attribute_parameter_value_expression>
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">event</shdm:navigation_attribute_parameter_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/industry-3-chair">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#SessionChair"/>
@@ -1501,6 +1529,26 @@
     <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T11-30-00"/>
     <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T11-00-00"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#aa626530-3b81-11e0-941b-00264afffe1d">
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">add_event</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">event = RDFS::Resource.new(params[:id])&#xD;
+&#xD;
+SYMPH::user.my::user_program = MY::UserProgram.new('http://base#my_program')&#xD;
+&#xD;
+events = SYMPH::user.my::user_program.first.my::events&#xD;
+&#xD;
+unless events.include?(event)&#xD;
+   events.add(event)&#xD;
+else&#xD;
+   events.delete(event)&#xD;
+end&#xD;
+&#xD;
+SYMPH::user.my::user_program.save&#xD;
+&#xD;
+render :text =&gt; params[:id]&#xD;
+</shdm:operation_code>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/utrecht-university">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
     <rdfs:label>Utrecht University</rdfs:label>
@@ -1843,11 +1891,6 @@
     <rdf:_3 rdf:resource="http://data.semanticweb.org/person/zhaoming-qiu"/>
     <rdf:_4 rdf:resource="http://data.semanticweb.org/person/chen-wang"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://base#2c87e190-ea9a-11df-9f84-00264afffe1d">
-    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></shdm:navigation_attribute_name>
-    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:computed_navigation_attribute_value_expression>
-    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</shdm:navigation_attribute_index_position>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/workshop/ssn/2010">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#WorkshopEvent"/>
     <foaf:homepage rdf:resource="http://research.ict.csiro.au/conferences/ssn/ssn10"/>
@@ -1975,6 +2018,12 @@
     <foaf:member rdf:resource="http://data.semanticweb.org/person/dmitriy-zheleznyakov"/>
     <foaf:based_near rdf:resource="http://data.semanticweb.org/organization/free-university-of-bozen-bolzano/location"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/organization/university-of-zurich/location">
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdfs:label>Location of University of Zurich</rdfs:label>
+    <geo:lat>47.375243</geo:lat>
+    <geo:long>8.548284</geo:long>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/claudio-gutierrez">
     <foaf:homepage rdf:resource="http://www.dcc.uchile.cl/~cgutierr/"/>
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Chile"/>
@@ -1999,12 +2048,6 @@
     <rdf:_6 rdf:resource="http://data.semanticweb.org/person/asuncion-gomez-perez"/>
     <rdf:_7 rdf:resource="http://data.semanticweb.org/person/bert-bredeweg"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/organization/university-of-zurich/location">
-    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
-    <rdfs:label>Location of University of Zurich</rdfs:label>
-    <geo:lat>47.375243</geo:lat>
-    <geo:long>8.548284</geo:long>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/manuel-salvadores">
     <foaf:family_name>Salvadores</foaf:family_name>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
@@ -2019,6 +2062,10 @@
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/United_Kingdom"/>
     <foaf:name>Manuel Salvadores</foaf:name>
     <foaf:status>Academia</foaf:status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#71e36c10-4061-11e0-97b7-00264afffe1d">
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters[:organization]</shdm:navigation_attribute_parameter_value_expression>
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">organization</shdm:navigation_attribute_parameter_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/manolis-koubarakis">
     <foaf:mbox_sha1sum>92ea611cf55f95a0ffd94eca818bb9d8a3f9a735</foaf:mbox_sha1sum>
@@ -2102,6 +2149,12 @@
     <foaf:mbox_sha1sum>fec12b76b11eceb8dce87a648d055583e575d0c6</foaf:mbox_sha1sum>
     <foaf:made rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/488"/>
     <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/in-use/pcmember"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#2fadcfe0-3bbe-11e0-bd2d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#d7273070-4061-11e0-97b7-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrganizationByEventIdx</shdm:index_name>
+    <shdm:context_index_context rdf:resource="http://base#11faa9a0-3bbe-11e0-bd2d-00264afffe1d"/>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Organization by Event</shdm:index_title>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/tadej-stajner">
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/jozef-stefan-institute"/>
@@ -2359,6 +2412,10 @@ eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsC
     <dc:creator rdf:resource="http://data.semanticweb.org/person/john-howse"/>
     <swc:isPartOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/poster-demo-proceedings"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#805290e0-3bbc-11e0-bd2d-00264afffe1d">
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:navigation_attribute_parameter_value_expression>
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">event</shdm:navigation_attribute_parameter_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/278/authorlist">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
     <rdf:_1 rdf:resource="http://data.semanticweb.org/person/alexandra-poulovassilis"/>
@@ -2381,6 +2438,13 @@ eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsC
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
     <rdf:_1 rdf:resource="http://data.semanticweb.org/person/jan-dedek"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/84/authorlist">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
+    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/edward-benson"/>
+    <rdf:_2 rdf:resource="http://data.semanticweb.org/person/adam-marcus"/>
+    <rdf:_3 rdf:resource="http://data.semanticweb.org/person/fabian-howahl"/>
+    <rdf:_4 rdf:resource="http://data.semanticweb.org/person/david-karger"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/isabel-cruz">
     <foaf:status>Academia</foaf:status>
     <foaf:homepage rdf:resource="http://www.cs.uic.edu/~ifc/"/>
@@ -2393,13 +2457,6 @@ eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsC
     <foaf:name>Isabel Cruz</foaf:name>
     <foaf:family_name>Cruz</foaf:family_name>
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-illinois-at-chicago"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/84/authorlist">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
-    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/edward-benson"/>
-    <rdf:_2 rdf:resource="http://data.semanticweb.org/person/adam-marcus"/>
-    <rdf:_3 rdf:resource="http://data.semanticweb.org/person/fabian-howahl"/>
-    <rdf:_4 rdf:resource="http://data.semanticweb.org/person/david-karger"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/behrang-qasemizadeh">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
@@ -2705,11 +2762,6 @@ eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsC
     <swc:isRoleAt rdf:resource="http://data.semanticweb.org/conference/iswc/2010"/>
     <rdfs:label>Webmaster at ISWC 2010</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/407/authorlist">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
-    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/guo-qiang-zhang"/>
-    <rdf:_2 rdf:resource="http://data.semanticweb.org/person/olivier-bodenreider"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/495">
     <swrc:abstract>The Web of Linked Data is growing and currently consists of several hundred interconnected data sources altogether serving over 25 billion RDF triples to the Web. What has hampered the exploitation of this global dataspace up till now is the lack of an open-source Linked Data crawler which can be employed by Linked Data applications to localize (parts of) the dataspace for further processing. With LDSpider, we are closing this gap in the landscape of publicly available Linked Data tools. LDSpider traverses the Web of Linked Data by following RDF links between data items, it supports di?fferent crawling strategies and allows crawled data to be stored either in fi?les or in an RDF store.</swrc:abstract>
     <dc:creator rdf:resource="http://data.semanticweb.org/person/juergen-umbrich"/>
@@ -2732,6 +2784,11 @@ eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsC
     <swc:isPartOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/poster-demo-proceedings"/>
     <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#InProceedings"/>
     <foaf:maker rdf:resource="http://data.semanticweb.org/person/andreas-harth"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/407/authorlist">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
+    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/guo-qiang-zhang"/>
+    <rdf:_2 rdf:resource="http://data.semanticweb.org/person/olivier-bodenreider"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/title">
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
@@ -2787,10 +2844,6 @@ eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsC
     <geo:lat>43.6676</geo:lat>
     <geo:long>-79.3993</geo:long>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T07-00-00">
-    <ical:dateTime>2010-11-11T07:00:00</ical:dateTime>
-    <ical:tzid>GMT+8</ical:tzid>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/jacco-van-ossenbruggen">
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Netherlands"/>
     <foaf:homepage rdf:resource="http://homepages.cwi.nl/~jrvosse/"/>
@@ -2803,6 +2856,10 @@ eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsC
     <foaf:name>Jacco van Ossenbruggen</foaf:name>
     <foaf:status>Academia</foaf:status>
     <foaf:mbox_sha1sum>55937258805a240393727f8e803f0c787135bb91</foaf:mbox_sha1sum>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T07-00-00">
+    <ical:dateTime>2010-11-11T07:00:00</ical:dateTime>
+    <ical:tzid>GMT+8</ical:tzid>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/zhi-nie">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
@@ -3169,6 +3226,12 @@ eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsC
     <foaf:firstName>Jürgen</foaf:firstName>
     <foaf:family_name>Umbrich</foaf:family_name>
     <foaf:name>Jürgen Umbrich</foaf:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#11faa9a0-3bbe-11e0-bd2d-00264afffe1d">
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">event.swc::hasRelatedDocument.first.nil? ? [] : event.swc::hasRelatedDocument.first.dc::creator.map{ |d| d.swrc::affiliation.first }.uniq</shdm:context_query>
+    <shdm:context_parameters rdf:resource="http://base#1c9644f0-3bbe-11e0-bd2d-00264afffe1d"/>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Organization by Event</shdm:context_title>
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrganizationByEvent</shdm:context_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/microsoft-research-asia">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
@@ -3563,6 +3626,9 @@ eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsC
     <swc:isRoleAt rdf:resource="http://data.semanticweb.org/conference/iswc/2010"/>
     <rdfs:label>Metadata Chair at ISWC 2010</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#1c9644f0-3bbe-11e0-bd2d-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">event</shdm:context_parameter_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/127/authorlist">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
     <rdf:_1 rdf:resource="http://data.semanticweb.org/person/heather-s-packer"/>
@@ -3663,6 +3729,86 @@ if (document.getElementById(widgetA) != null) { eval ("Effect.BlindUp(widgetA, {
     <dc:creator rdf:resource="http://data.semanticweb.org/person/diego-calvanese"/>
     <foaf:maker rdf:resource="http://data.semanticweb.org/person/dmitriy-zheleznyakov"/>
     <dc:creator rdf:resource="http://data.semanticweb.org/person/dmitriy-zheleznyakov"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#64559140-3b1b-11e0-a7b4-00264afffe1d">
+    <swui:index rdf:resource="http://base#a39aa7c0-3add-11e0-a7b4-00264afffe1d"/>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;&#xD;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"&gt;&#xD;
+&lt;head&gt;&#xD;
+&lt;title&gt;&lt;%= @index.index_title %&gt;&lt;/title&gt;&#xD;
+&lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;&#xD;
+&lt;link rel="stylesheet" href="/execute/css/aqueous" type="text/css" media="screen,projection" /&gt;&#xD;
+&lt;%= javascript_include_tag :defaults %&gt;&#xD;
+&lt;%= javascript_include_tag 'jquery/jquery-1.4.2.min.js' %&gt;&#xD;
+&#xD;
+&lt;/head&gt;&#xD;
+ &#xD;
+&lt;body&gt;&#xD;
+&#xD;
+&lt;div id="wrapper"&gt;&#xD;
+&lt;div id="innerwrapper"&gt;&#xD;
+&#xD;
+  &lt;%= include 'Header' %&gt;&#xD;
+    &#xD;
+  &lt;%= include 'IndexSideBar' %&gt;&#xD;
+			&#xD;
+	&lt;div id="contentnorightbar"&gt;&#xD;
+&#xD;
+         &lt;h1 style="margin-bottom: 20px;"&gt;Check the events of your interest&lt;/h1&gt;&#xD;
+&#xD;
+    &lt;% for entry in @index.entries do&#xD;
+        attributes = entry.attributes_names.clone&#xD;
+        first_name = attributes.delete_at(0)&#xD;
+        first_attribute = entry.attributes_hash[first_name] %&gt; &#xD;
+        &lt;%= check_box_tag('preference', entry.uri, (SYMPH::user.my::user_program.first.nil? ? false : SYMPH::user.my::user_program.first.my::events.include?(entry.node)), { :style =&gt; "width: 20px; float: left;", :onclick =&gt; remote_function( { :url =&gt; '/execute/add_event', &#xD;
+                                               :with =&gt; "'id='+this.value+'&amp;add='+this.checked" } )&#xD;
+ } ) %&gt;&#xD;
+        &lt;div class="entry" id="&lt;%= entry.uri %&gt;"&gt;        &#xD;
+        &lt;h2&gt;&lt;%= first_attribute.respond_to?(:target_url) ? link_to(first_attribute.label, (first_attribute.target_url || "#")) : first_attribute.label %&gt;&lt;/h2&gt;&#xD;
+        &lt;table&gt;&#xD;
+        &lt;tr&gt;&#xD;
+          &lt;% for name in attributes do %&gt;&#xD;
+            &lt;th&gt;&lt;%= name %&gt;&lt;/th&gt;&#xD;
+          &lt;% end %&gt;&#xD;
+        &lt;/tr&gt;&#xD;
+        &lt;tr&gt;        &#xD;
+        &lt;% &#xD;
+           for name in attributes do &#xD;
+           attribute = entry.attributes_hash[name]&#xD;
+           if attribute.label.is_a?(Array)&#xD;
+             if attribute.respond_to?(:target_context)&#xD;
+                attr = attribute.label.map{|o| link_to(o[:label], attribute.target_context.url((o[:params] || {}), o[:target_url]), :class =&gt; name)}&#xD;
+             else&#xD;
+                attr = attribute.label.map{|o| link_to(o[:label], o[:target_url], :class =&gt; name)}&#xD;
+             end&#xD;
+           else                            &#xD;
+             if attribute.respond_to?(:target_url)&#xD;
+               attr = [ link_to(attribute.label, attribute.target_url, :rel =&gt; name) ]&#xD;
+             else&#xD;
+               attr = [ attribute.label ]&#xD;
+             end&#xD;
+           end &#xD;
+           %&gt;&#xD;
+            &lt;td&gt;&#xD;
+              &lt;ul&gt;&#xD;
+                &lt;% for attribute_value in attr do %&gt;&lt;li&gt;&lt;%= attribute_value %&gt;&lt;/li&gt;&lt;% end %&gt;&#xD;
+              &lt;/ul&gt;&#xD;
+   	        &lt;/td&gt;&#xD;
+           &#xD;
+        &lt;% end %&gt;&#xD;
+           &lt;/tr&gt;&#xD;
+	       &lt;/table&gt;&#xD;
+  	    &lt;/div&gt;&#xD;
+  	&lt;% end %&gt;&#xD;
+ &lt;/div&gt;&#xD;
+ &lt;%= include 'Footer' %&gt;&#xD;
+ &lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/body&gt;&#xD;
+&lt;/html&gt;</swui:abstract_spec>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EventsIdxInterface</swui:interface_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T09-00-00">
     <ical:dateTime>2010-11-11T09:00:00</ical:dateTime>
@@ -3828,6 +3974,20 @@ if (document.getElementById(widgetA) != null) { eval ("Effect.BlindUp(widgetA, {
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/universidade-nova-de-lisboa"/>
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Portugal"/>
     <foaf:family_name>Alferes</foaf:family_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9b5bb120-3b8d-11e0-bd2d-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EventsByUserProgram</shdm:context_name>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Events by User Program</shdm:context_title>
+    <shdm:context_parameters rdf:resource="http://base#611675c0-4053-11e0-8712-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">user.my::user_program.first.my::events</shdm:context_query>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#34624220-3bbc-11e0-bd2d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_target_parameters rdf:resource="http://base#5a2cf0e0-3bbc-11e0-bd2d-00264afffe1d"/>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#c9eb2970-3bbb-11e0-bd2d-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.foaf::name</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Name</shdm:navigation_attribute_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#8cfbba80-6136-11df-9c98-00264afffe1d">
     <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;form&gt;</swui:legalTags>
@@ -4367,6 +4527,11 @@ if (document.getElementById(widgetA) != null) { eval ("Effect.BlindUp(widgetA, {
     <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-08T14-00-00"/>
     <ical:url rdf:resource="http://people.aifb.kit.edu/aha/2010/cold/"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#my_program">
+    <my:events rdf:resource="http://data.semanticweb.org/conference/iswc/2010/presentation-407"/>
+    <my:events rdf:resource="http://data.semanticweb.org/conference/iswc/2010/presentation-123"/>
+    <my:events rdf:resource="http://data.semanticweb.org/conference/iswc/2010/presentation-903"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/philippe-cudre-mauroux">
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/massachusetts-institute-of-technology"/>
     <foaf:homepage rdf:resource="http://people.csail.mit.edu/pcm/"/>
@@ -4460,6 +4625,10 @@ if (document.getElementById(widgetA) != null) { eval ("Effect.BlindUp(widgetA, {
     <foaf:maker rdf:resource="http://data.semanticweb.org/person/matthew-horridge"/>
     <dc:subject>metadata standards</dc:subject>
     <dc:creator rdf:resource="http://data.semanticweb.org/person/wolfgang-mueller"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://my#events">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/gang-wu">
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/People%27s_Republic_of_China"/>
@@ -4661,7 +4830,7 @@ if (document.getElementById(widgetA) != null) { eval ("Effect.BlindUp(widgetA, {
     <rdf:type rdf:resource="http://shdm#Landmark"/>
     <shdm:landmark_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:landmark_position>
     <shdm:landmark_navigation_attribute rdf:resource="http://base#6f4e6000-e07f-11df-aab6-00264afffe1d"/>
-    <shdm:landmark_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Classes</shdm:landmark_name>
+    <shdm:landmark_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Events</shdm:landmark_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/419">
     <dc:creator rdf:resource="http://data.semanticweb.org/person/oussama-zekri"/>
@@ -5237,6 +5406,14 @@ if (document.getElementById(widgetA) != null) { eval ("Effect.BlindUp(widgetA, {
     <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/research/reviewer"/>
     <foaf:family_name>Du</foaf:family_name>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-228">
+    <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
+    <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/228"/>
+    <swc:isSubEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-in-use-3"/>
+    <rdfs:label>ORE - A Tool for Repairing and Enriching Knowledge Bases</rdfs:label>
+    <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T10-00-00"/>
+    <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T09-30-00"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/york-sure">
     <foaf:firstName>York</foaf:firstName>
     <foaf:status>Academia</foaf:status>
@@ -5251,14 +5428,6 @@ if (document.getElementById(widgetA) != null) { eval ("Effect.BlindUp(widgetA, {
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/gesis-leibniz-institute-for-the-social-sciences"/>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <rdfs:label>York Sure</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-228">
-    <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
-    <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/228"/>
-    <swc:isSubEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-in-use-3"/>
-    <rdfs:label>ORE - A Tool for Repairing and Enriching Knowledge Bases</rdfs:label>
-    <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T10-00-00"/>
-    <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T09-30-00"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/heather-s-packer">
     <rdfs:label>Heather S. Packer</rdfs:label>
@@ -5374,6 +5543,12 @@ if (document.getElementById(widgetA) != null) { eval ("Effect.BlindUp(widgetA, {
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/sponsor/ontotext">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#Sponsorship"/>
     <swc:isProvidedBy rdf:resource="http://data.semanticweb.org/organization/ontotext-lab"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#1a7e2540-3bbc-11e0-bd2d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#34624220-3bbc-11e0-bd2d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#c9eb2970-3bbb-11e0-bd2d-00264afffe1d"/>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person By Event</shdm:index_title>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PersonByEventIdx</shdm:index_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-09T20-00-00">
     <ical:dateTime>2010-11-09T20:00:00</ical:dateTime>
@@ -5593,6 +5768,10 @@ While semantic web search may present different requirements from web search, ev
     <rdf:_2 rdf:resource="http://data.semanticweb.org/person/craig-knoblock"/>
     <rdf:_3 rdf:resource="http://data.semanticweb.org/person/jose-luis-ambite"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#aebc78d0-4119-11e0-86bb-00264afffe1d">
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:navigation_attribute_parameter_value_expression>
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">event</shdm:navigation_attribute_parameter_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/nathalie-hernandez">
     <foaf:name>Nathalie Hernandez</foaf:name>
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/France"/>
@@ -5756,6 +5935,15 @@ While semantic web search may present different requirements from web search, ev
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-sheffield-uk"/>
     <rdfs:label>Neil Ireson</rdfs:label>
     <foaf:mbox_sha1sum>6ddb590576a64376de79ce02136333d9b7f3557d</foaf:mbox_sha1sum>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c00f71a0-3b8d-11e0-bd2d-00264afffe1d">
+    <shdm:index_pre_conditions rdf:resource="http://base#838ad810-4118-11e0-86bb-00264afffe1d"/>
+    <shdm:computed_attributes rdf:resource="http://base#6cb2aaa0-3b91-11e0-bd2d-00264afffe1d"/>
+    <shdm:computed_attributes rdf:resource="http://base#4b9be700-3b91-11e0-bd2d-00264afffe1d"/>
+    <shdm:context_anchor_attributes rdf:resource="http://base#f54740f0-3b8d-11e0-bd2d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#9b5bb120-3b8d-11e0-bd2d-00264afffe1d"/>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">My Program</shdm:index_title>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EventsByUserProgramIdx</shdm:index_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/breakfast-2010-11-11">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#MealEvent"/>
@@ -5968,6 +6156,18 @@ While semantic web search may present different requirements from web search, ev
     <foaf:name>Wei-Qi Wei</foaf:name>
     <foaf:status>Industry</foaf:status>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/person/stanley-park">
+    <foaf:firstName>Stanley</foaf:firstName>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <foaf:mbox_sha1sum>83e6f88e79706bd48d6c7d2da9ff94c77aede2d4</foaf:mbox_sha1sum>
+    <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/saltlux-inc"/>
+    <foaf:status>Industry</foaf:status>
+    <foaf:made rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/539"/>
+    <foaf:based_near rdf:resource="http://dbpedia.org/resource/Korea"/>
+    <foaf:family_name>Park</foaf:family_name>
+    <rdfs:label>Stanley Park</rdfs:label>
+    <foaf:name>Stanley Park</foaf:name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/delia-rusu">
     <foaf:name>Delia Rusu</foaf:name>
     <foaf:homepage rdf:resource="http://kt.ijs.si/deliarusu/"/>
@@ -5980,18 +6180,6 @@ While semantic web search may present different requirements from web search, ev
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Slovenia"/>
     <foaf:mbox_sha1sum>4181530957d92d561984536783271cf2683095cb</foaf:mbox_sha1sum>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/person/stanley-park">
-    <foaf:firstName>Stanley</foaf:firstName>
-    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-    <foaf:mbox_sha1sum>83e6f88e79706bd48d6c7d2da9ff94c77aede2d4</foaf:mbox_sha1sum>
-    <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/saltlux-inc"/>
-    <foaf:status>Industry</foaf:status>
-    <foaf:made rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/539"/>
-    <foaf:based_near rdf:resource="http://dbpedia.org/resource/Korea"/>
-    <foaf:family_name>Park</foaf:family_name>
-    <rdfs:label>Stanley Park</rdfs:label>
-    <foaf:name>Stanley Park</foaf:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/252">
     <dc:title>Semantic Recognition of Ontology Refactoring</dc:title>
@@ -6088,6 +6276,10 @@ While semantic web search may present different requirements from web search, ev
     <foaf:firstName>Nigam</foaf:firstName>
     <foaf:name>Nigam H. Shah</foaf:name>
     <foaf:homepage rdf:resource="http://bmir.stanford.edu/people/view.php/nigam_h_shah"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://my#UserProgram">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/479/authorlist">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
@@ -6495,6 +6687,14 @@ end&#xD;
     <foaf:member rdf:resource="http://data.semanticweb.org/person/fangkai-yang"/>
     <foaf:name>University of Texas at Austin</foaf:name>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#a39aa7c0-3add-11e0-a7b4-00264afffe1d">
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EventsIdx</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Events</shdm:index_title>
+    <shdm:context_index_context rdf:resource="http://base#88c1f1b0-3add-11e0-a7b4-00264afffe1d"/>
+    <shdm:context_anchor_attributes rdf:resource="http://base#e658fd50-3add-11e0-a7b4-00264afffe1d"/>
+    <shdm:computed_attributes rdf:resource="http://base#6e852bb0-3b18-11e0-a7b4-00264afffe1d"/>
+    <shdm:computed_attributes rdf:resource="http://base#dbab1b40-3b19-11e0-a7b4-00264afffe1d"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-414">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
     <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/414"/>
@@ -6561,6 +6761,19 @@ end&#xD;
     <foaf:member rdf:resource="http://data.semanticweb.org/person/catherina-burghart"/>
     <foaf:based_near rdf:resource="http://data.semanticweb.org/organization/fzi-forschungszentrum-informatik/location"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/person/jun-fang">
+    <foaf:based_near rdf:resource="http://dbpedia.org/resource/People%27s_Republic_of_China"/>
+    <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/research/reviewer"/>
+    <foaf:name>Jun Fang</foaf:name>
+    <foaf:homepage rdf:resource="http://cn.linkedin.com/pub/jun-fang/1a/504/22b"/>
+    <foaf:family_name>Fang</foaf:family_name>
+    <foaf:status>Academia</foaf:status>
+    <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/northwestern-polytechnical-university"/>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <foaf:mbox_sha1sum>d3974e5f73128e661dff6fb495d1e4f6f0188cd2</foaf:mbox_sha1sum>
+    <rdfs:label>Jun Fang</rdfs:label>
+    <foaf:firstName>Jun</foaf:firstName>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/vinny-reynolds">
     <foaf:firstName>Vinny</foaf:firstName>
     <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/research/reviewer"/>
@@ -6574,19 +6787,6 @@ end&#xD;
     <foaf:status>Academia</foaf:status>
     <rdfs:label>Vinny Reynolds</rdfs:label>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/person/jun-fang">
-    <foaf:based_near rdf:resource="http://dbpedia.org/resource/People%27s_Republic_of_China"/>
-    <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/research/reviewer"/>
-    <foaf:name>Jun Fang</foaf:name>
-    <foaf:homepage rdf:resource="http://cn.linkedin.com/pub/jun-fang/1a/504/22b"/>
-    <foaf:family_name>Fang</foaf:family_name>
-    <foaf:status>Academia</foaf:status>
-    <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/northwestern-polytechnical-university"/>
-    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-    <foaf:mbox_sha1sum>d3974e5f73128e661dff6fb495d1e4f6f0188cd2</foaf:mbox_sha1sum>
-    <rdfs:label>Jun Fang</rdfs:label>
-    <foaf:firstName>Jun</foaf:firstName>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/rensselaer-polytechnic-institute/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
@@ -7406,6 +7606,14 @@ end&#xD;
     <foaf:member rdf:resource="http://data.semanticweb.org/person/jamie-taylor"/>
     <foaf:name>Metaweb Technologies</foaf:name>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#0c05c090-3b9e-11e0-bd2d-00264afffe1d">
+    <shdm:in_context_class_index_attributes rdf:resource="http://base#91445fc0-4119-11e0-86bb-00264afffe1d"/>
+    <shdm:in_context_class_index_attributes rdf:resource="http://base#739ca110-3bbc-11e0-bd2d-00264afffe1d"/>
+    <shdm:in_context_class_computed_attributes rdf:resource="http://base#8df9f780-3bba-11e0-bd2d-00264afffe1d"/>
+    <shdm:in_context_class_computed_attributes rdf:resource="http://base#6c697000-3bba-11e0-bd2d-00264afffe1d"/>
+    <shdm:in_context_class_context rdf:resource="http://shdm#anyContext"/>
+    <shdm:in_context_class_class rdf:resource="http://data.semanticweb.org/ns/swc/ontology#AcademicEvent"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T15-45-00">
     <ical:dateTime>2010-11-11T15:45:00</ical:dateTime>
     <ical:tzid>GMT+8</ical:tzid>
@@ -8151,6 +8359,14 @@ end&#xD;
     <foaf:mbox_sha1sum>3cac7affcba7c4e7d4311cba4b58c46bc1c0437a</foaf:mbox_sha1sum>
     <foaf:family_name>Mehra</foaf:family_name>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#5fafb170-4061-11e0-97b7-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_target_parameters rdf:resource="http://base#71e36c10-4061-11e0-97b7-00264afffe1d"/>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#08fc9050-4061-11e0-97b7-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Name</shdm:navigation_attribute_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/422">
     <foaf:maker rdf:resource="http://data.semanticweb.org/person/patrick-kapahnke"/>
     <swrc:url rdf:resource="http://iswc2010.semanticweb.org/pdf/422.pdf"/>
@@ -8219,7 +8435,7 @@ end&#xD;
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#SessionChair"/>
     <swc:heldBy rdf:resource="http://data.semanticweb.org/person/harith-alani"/>
     <swc:isRoleAt rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-research-15"/>
-    <rdfs:label>Session Chair of Research Track: Social Semantic Web/2</rdfs:label>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xSession Chair of Research Track: Social Semantic Web/2</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/158">
     <swc:isPartOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/proceedings"/>
@@ -8607,6 +8823,11 @@ end&#xD;
     <swc:hasRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/research-8-chair"/>
     <swc:hasLocation rdf:resource="http://www.shicc.net/ontoloy#room-3b"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#8096e650-3b8f-11e0-bd2d-00264afffe1d">
+    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#c00f71a0-3b8d-11e0-bd2d-00264afffe1d"/>
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'My Program'</shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_target_parameters rdf:resource="http://base#78b2ec90-4053-11e0-8712-00264afffe1d"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/concordia-university/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
     <rdfs:label>Location of Concordia University</rdfs:label>
@@ -8834,6 +9055,10 @@ end&#xD;
     <swc:isRoleAt rdf:resource="http://data.semanticweb.org/conference/iswc/2010"/>
     <rdfs:label>Publicity Chair at ISWC 2010</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#78b2ec90-4053-11e0-8712-00264afffe1d">
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">user</shdm:navigation_attribute_parameter_name>
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SYMPH::user</shdm:navigation_attribute_parameter_value_expression>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/paul-munro">
     <foaf:name>Paul Munro</foaf:name>
     <foaf:mbox_sha1sum>3700fa8beeb77db0d1e72e543ca03cde10fad73d</foaf:mbox_sha1sum>
@@ -8927,12 +9152,6 @@ end&#xD;
     <foaf:homepage rdf:resource="http://www.uni-klu.ac.at/tewi/inf/ainf/isbi/staff/index.html#Gerhard_Friedrich"/>
     <foaf:firstName>Gerhard</foaf:firstName>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/organization/nokia-research-center-beijing/location">
-    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
-    <rdfs:label>Location of Nokia Research Center, Beijing</rdfs:label>
-    <geo:lat>39.794643</geo:lat>
-    <geo:long>116.527739</geo:long>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/asuncion-gomez-perez">
     <foaf:status>Academia</foaf:status>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
@@ -8946,6 +9165,12 @@ end&#xD;
     <foaf:name>Asuncion Gomez Perez</foaf:name>
     <foaf:mbox_sha1sum>f929b4dab306ec656affc5136763b6fe14c2347e</foaf:mbox_sha1sum>
     <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/research/senior-pcmember"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/organization/nokia-research-center-beijing/location">
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdfs:label>Location of Nokia Research Center, Beijing</rdfs:label>
+    <geo:lat>39.794643</geo:lat>
+    <geo:long>116.527739</geo:long>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/chair/local">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#Chair"/>
@@ -9200,6 +9425,13 @@ end&#xD;
     <rdfs:label>Finding the Achilles Heel of the Web of Data: using network analysis for link-recommendation</rdfs:label>
     <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T15-00-00"/>
     <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T14-30-00"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#4b9be700-3b91-11e0-bd2d-00264afffe1d">
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</shdm:navigation_attribute_index_position>
+    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dtstart = Time.parse(self.ical::dtstart.first.ical::dateTime.first) 
+dtend = Time.parse(self.ical::dtend.first.ical::dateTime.first) 
+dtstart.strftime('%m/%d/%Y') &lt;&lt; ' ' &lt;&lt; dtstart.strftime('%H:%M') &lt;&lt; ' to ' &lt;&lt; dtend.strftime('%H:%M') &lt;&lt; '&amp;nbsp;&amp;nbsp;&amp;nbsp;'</shdm:computed_navigation_attribute_value_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">When</shdm:navigation_attribute_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/nicholas-gibbins">
     <foaf:firstName>Nicholas</foaf:firstName>
@@ -9524,6 +9756,20 @@ end&#xD;
     <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Authors</shdm:navigation_attribute_name>
     <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.dc::creator.map{|c| {:label =&gt; c.name.first, :target_url =&gt; self.uri, :params =&gt; {:person =&gt; c } } }</shdm:context_anchor_navigation_attribute_label_expression>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#6bf86d40-3b8f-11e0-bd2d-00264afffe1d">
+    <shdm:landmark_navigation_attribute rdf:resource="http://base#8096e650-3b8f-11e0-bd2d-00264afffe1d"/>
+    <shdm:landmark_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</shdm:landmark_position>
+    <shdm:landmark_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MyProgram</shdm:landmark_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#88c1f1b0-3add-11e0-a7b4-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Events</shdm:context_name>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Events</shdm:context_title>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">selects {&#xD;
+   a SWC::AcademicEvent&#xD;
+   swc::hasRelatedDocument :o&#xD;
+   order ICAL::dtstart&#xD;
+}</shdm:context_query>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/in-use-4-chair">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#SessionChair"/>
     <swc:heldBy rdf:resource="http://data.semanticweb.org/person/shenghui-wang"/>
@@ -9594,6 +9840,12 @@ end&#xD;
     <swrc:year>2010</swrc:year>
     <foaf:maker rdf:resource="http://data.semanticweb.org/person/terry-payne"/>
     <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#InProceedings"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#39473c10-4061-11e0-97b7-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#5fafb170-4061-11e0-97b7-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#08fc9050-4061-11e0-97b7-00264afffe1d"/>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Events by Organization</shdm:index_title>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EventsByOrganizationIdx</shdm:index_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/research/pcmember">
     <swc:heldBy rdf:resource="http://data.semanticweb.org/person/heiner-stuckenschmidt"/>
@@ -9791,6 +10043,19 @@ end&#xD;
     <swc:paperList rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-research-13/paperlist"/>
     <swc:isSuperEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/presentation-135"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/person/anne-schlicht">
+    <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/research/reviewer"/>
+    <rdfs:label>Anne Schlicht</rdfs:label>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <foaf:name>Anne Schlicht</foaf:name>
+    <foaf:firstName>Anne</foaf:firstName>
+    <foaf:homepage rdf:resource="http://ki.informatik.uni-mannheim.de/people/anne_schlicht.html"/>
+    <foaf:based_near rdf:resource="http://dbpedia.org/resource/Germany"/>
+    <foaf:mbox_sha1sum>a25ef8ebfa91d30307cf9060ba1c848d2044ac23</foaf:mbox_sha1sum>
+    <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-mannheim"/>
+    <foaf:family_name>Schlicht</foaf:family_name>
+    <foaf:status>Academia</foaf:status>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/mathias-niepert">
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-mannheim"/>
     <foaf:firstName>Mathias</foaf:firstName>
@@ -9804,19 +10069,6 @@ end&#xD;
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Germany"/>
     <foaf:family_name>Niepert</foaf:family_name>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/person/anne-schlicht">
-    <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/research/reviewer"/>
-    <rdfs:label>Anne Schlicht</rdfs:label>
-    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-    <foaf:name>Anne Schlicht</foaf:name>
-    <foaf:firstName>Anne</foaf:firstName>
-    <foaf:homepage rdf:resource="http://ki.informatik.uni-mannheim.de/people/anne_schlicht.html"/>
-    <foaf:based_near rdf:resource="http://dbpedia.org/resource/Germany"/>
-    <foaf:mbox_sha1sum>a25ef8ebfa91d30307cf9060ba1c848d2044ac23</foaf:mbox_sha1sum>
-    <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-mannheim"/>
-    <foaf:family_name>Schlicht</foaf:family_name>
-    <foaf:status>Academia</foaf:status>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T15-15-00">
     <ical:dateTime>2010-11-11T15:15:00</ical:dateTime>
@@ -10582,6 +10834,10 @@ if (swui_isInstanceId(widgetA)) {
     <rdfs:label>EvoPat - Pattern-Based Evolution and Refactoring of RDF Knowledge Bases</rdfs:label>
     <foaf:maker rdf:resource="http://data.semanticweb.org/person/soeren-auer"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#3b4acce0-4064-11e0-97b7-00264afffe1d">
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters[:user]</shdm:navigation_attribute_parameter_value_expression>
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">user</shdm:navigation_attribute_parameter_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/daniel-izquierdo">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <foaf:made rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/135"/>
@@ -10625,6 +10881,39 @@ if (swui_isInstanceId(widgetA)) {
     <swc:heldBy rdf:resource="http://data.semanticweb.org/person/manuel-salvadores"/>
     <swc:isRoleAt rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-research-3"/>
     <rdfs:label>Session Chair of Research Track: Access to Other Kinds of Data</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#8f9dcbd0-4041-11e0-8712-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoUserProgram</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;&#xD;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"&gt;&#xD;
+&lt;head&gt;&#xD;
+&lt;title&gt;No user program&lt;/title&gt;&#xD;
+&lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;&#xD;
+&lt;link rel="stylesheet" href="/execute/css/aqueous" type="text/css" media="screen,projection" /&gt;&#xD;
+&lt;%= javascript_include_tag 'jquery/jquery-1.4.2.min.js' %&gt;&#xD;
+&lt;/head&gt;&#xD;
+ &#xD;
+&lt;body&gt;&#xD;
+&#xD;
+&lt;div id="wrapper"&gt;&#xD;
+&lt;div id="innerwrapper"&gt;&#xD;
+&#xD;
+  &lt;%= include 'Header' %&gt;&#xD;
+    &#xD;
+		&#xD;
+&lt;div id="contentnorightbar" style="padding: 200px 0 200px 20px;"&gt;&#xD;
+&#xD;
+   	        &lt;h2&gt;No user events. &lt;/h2&gt;&#xD;
+                &lt;h3&gt;Please, check the events of your interest &lt;%= link_to "here", SHDM::Index.find_by.index_name('EventsIdx').execute.first.url %&gt;&lt;/h3&gt;&#xD;
+&#xD;
+  &lt;/div&gt;&#xD;
+ &lt;%= include 'Footer' %&gt;&#xD;
+ &lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/body&gt;&#xD;
+&lt;/html&gt;</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#b2cc5ad0-eaed-11df-8a12-00264afffe1d">
     <shdm:context_anchor_navigation_attribute_target_parameters rdf:resource="http://base#d8364bf0-eaed-11df-8a12-00264afffe1d"/>
@@ -10787,6 +11076,15 @@ if (swui_isInstanceId(widgetA)) {
     <swrc:url rdf:resource="http://iswc2010.semanticweb.org/pdf/280.pdf"/>
     <dc:title>SPARQL Beyond Subgraph Matching</dc:title>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#c9eb2970-3bbb-11e0-bd2d-00264afffe1d">
+    <shdm:context_parameters rdf:resource="http://base#d581eda0-3bbb-11e0-bd2d-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">selects {&#xD;
+   a FOAF::Person&#xD;
+   foaf::made event.swc::hasRelatedDocument.first&#xD;
+}</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person by Event</shdm:context_title>
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PersonByEvent</shdm:context_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/paul-andre">
     <rdfs:label>Paul-Andre Mellies</rdfs:label>
     <foaf:status>Academia</foaf:status>
@@ -10883,6 +11181,14 @@ if (swui_isInstanceId(widgetA)) {
     <foaf:member rdf:resource="http://data.semanticweb.org/person/boyan-brodaric"/>
     <foaf:name>Geological Survey of Canada</foaf:name>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-259">
+    <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
+    <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/259"/>
+    <swc:isSubEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-research-8"/>
+    <rdfs:label>OWL-POLAR: Semantic Policies for Agent Reasoning</rdfs:label>
+    <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T09-30-00"/>
+    <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T09-00-00"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/magdalena-ortiz">
     <foaf:name>Magdalena Ortiz</foaf:name>
     <foaf:family_name>Ortiz</foaf:family_name>
@@ -10895,14 +11201,6 @@ if (swui_isInstanceId(widgetA)) {
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <foaf:status>Academia</foaf:status>
     <foaf:mbox_sha1sum>6780554684df2909110ccf3b8ff2b85c49bc6a3d</foaf:mbox_sha1sum>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-259">
-    <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
-    <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/259"/>
-    <swc:isSubEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-research-8"/>
-    <rdfs:label>OWL-POLAR: Semantic Policies for Agent Reasoning</rdfs:label>
-    <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T09-30-00"/>
-    <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T09-00-00"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/humboldt-universitaet-zu-berlin/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
@@ -11005,6 +11303,13 @@ if (swui_isInstanceId(widgetA)) {
     <foaf:family_name>Henze</foaf:family_name>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <foaf:firstName>Nicola</foaf:firstName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6e852bb0-3b18-11e0-a7b4-00264afffe1d">
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">When</shdm:navigation_attribute_name>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</shdm:navigation_attribute_index_position>
+    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dtstart = Time.parse(self.ical::dtstart.first.ical::dateTime.first) 
+dtend = Time.parse(self.ical::dtend.first.ical::dateTime.first) 
+dtstart.strftime('%m/%d/%Y') &lt;&lt; ' ' &lt;&lt; dtstart.strftime('%H:%M') &lt;&lt; ' to ' &lt;&lt; dtend.strftime('%H:%M') &lt;&lt; '&amp;nbsp;&amp;nbsp;&amp;nbsp;'</shdm:computed_navigation_attribute_value_expression>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#f1d89f30-80d1-11df-b464-00264afffe1d">
     <rdf:type rdf:resource="http://swui#RichControl"/>
@@ -11113,6 +11418,13 @@ function setPropertyName() {
     <geo:lat>40.0411939</geo:lat>
     <geo:long>116.2870286</geo:long>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#e658fd50-3add-11e0-a7b4-00264afffe1d">
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Label</shdm:navigation_attribute_name>
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#88c1f1b0-3add-11e0-a7b4-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/aristotle-university-of-thessaloniki-greece/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
     <rdfs:label>Location of Aristotle University of Thessaloniki</rdfs:label>
@@ -11165,6 +11477,7 @@ new_params.delete('authenticity_token')&#xD;
 $page_cache[page_id] = render_index(@index)&#xD;
 render :text =&gt; $page_cache[page_id]&#xD;
 </shdm:operation_code>
+    <shdm:operation_pre_conditions rdf:resource="http://base#2bca5d20-403d-11e0-8712-00264afffe1d"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/jorge-gracia">
     <foaf:mbox_sha1sum>49a8499c1bb33dacd1076662488f85055c22dad2</foaf:mbox_sha1sum>
@@ -11224,6 +11537,14 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Spain"/>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <foaf:name>Andres Garcia-Silva</foaf:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f54740f0-3b8d-11e0-bd2d-00264afffe1d">
+    <shdm:context_anchor_navigation_attribute_target_parameters rdf:resource="http://base#3b4acce0-4064-11e0-97b7-00264afffe1d"/>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#9b5bb120-3b8d-11e0-bd2d-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Label</shdm:navigation_attribute_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/509">
     <dc:subject>Semantic Web</dc:subject>
@@ -11292,6 +11613,18 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <rdf:_3 rdf:resource="http://data.semanticweb.org/person/frank-van-harmelen"/>
     <rdf:_4 rdf:resource="http://data.semanticweb.org/person/stefan-schlobach"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#d1ea1ee0-3e42-11e0-a8e3-00264afffe1d">
+    <shdm:pre_condition_failure_handling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eval(pre_conditions[idx].shdm::pre_condition_failure_handling.first)</shdm:pre_condition_failure_handling>
+    <shdm:pre_condition_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pre_conditions  = SHDM::Context.find(params[:id]).shdm::context_pre_conditions
+false_pre = pre_conditions.reject{|p| eval(p.shdm::pre_condition_expression.first) }.first
+unless false_pre.nil?
+   idx = pre_conditions.index(false_pre)
+   false
+else
+   true
+end</shdm:pre_condition_expression>
+    <shdm:pre_condition_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">evaluate_pre_condition</shdm:pre_condition_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/ibm-watson-research-center">
     <foaf:name>IBM T.J. Watson Research Center</foaf:name>
     <foaf:based_near rdf:resource="http://data.semanticweb.org/organization/ibm-watson-research-center/location"/>
@@ -11321,6 +11654,13 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#SessionEvent"/>
     <swc:isSuperEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/presentation-428"/>
     <swc:isSuperEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/presentation-407"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#31a341d0-3bbf-11e0-bd2d-00264afffe1d">
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#06e81420-3bbf-11e0-bd2d-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Name</shdm:navigation_attribute_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/436/authorlist">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
@@ -11401,6 +11741,13 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/research/reviewer"/>
     <foaf:status>Academia</foaf:status>
     <foaf:made rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/280"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#838ad810-4118-11e0-86bb-00264afffe1d">
+    <shdm:pre_condition_failure_handling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">render :text =&gt; (render_interface('NoUserProgram'))</shdm:pre_condition_failure_handling>
+    <shdm:pre_condition_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">idx  = SHDM::Index.find(params[:id])
+user = RDFS::Resource.new(params[:user][:resource])
+!idx.new({:user =&gt; user}).nodes.first.nil?</shdm:pre_condition_expression>
+    <shdm:pre_condition_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">check_events</shdm:pre_condition_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/theofilos-mailis">
     <foaf:name>Theofilos Mailis</foaf:name>
@@ -11606,6 +11953,12 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <swc:isPartOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/proceedings"/>
     <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#InProceedings"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#8df9f780-3bba-11e0-bd2d-00264afffe1d">
+    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc = self.swc::hasLocation.first 
+loc ||= self.swc::isSubEventOf.map{|se| se.swc::hasLocation.first }.first
+loc.nil? ? 'Auditorium' : loc.rdfs::label</shdm:computed_navigation_attribute_value_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Where</shdm:navigation_attribute_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/508">
     <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#InProceedings"/>
     <swc:isPartOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/poster-demo-proceedings"/>
@@ -11690,6 +12043,12 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <dc:creator rdf:resource="http://data.semanticweb.org/person/andreas-eberhart"/>
     <dc:creator rdf:resource="http://data.semanticweb.org/person/tobias-mathass"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/484/authorlist">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
+    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/konstantinos-n-vavliakis"/>
+    <rdf:_2 rdf:resource="http://data.semanticweb.org/person/theofanis-k-grollios"/>
+    <rdf:_3 rdf:resource="http://data.semanticweb.org/person/pericles-a-mitkas"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/432">
     <swrc:url rdf:resource="http://iswc2010.semanticweb.org/pdf/432.pdf"/>
     <swrc:month>November</swrc:month>
@@ -11707,12 +12066,6 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <swrc:abstract>Unlike Western Medicine, those in Traditional Chinese Medicine (TCM) are based on inherent rules or patterns, which can be considered as causal links. Existing approaches tend to apply computational methods on semantic ontology to do knowledge mining, but it cannot perfectly make use of internal principles in TCM. When it comes to knowledge representation, we can transform this inherent knowledge into causal graphs. In this paper, we present an approach to build a TCM knowledge model with the capability of rule reasoning using OWL 2. In particular, we focused on the causal relations among syndrome and symptoms, changes between syndromes. We evaluated our approach by giving two typical use cases and implemented them using Jena, a Java framework supporting RDF, OWL, and including a rule-based inference engine. The evaluation results suggested that our approach clearly displayed the causal relations in TCM and shows a great potential in TCM knowledge mining.</swrc:abstract>
     <dc:subject>owl 2</dc:subject>
     <swrc:year>2010</swrc:year>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/484/authorlist">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
-    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/konstantinos-n-vavliakis"/>
-    <rdf:_2 rdf:resource="http://data.semanticweb.org/person/theofanis-k-grollios"/>
-    <rdf:_3 rdf:resource="http://data.semanticweb.org/person/pericles-a-mitkas"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/383/authorlist">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
@@ -11930,6 +12283,12 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
     <shdm:context_anchor_navigation_attribute_target_parameters rdf:resource="http://base#8b105c00-eaf0-11df-83e0-00264afffe1d"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/organization/university-of-oregon/location">
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdfs:label>Location of University of Oregon</rdfs:label>
+    <geo:lat>44.04512</geo:lat>
+    <geo:long>-123.07564</geo:long>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/university-of-southern-california">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
     <rdfs:label>University of Southern California</rdfs:label>
@@ -11940,12 +12299,6 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <foaf:member rdf:resource="http://data.semanticweb.org/person/rahul-parundekar"/>
     <foaf:member rdf:resource="http://data.semanticweb.org/person/yolanda-gil"/>
     <foaf:name>University of Southern California</foaf:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/organization/university-of-oregon/location">
-    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
-    <rdfs:label>Location of University of Oregon</rdfs:label>
-    <geo:lat>44.04512</geo:lat>
-    <geo:long>-123.07564</geo:long>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/ntt-corporation/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
@@ -12235,6 +12588,10 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T15-15-00"/>
     <ical:summary>Awards and Closing Ceremonies</ical:summary>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#f652c5e0-4061-11e0-97b7-00264afffe1d">
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.node</shdm:navigation_attribute_parameter_value_expression>
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">organization</shdm:navigation_attribute_parameter_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/thomas-kurz">
     <foaf:mbox_sha1sum>4f8f59594c4c16680f1065809ff9d303f8a8cacd</foaf:mbox_sha1sum>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
@@ -12291,10 +12648,6 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <foaf:mbox_sha1sum>06861b9f33c0f5830cf759eb382a8b512d94c5f6</foaf:mbox_sha1sum>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T12-30-00">
-    <ical:dateTime>2010-11-11T12:30:00</ical:dateTime>
-    <ical:tzid>GMT+8</ical:tzid>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-153">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
     <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/153"/>
@@ -12302,6 +12655,10 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <rdfs:label>Enhancing the Open-Domain Classification of Named Entity using Linked Open Data</rdfs:label>
     <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T12-30-00"/>
     <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T12-00-00"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T12-30-00">
+    <ical:dateTime>2010-11-11T12:30:00</ical:dateTime>
+    <ical:tzid>GMT+8</ical:tzid>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/kevin-page">
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-southampton"/>
@@ -12509,6 +12866,10 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <rdf:_2 rdf:resource="http://data.semanticweb.org/conference/iswc/2010/presentation-192"/>
     <rdf:_3 rdf:resource="http://data.semanticweb.org/conference/iswc/2010/presentation-288"/>
     <rdf:_4 rdf:resource="http://data.semanticweb.org/conference/iswc/2010/presentation-125"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://symph#user">
+    <my:user_program rdf:resource="http://base#my_program"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mbomfim</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/andreas-harth">
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Germany"/>
@@ -12726,6 +13087,14 @@ render :text =&gt; $page_cache[page_id]&#xD;
     <swc:heldBy rdf:resource="http://data.semanticweb.org/person/vladimir-kolovski"/>
     <swc:isRoleAt rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-research-2"/>
     <rdfs:label>Session Chair of Research Track: Proofs, Trust, NLP, Rules</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#08fc9050-4061-11e0-97b7-00264afffe1d">
+    <shdm:context_parameters rdf:resource="http://base#14cd5040-4061-11e0-97b7-00264afffe1d"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">persons = FOAF::Person.find_by.swrc::affiliation(organization).execute&#xD;
+documents = persons.map{|p| p.foaf::made.to_a }.flatten.uniq&#xD;
+events = documents.map{|d| d.swc::relatedToEvent.to_a }.flatten.uniq</shdm:context_query>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Events by Organization</shdm:context_title>
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EventsByOrganization</shdm:context_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/michael-martin">
     <foaf:family_name>Martin</foaf:family_name>
@@ -12979,7 +13348,6 @@ if (document.getElementById(widgetA) != null) { eval ("$(widgetA).appear({" + pa
     <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Search results</shdm:index_title>
     <shdm:context_index_context rdf:resource="http://base#9365c360-ea99-11df-9f84-00264afffe1d"/>
     <shdm:context_anchor_attributes rdf:resource="http://base#0f954c30-ea9a-11df-9f84-00264afffe1d"/>
-    <shdm:computed_attributes rdf:resource="http://base#2c87e190-ea9a-11df-9f84-00264afffe1d"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#fd6707d0-eaf1-11df-83e0-00264afffe1d">
     <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Publications</shdm:navigation_attribute_name>
@@ -13206,8 +13574,8 @@ if (document.getElementById(widgetA) != null) { eval ("$(widgetA).appear({" + pa
     <ical:summary>In-Use/5</ical:summary>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#67da8dc0-ea94-11df-9f84-00264afffe1d">
-    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header</swui:interface_name>
-    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
     <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div id="header"&gt;		&#xD;
      &lt;form action="&lt;%= Operations.search_url%&gt;" method="post"&gt;&#xD;
         &lt;%= token_tag() %&gt; &#xD;
@@ -13215,12 +13583,12 @@ if (document.getElementById(widgetA) != null) { eval ("$(widgetA).appear({" + pa
      &lt;/form&gt;&#xD;
 		&#xD;
      &lt;h1&gt;&lt;a href="/execute/init"&gt;Synth&lt;/a&gt;&lt;/h1&gt;				&#xD;
-     &lt;h2&gt;Semantic web application environment&lt;/h2&gt;&#xD;
+     &lt;h2&gt;Semantic Web application development environment&lt;/h2&gt;&#xD;
 		&#xD;
    &lt;%= include 'DefaultLandmarksConcrete' %&gt;										&#xD;
 &lt;/div&gt;</swui:abstract_spec>
-    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
-    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header</swui:interface_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/bert-bredeweg">
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Netherlands"/>
@@ -13609,17 +13977,17 @@ if (document.getElementById(widgetA) != null) { eval ("$(widgetA).appear({" + pa
     <foaf:homepage rdf:resource="http://web.fhnw.ch/personenseiten/holger.wache/"/>
     <foaf:mbox_sha1sum>612ab1009b9f9bb7c31f53982a6de846e572dfff</foaf:mbox_sha1sum>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/organization/universite-de-rennes-1/location">
-    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
-    <rdfs:label>Location of Universite de Rennes 1</rdfs:label>
-    <geo:lat>48.5140456</geo:lat>
-    <geo:long>-2.7412859</geo:long>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/city-university-london/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
     <rdfs:label>Location of City University London</rdfs:label>
     <geo:lat>51.5277</geo:lat>
     <geo:long>-0.10246</geo:long>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/organization/universite-de-rennes-1/location">
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdfs:label>Location of Universite de Rennes 1</rdfs:label>
+    <geo:lat>48.5140456</geo:lat>
+    <geo:long>-2.7412859</geo:long>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/boyan-brodaric">
     <foaf:homepage rdf:resource="http://gsc.nrcan.gc.ca/dir/index_e.php?id=1579"/>
@@ -13713,6 +14081,7 @@ if (document.getElementById(widgetA) != null) { eval ("$(widgetA).appear({" + pa
     <foaf:homepage rdf:resource="http://palexander.posterous.com/"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#9726cfe0-7662-11df-ab19-00264afffe1d">
+    <shdm:operation_pre_conditions rdf:resource="http://base#d1ea1ee0-3e42-11e0-a8e3-00264afffe1d"/>
     <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context</shdm:operation_name>
     <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
     <rdf:type rdf:resource="http://shdm#Operation"/>
@@ -14338,8 +14707,8 @@ img.logo {
     <rdfs:label>Peter Mika</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#8dbc6e00-ea94-11df-9f84-00264afffe1d">
-    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContextSideBar</swui:interface_name>
-    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
     <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div id="sidebar"&gt;&#xD;
   &#xD;
   &lt;h2&gt;&lt;%= @context.context_title %&gt;&lt;/h2&gt;&#xD;
@@ -14357,7 +14726,6 @@ img.logo {
   &lt;h3 style="margin: 0;"&gt;Filter&lt;/h3&gt;		&#xD;
   &lt;input id="input_filter" name="" type="text" value="filter" /&gt;&#xD;
   &#xD;
-  &lt;h2&gt;Context Index&lt;/h2&gt; &#xD;
   &lt;ul class="subnav"&gt;&#xD;
   &lt;% for entry in @context.index.entries do %&gt;&#xD;
     &lt;% for name, attribute in entry.attributes_hash do %&gt;&#xD;
@@ -14392,8 +14760,8 @@ $(document).ready(function(){&#xD;
  });&#xD;
 &#xD;
 &lt;/script&gt;</swui:abstract_spec>
-    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
-    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContextSideBar</swui:interface_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/chair/sponsorship">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#Chair"/>
@@ -14693,6 +15061,18 @@ $(document).ready(function(){&#xD;
     <foaf:maker rdf:resource="http://data.semanticweb.org/person/peter-wood"/>
     <swrc:abstract>We develop query relaxation techniques for regular path queries and combine them with query approximation in order to support flexible querying of RDF data when the user lacks knowledge of its full structure or where the structure is irregular. In such circumstances, it is helpful if the querying system can perform both approximate matching and relaxation of the user's query and can rank the answers according to how closely they match the original query. Our framework incorporates both standard notions of approximation based on edit distance and RDFS-based inference rules. The query language we adopt comprises conjunctions of regular path queries, thus including extensions proposed for SPARQL to allow for querying paths using regular expressions. We provide an incremental query evaluation algorithm which runs in polynomial time and returns answers to the user in ranked order.</swrc:abstract>
     <dc:creator rdf:resource="http://data.semanticweb.org/person/alexandra-poulovassilis"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#2bca5d20-403d-11e0-8712-00264afffe1d">
+    <shdm:pre_condition_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">evaluate_pre_condition</shdm:pre_condition_name>
+    <shdm:pre_condition_failure_handling rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eval(pre_conditions[idx].shdm::pre_condition_failure_handling.first)</shdm:pre_condition_failure_handling>
+    <shdm:pre_condition_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pre_conditions  = SHDM::Index.find(params[:id]).shdm::index_pre_conditions
+false_pre = pre_conditions.reject{|p| eval(p.shdm::pre_condition_expression.first) }.first
+unless false_pre.nil?
+   idx = pre_conditions.index(false_pre)
+   false
+else
+   true
+end</shdm:pre_condition_expression>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/engels-semantic-information-services-esis">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
@@ -15240,6 +15620,10 @@ if (widg != null) { eval ("new Effect.BlindDown(widgetA, { " + parameters + " })
     <foaf:member rdf:resource="http://data.semanticweb.org/person/jerome-euzenat"/>
     <foaf:name>INRIA LIG</foaf:name>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/474/authorlist">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
+    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/yinglong-ma"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-243">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
     <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/243"/>
@@ -15247,10 +15631,6 @@ if (widg != null) { eval ("new Effect.BlindDown(widgetA, { " + parameters + " })
     <rdfs:label>A Self-Policing Policy Language</rdfs:label>
     <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T12-30-00"/>
     <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-10T12-00-00"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/474/authorlist">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
-    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/yinglong-ma"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/hp-labs-bristol/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
@@ -15329,6 +15709,13 @@ if (widg != null) { eval ("new Effect.BlindDown(widgetA, { " + parameters + " })
     <rdf:_3 rdf:resource="http://data.semanticweb.org/person/steve-harris"/>
     <rdf:_4 rdf:resource="http://data.semanticweb.org/person/nick-gibbins"/>
     <rdf:_5 rdf:resource="http://data.semanticweb.org/person/nigel-shadbolt"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6cb2aaa0-3b91-11e0-bd2d-00264afffe1d">
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</shdm:navigation_attribute_index_position>
+    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">loc = self.swc::hasLocation.first 
+loc ||= self.swc::isSubEventOf.map{|se| se.swc::hasLocation.first }.first
+loc.nil? ? 'Auditorium' : loc.rdfs::label</shdm:computed_navigation_attribute_value_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Where</shdm:navigation_attribute_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/388/authorlist">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
@@ -15410,13 +15797,6 @@ render :text =&gt; css, :content_type =&gt; 'text/css'</shdm:operation_code>
     <foaf:family_name>Unbehauen</foaf:family_name>
     <foaf:made rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/522"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/512/authorlist">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
-    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/christian-becker"/>
-    <rdf:_2 rdf:resource="http://data.semanticweb.org/person/christian-bizer"/>
-    <rdf:_3 rdf:resource="http://data.semanticweb.org/person/michael-erdmann"/>
-    <rdf:_4 rdf:resource="http://data.semanticweb.org/person/mark-greaves"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/stefan-nesbigall">
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Germany"/>
     <rdfs:label>Stefan Nesbigall</rdfs:label>
@@ -15429,6 +15809,13 @@ render :text =&gt; css, :content_type =&gt; 'text/css'</shdm:operation_code>
     <foaf:made rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/422"/>
     <foaf:firstName>Stefan</foaf:firstName>
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/german-research-center-for-artificial-intelligence-dfki"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/512/authorlist">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
+    <rdf:_1 rdf:resource="http://data.semanticweb.org/person/christian-becker"/>
+    <rdf:_2 rdf:resource="http://data.semanticweb.org/person/christian-bizer"/>
+    <rdf:_3 rdf:resource="http://data.semanticweb.org/person/michael-erdmann"/>
+    <rdf:_4 rdf:resource="http://data.semanticweb.org/person/mark-greaves"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/ming-zhang">
     <foaf:status>Academia</foaf:status>
@@ -15617,7 +16004,7 @@ render :text =&gt; css, :content_type =&gt; 'text/css'</shdm:operation_code>
   <rdf:Description rdf:about="http://base#80727430-ea97-11df-9f84-00264afffe1d">
     <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aqueous</swui:interface_name>
     <swui:concrete_interface_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">body {&#xD;
-	font: 78.5%/1.6em "Lucida Grande", "Lucida Sans Unicode", verdana, geneva, sans-serif;&#xD;
+	font: 90.5%/1.6em "Gill Sans", verdana, geneva, sans-serif;&#xD;
 	word-spacing:2px;&#xD;
 	color:#444;&#xD;
 	margin:20px;&#xD;
@@ -15655,7 +16042,7 @@ render :text =&gt; css, :content_type =&gt; 'text/css'</shdm:operation_code>
 	padding:5px;&#xD;
 	background:#fff;&#xD;
 	border:2px solid #f6f6f6;&#xD;
-	font:150% Arial;&#xD;
+	font:150% "Gill Sans";&#xD;
 	color:#999;&#xD;
 }&#xD;
 &#xD;
@@ -15731,7 +16118,7 @@ render :text =&gt; css, :content_type =&gt; 'text/css'</shdm:operation_code>
 &#xD;
 #header #nav a {&#xD;
 	color:#fff;&#xD;
-	font:140% Trebuchet MS;&#xD;
+	font:140% Gill Sans;&#xD;
 	text-decoration:none;&#xD;
 	padding:10px;&#xD;
 }&#xD;
@@ -15793,7 +16180,7 @@ render :text =&gt; css, :content_type =&gt; 'text/css'</shdm:operation_code>
 }&#xD;
 &#xD;
 #sidebar h2 {&#xD;
-	font:160% Arial;&#xD;
+	font:160% Gill Sans;&#xD;
 	color:#333;&#xD;
 	margin:10px 0 10px 0;&#xD;
 	border:none;&#xD;
@@ -15926,7 +16313,7 @@ p {&#xD;
 }&#xD;
 &#xD;
 h2 {&#xD;
-	font:150% Arial;&#xD;
+	font:150% Georgia;&#xD;
 	color:#79B933;&#xD;
 	border-bottom:2px solid #f6f6f6;&#xD;
 }&#xD;
@@ -15947,6 +16334,8 @@ h2 a:hover {&#xD;
 	padding:10px;&#xD;
 	margin:30px 0 0;&#xD;
 }&#xD;
+&#xD;
+#footer p { display: none; }&#xD;
 &#xD;
 a {&#xD;
 	color:#222;&#xD;
@@ -16394,6 +16783,9 @@ blockquote p {&#xD;
     <rdfs:label>Meghyn Bienvenu</rdfs:label>
     <foaf:firstName>Meghyn</foaf:firstName>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#d581eda0-3bbb-11e0-bd2d-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">event</shdm:context_parameter_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/grenoble-institute-of-technology-inpg/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
     <rdfs:label>Location of Grenoble Institute of Technology (INPG)</rdfs:label>
@@ -16477,7 +16869,7 @@ order FOAF::name&#xD;
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#f4231c00-eaeb-11df-8a12-00264afffe1d">
-    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">selects { a SWRC::Publication }</shdm:context_query>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">selects { a FOAF::Document }</shdm:context_query>
     <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">All Publication</shdm:context_title>
     <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllPublication</shdm:context_name>
   </rdf:Description>
@@ -16559,6 +16951,9 @@ order FOAF::name&#xD;
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/pennsylvania-state-university"/>
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/United_States"/>
     <foaf:family_name>Janowicz</foaf:family_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#14cd5040-4061-11e0-97b7-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">organization</shdm:context_parameter_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/51">
     <rdfs:label>AnQL: SPARQLing up annotated RDF</rdfs:label>
@@ -16697,6 +17092,12 @@ if (widgetB == undefined) {
     <foaf:firstName>Yuan</foaf:firstName>
     <foaf:name>Yuan Tian</foaf:name>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-540">
+    <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
+    <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/540"/>
+    <swc:isSubEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-industry-3"/>
+    <rdfs:label>Semantic Media Asset Management: playence Media</rdfs:label>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/stefan-decker">
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/Ireland"/>
     <foaf:family_name>Decker</foaf:family_name>
@@ -16710,12 +17111,6 @@ if (widgetB == undefined) {
     <foaf:firstName>Stefan</foaf:firstName>
     <foaf:homepage rdf:resource="http://www.stefandecker.org/"/>
     <foaf:mbox_sha1sum>1bc1f862b688a45b7e0c8d4a8467c23177c53fad</foaf:mbox_sha1sum>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/presentation-540">
-    <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"/>
-    <swc:hasRelatedDocument rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/540"/>
-    <swc:isSubEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010/session-industry-3"/>
-    <rdfs:label>Semantic Media Asset Management: playence Media</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/ibm-canada/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
@@ -16731,6 +17126,15 @@ if (widgetB == undefined) {
     <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T17-00-00"/>
     <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-11T16-30-00"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/opening">
+    <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#AcademicEvent"/>
+    <swc:hasLocation rdf:resource="http://www.shicc.net/ontoloy#auditorium"/>
+    <swc:isSubEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010"/>
+    <rdfs:label>Opening Ceremonies</rdfs:label>
+    <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-09T09-00-00"/>
+    <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-09T08-30-00"/>
+    <ical:summary>Opening Ceremonies</ical:summary>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/paul-doran">
     <foaf:mbox_sha1sum>818780caaed049027fd437d093ce830aaff39e2b</foaf:mbox_sha1sum>
     <foaf:firstName>Paul</foaf:firstName>
@@ -16743,15 +17147,6 @@ if (widgetB == undefined) {
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <foaf:name>Paul Doran</foaf:name>
     <foaf:homepage rdf:resource="http://www.csc.liv.ac.uk/~pdoran/"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/opening">
-    <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#AcademicEvent"/>
-    <swc:hasLocation rdf:resource="http://www.shicc.net/ontoloy#auditorium"/>
-    <swc:isSubEventOf rdf:resource="http://data.semanticweb.org/conference/iswc/2010"/>
-    <rdfs:label>Opening Ceremonies</rdfs:label>
-    <ical:dtend rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-09T09-00-00"/>
-    <ical:dtstart rdf:resource="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-09T08-30-00"/>
-    <ical:summary>Opening Ceremonies</ical:summary>
   </rdf:Description>
   <rdf:Description rdf:about="http://base#79d1dba0-ea94-11df-9f84-00264afffe1d">
     <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndexSideBar</swui:interface_name>
@@ -17409,6 +17804,11 @@ $(document).ready(function(){&#xD;
     <foaf:status>Industry</foaf:status>
     <foaf:homepage rdf:resource="http://www.iandickinson.me.uk/"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#739ca110-3bbc-11e0-bd2d-00264afffe1d">
+    <shdm:index_navigation_attribute_index_parameters rdf:resource="http://base#805290e0-3bbc-11e0-bd2d-00264afffe1d"/>
+    <shdm:index_navigation_attribute_index rdf:resource="http://base#1a7e2540-3bbc-11e0-bd2d-00264afffe1d"/>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Presenters</shdm:navigation_attribute_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/roman-kontchakov">
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/United_Kingdom"/>
     <foaf:firstName>Roman</foaf:firstName>
@@ -17465,6 +17865,10 @@ $(document).ready(function(){&#xD;
     <foaf:family_name>Kantarcioglu</foaf:family_name>
     <foaf:status>Academia</foaf:status>
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/United_States"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://my#user_program">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper401/authorlist">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
@@ -17650,9 +18054,9 @@ $(document).ready(function(){&#xD;
     <foaf:homepage rdf:resource="http://ngwr.labs.bt.com/FB/JohnDavies.htm"/>
     <foaf:mbox_sha1sum>737d6926354e5956f8a3ce371f71d49da4fbe20d</foaf:mbox_sha1sum>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/in-use/pcmember"/>
     <foaf:name>John Davies</foaf:name>
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/United_Kingdom"/>
-    <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/in-use/pcmember"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/yong-yu">
     <rdfs:label>Yong Yu</rdfs:label>
@@ -17667,6 +18071,11 @@ $(document).ready(function(){&#xD;
     <foaf:mbox_sha1sum>06294b912a074c0679eefbefb3e06bee679eebed</foaf:mbox_sha1sum>
     <foaf:name>Yong Yu</foaf:name>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#91445fc0-4119-11e0-86bb-00264afffe1d">
+    <shdm:index_navigation_attribute_index_parameters rdf:resource="http://base#aebc78d0-4119-11e0-86bb-00264afffe1d"/>
+    <shdm:index_navigation_attribute_index rdf:resource="http://base#2fadcfe0-3bbe-11e0-bd2d-00264afffe1d"/>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Organizations</shdm:navigation_attribute_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/time/2010-11-09T15-00-00">
     <ical:dateTime>2010-11-09T15:00:00</ical:dateTime>
@@ -18041,19 +18450,6 @@ $(document).ready(function(){&#xD;
     <foaf:name>Wei Shen</foaf:name>
     <foaf:status>Academia</foaf:status>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.semanticweb.org/person/aldo-gangemi">
-    <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/in-use/pcmember"/>
-    <foaf:status>Academia</foaf:status>
-    <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/cnr-istc-italy"/>
-    <foaf:based_near rdf:resource="http://dbpedia.org/resource/Italy"/>
-    <foaf:firstName>Aldo</foaf:firstName>
-    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-    <foaf:homepage rdf:resource="http://www.istc.cnr.it/createhtml.php?nbr=71"/>
-    <foaf:mbox_sha1sum>8d7f004803b48a3b7c5e9f73dc16953069a6632d</foaf:mbox_sha1sum>
-    <foaf:name>Aldo Gangemi</foaf:name>
-    <foaf:family_name>Gangemi</foaf:family_name>
-    <rdfs:label>Aldo Gangemi</rdfs:label>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/anupam-joshi">
     <foaf:name>Anupam Joshi</foaf:name>
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-maryland"/>
@@ -18066,6 +18462,19 @@ $(document).ready(function(){&#xD;
     <foaf:firstName>Anupam</foaf:firstName>
     <foaf:mbox_sha1sum>de4984eb69b9610f133321ac8b1fc38de56661e3</foaf:mbox_sha1sum>
     <rdfs:label>Anupam Joshi</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.semanticweb.org/person/aldo-gangemi">
+    <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2010/in-use/pcmember"/>
+    <foaf:status>Academia</foaf:status>
+    <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/cnr-istc-italy"/>
+    <foaf:based_near rdf:resource="http://dbpedia.org/resource/Italy"/>
+    <foaf:firstName>Aldo</foaf:firstName>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <foaf:homepage rdf:resource="http://www.istc.cnr.it/createhtml.php?nbr=71"/>
+    <foaf:mbox_sha1sum>8d7f004803b48a3b7c5e9f73dc16953069a6632d</foaf:mbox_sha1sum>
+    <foaf:name>Aldo Gangemi</foaf:name>
+    <foaf:family_name>Gangemi</foaf:family_name>
+    <rdfs:label>Aldo Gangemi</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/universidad-de-chile">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
@@ -19074,14 +19483,6 @@ $(document).ready(function(){&#xD;
     <foaf:status>Academia</foaf:status>
     <foaf:mbox_sha1sum>8ad2226099226182818b5117d06022810bfd8900</foaf:mbox_sha1sum>
   </rdf:Description>
-  <rdf:Description rdf:about="http://base#a4ed7a70-8139-11df-9021-00264afffe1d">
-    <rdf:type rdf:resource="http://swui#Effect"/>
-    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Morph effect
-
-   eval ("$(widgetA).morph('" + parameters + "')");</swui:effect_jsCode>
-    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
-    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">morph</swui:effect_name>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/rudi-studer">
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
     <foaf:homepage rdf:resource="http://www.aifb.kit.edu/web/Rudi_Studer"/>
@@ -19095,6 +19496,14 @@ $(document).ready(function(){&#xD;
     <foaf:made rdf:resource="http://data.semanticweb.org/conference/iswc/2010/paper/114"/>
     <foaf:firstName>Rudi</foaf:firstName>
     <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/karlsruhe-institute-of-technology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a4ed7a70-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Morph effect
+
+   eval ("$(widgetA).morph('" + parameters + "')");</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">morph</swui:effect_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/lunch-2010-11-11">
     <rdf:type rdf:resource="http://data.semanticweb.org/ns/swc/ontology#MealEvent"/>
@@ -19137,6 +19546,12 @@ if (document.getElementById(widgetA) != null) { eval("$(widgetA).fade({" + param
     <foaf:based_near rdf:resource="http://dbpedia.org/resource/United_Kingdom"/>
     <foaf:family_name>Seaborne</foaf:family_name>
     <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6c697000-3bba-11e0-bd2d-00264afffe1d">
+    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dtstart = Time.parse(self.ical::dtstart.first.ical::dateTime.first) 
+dtend = Time.parse(self.ical::dtend.first.ical::dateTime.first) 
+dtstart.strftime('%m/%d/%Y') &lt;&lt; ' ' &lt;&lt; dtstart.strftime('%H:%M') &lt;&lt; ' to ' &lt;&lt; dtend.strftime('%H:%M')</shdm:computed_navigation_attribute_value_expression>
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">When</shdm:navigation_attribute_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/organization/freie-universitaet-berlin/location">
     <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
@@ -19447,6 +19862,12 @@ if (document.getElementById(widgetA) != null) { eval("$(widgetA).fade({" + param
     <foaf:member rdf:resource="http://data.semanticweb.org/person/zhiqiang-gao"/>
     <foaf:name>Southeast University</foaf:name>
   </rdf:Description>
+  <rdf:Description rdf:about="http://base#1d82d260-3bbf-11e0-bd2d-00264afffe1d">
+    <shdm:context_anchor_attributes rdf:resource="http://base#31a341d0-3bbf-11e0-bd2d-00264afffe1d"/>
+    <shdm:context_index_context rdf:resource="http://base#06e81420-3bbf-11e0-bd2d-00264afffe1d"/>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Organizations</shdm:index_title>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllOrganizationsIdx</shdm:index_name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/conference/iswc/2010/paper/484">
     <dc:subject>RDB2RDF</dc:subject>
     <dc:subject>Relational Databases to Ontology Transformation</dc:subject>
@@ -19466,6 +19887,9 @@ if (document.getElementById(widgetA) != null) { eval("$(widgetA).fade({" + param
     <rdfs:label>RDOTE - Transforming Relational Databases into Semantic Web Data</rdfs:label>
     <dc:subject>RDF Dump</dc:subject>
     <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#InProceedings"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#611675c0-4053-11e0-8712-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">user</shdm:context_parameter_name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.semanticweb.org/person/nicholas-r-jennings">
     <foaf:homepage rdf:resource="http://www.ecs.soton.ac.uk/~nrj"/>

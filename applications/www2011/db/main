@@ -1,0 +1,1620 @@
+<rdf:RDF
+    xmlns:swui="http://swui#"
+    xmlns:base="http://base#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+    xmlns:void="http://rdfs.org/ns/void#"
+    xmlns:symph="http://symph#"
+    xmlns:shdm="http://shdm#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:skos="http://www.w3.org/2008/05/skos#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:sioc="http://rdfs.org/sioc/types#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://base#c5f80d30-86d8-11df-8d96-00264afffe1d">
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">init</shdm:operation_name>
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">landmark ||= SHDM::Landmark.find_by.landmark_position('0').execute.first&#xD;
+landmark ||= SHDM::Landmark.find_all.first&#xD;
+&#xD;
+unless landmark.nil?&#xD;
+   redirect_to landmark.target_url&#xD;
+else&#xD;
+   render :text =&gt; "There is no initial navigation"&#xD;
+end&#xD;
+</shdm:operation_code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9208c220-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h1&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header1</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#be687810-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;ol&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderedList</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9726cfe0-7662-11df-ab19-00264afffe1d">
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">$page_cache ||= Hash.new&#xD;
+&#xD;
+page_id = (request.request_uri + params.to_s).hash&#xD;
+unless $page_cache[page_id].nil?&#xD;
+   render :text =&gt; $page_cache[page_id]&#xD;
+   return&#xD;
+end&#xD;
+&#xD;
+params.delete(:controller)&#xD;
+params.delete(:action)&#xD;
+&#xD;
+context_id = params.delete(:id)&#xD;
+node_id     = params.delete(:node)&#xD;
+context      = SHDM::Context.find(context_id)&#xD;
+&#xD;
+new_params = {}&#xD;
+params.each{ |i,v| new_params[i] = v.is_a?(Hash) ? RDFS::Resource.new(v["resource"]) : v }&#xD;
+new_params.delete('authenticity_token')&#xD;
+&#xD;
+@context   = context.new(new_params)&#xD;
+@current_node ||= @context.nodes.select{|node| node.uri == node_id}.first&#xD;
+@current_node ||= NodeDecorator.new(RDFS::Resource.new(node_id), @context)&#xD;
+&#xD;
+$page_cache[page_id] = render_context(@context, @current_node)&#xD;
+render :text =&gt; $page_cache[page_id]</shdm:operation_code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#711a1d20-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous BlindUp effect
+
+if (document.getElementById(widgetA) != null) { eval ("Effect.BlindUp(widgetA, { " + parameters + "})"); }</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">blindUp</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#87e62760-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbstractInterface</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Composition</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#2c87e190-ea9a-11df-9f84-00264afffe1d">
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></shdm:navigation_attribute_name>
+    <shdm:computed_navigation_attribute_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.uri</shdm:computed_navigation_attribute_value_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</shdm:navigation_attribute_index_position>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#cc461f00-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;table&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Table</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#label">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c7a74280-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;input type='radio'&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PredefinedVariable</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RadioButton</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e30973e0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;thead&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableHeader</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#773c8860-6b6c-11df-8c3d-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</swui:dynamic>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;%&#xD;
+	    ModelUtils.traverseJSON(jsonData,list) do |type,key,value,hash,list| &#xD;
+              if !(key.include? "swui:")&#xD;
+                name = key&#xD;
+                name = name.gsub(/\|/,"-")&#xD;
+                #name = name.gsub(/_/,"-")&#xD;
+                if (type=="Item")&#xD;
+                    buffer &lt;&lt; "&lt;CompositeInterfaceElement mapsTo=\"Composition\" name=\"#{name}Attr\" &gt;" &#xD;
+		    buffer &lt;&lt; "&lt;ElementExhibitor name=\"#{name}Lbl\" mapsTo=\"Text\" defaultContent=\"#{name}: \" cssClasses=\"swui_bold\"/&gt;" if !list&#xD;
+	            if (hash.has_key? "#{key}|swui:target")&#xD;
+		      buffer &lt;&lt; "&lt;SimpleActivator mapsTo=\"Link\" name=\"#{name}Link\" fromAttribute=\"#{key}|swui:target\"&gt;" &#xD;
+	            end&#xD;
+                    widget = "&lt;ElementExhibitor mapsTo=\"Text\" name=\"#{name}\" fromAttribute=\"#{key}\"/&gt;" &#xD;
+		    widget.to_s.gsub!(/mapsTo="Text"/,"mapsTo=\"Image\"") if (value.to_s.match(/.+\.(gif|jpeg|jpg|png|tiff)$/))&#xD;
+                    buffer &lt;&lt; widget&#xD;
+	            if (hash.has_key? "#{key}|swui:target")&#xD;
+                      buffer &lt;&lt; "&lt;/SimpleActivator&gt;"&#xD;
+	            end&#xD;
+                    buffer &lt;&lt; "&lt;/CompositeInterfaceElement&gt;" &#xD;
+                end&#xD;
+                if (type=="OpenList")&#xD;
+	          buffer &lt;&lt; "&lt;CompositeInterfaceElement mapsTo=\"Composition\" name=\"#{name}List\" fromAttribute=\"#{key}\" cssClasses=\"swui_composite\" ordered=\"true\"&gt;" &#xD;
+		  buffer &lt;&lt; "&lt;ElementExhibitor name=\"#{name}ListLbl\" mapsTo=\"Text\" defaultContent=\"#{name}: \" cssClasses=\"swui_bold\"/&gt;"&#xD;
+                  buffer &lt;&lt; "&lt;CompositeInterfaceElement mapsTo=\"Composition\" name=\"#{name}\" fromClass=\"#{name}\" &gt;"&#xD;
+                end&#xD;
+	        buffer &lt;&lt; "&lt;/CompositeInterfaceElement&gt; &lt;/CompositeInterfaceElement&gt;" if (type=="CloseList")&#xD;
+              end&#xD;
+	    end&#xD;
+%&gt;</swui:abstract_spec>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultJSONDisplay</swui:interface_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b10c0f10-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;label&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Label</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d9d4bb90-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;tfoot&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableFooter</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a3a5b690-ea94-11df-9f84-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Footer</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div id="footer"&gt;&#xD;
+   &lt;!-- If you wish to delete this line of code please purchase our commercial license http://www.sixshootermedia.com/shop/commercial-license/ --&gt;&#xD;
+    &lt;p&gt;Template design by &lt;a href="http://www.sixshootermedia.com"&gt;Six Shooter Media&lt;/a&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#2305df20-e07f-11df-aab6-00264afffe1d">
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">selects {&#xD;
+   rdfs::type klass&#xD;
+   limit 10&#xD;
+}</shdm:context_query>
+    <shdm:context_parameters rdf:resource="http://base#fd03f6f0-e082-11df-aab6-00264afffe1d"/>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resources Context</shdm:context_title>
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResourcesByClass</shdm:context_name>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#bdd18c70-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Opacity effect
+
+   eval ("new Effect.Opacity(widgetA, { " + parameters + " })");</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">opacity</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b54b21a0-ea99-11df-9f84-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">label_string</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#60dd5080-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous BlindDown effect
+
+widg = document.getElementById(widgetA);
+if (widg != null) { eval ("new Effect.BlindDown(widgetA, { " + parameters + " });") }</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">blindDown</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a3eab340-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h5&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header5</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c3095060-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;p&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paragraph</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#969f8850-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h2&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header2</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e784c2d0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;tr&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableRow</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#67da8dc0-ea94-11df-9f84-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div id="header"&gt;		&#xD;
+     &lt;form action="&lt;%= Operations.search_url%&gt;" method="post"&gt;&#xD;
+        &lt;%= token_tag() %&gt; &#xD;
+	&lt;input value="Search" name="label_string"/&gt;&#xD;
+     &lt;/form&gt;&#xD;
+		&#xD;
+     &lt;h1&gt;&lt;a href="/execute/init"&gt;Synth&lt;/a&gt;&lt;/h1&gt;				&#xD;
+     &lt;h2&gt;Semantic web application environment&lt;/h2&gt;&#xD;
+		&#xD;
+   &lt;%= include 'DefaultLandmarksConcrete' %&gt;										&#xD;
+&lt;/div&gt;</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d936d790-70d1-11df-87de-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#ConcreteInterface"/>
+    <swui:concrete_interface_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/*
+University CSS
+*/
+
+body {
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: .9em;
+	margin: 5px;
+	padding: 5px;
+}
+
+label {
+      font-style:italic;
+      font-weight: bold;
+}
+
+div.landmark {
+	margin-top: 15px;
+	margin-bottom: 30px;
+	text-align: center;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #146eb4;
+}
+
+div.lmItem {
+	padding: 0 30px 0 30px;
+	display: inline;
+}
+
+div.rightColumn {
+	margin: 10px 20px;
+	float: left;
+	width: 60%;
+}
+
+a:link, a:visited , a:hover, a:active {
+        color: #050; 
+}
+
+img {
+	display: block;
+        border: none;
+}
+
+.list {
+	border: solid 1px #e80; 
+	color: #e80;
+	padding: 0 30px 30px 30px;
+	margin: 30px 0 30px 0;
+}
+
+
+.label {
+	font-weight: bold;	
+}
+
+p.label {
+        margin-top: 5px;
+}
+.act {
+       font-size: 1.1em;
+       padding: 0 8px;
+       background-color: #e80; 
+       color: #fff;
+       margin: 5px;
+}
+
+.navBar {
+	margin: 0 auto;
+	padding: 0 40px 30px 40px;;
+	width: 70%
+}
+
+.node {
+	margin: 30px;
+	padding: 20px;
+	width: 70%
+}
+
+.centered {
+	margin: 0 auto;
+}
+
+.ctxIndex {
+	margin-left: 5px;
+}
+
+.border_top {
+	border-top: 1px solid #e80;
+
+}
+
+form {
+	margin: 0 10px;
+	padding: 10px;
+}
+
+input {
+	margin: 0 10px;
+}
+
+input.btn { 
+	color:#000;
+	font: bold 84% Arial, Helvetica, Sans-serif;
+	background-color:#fff; 
+	border: solid 1px #e80;
+}
+
+form .label {
+	color:#050;
+}
+
+tr .label {
+        padding: 5px 10px;
+}
+
+.interface {
+       padding-top:30px;
+}
+
+#QueryResultsList {
+       padding-left: 20px;
+}
+
+img.logo {
+       height: 20px;
+       width: 82px;
+}
+
+.narrow {
+	border-left: 1px solid #e80;
+	margin: 0 auto;
+	width: 40%;
+}</swui:concrete_interface_code>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MainCSS</swui:interface_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e669f500-ea93-11df-9f84-00264afffe1d">
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">css</shdm:operation_name>
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">name = params[:id]&#xD;
+interface = SWUI::ConcreteInterface.find_by.swui::interface_name(name).execute.first&#xD;
+css = interface.swui::concrete_interface_code.first&#xD;
+render :text =&gt; css, :content_type =&gt; 'text/css'</shdm:operation_code>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#68b95c00-e083-11df-aab6-00264afffe1d">
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:navigation_attribute_parameter_value_expression>
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">klass</shdm:navigation_attribute_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e9e8eec0-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous SlideUp and SlideDown effects
+
+  eval ("new Effect.SlideUp(widgetB, { " + parameters + " })");
+  eval ("new Effect.SlideDown(widgetA, { " + parameters + " })");</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">slideUpDown</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9b130f10-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h3&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header3</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b9e7aae0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;li&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ListItem</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9365c360-ea99-11df-9f84-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResourcesByLabel</shdm:context_name>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resources By Label</shdm:context_title>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">selects {&#xD;
+   a RDFS::Resource&#xD;
+   rdfs::label like label_string&#xD;
+}</shdm:context_query>
+    <shdm:context_parameters rdf:resource="http://base#b54b21a0-ea99-11df-9f84-00264afffe1d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#db5de0a0-758f-11df-ae18-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</swui:dynamic>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;CompositeInterfaceElement name="Landmarks" mapsTo="Composition" fromAttribute="swui:landmarks" cssClasses="swui_composite swui_landmark" &gt;
+	&lt;CompositeInterfaceElement name="Landmark" mapsTo="Paragraph" fromClass="Landmark" cssClasses="swui_composite swui_inline" &gt;
+		&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:landmarks|swui:landmark|swui:target" name="landmarks-landmark-target" &gt;
+			&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:landmarks|swui:landmark" name="landmarks-landmark" /&gt;
+		&lt;/SimpleActivator&gt;
+	&lt;/CompositeInterfaceElement&gt;
+&lt;/CompositeInterfaceElement&gt;</swui:abstract_spec>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultLandmarks</swui:interface_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a4ed7a70-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Morph effect
+
+   eval ("$(widgetA).morph('" + parameters + "')");</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">morph</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d4a48c90-ea93-11df-9f84-00264afffe1d">
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">search_url</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">internal</shdm:operation_type>
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SHDM::Index.find_by.index_name('ResourcesByLabelIdx').execute.first.url</shdm:operation_code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#7c4a5750-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// It changes widget style's properties
+
+// parameters argument must be supplied in the following format: "property:value"
+
+   var propertyName = swui_piece(parameters, ":", 0, 1);
+   var propertyValue = swui_piece(parameters, ":", 1);
+   eval("document.getElementById('" + widgetA + "').style." + propertyName + "='" + propertyValue + "'")</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">changeStyleProperty</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#720efd60-df10-11df-b769-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultContextInterfaceAbstract</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">abstract</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;AbstractInterface name="DefaultContextInterface" mapsTo="Composition" cssClasses="swui_interface"&gt;&#xD;
+      &lt;CompositeInterfaceElement name="ContextNode" mapsTo="Composition" fromClass="ContextClass"&gt;&#xD;
+&#xD;
+&lt;%= include DefaultLandmarks %&gt;&#xD;
+&#xD;
+&lt;%= include DefaultNavBar %&gt;&#xD;
+&#xD;
+&lt;%= include DefaultContextIndex %&gt;&#xD;
+&#xD;
+&lt;CompositeInterfaceElement name="Node" mapsTo="Composition" cssClasses="swui_composite swui_node swui_floatRight"&gt;&#xD;
+&#xD;
+&lt;%= include DefaultJSONDisplay %&gt;&#xD;
+&#xD;
+&lt;/CompositeInterfaceElement&gt;&#xD;
+&#xD;
+      &lt;/CompositeInterfaceElement&gt;&#xD;
+&lt;/AbstractInterface&gt;</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a63feca0-ea98-11df-9f84-00264afffe1d">
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">klass</shdm:navigation_attribute_parameter_name>
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters[:klass]</shdm:navigation_attribute_parameter_value_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#0f954c30-ea9a-11df-9f84-00264afffe1d">
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Label</shdm:navigation_attribute_name>
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self.rdfs::label.first</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#9365c360-ea99-11df-9f84-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:context_anchor_navigation_attribute_target_parameters rdf:resource="http://base#1f5ebd90-ea9a-11df-9f84-00264afffe1d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#87360e70-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Fade effect
+
+if (document.getElementById(widgetA) != null) { eval("$(widgetA).fade({" + parameters + "})"); }</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fade</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#71c94a70-ea98-11df-9f84-00264afffe1d">
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Label</shdm:navigation_attribute_name>
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">l = self.rdfs::label; l = l.to_s.blank? ? nil : l; l ||= self.compact_uri; l.to_s</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#2305df20-e07f-11df-aab6-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+    <shdm:context_anchor_navigation_attribute_target_parameters rdf:resource="http://base#a63feca0-ea98-11df-9f84-00264afffe1d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#8cfbba80-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;form&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Form</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6f4e6000-e07f-11df-aab6-00264afffe1d">
+    <rdf:type rdf:resource="http://shdm#IndexAnchorNavigationAttribute"/>
+    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#331b9bc0-e07f-11df-aab6-00264afffe1d"/>
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'Classes'</shdm:index_anchor_navigation_attribute_label_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f4fb6a90-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;input type='text'&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteVariable</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextBox</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#de682660-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;th&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableHeadCell</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#eb384220-70d2-11df-87de-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</swui:dynamic>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;CompositeInterfaceElement name="Landmarks" mapsTo="Composition" cssClasses="swui_composite swui_landmark" &gt;
+	&lt;CompositeInterfaceElement name="Landmark" mapsTo="Paragraph" fromClass="Landmark" cssClasses="swui_composite swui_inline" &gt;
+		&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:landmark|swui:target" name="landmarks-landmark-target" &gt;
+			&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:landmark" name="landmarks-landmark" /&gt;
+		&lt;/SimpleActivator&gt;
+	&lt;/CompositeInterfaceElement&gt;
+&lt;/CompositeInterfaceElement&gt;</swui:abstract_spec>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultLandmarksForIndexes</swui:interface_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f1d89f30-80d1-11df-b464-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#RichControl"/>
+    <swui:cssCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:cssCode>
+    <swui:jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">modelRef = document.getElementById(swui_getRunTimeRef(undefined, swui_id));
+text = modelRef.value;
+editBoxRef = swui_getRunTimeRef("textEdit",swui_id);
+document.getElementById(editBoxRef).innerHTML=text;
+
+property = modelRef.getAttribute("property");
+ptyParent = swui_piece(property, "|", 0, swui_piece(property, "|")-1);
+
+objId = "";
+if (swui_piece(property, "|", 1) != "") {
+// this is an index's entry
+// we have to look for the object's id in jsonData
+nodeWidg = nodeWidMap[swui_piece(swui_id, "$", 0,1)];
+seq = parseInt(swui_piece(swui_piece(swui_id, "$", swui_piece(swui_id, "$")-1),"s",1));
+interf = inteWidMap[nodeWidg];
+nodesArray = parseJSONResponse(readJSONData(interf));
+if (nodesArray != "") {
+  count = 0;
+  for (var i = 0, len = nodesArray.length; i &lt; len; ++i) {
+     traverseJSON(nodesArray[i]);
+  }
+}
+} else {
+// swui_id variable holds the object's id
+objId = swui_piece(swui_piece(swui_id, "$", 1, 2), "id", 1);
+callNewAjaxInPlaceEditor();
+}
+
+function traverseJSON(elem) {
+  for (var attrName in elem) {
+    if (typeof elem[attrName] == "object") { traverseJSON(elem[attrName]) } 
+    else {
+        if (elem[attrName]!="") { 
+            ptyPfx = swui_piece(attrName, "|", 0, swui_piece(attrName, "|")-1)
+            ptySfx = swui_piece(attrName, "|", swui_piece(attrName, "|")-1)
+            if (ptyParent ==  ptyPfx &amp;&amp; (ptySfx=="swui:id") ) { 
+              if (seq == count) {
+                 objId = elem[attrName]; 
+                 callNewAjaxInPlaceEditor();
+              }
+              count=count+1;
+            }
+        }
+    }
+  }
+}
+
+function callNewAjaxInPlaceEditor() {
+   new Ajax.InPlaceEditor(editBoxRef, '/execute/change_property/'+encodeURIComponent(objId), {callback: function(form, value) { propertyName=setPropertyName(); str='property=' + propertyName + '&amp;value=' + encodeURIComponent(value);return str}}, {rows:1,cols:40});
+}
+
+function setPropertyName() {
+ modelRef = document.getElementById(swui_getRunTimeRef(undefined, swui_id)); 
+ property = modelRef.getAttribute("property"); 
+ if (swui_piece(property, "|", 1) != "") {
+   propertyName=swui_piece(property, "|", swui_piece(property, "|")-1)
+ } else {
+   propertyName=property
+ } 
+ return propertyName; 
+}</swui:jsCode>
+    <swui:htmlCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div id="InPlaceEditor"&gt;
+&lt;p id="textEdit"&gt;Text that can be edited.&lt;/p&gt;
+&lt;/div&gt;</swui:htmlCode>
+    <swui:dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:dependencies>
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteVariable</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InPlaceEditor</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#20e43ad0-e083-11df-aab6-00264afffe1d">
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResourcesByClassIndex</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resources By Class Index</shdm:index_title>
+    <shdm:context_index_context rdf:resource="http://base#2305df20-e07f-11df-aab6-00264afffe1d"/>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+    <shdm:context_anchor_attributes rdf:resource="http://base#71c94a70-ea98-11df-9f84-00264afffe1d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f98cd990-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;ul&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnorderedList</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#9f83fdc0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h4&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header4</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b5a2fc50-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;a&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimpleActivator</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Link</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#80727430-ea97-11df-9f84-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aqueous</swui:interface_name>
+    <swui:concrete_interface_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">body {&#xD;
+	font: 78.5%/1.6em "Lucida Grande", "Lucida Sans Unicode", verdana, geneva, sans-serif;&#xD;
+	word-spacing:2px;&#xD;
+	color:#444;&#xD;
+	margin:20px;&#xD;
+	background:url(/images/aqueous/body.jpg) #f6f6f6;&#xD;
+}&#xD;
+&#xD;
+* {&#xD;
+	margin:0;&#xD;
+	padding:0;&#xD;
+	&#xD;
+}&#xD;
+&#xD;
+#wrapper {&#xD;
+	background:#fff;&#xD;
+	border:3px solid #f1f1f1;&#xD;
+	max-width:1200px;&#xD;
+	width:expression(this.width &gt; 320 ? "320px" : this.width);&#xD;
+	min-width:760px;&#xD;
+	margin:0 auto;&#xD;
+}&#xD;
+&#xD;
+* html #wrapper&#xD;
+{&#xD;
+	w\idth: expression(document.documentElement.clientWidth &gt; 1200 ? "1200px" : "auto");&#xD;
+}&#xD;
+&#xD;
+#innerwrapper {&#xD;
+	margin:1px;&#xD;
+	background:url(/images/aqueous/innerwrapper.jpg) top repeat-x;&#xD;
+	padding:20px;&#xD;
+}&#xD;
+&#xD;
+#header input {&#xD;
+	width:150px;&#xD;
+	padding:5px;&#xD;
+	background:#fff;&#xD;
+	border:2px solid #f6f6f6;&#xD;
+	font:150% Arial;&#xD;
+	color:#999;&#xD;
+}&#xD;
+&#xD;
+#header input:hover {&#xD;
+	border:2px solid #ccc;&#xD;
+}&#xD;
+&#xD;
+#header input:focus {&#xD;
+	border:2px solid #79B5D6;&#xD;
+	color:#555;&#xD;
+}&#xD;
+&#xD;
+#header form {&#xD;
+	padding:27px 25px 20px 25px;&#xD;
+	float:right;&#xD;
+	background:#fff;&#xD;
+	width:160px;&#xD;
+	margin:-20px -20px 0 0 !important;&#xD;
+	margin:-20px -10px 0 0;&#xD;
+	border:none;&#xD;
+}&#xD;
+&#xD;
+#header h1 {&#xD;
+	float:left;&#xD;
+	font:250% Georgia;&#xD;
+	color:#333;&#xD;
+	padding:5px 20px 5px 5px;&#xD;
+	&#xD;
+	margin:0 20px 0 0;&#xD;
+}&#xD;
+&#xD;
+#header h1 a {&#xD;
+	color:#333;&#xD;
+	text-decoration:none;&#xD;
+	&#xD;
+}&#xD;
+&#xD;
+#header h1 a:hover {&#xD;
+	color:#111;&#xD;
+	&#xD;
+}&#xD;
+&#xD;
+#header h2 {&#xD;
+	font:150% Georgia;&#xD;
+	font-weight:normal;&#xD;
+	color:#555;&#xD;
+	padding:14px 0 0 0;&#xD;
+	border:none;&#xD;
+}&#xD;
+&#xD;
+#header h2 a {&#xD;
+	color:#555;&#xD;
+	text-decoration:none;&#xD;
+	border-bottom:2px solid #f6f6f6;&#xD;
+}&#xD;
+&#xD;
+&#xD;
+#header #nav {&#xD;
+	clear:both;&#xD;
+	background:url(/images/aqueous/nav.jpg) top repeat-x #4F9EC9;&#xD;
+	border-bottom:2px solid #4F9EC9;&#xD;
+	border-top:2px solid #388CBA;&#xD;
+	border-left:2px solid #388CBA;&#xD;
+	border-right:2px solid #388CBA;&#xD;
+	padding:10px 10px 10px 0 !important;&#xD;
+	padding:4px 10px 10px 0;&#xD;
+}&#xD;
+&#xD;
+#header a em {&#xD;
+	font-style:normal;&#xD;
+	text-decoration:underline;&#xD;
+}&#xD;
+&#xD;
+#header #nav a {&#xD;
+	color:#fff;&#xD;
+	font:140% Trebuchet MS;&#xD;
+	text-decoration:none;&#xD;
+	padding:10px;&#xD;
+}&#xD;
+&#xD;
+#header #nav a:hover {&#xD;
+	background:#4F9EC9;&#xD;
+}&#xD;
+&#xD;
+#header #nav a.active {&#xD;
+	background:#4F9EC9;&#xD;
+}&#xD;
+&#xD;
+#header #nav li {&#xD;
+	display:inline;&#xD;
+	list-style:none;&#xD;
+	margin:0 1px 0 0;&#xD;
+}&#xD;
+&#xD;
+#header #subnav {&#xD;
+	background:#4F9EC9;&#xD;
+	padding:5px 7px 7px 7px;&#xD;
+	font:90% Verdana;&#xD;
+	color:#DEEDF5;&#xD;
+	border-bottom:2px solid #388CBA;&#xD;
+	border-left:2px solid #388CBA;&#xD;
+	border-right:2px solid #388CBA;&#xD;
+}&#xD;
+&#xD;
+#header #subnav li {&#xD;
+	list-style:none;&#xD;
+	display:inline;&#xD;
+}&#xD;
+&#xD;
+#header #subnav a {&#xD;
+	color:#DEEDF5;&#xD;
+	text-decoration:none;&#xD;
+	font:100% Verdana;&#xD;
+	padding:5px;&#xD;
+	border-bottom:2px solid #4F9EC9;&#xD;
+}&#xD;
+&#xD;
+#header #subnav a:hover {&#xD;
+	border-bottom:2px solid #388CBA;&#xD;
+	color:#fff;&#xD;
+}&#xD;
+&#xD;
+#header #subnav a.active {&#xD;
+	border-bottom:2px solid #388CBA;&#xD;
+	color:#fff;&#xD;
+}&#xD;
+&#xD;
+&#xD;
+#sidebar {&#xD;
+	background:#fff;&#xD;
+	width:210px;&#xD;
+	padding:10px 20px 20px 5px;&#xD;
+	float:left;&#xD;
+	color:#666;&#xD;
+}&#xD;
+&#xD;
+#sidebar h2 {&#xD;
+	font:160% Arial;&#xD;
+	color:#333;&#xD;
+	margin:10px 0 10px 0;&#xD;
+	border:none;&#xD;
+}&#xD;
+&#xD;
+#sidebar h3 {&#xD;
+	color:#999;&#xD;
+	font:100% Verdana;&#xD;
+	font-weight:bold;&#xD;
+	letter-spacing:1px;&#xD;
+	margin:0 0 -10px 0;&#xD;
+}&#xD;
+&#xD;
+#sidebar p {&#xD;
+	margin:15px 0;&#xD;
+}&#xD;
+&#xD;
+#sidebar p.news {&#xD;
+	background:#fefefe;&#xD;
+}&#xD;
+&#xD;
+#sidebar p.news a.more {&#xD;
+	color:#ccc;&#xD;
+	display:block;&#xD;
+	text-align:right;&#xD;
+	font:80% Verdana;&#xD;
+	text-transform:uppercase;&#xD;
+	letter-spacing:1px;&#xD;
+	text-decoration:none;&#xD;
+	padding:10px 0;&#xD;
+}&#xD;
+&#xD;
+#sidebar p.news a:hover {&#xD;
+	color:#666;&#xD;
+}&#xD;
+&#xD;
+#sidebar .subnav {&#xD;
+	border-top:1px solid #fafafa;&#xD;
+}&#xD;
+&#xD;
+#sidebar .subnav li {&#xD;
+	list-style:none;&#xD;
+	padding:5px;&#xD;
+	border-bottom:1px solid #fafafa;&#xD;
+}&#xD;
+&#xD;
+#sidebar .subnav li a {	&#xD;
+	color:#ccc;&#xD;
+	text-decoration:none;&#xD;
+	display:block;&#xD;
+}&#xD;
+&#xD;
+#sidebar .subnav li a:hover {&#xD;
+	color:#666;&#xD;
+}&#xD;
+&#xD;
+#sidebar .subnav li a b {&#xD;
+	float:right;&#xD;
+	display:none;&#xD;
+	color:#666;&#xD;
+}&#xD;
+&#xD;
+#sidebar .subnav li a:hover b {&#xD;
+	display:inline;&#xD;
+}&#xD;
+&#xD;
+#sidebar input {&#xD;
+	padding:4px;&#xD;
+	background:#f6f6f6;&#xD;
+	border:1px solid #ccc;&#xD;
+	color:#777;&#xD;
+	font:90% Verdana;&#xD;
+	width:190px;&#xD;
+}&#xD;
+&#xD;
+#sidebarright {&#xD;
+	width:170px;&#xD;
+	float:right;&#xD;
+	padding:10px 0 0 20px;&#xD;
+	background:url(/images/aqueous/sidebarright.jpg) top left no-repeat;&#xD;
+}&#xD;
+&#xD;
+#sidebarright p {&#xD;
+	font:90% Verdana;&#xD;
+	color:#777;&#xD;
+	line-height:20px;&#xD;
+	margin:10px 0;&#xD;
+}&#xD;
+&#xD;
+#sidebarright h2 {&#xD;
+	font:140% Arial;&#xD;
+	color:#333;&#xD;
+	margin:10px 0;&#xD;
+	border:none;&#xD;
+}&#xD;
+&#xD;
+#sidebarright ul {&#xD;
+	margin:10px 0 10px 15px;&#xD;
+	font:90% Verdana;&#xD;
+}&#xD;
+&#xD;
+#sidebarright ul li {&#xD;
+	margin:5px 0;&#xD;
+}&#xD;
+&#xD;
+#sidebarright a {&#xD;
+	border-bottom:1px dotted #eee;&#xD;
+	color:#444;&#xD;
+	text-decoration:none;&#xD;
+}&#xD;
+&#xD;
+#sidebarright a:hover {&#xD;
+	border-bottom:1px solid #ccc;&#xD;
+}&#xD;
+&#xD;
+&#xD;
+#content {&#xD;
+	margin:0 210px 0 240px;&#xD;
+	padding:20px 0 0 20px;&#xD;
+}&#xD;
+&#xD;
+#contentnorightbar {&#xD;
+	margin:0 0 0 240px;&#xD;
+	padding:20px 0 0 20px;&#xD;
+}&#xD;
+&#xD;
+p {&#xD;
+	margin:15px 0;&#xD;
+	line-height:22px;&#xD;
+}&#xD;
+&#xD;
+h2 {&#xD;
+	font:150% Arial;&#xD;
+	color:#79B933;&#xD;
+	border-bottom:2px solid #f6f6f6;&#xD;
+}&#xD;
+&#xD;
+h2 a {&#xD;
+	color:#79B933;&#xD;
+	text-decoration:none;&#xD;
+}&#xD;
+&#xD;
+h2 a:hover {&#xD;
+	color:#5F9128;&#xD;
+}&#xD;
+&#xD;
+&#xD;
+#footer {&#xD;
+	clear:both;&#xD;
+	border-top:1px solid #eee;&#xD;
+	padding:10px;&#xD;
+	margin:30px 0 0;&#xD;
+}&#xD;
+&#xD;
+a {&#xD;
+	color:#222;&#xD;
+}&#xD;
+&#xD;
+a:hover {&#xD;
+	text-decoration:none;&#xD;
+}&#xD;
+&#xD;
+h3 {&#xD;
+	font:140% Trebuchet MS;&#xD;
+	margin:10px 0;&#xD;
+}&#xD;
+&#xD;
+#content ul {&#xD;
+	margin:15px 0 15px 0;&#xD;
+	line-height:25px;&#xD;
+	padding:15px 0 15px 15px;&#xD;
+	border-top:1px solid #eee;&#xD;
+	border-bottom:1px solid #eee;&#xD;
+	color:#79B933;&#xD;
+}&#xD;
+#content ul span {&#xD;
+	color:#444;&#xD;
+}&#xD;
+#contentnorightbar ul {&#xD;
+	margin:15px 0 15px 20px;&#xD;
+	line-height:25px;&#xD;
+	padding:15px 0;&#xD;
+	border-top:1px solid #eee;&#xD;
+	border-bottom:1px solid #eee;&#xD;
+	color:#79B933;&#xD;
+}&#xD;
+#contentnorightbar ul span {&#xD;
+	color:#444;&#xD;
+}&#xD;
+&#xD;
+img {&#xD;
+	padding:1px;&#xD;
+	background:#ccc;&#xD;
+	border:4px solid #f6f6f6;&#xD;
+}&#xD;
+&#xD;
+form {&#xD;
+	padding:10px;&#xD;
+	border:1px solid #f6f6f6;&#xD;
+}&#xD;
+&#xD;
+label {&#xD;
+	display:block;&#xD;
+	font-weight:bold;&#xD;
+	color:#444;&#xD;
+	margin:5px 0;&#xD;
+&#xD;
+}&#xD;
+input {&#xD;
+	width:300px;&#xD;
+	padding:4px;&#xD;
+	border:none;&#xD;
+	border-bottom:1px dotted #ccc;&#xD;
+	font:90% Verdana;&#xD;
+	color:#777;&#xD;
+}&#xD;
+&#xD;
+textarea {&#xD;
+	width:400px;&#xD;
+	padding:4px;&#xD;
+	font:90% Verdana;&#xD;
+	border:1px solid #eee;&#xD;
+	height:200px;&#xD;
+	display:block;&#xD;
+	color:#777;&#xD;
+}&#xD;
+&#xD;
+p img {&#xD;
+	float:left;&#xD;
+	margin:0 10px 0 0;&#xD;
+}&#xD;
+&#xD;
+blockquote p {&#xD;
+	font:160% Georgia;&#xD;
+	color:#aaa;&#xD;
+	padding:0 10% 0 0;&#xD;
+	line-height:30px;&#xD;
+}&#xD;
+&#xD;
+#contentnorightbar table ul {&#xD;
+       border-bottom:0 none;&#xD;
+       border-top:0 none;&#xD;
+       line-height:15px;&#xD;
+       list-style-type:none;&#xD;
+       margin:0;&#xD;
+       padding:0;&#xD;
+       color: #999;&#xD;
+}&#xD;
+#contentnorightbar table{&#xD;
+       margin-bottom: 10px; &#xD;
+}&#xD;
+#contentnorightbar table a{ color: #999; }&#xD;
+&#xD;
+#contentnorightbar table th{&#xD;
+      padding-right: 15px; &#xD;
+      text-align: left;&#xD;
+}</swui:concrete_interface_code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b400a970-6b67-11df-8c3d-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultIndexInterface</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;&#xD;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"&gt;&#xD;
+&lt;head&gt;&#xD;
+&lt;title&gt;&lt;%= @index.index_title %&gt;&lt;/title&gt;&#xD;
+&lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;&#xD;
+&lt;link rel="stylesheet" href="/execute/css/aqueous" type="text/css" media="screen,projection" /&gt;&#xD;
+&lt;%= javascript_include_tag 'jquery/jquery-1.4.2.min.js' %&gt;&#xD;
+&lt;/head&gt;&#xD;
+ &#xD;
+&lt;body&gt;&#xD;
+&#xD;
+&lt;div id="wrapper"&gt;&#xD;
+&lt;div id="innerwrapper"&gt;&#xD;
+&#xD;
+  &lt;%= include 'Header' %&gt;&#xD;
+    &#xD;
+  &lt;%= include 'IndexSideBar' %&gt;&#xD;
+			&#xD;
+	&lt;div id="contentnorightbar"&gt;&#xD;
+		&#xD;
+    &lt;% for entry in @index.entries do&#xD;
+        attributes = entry.attributes_names.clone&#xD;
+        first_name = attributes.delete_at(0)&#xD;
+        first_attribute = entry.attributes_hash[first_name] %&gt;  &#xD;
+        &lt;div class="entry" id="&lt;%= entry.uri %&gt;"&gt;  &#xD;
+        &lt;h2&gt;&lt;%= first_attribute.respond_to?(:target_url) ? link_to(first_attribute.label, (first_attribute.target_url || "#")) : first_attribute.label %&gt;&lt;/h2&gt;&#xD;
+        &lt;table&gt;&#xD;
+        &lt;tr&gt;&#xD;
+          &lt;% for name in attributes do %&gt;&#xD;
+            &lt;th&gt;&lt;%= name %&gt;&lt;/th&gt;&#xD;
+          &lt;% end %&gt;&#xD;
+        &lt;/tr&gt;&#xD;
+        &lt;tr&gt;        &#xD;
+        &lt;% &#xD;
+           for name in attributes do &#xD;
+           attribute = entry.attributes_hash[name]&#xD;
+           if attribute.label.is_a?(Array)&#xD;
+             if attribute.respond_to?(:target_context)&#xD;
+                attr = attribute.label.map{|o| link_to(o[:label], attribute.target_context.url((o[:params] || {}), o[:target_url]), :class =&gt; name)}&#xD;
+             else&#xD;
+                attr = attribute.label.map{|o| link_to(o[:label], o[:target_url], :class =&gt; name)}&#xD;
+             end&#xD;
+           else                            &#xD;
+             if attribute.respond_to?(:target_url)&#xD;
+               attr = [ link_to(attribute.label, attribute.target_url, :rel =&gt; name) ]&#xD;
+             else&#xD;
+               attr = [ attribute.label ]&#xD;
+             end&#xD;
+           end &#xD;
+           %&gt;&#xD;
+            &lt;td&gt;&#xD;
+              &lt;ul&gt;&#xD;
+                &lt;% for attribute_value in attr do %&gt;&lt;li&gt;&lt;%= attribute_value %&gt;&lt;/li&gt;&lt;% end %&gt;&#xD;
+              &lt;/ul&gt;&#xD;
+   	        &lt;/td&gt;&#xD;
+           &#xD;
+        &lt;% end %&gt;&#xD;
+           &lt;/tr&gt;&#xD;
+	       &lt;/table&gt;&#xD;
+  	    &lt;/div&gt;&#xD;
+  	&lt;% end %&gt;&#xD;
+ &lt;/div&gt;&#xD;
+ &lt;%= include 'Footer' %&gt;&#xD;
+ &lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/body&gt;&#xD;
+&lt;/html&gt;</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#IndexInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f09466f0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;textarea&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteVariable</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextArea</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#f5146e00-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Fade and Appear effects
+
+   eval("$(widgetB).fade({" + parameters + "})");
+   eval("$(widgetA).appear({" + parameters + "})");</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">switch</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#b0f4dac0-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Move effect
+
+if (widgetB == undefined) {
+    eval ("new Effect.Move(widgetA, { " + parameters + " })");
+  } else {
+    var posA = swui_findPos(document.getElementById(widgetA));
+    var posB = swui_findPos(document.getElementById(widgetB));
+    var x = posA[0]-posB[0];
+    var y = posA[1]-posB[1];
+    eval ("new Effect.Move(widgetB, {  x: " + x + ", y: " + y + " })");
+    $(widgetB).fade({duration: 2.0});
+    $(widgetA).appear({duration: 2.0});
+  }</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">move</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#aca0ecc0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;img&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Image</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#96e31e30-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Highlight effect
+
+eval ("new Effect.Highlight(widgetA, { " + parameters + " })");</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highlight</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#c9651c50-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Puff effect
+
+  eval ("new Effect.Puff(widgetA, { " + parameters + " })");</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">puff</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#6f209940-e07f-11df-aab6-00264afffe1d">
+    <rdf:type rdf:resource="http://shdm#Landmark"/>
+    <shdm:landmark_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:landmark_position>
+    <shdm:landmark_navigation_attribute rdf:resource="http://base#6f4e6000-e07f-11df-aab6-00264afffe1d"/>
+    <shdm:landmark_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Classes</shdm:landmark_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d53f2de0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;td&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableCell</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#331b9bc0-e07f-11df-aab6-00264afffe1d">
+    <shdm:index_anchor_attributes rdf:resource="http://base#5fef4c60-e083-11df-aab6-00264afffe1d"/>
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClassesIndex</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Classes Index</shdm:index_title>
+    <rdf:type rdf:resource="http://shdm#Index"/>
+    <shdm:context_index_context rdf:resource="http://base#153ddbb0-e082-11df-aab6-00264afffe1d"/>
+    <shdm:context_anchor_attributes rdf:resource="http://base#13f312f0-ea98-11df-9f84-00264afffe1d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#fd03f6f0-e082-11df-aab6-00264afffe1d">
+    <shdm:context_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">klass</shdm:context_parameter_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#7e84e0d0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;select&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComboBox</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#46aa1450-6b63-11df-8c3d-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultContextInterface</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;&#xD;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"&gt;&#xD;
+&lt;head&gt;&#xD;
+&lt;title&gt;&lt;%= @context.context_title %&gt;&lt;/title&gt;&#xD;
+&lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;&#xD;
+&lt;link rel="stylesheet" href="/execute/css/aqueous" type="text/css" media="screen,projection" /&gt;&#xD;
+&lt;%= javascript_include_tag 'jquery/jquery-1.4.2.min.js' %&gt;&#xD;
+&lt;/head&gt;&#xD;
+ &#xD;
+&lt;body&gt;&#xD;
+&lt;div id="wrapper"&gt;&#xD;
+  &lt;div id="innerwrapper"&gt;&#xD;
+&#xD;
+    &lt;%= include 'Header' %&gt;&#xD;
+    &#xD;
+    &lt;%= include 'ContextSideBar' %&gt;&#xD;
+			&#xD;
+    &lt;div id="contentnorightbar"&gt;&#xD;
+    &lt;p style="margin-top: 0px; padding-top: 0px;"&gt;&#xD;
+      &lt;%= link_to("&lt;&lt; Previous", @current_node.previous_node_anchor.target_url, :title =&gt; @current_node.previous_node_anchor.label) unless @current_node.previous_node.nil? %&gt;&#xD;
+      &lt;%= link_to("Next &gt;&gt;", @current_node.next_node_anchor.target_url, :title =&gt; @current_node.next_node_anchor.label, :style =&gt; "float: right;") unless @current_node.next_node.nil? %&gt;&#xD;
+     &lt;/p&gt;&#xD;
+&#xD;
+     &lt;h2&gt;&lt;%= @current_node.rdfs::label.first || @current_node.compact_uri %&gt;&lt;/h2&gt;&#xD;
+     &lt;p&gt;&#xD;
+        &lt;table&gt;&#xD;
+           &#xD;
+           &lt;% for property in @current_node.direct_properties do %&gt;&#xD;
+              &lt;% unless property.nil? || property.first.is_a?(RDFS::Resource) %&gt;&#xD;
+                 &lt;tr&gt;&lt;th&gt;&lt;%= property.label.nil? ? property.compact_uri : property.label.first %&gt;&lt;/th&gt;&lt;td&gt;&lt;%= h property.to_s %&gt;&lt;/td&gt;&lt;/tr&gt;&#xD;
+              &lt;% end %&gt;&#xD;
+           &lt;% end %&gt;&#xD;
+           &lt;% for name, attribute in @current_node.attributes_hash do %&gt;&#xD;
+               &lt;tr&gt;&lt;th&gt;&lt;%= name %&gt;&lt;/th&gt; 		&#xD;
+  	       &lt;% if attribute.is_a?(IndexNodeAttribute) %&gt;&#xD;
+                   &lt;td&gt;&lt;table&gt;&#xD;
+                   &lt;tr&gt;&#xD;
+                   &lt;% for label_idx in attribute.value.index_attributes do %&gt;&#xD;
+                       &lt;th&gt;&lt;%= label_idx.navigation_attribute_name.first %&gt;&lt;/th&gt;&#xD;
+                   &lt;% end %&gt;&#xD;
+                   &lt;/tr&gt;&#xD;
+	           &lt;% for index_entry in attribute.value.entries do %&gt;&#xD;
+                        &lt;tr&gt;                        &#xD;
+		        &lt;% for name_idx, attribute_idx in index_entry.attributes_hash do %&gt;&#xD;
+                            &lt;td&gt; &#xD;
+		            &lt;% if attribute_idx.respond_to?(:target_url) %&gt;&#xD;
+	                       &lt;%= link_to attribute_idx.label, attribute_idx.target_url %&gt;&#xD;
+	                    &lt;% else %&gt;&#xD;
+	                       &lt;%= h attribute_idx.label %&gt;&#xD;
+	                    &lt;% end %&gt;&#xD;
+                            &lt;/td&gt;&#xD;
+		        &lt;% end %&gt;                          &#xD;
+                     &lt;/tr&gt;&#xD;
+		  &lt;% end %&gt;&#xD;
+                   &lt;/table&gt;&lt;/td&gt;                                     &#xD;
+               &lt;% else %&gt;&#xD;
+    	          &lt;% if attribute.respond_to?(:target_url) %&gt;&#xD;
+	             &lt;td&gt;&lt;%= link_to attribute.label, attribute.target_url %&gt;&lt;/td&gt;&#xD;
+	          &lt;% else %&gt;&#xD;
+	            &lt;td&gt;&lt;%= h attribute.label %&gt;&lt;/td&gt;&#xD;
+	          &lt;% end %&gt;              &#xD;
+              &lt;% end %&gt;&#xD;
+              &lt;/tr&gt;&#xD;
+           &lt;% end %&gt;&#xD;
+           &lt;/table&gt;&#xD;
+         &lt;/p&gt;&#xD;
+&#xD;
+     &lt;/div&gt;&#xD;
+     &lt;%= include 'Footer' %&gt;&#xD;
+  &lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ContextInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a853d9c0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;h6&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Header6</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#ec24d7d0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;span&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ElementExhibitor</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Text</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#56d6d400-6b66-11df-8c3d-00264afffe1d">
+    <shdm:operation_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index</shdm:operation_name>
+    <shdm:operation_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">external</shdm:operation_type>
+    <rdf:type rdf:resource="http://shdm#Operation"/>
+    <shdm:operation_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">$page_cache ||= Hash.new&#xD;
+&#xD;
+page_id = (request.request_uri + params.to_s).hash&#xD;
+unless $page_cache[page_id].nil?&#xD;
+   render :text =&gt; $page_cache[page_id]&#xD;
+   return&#xD;
+end&#xD;
+&#xD;
+params.delete(:controller)&#xD;
+params.delete(:action)&#xD;
+&#xD;
+index_id = params.delete(:id)&#xD;
+index = SHDM::Index.find(index_id)&#xD;
+index = index.nil? ? SHDM::Index.find_all.first : index&#xD;
+&#xD;
+new_params = {}&#xD;
+params.each{ |i,v| new_params[i] = v.is_a?(Hash) ? RDFS::Resource.new(v["resource"]) : v }&#xD;
+new_params.delete('authenticity_token')&#xD;
+&#xD;
+@index = index.new(new_params)&#xD;
+&#xD;
+@page_title = "#{@index.index_title.first}"&#xD;
+&#xD;
+$page_cache[page_id] = render_index(@index)&#xD;
+render :text =&gt; $page_cache[page_id]&#xD;
+</shdm:operation_code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#1f5ebd90-ea9a-11df-9f84-00264afffe1d">
+    <shdm:navigation_attribute_parameter_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">label_string</shdm:navigation_attribute_parameter_name>
+    <shdm:navigation_attribute_parameter_value_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parameters[:label_string]</shdm:navigation_attribute_parameter_value_expression>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#153ddbb0-e082-11df-aab6-00264afffe1d">
+    <shdm:context_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClassesContext</shdm:context_name>
+    <shdm:context_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Classes Context</shdm:context_title>
+    <rdf:type rdf:resource="http://shdm#Context"/>
+    <shdm:context_query rdf:datatype="http://www.w3.org/2001/XMLSchema#string">selects {   &#xD;
+    a RDFS::Class  &#xD;
+}</shdm:context_query>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#4e90b6b0-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Appear effect
+
+if (document.getElementById(widgetA) != null) { eval ("$(widgetA).appear({" + parameters + "})"); }</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">appear</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#1fde3b60-76aa-11df-bb09-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</swui:dynamic>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;CompositeInterfaceElement name="NavBar" mapsTo="Composition" cssClasses="swui_composite swui_navBar" &gt;
+	&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:contextPrev|item|swui:target" name="contextPrev-item-target" cssClasses="swui_floatLeft"&gt;
+		&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:contextPrev|item" name="contextPrev-item" cssClasses="swui_floatLeft"/&gt;
+	&lt;/SimpleActivator&gt;
+	&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:contextNext|item|swui:target" cssClasses="swui_floatRight" name="contextNext-item-target" &gt;
+		&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:contextNext|item" cssClasses="swui_floatRight" name="contextNext-item" /&gt;
+	&lt;/SimpleActivator&gt;
+&lt;/CompositeInterfaceElement&gt;</swui:abstract_spec>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultNavBar</swui:interface_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5fef4c60-e083-11df-aab6-00264afffe1d">
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">instances</shdm:navigation_attribute_name>
+    <shdm:index_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">'Instances'</shdm:index_anchor_navigation_attribute_label_expression>
+    <shdm:index_anchor_navigation_attribute_target_index rdf:resource="http://base#20e43ad0-e083-11df-aab6-00264afffe1d"/>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</shdm:navigation_attribute_index_position>
+    <shdm:index_anchor_navigation_attribute_target_parameters rdf:resource="http://base#68b95c00-e083-11df-aab6-00264afffe1d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d4d322d0-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// A wrapper for the Scriptaculous Scale effect
+
+   // looks for percent parameter
+   var i=0;
+   var paramList = parameters;
+   var percent = "";
+   parameters = "";
+   while (true) {
+      param = piece(paramList, ",", i, i+1)
+      if (param == "") { break; }
+      paramName = piece(param, ":", 0, 1);
+      if (paramName == "percent") {
+         percent = piece(param, ":", 1);
+      } else {
+         if (parameters != "") { parameters += ", "; }
+         parameters += param;
+      }
+      i++;
+   }
+   if (percent != "") {
+      eval ("new Effect.Scale(widgetA, percent, { " + parameters + " });");
+   } else {
+      alert ("Percent parameter for Scale effect was not defined!");
+   }</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">scale</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#a8bc83f0-dee8-11df-907c-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultLandmarksConcrete</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;% landmarks = SHDM::Landmark.all %&gt;&#xD;
+&lt;ul id="nav"&gt;&#xD;
+&lt;% for landmark in landmarks do %&gt;&#xD;
+    &lt;li&gt;&lt;%= link_to landmark.label, landmark.target_url %&gt;&lt;/li&gt;&#xD;
+&lt;% end %&gt;&#xD;
+&lt;/ul&gt;</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#e031c000-8139-11df-9021-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#Effect"/>
+    <swui:effect_jsCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">// Display the composition that holds the widget using the Script.aculo.us Appear Effect
+
+if (swui_isInstanceId(widgetA)) { 
+  // if the widget is not a template
+  var item = document.getElementById(widgetA);
+  var list = item.parentNode;
+  if (list != null ) { eval ("$(list.id).appear({" + parameters + "})"); }
+
+}</swui:effect_jsCode>
+    <swui:effect_dependencies rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:effect_dependencies>
+    <swui:effect_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">showList</swui:effect_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#748b2ad0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;input type='button'&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimpleActivator</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Button</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#79d1dba0-ea94-11df-9f84-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndexSideBar</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div id="sidebar"&gt;&#xD;
+  &#xD;
+  &lt;h2&gt;&lt;%= @index.index_title %&gt;&lt;/h2&gt;&#xD;
+  &#xD;
+  &lt;% unless @index.parameters.empty? %&gt;&#xD;
+    &lt;h3&gt;Parameters&lt;/h3&gt;	  &#xD;
+    &lt;p class="news"&gt;&#xD;
+    &lt;% for name, value in @index.parameters do %&gt;&#xD;
+       &lt;strong&gt;&lt;%= name %&gt;: &lt;/strong&gt;&lt;%= value.is_a?(RDFS::Resource) ? (value.rdfs::label.first || value.compact_uri) : value %&gt;&#xD;
+       &lt;/br&gt;&#xD;
+    &lt;% end %&gt;&#xD;
+    &lt;/p&gt;&#xD;
+  &lt;% end %&gt;&#xD;
+&#xD;
+  &lt;h3 style="margin: 0;"&gt;Filter&lt;/h3&gt;		&#xD;
+  &lt;input id="input_filter" name="" type="text" value="filter" /&gt;&#xD;
+&#xD;
+&lt;/div&gt;&#xD;
+&lt;script&gt;&#xD;
+&#xD;
+$(document).ready(function(){&#xD;
+&#xD;
+  $('#input_filter').keyup(function() {&#xD;
+     var value = $(this).val().trim();&#xD;
+     if(value == ""){&#xD;
+       $('.entry').show();            &#xD;
+     }&#xD;
+     else&#xD;
+    {&#xD;
+      var re = new RegExp(value,"i");&#xD;
+      $('.entry').hide()&#xD;
+      $('.entry').filter(function() {&#xD;
+        return re.test($(this).find('h2').text()) &#xD;
+      }).show();&#xD;
+      }     &#xD;
+  });&#xD;
+ });&#xD;
+&#xD;
+&lt;/script&gt;</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#3892cda0-df10-11df-b769-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultIndexInterfaceAbstract</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">abstract</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;AbstractInterface name="DefaultIndexInterface" mapsTo="Composition" tagAttributes="" cssClasses=""&gt;&#xD;
+&#xD;
+&lt;%= include DefaultLandmarksForIndexes %&gt;&#xD;
+&#xD;
+   &lt;CompositeInterfaceElement name="Index" mapsTo="Composition" cssClasses="swui_composite" ordered="true"&gt;&#xD;
+	   &lt;CompositeInterfaceElement name="Entry" mapsTo="Composition" fromClass="IndexClass" cssClasses="swui_composite"&gt;&#xD;
+&lt;%= include DefaultJSONDisplay %&gt;&#xD;
+           &lt;/CompositeInterfaceElement&gt;&#xD;
+   &lt;/CompositeInterfaceElement&gt;&#xD;
+&#xD;
+&lt;/AbstractInterface&gt;&#xD;
+</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#39b0ac60-76a7-11df-bb09-00264afffe1d">
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <swui:dynamic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</swui:dynamic>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;CompositeInterfaceElement name="ContextIndex" mapsTo="Composition" fromAttribute="swui:contextIdx" cssClasses="swui_composite swui_clearFloat swui_floatLeft"&gt;
+	&lt;CompositeInterfaceElement name="ContextIndexEntry" mapsTo="Composition" fromClass="ContextIndexEntry"&gt;
+		&lt;SimpleActivator mapsTo="Link" fromAttribute="swui:idxEntry|item|swui:target" name="idxEntry-item-target" &gt;
+			&lt;ElementExhibitor mapsTo="Text" fromAttribute="swui:idxEntry|item" name="idxEntry-item" /&gt;
+		&lt;/SimpleActivator&gt;
+	&lt;/CompositeInterfaceElement&gt;
+&lt;/CompositeInterfaceElement&gt;</swui:abstract_spec>
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefaultContextIndex</swui:interface_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#5f6284a0-6b72-11df-ad20-00264afffe1d">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Qual é a pergunta?</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#82ec80b0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;option&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PredefinedVariable</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComboItem</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#feae83f0-ea99-11df-9f84-00264afffe1d">
+    <shdm:index_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResourcesByLabelIdx</shdm:index_name>
+    <shdm:index_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Search results</shdm:index_title>
+    <shdm:context_index_context rdf:resource="http://base#9365c360-ea99-11df-9f84-00264afffe1d"/>
+    <shdm:context_anchor_attributes rdf:resource="http://base#0f954c30-ea9a-11df-9f84-00264afffe1d"/>
+    <shdm:computed_attributes rdf:resource="http://base#2c87e190-ea9a-11df-9f84-00264afffe1d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#13f312f0-ea98-11df-9f84-00264afffe1d">
+    <shdm:navigation_attribute_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Label</shdm:navigation_attribute_name>
+    <shdm:context_anchor_navigation_attribute_label_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">l = self.rdfs::label; l = l.to_s.blank? ? nil : l; l ||= self.compact_uri; l.to_s</shdm:context_anchor_navigation_attribute_label_expression>
+    <shdm:context_anchor_navigation_attribute_target_context rdf:resource="http://base#153ddbb0-e082-11df-aab6-00264afffe1d"/>
+    <shdm:context_anchor_navigation_attribute_target_node_expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">self</shdm:context_anchor_navigation_attribute_target_node_expression>
+    <shdm:navigation_attribute_index_position rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</shdm:navigation_attribute_index_position>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#d0c369c0-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;tbody&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeInterfaceElement</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TableBody</swui:concrete_widget_name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#8dbc6e00-ea94-11df-9f84-00264afffe1d">
+    <swui:interface_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContextSideBar</swui:interface_name>
+    <swui:widget_decription_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete</swui:widget_decription_type>
+    <swui:abstract_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;div id="sidebar"&gt;&#xD;
+  &#xD;
+  &lt;h2&gt;&lt;%= @context.context_title %&gt;&lt;/h2&gt;&#xD;
+  &#xD;
+  &lt;% unless @context.parameters.empty? %&gt;&#xD;
+    &lt;h3&gt;Parameters&lt;/h3&gt;	  &#xD;
+    &lt;p class="news"&gt;&#xD;
+    &lt;% for name, value in @context.parameters do %&gt;&#xD;
+       &lt;strong&gt;&lt;%= name %&gt;: &lt;/strong&gt;&lt;%= value.is_a?(RDFS::Resource) ? (value.rdfs::label.first || value.compact_uri) : value %&gt;&#xD;
+       &lt;/br&gt;&#xD;
+    &lt;% end %&gt;&#xD;
+    &lt;/p&gt;&#xD;
+  &lt;% end %&gt;&#xD;
+&#xD;
+  &lt;h3 style="margin: 0;"&gt;Filter&lt;/h3&gt;		&#xD;
+  &lt;input id="input_filter" name="" type="text" value="filter" /&gt;&#xD;
+  &#xD;
+  &lt;h2&gt;Context Index&lt;/h2&gt; &#xD;
+  &lt;ul class="subnav"&gt;&#xD;
+  &lt;% for entry in @context.index.entries do %&gt;&#xD;
+    &lt;% for name, attribute in entry.attributes_hash do %&gt;&#xD;
+      &lt;% if @current_node.uri == entry.uri %&gt;&#xD;
+         &lt;li class="entry"&gt;&lt;%= truncate(attribute.label.to_s, :length =&gt; 27) %&gt;&lt;/li&gt;&#xD;
+      &lt;% else %&gt;&#xD;
+         &lt;li class="entry"&gt;&lt;%= link_to "&lt;b&gt;&amp;raquo;&lt;/b&gt;#{truncate(attribute.label.to_s, :length =&gt; 27)}", attribute.target_url, :title =&gt; attribute.label %&gt;&lt;/li&gt;&#xD;
+      &lt;% end %&gt;&#xD;
+    &lt;% end %&gt;&#xD;
+  &lt;% end %&gt;&#xD;
+  &lt;/ul&gt;&#xD;
+&#xD;
+&lt;/div&gt;&#xD;
+&lt;script&gt;&#xD;
+&#xD;
+$(document).ready(function(){&#xD;
+&#xD;
+  $('#input_filter').keyup(function() {&#xD;
+     var value = $(this).val().trim();&#xD;
+     if(value == ""){&#xD;
+       $('.entry').show();            &#xD;
+     }&#xD;
+     else&#xD;
+    {&#xD;
+      var re = new RegExp(value,"i");&#xD;
+      $('.entry').hide()&#xD;
+      $('.entry').filter(function() {&#xD;
+        return re.test($(this).text()) &#xD;
+      }).show();&#xD;
+      }     &#xD;
+  });&#xD;
+ });&#xD;
+&#xD;
+&lt;/script&gt;</swui:abstract_spec>
+    <swui:rhet_spec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></swui:rhet_spec>
+    <rdf:type rdf:resource="http://swui#ComponentInterface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://base#7a010660-6136-11df-9c98-00264afffe1d">
+    <swui:legalTags rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;input type='checkbox'&gt;</swui:legalTags>
+    <swui:legalAbstractWidgs rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PredefinedVariable</swui:legalAbstractWidgs>
+    <swui:concrete_widget_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheckBox</swui:concrete_widget_name>
+  </rdf:Description>
+</rdf:RDF>

@@ -2,7 +2,7 @@
 <rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-    <owl:Ontology rdf:about=""/>
+
     <owl:Class rdf:about="http://swrc.ontoware.org/ontology#University">
         <rdfs:subClassOf>
             <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Organization"/>
