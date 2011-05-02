@@ -53,7 +53,7 @@ class Application
   
   def start
     ActiveRDF::ConnectionPool.clear
-    ActiveRDF::Namespace.clear
+    #ActiveRDF::Namespace.clear
     ActiveRDF::Namespace.load_defaults
        
     dbconfig       = { 
