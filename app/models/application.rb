@@ -33,7 +33,7 @@ class Application
       FileUtils.mkdir_p(app.path)
       FileUtils.mkdir_p(app.path + "/db")
       FileUtils.mkdir_p(app.path + "/ontologies")
-      FileUtils.cp("defaults/main", app.path + "/db")
+      FileUtils.cp_r("defaults/bigowlim", app.path + "/db")
     else
       raise "'#{name}' has been taken."
     end
@@ -54,24 +54,31 @@ class Application
   def start
     ActiveRDF::ConnectionPool.clear
     ActiveRDF::Namespace.clear
-    ActiveRDF::Namespace.load_defaults    
+    ActiveRDF::Namespace.load_defaults
        
-    dbconfig = { 
-      :type => :jena, 
-      :model => "main", 
-      :ontology => :owl, 
-      :reasoner => :owl_micro, 
-      :file => "#{path}/db" 
+    dbconfig       = { 
+      #:type       => :jena, 
+      :type        => :sesame, 
+      #:model      => "main", 
+      #:ontology   => :owl, 
+      #:reasoner   => :owl_micro, 
+      #:owlim      => "#{path}/db/owlim"
+      #:file       => "#{path}/db"
+      :backend     => "bigowlim",
+      :location    => "#{path}/db/bigowlim",
+      #:inferencing => true,
+      :ruleset     => "owl-max"
     }
     
     @db         = ActiveRDF::ConnectionPool.add_data_source dbconfig
     @db.enabled = true
 
-    @db.add_ontology("synth", "file:" + File.join(RAILS_ROOT, "defaults", "synth.owl"), :rdfxml)
+    #@db.add_ontology("synth", File.join(RAILS_ROOT, "defaults", "synth.owl"), :rdfxml)
   end
   
   def load_defaults
-    SYMPH::Ontology.load_active_ontologies
+    ActiveRDF::FederationManager.invalidates_cache
+    #SYMPH::Ontology.load_active_ontologies
     SHDM::Operation.load_external_operations
   end
   
