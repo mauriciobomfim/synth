@@ -191,10 +191,10 @@ module Operations
               end                
             end
           rescue SyntaxError => ex    
-            render :text => SHDM::Operation::Errors[:pre_condition_exception][:error] + ", " + ex.message
+            render :text => SHDM::Operation::Errors[:pre_condition_exception][:error] + ", " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
             return
           rescue => ex
-            render :text => SHDM::Operation::Errors[:pre_condition_exception][:error] + ", " + ex.message
+            render :text => SHDM::Operation::Errors[:pre_condition_exception][:error] + ", " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
             return
           end        
         end
@@ -203,9 +203,9 @@ module Operations
       begin
         eval operation.operation_code.first 
       rescue SyntaxError => ex
-        render :text => SHDM::Operation::Errors[:operation_exception][:error] + ", " + ex.message
+        render :text => SHDM::Operation::Errors[:operation_exception][:error] + ", " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
       rescue => ex
-        render :text => SHDM::Operation::Errors[:operation_exception][:error] + ", " + ex.message
+        render :text => SHDM::Operation::Errors[:operation_exception][:error] + ", " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
       end
     })    
   end
