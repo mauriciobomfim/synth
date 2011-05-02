@@ -289,6 +289,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://shdm#in_context_class_context">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_context</rdfs:label>
+		<rdfs:domain rdf:resource="http://shdm#Context"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://swui#dependencies">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dependencies</rdfs:label>
@@ -348,6 +349,11 @@
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_anchor_attributes</rdfs:label>
     <rdfs:subPropertyOf rdf:resource="http://shdm#index_attributes"/>
     <rdfs:range rdf:resource="http://shdm#ContextAnchorNavigationAttribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shdm#index_index_attributes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_attributes</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://shdm#index_attributes"/>
+    <rdfs:range rdf:resource="http://shdm#IndexNavigationAttribute"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://shdm#pre_condition_expression">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pre_condition_expression</rdfs:label>
@@ -427,6 +433,16 @@
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_parameters</rdfs:label>
     <rdfs:domain rdf:resource="http://shdm#Context"/>
     <rdfs:range rdf:resource="http://shdm#ContextParameter"/>
+  </rdf:Description>
+	<rdf:Description rdf:about="http://shdm#index_pre_conditions">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">index_pre_conditions</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Index"/>
+    <rdfs:range rdf:resource="http://shdm#PreCondition"/>
+  </rdf:Description>
+	<rdf:Description rdf:about="http://shdm#context_pre_conditions">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">context_pre_conditions</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#Context"/>
+    <rdfs:range rdf:resource="http://shdm#PreCondition"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://symph#ontology_file_name">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ontology_file_name</rdfs:label>
