@@ -45,7 +45,7 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-$QUERY_DEBUG = false
+$QUERY_DEBUG = true
 
 # Query caching: caches any query on federation manager. 
 # All cache is invalidated on any changes on database.
@@ -85,7 +85,7 @@ puts "Demorou:#{tempo(time_total)}"
 
 #jena_memory = { :type => :jena, :model => "hyperde", :ontology => :owl, :reasoner => :owl }
 
-#jena_tdb   = { :type => :jena, :model => "hyperde", :ontology => :owl, :reasoner => :owl_micro, :tdb => "#{RAILS_ROOT}/db/tdb_persistence/" }
+#jena_tdb   = { :type => :jena, :model => "tdb", :ontology => :owl, :reasoner => :owl_micro, :tdb => "#{RAILS_ROOT}/applications/iswc2010/db/" }
 #
 #jena_derby  = { :type => :jena, :model => "hyperde", :ontology => :owl, :reasoner => :owl, :lucene => true, :database  => { :url => 'jdbc:derby:/Users/mauriciobomfim/Dropbox/Mestrado/hyperde_mauricio/db/hyperde;create=true', :type => "Derby", :username => "", :password => ""} }
 #
@@ -112,4 +112,3 @@ puts "Demorou:#{tempo(time_total)}"
 #main_data_source.load("file:#{RAILS_ROOT}/db/bibo.xml.owl")
 #main_data_source.load("file:#{RAILS_ROOT}/db/lattes.n3", :format => :n3)
 #main_data_source.load("file:#{RAILS_ROOT}/db/conferences.rdf.xml")
-
