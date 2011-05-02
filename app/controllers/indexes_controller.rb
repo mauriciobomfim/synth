@@ -5,7 +5,7 @@ class IndexesController < ApplicationController
   # GET /indexes
   # GET /indexes.xml
   def index
-    @indexes = SHDM::Index.find_all    
+    @indexes = SHDM::Index.alpha    
   end
 
   # GET /indexes/1
@@ -40,7 +40,7 @@ class IndexesController < ApplicationController
   def create
     context_url = params[:index].delete(:context_index_context)
     params[:index][:context_index_context] = SHDM::Context.find(context_url)
-    @index = SHDM::Index.create(params[:index])
+    @index = SHDM::ContextIndex.create(params[:index])
     
     respond_to do |format|
       if @index.save
@@ -57,7 +57,7 @@ class IndexesController < ApplicationController
   # PUT /indexes/1
   # PUT /indexes/1.xml
   def update
-    @index = SHDM::Index.find(params[:id])
+    @index = SHDM::ContextIndex.find(params[:id])
 
     context_url = params[:index].delete(:context_index_context)
     params[:index][:context_index_context] = SHDM::Context.find(context_url)
@@ -141,5 +141,35 @@ class IndexesController < ApplicationController
   def navigation_attribute_context_parameters_post_data
     jqgrid_children_post_data(SHDM::NavigationAttributeParameter, 'context_anchor_navigation_attribute_target_parameters')
   end
+	
+	#INDEX ATTRIBUTES
+  def index_attributes
+    jqgrid_children_index('index_index_attributes', [:id, 
+      :navigation_attribute_name, 
+       Proc.new {|attr| attr.index_navigation_attribute_index.first.index_name },
+       :navigation_attribute_index_position])
+  end
+  
+  def index_attributes_post_data
+    jqgrid_children_post_data(SHDM::IndexNavigationAttribute, 'index_index_attributes')
+  end
+  
+  def index_navigation_attribute_index_parameters
+	jqgrid_children_index('index_navigation_attribute_index_parameters', [:id, 
+	  :navigation_attribute_parameter_name, 
+	  :navigation_attribute_parameter_value_expression])
+  end
+  
+  def index_navigation_attribute_index_parameters_post_data
+    jqgrid_children_post_data(SHDM::NavigationAttributeParameter, 'index_navigation_attribute_index_parameters')
+  end
+  
+  def pre_conditions
+    jqgrid_children_index('index_pre_conditions', [:id, :pre_condition_name, :pre_condition_expression, :pre_condition_failure_handling])
+  end
+  
+  def pre_conditions_post_data
+    jqgrid_children_post_data(SHDM::PreCondition, 'index_pre_conditions')
+  end  
 	
 end
