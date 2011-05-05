@@ -45,6 +45,10 @@ class InContextClassesController < ApplicationController
   def edit
     @in_context_class  = SHDM::InContextClass.find(params[:id])
 
+    unless RDFS::Class.domain_classes.include?(@in_context_class.in_context_class_class.first)
+      params[:show_meta_classes] = true
+    end
+
     if params[:show_meta_classes]
       @classes  = RDFS::Class.find_all.map{ |v| [ v.compact_uri , v.uri ] }.sort{|a,b| a.first <=> b.first }
     else
