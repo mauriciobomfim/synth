@@ -289,7 +289,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://shdm#in_context_class_context">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in_context_class_context</rdfs:label>
-		<rdfs:domain rdf:resource="http://shdm#Context"/>
+		<rdfs:domain rdf:resource="http://shdm#InContextClass"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://swui#dependencies">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dependencies</rdfs:label>
