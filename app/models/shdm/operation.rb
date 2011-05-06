@@ -51,9 +51,9 @@ class SHDM::Operation
             return pre.pre_condition_failure_handling.first.blank? ? Errors[:pre_condition_default_failure] : eval(pre.pre_condition_failure_handling.first)
           end
         rescue SyntaxError => ex    
-          return Errors[:pre_condition_exception]
+          return Errors[:pre_condition_exception][:error] << ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
         rescue
-          return Errors[:pre_condition_exception]
+          return Errors[:pre_condition_exception][:error] << ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
         end        
       end
     end
@@ -61,9 +61,8 @@ class SHDM::Operation
     begin
       result = eval(operation_code.first)
     rescue SyntaxError => ex
-      return Errors[:operation_exception]
-    rescue => ex
-      return Errors[:operation_exception]
+      return Errors[:operation_exception][:error] << ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
+      return Errors[:operation_exception][:error] << ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
     end 
     
     for post in operation_post_conditions do 
@@ -71,9 +70,9 @@ class SHDM::Operation
         begin
           return Errors[:post_condition_default_failure] unless eval(post.post_condition_expression.first)
         rescue SyntaxError => ex            
-          return Errors[:post_condition_exception]
+          return Errors[:post_condition_exception][:error] << ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
         rescue            
-          return Errors[:post_condition_exception]
+          return Errors[:post_condition_exception][:error] << ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
         end        
       end
     end
@@ -183,7 +182,7 @@ module Operations
           begin
             unless eval(pre.pre_condition_expression.first)
               if pre.pre_condition_failure_handling.first.blank?
-                render :text => SHDM::Operation::Errors[:pre_condition_default_failure][:error] + " " + ex.message
+                render :text => SHDM::Operation::Errors[:pre_condition_default_failure][:error] + ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
                 return
               else 
                 eval(pre.pre_condition_failure_handling.first)
@@ -191,10 +190,10 @@ module Operations
               end                
             end
           rescue SyntaxError => ex    
-            render :text => SHDM::Operation::Errors[:pre_condition_exception][:error] + ", " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
+            render :text => SHDM::Operation::Errors[:pre_condition_exception][:error] + ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
             return
           rescue => ex
-            render :text => SHDM::Operation::Errors[:pre_condition_exception][:error] + ", " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
+            render :text => SHDM::Operation::Errors[:pre_condition_exception][:error] + ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
             return
           end        
         end
@@ -203,9 +202,9 @@ module Operations
       begin
         eval operation.operation_code.first 
       rescue SyntaxError => ex
-        render :text => SHDM::Operation::Errors[:operation_exception][:error] + ", " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
+        render :text => SHDM::Operation::Errors[:operation_exception][:error] + ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
       rescue => ex
-        render :text => SHDM::Operation::Errors[:operation_exception][:error] + ", " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
+        render :text => SHDM::Operation::Errors[:operation_exception][:error] + ": " + ex.message + "<br/>" + ex.backtrace.join("<br/>")
       end
     })    
   end
