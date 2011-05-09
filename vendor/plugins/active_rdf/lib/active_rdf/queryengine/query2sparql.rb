@@ -22,7 +22,7 @@ module ActiveRDF
         str << "ASK { #{where_clauses(query)} } "
       end
 
-      return str
+      return str.gsub("\n", "").gsub("\r", "")
     end
 
     # concatenate each where clause using space (e.g. 's p o')
