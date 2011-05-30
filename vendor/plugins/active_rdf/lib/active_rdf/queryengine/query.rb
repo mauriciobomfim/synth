@@ -7,7 +7,7 @@ require 'federation/federation_manager'
 # Query.new.select(:s).where(:s,:p,:o).
 module ActiveRDF
   class Query
-    attr_reader :select_clauses, :where_clauses, :filter_clauses, :sort_clauses, :limits, :offsets, :keywords
+    attr_reader :select_clauses, :where_clauses, :filter_clauses, :sort_clauses, :limits, :offsets, :keywords, :on_datasets
 
     bool_accessor :distinct, :ask, :select, :count, :keyword, :all_types
     
@@ -17,7 +17,7 @@ module ActiveRDF
       @on_datasets.concat(datasets).uniq!
       self
     end
-
+    
     def initialize(resource_type = RDFS::Resource)
       @on_datasets = []
       @distinct = false
@@ -209,18 +209,48 @@ module ActiveRDF
     #
     # usage:: results = query.execute
     # usage:: query.execute do |s,p,o| ... end
+    #def execute(options={:flatten => false}, &block)
+    #  options = {:flatten => true} if options == :flatten
+    #
+    #  prepared_query = prepare_query(options)
+    #
+    #  if block_given?
+    #    for result in FederationManager.execute(prepared_query, options.merge(:flatten => false))
+    #      yield result
+    #    end
+    #  else
+    #    FederationManager.execute(prepared_query, options)
+    #  end
+    #end
+
     def execute(options={:flatten => false}, &block)
       options = {:flatten => true} if options == :flatten
 
       prepared_query = prepare_query(options)
+
+      on_local    = on_datasets.delete(:local)
+      datasets    = on_datasets.uniq.map{|d| d.to_s.downcase }.map{|d| ActiveRDF::Namespace.lookup(:base, d) }.map{|d| d.sparqlEndpoint.first unless d.sparqlEndpoint.nil? }.compact.uniq
+      
+      adapters = []
+
+      for dataset in datasets do
+        adapters << ConnectionPool.add_data_source({:type => :sparql, :url => dataset, :engine => :virtuoso})
+      end
 
       if block_given?
         for result in FederationManager.execute(prepared_query, options.merge(:flatten => false))
           yield result
         end
       else
-        FederationManager.execute(prepared_query, options)
+        results = FederationManager.execute(prepared_query, options)
       end
+
+      for adapter in adapters do
+        ActiveRDF::ConnectionPool.close_data_source(adapter)
+      end
+    
+      results
+
     end
 
     # Returns query string depending on adapter (e.g. SPARQL, N3QL, etc.)

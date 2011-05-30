@@ -2,10 +2,11 @@
 class SparqlResultParser
   attr_reader :result
 
-  def initialize
+  def initialize(query)
     @result = []
     @vars = []
     @current_type = nil
+    @query = query
   end
 
   def tag_start(name, attrs)
@@ -40,7 +41,7 @@ class SparqlResultParser
   def create_node(type, value)
     case type
     when 'uri'
-      RDFS::Resource.new(value)
+      RDFS::Resource.new(value, @query.on_datasets)
     when 'bnode'
       BNode.new(value)
     when 'literal','typed-literal'

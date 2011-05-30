@@ -66,14 +66,14 @@ module ActiveRDF
          end
       end
 
-      result = execute_sparql_query(qs, header(query), &block)
+      result = execute_sparql_query(qs, header(query), query, &block)
       add_to_cache(qs, result) if @caching
       result = [] if result == "timeout"
       return result
     end
 
     # do the real work of executing the sparql query
-    def execute_sparql_query(qs, header=nil, &block)
+    def execute_sparql_query(qs, header=nil, query=nil, &block)
       header = header(nil) if header.nil?
 
       # querying sparql endpoint
@@ -98,7 +98,7 @@ module ActiveRDF
         raise ActiveRdfError, "timeout on SPARQL endpoint"
         return "timeout"
       rescue OpenURI::HTTPError => e
-        raise ActiveRdfError, "error on SPARQL endpoint, server said: \n%s:\n%s" % [e,e.io.read]
+        #raise ActiveRdfError, "error on SPARQL endpoint, server said: \n%s:\n%s" % [e,e.io.read]
         return []
       rescue Errno::ECONNREFUSED
         raise ActiveRdfError, "connection refused on SPARQL endpoint #@url"
@@ -108,9 +108,9 @@ module ActiveRDF
       # we parse content depending on the result format
       results = case @result_format
                 when :json
-                  parse_json(response)
+                  parse_json(response, query)
                 when :xml, :sparql_xml
-                  parse_xml(response)
+                  parse_xml(response, query)
                 end
 
       if block_given?
@@ -165,7 +165,7 @@ module ActiveRDF
     end
 
     # parse json query results into array
-    def parse_json(s)
+    def parse_json(s, query)
       # this will try to first load json with the native c extensions,
       # and if this fails json_pure will be loaded
       require 'json'
@@ -180,7 +180,7 @@ module ActiveRDF
       objects.each do |obj|
         result = []
         vars.each do |v|
-          result << create_node( obj[v]['type'], obj[v]['value'])
+          result << create_node( obj[v]['type'], obj[v]['value'], query)
         end
         results << result
       end
@@ -189,17 +189,17 @@ module ActiveRDF
     end
 
     # parse xml stream result into array
-    def parse_xml(s)
-      parser = SparqlResultParser.new
+    def parse_xml(s, query)
+      parser = SparqlResultParser.new(query)
       REXML::Document.parse_stream(s, parser)
       parser.result
     end
 
     # create ruby objects for each RDF node
-    def create_node(type, value)
+    def create_node(type, value, query)
       case type
       when 'uri'
-        RDFS::Resource.new(value)
+        RDFS::Resource.new(value, query.on_datasets)
       when 'bnode'
         BNode.new(value)
       when 'literal','typed-literal'

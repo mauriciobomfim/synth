@@ -290,7 +290,7 @@ module ActiveRDF
 
           temparray = []
           # get the value associated with a variable in this specific solution
-          temparray[0] = convertSesame2ActiveRDF(solution.getValue(variables[0]), query.resource_class)
+          temparray[0] = convertSesame2ActiveRDF(solution.getValue(variables[0]), query.resource_class, query)
           results[counter] = temparray
           counter = counter + 1
         end
@@ -304,7 +304,7 @@ module ActiveRDF
 
           temparray = []
           for n in 1..size_of_variables
-            value = convertSesame2ActiveRDF(solution.getValue(variables[n-1]), query.resource_class)
+            value = convertSesame2ActiveRDF(solution.getValue(variables[n-1]), query.resource_class, query)
             temparray[n-1] = value
           end
           results[counter] = temparray
@@ -398,13 +398,13 @@ module ActiveRDF
     # which we put in there ourselves, and currently we only put URIs or Literals there.
     # 
     # result_type is the class that will be used for "resource" objects.
-    def convertSesame2ActiveRDF(input, result_type)
+    def convertSesame2ActiveRDF(input, result_type, query)
       jclassURI = Java::JavaClass.for_name("org.openrdf.model.URI")
       jclassLiteral = Java::JavaClass.for_name("org.openrdf.model.Literal")
       jclassBNode = Java::JavaClass.for_name('org.openrdf.model.BNode')
 
       if jInstanceOf(input.java_class, jclassURI)
-        result_type.new(input.toString) 
+        result_type.new(input.toString, query.on_datasets) 
       elsif jInstanceOf(input.java_class, jclassLiteral)
         # The string is wrapped in quotationn marks. However, there may be a language
         # indetifier outside the quotation marks, e.g. "The label"@en
