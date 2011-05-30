@@ -17,8 +17,8 @@ module ActiveRDF
     def Namespace.register(prefix, fullURI)
       raise ActiveRdfError, 'prefix nor uri can be empty' if (prefix.to_s.empty? or fullURI.to_s.empty?)
       raise ActiveRdfError, "namespace uri should end with # or /" unless /\/|#/ =~ fullURI.to_s[-1..-1]
-      klass_name = prefix.to_s.upcase
-      prefix = prefix.to_s.downcase.to_sym
+      klass_name = prefix.to_s.upcase.gsub('-', '')
+      prefix = prefix.to_s.downcase.gsub('-', '').to_sym
       $activerdflog.info "Namespace: registering #{fullURI} to #{klass_name}"
       @@namespaces[prefix] = fullURI.to_s
       @@inverted_namespaces[fullURI.to_s] = prefix
