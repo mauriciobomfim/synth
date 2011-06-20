@@ -35,5 +35,10 @@ class ApplicationsController < ApplicationController
     Application.new(params[:id]).destroy
     redirect_to :action => :index
   end
+  
+  def shutdown
+    Application.active.shutdown
+    redirect_to :action => :index
+  end
  
 end
