@@ -67,7 +67,7 @@ class Application
       :backend     => "bigowlim",
       :location    => "#{path}/db/bigowlim",
       #:inferencing => true,
-      :ruleset     => "owl-max"
+      :ruleset     => "owl-horst"
     }
     
     @db         = ActiveRDF::ConnectionPool.add_data_source dbconfig
@@ -78,11 +78,16 @@ class Application
   
   def load_defaults
     ActiveRDF::FederationManager.invalidates_cache
-    #SYMPH::Ontology.load_active_ontologies
     SHDM::Operation.load_external_operations
+    @db.load_namespaces
+  end
+  
+  def shutdown
+    @db.instance_variable_get("@db").getRepository.shutDown
   end
   
   def activate
+    Application.active.shutdown
     File.open(ACTIVE_FILE_PATH, 'w') {|f| f.write(name) }
     @@active = self
     start
@@ -94,6 +99,7 @@ class Application
   end
   
   def destroy
+    shutdown
     FileUtils.mv(path, "#{APPLICATIONS_PATH}/.#{name}")
   end
 
