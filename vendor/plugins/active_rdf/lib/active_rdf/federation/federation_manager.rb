@@ -41,12 +41,16 @@ module ActiveRDF
       ConnectionPool.write_adapter.remove_namespace(prefix)
     end
 
-    def FederationManager.add_ontology(name, uri, format=:rdfxml)
-      ConnectionPool.write_adapter.add_ontology(name, uri, format.to_sym)
+    def FederationManager.add_ontology(name, location, format="rdfxml")
+      context = RDFS::Resource.new("http://synth##{name}")
+      ConnectionPool.write_adapter.load(location, format, context)
+      ConnectionPool.write_adapter.load_namespaces
     end
     
     def FederationManager.remove_ontology(name)
-      ConnectionPool.write_adapter.remove_ontology(name)
+      context = RDFS::Resource.new("http://synth##{name}")
+      ConnectionPool.write_adapter.clear(context)
+      ConnectionPool.write_adapter.load_namespaces
     end
 
     # delete triple s,p,o from the currently selected write adapter (s and p are
