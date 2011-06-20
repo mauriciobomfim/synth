@@ -79,7 +79,7 @@
 	<div class="opaque"></div>
 </div>
 
-<div class="ui-widget ui-widget-header ui-corner-all" style="padding: 1em 1em 1em 1em; margin-bottom: 5px;">Synth<span style="float:right;">Application: <a href="/execute/init" target="_blank"><%= Application.active.name %></a></span></div>
+<div class="ui-widget ui-widget-header ui-corner-all" style="padding: 1em 1em 1em 1em; margin-bottom: 5px;">Synth<span style="float:right;">Application: <a href="/execute/init" target="_blank"><%= Application.active.name %></a> (<%= link_to "Shutdown", { :controller => :applications, :action => :shutdown }, :confirm => "Are you sure you want to shutdown the \"#{Application.active.name}\" application?" %>)</span></div>
 <div id="tabs" style="font-size: 0.9em;">
 	
     <ul>
