@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :applications
+  map.resources :applications, :collection => { :shutdown => :get }
   map.resources :operations
   map.resources :contexts
   map.resources :indexes, :collection => { :navigation_attribute_index_parameters                 => :get, 
