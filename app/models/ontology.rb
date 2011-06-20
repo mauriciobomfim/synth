@@ -20,7 +20,7 @@ class SYMPH::Ontology
    def activate
      puts "activating the ontology '#{self.ontology_name.first}': #{location}"
      ActiveRDF::FederationManager.add_ontology(self.ontology_name.first, location, self.ontology_file_notation.first)     
-     self.ontology_active = 'true'          
+     self.ontology_active = 'true'
    end
    
    def disable
@@ -30,7 +30,7 @@ class SYMPH::Ontology
    
    def location
      file_location = File.join(RAILS_ROOT, Application.active.path + '/' + ONTOLOGY_DIRECTORY, self.ontology_file_name.first)
-     "file:#{file_location}"
+     file_location
    end
    
    def self.save(ontology)
@@ -57,12 +57,5 @@ class SYMPH::Ontology
        false
      end
    end
-    
-   def self.load_active_ontologies
-      active_ontologies = self.find_by.ontology_active('true').execute
-      for ontology in active_ontologies do
-        ontology.activate
-      end
-   end
-   
+ 
 end
