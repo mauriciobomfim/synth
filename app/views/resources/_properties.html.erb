@@ -16,7 +16,7 @@
 	    <th>Properties</th>
 			<th><%= button_to 'Delete resource', { :controller => :resources, :action => "destroy", :id => @resource }, :method => :delete, :class => 'button', :onclick => "if(confirm('Are you sure?')){ $('#loading').show(); return true }else{return false};" %></th>
 	  </tr>
-		<tr><td width="25%">uri</td><td><ul class="bullets-none"><li><%= @resource.compact_uri[0..45] %><br/><%= @resource.compact_uri[50..-1] %></li></ul></td></tr>
+		<tr><td width="25%">uri</td><td><ul class="bullets-none"><li><%= @resource.compact_uri.split(/(.{45})/).reject{|a| a == ""}.join("<br/>") %></li></ul></td></tr>
 		<% @resource.direct_properties.sort{|a,b|  
 		  (a.rdfs::label.empty? ? a.compact_uri : a.rdfs::label.first.to_s ) <=> (b.rdfs::label.empty? ? b.compact_uri : b.rdfs::label.first.to_s)
 		}.each do |property| %>
