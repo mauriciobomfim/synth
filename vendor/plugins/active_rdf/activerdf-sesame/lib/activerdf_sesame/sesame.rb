@@ -203,25 +203,6 @@ module ActiveRDF
       return _string.to_s
     end
 
-    def add_ontology(name, uri, format=:rdfxml)
-      format = format.to_s
-      
-      begin
-        #submodel = Jena::Model::ModelFactory.createDefaultModel.read(uri, jena_format)    
-        #@ontologies[name] = submodel
-        #self.model.addSubModel(submodel)
-        #self.load_namespaces
-        #ActiveRDF::FederationManager.invalidates_cache
-        #$page_cache.clear unless $page_cache.nil?
-        load(uri, format)
-      rescue => ex
-        puts "ERROR"
-        puts ex
-        false
-      end
-
-    end
-
     # loads triples from file in ntriples format
     # * file => file to load
     # * syntax => syntax of file to load. The syntax can be: n3, ntriples, rdfxml, trig, trix, turtle
@@ -410,7 +391,8 @@ module ActiveRDF
         # indetifier outside the quotation marks, e.g. "The label"@en
         # We try to unwrap this correctly. For now we assume that there may be
         # no quotation marks inside the string
-        input.toString.gsub(/\^\^.+/, '').gsub(/^"/, '').gsub(/"$/, '')
+        input.toString.gsub(/\^\^.+/, '').gsub(/^"/, '').gsub(/"$/, '').gsub(/(.*)"@[^"]+$/, "\\1")
+        #input.stringValue
       elsif jInstanceOf(input.java_class, jclassBNode)   
         #Ignoring BNodes for a while.     
         #RDFS::BNode.new(input.toString)
