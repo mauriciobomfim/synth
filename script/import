@@ -39,5 +39,6 @@ app.start
 puts "Importing..."
 
 app.db.load("#{file}", format, context)
+app.shutdown
 
 puts "Finished."
