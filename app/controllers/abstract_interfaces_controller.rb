@@ -35,7 +35,7 @@ class AbstractInterfacesController < ApplicationController
   # GET /interfaces/1/edit
   def edit
     @classes    = RDFS::Class.domain_classes
-    @contexts   = SHDM::Context.find_all    
+    @contexts   = SHDM::Context.find_all.reject{|c| c == SHDM::anyContext}
     @indices    = SHDM::Index.find_all
     
     @interface  = SWUI::Interface.find(params[:id])
@@ -97,10 +97,13 @@ class AbstractInterfacesController < ApplicationController
         params[:interface][:domain_class] = RDFS::Class.find(class_id) unless class_id.blank?
       elsif class_name == "SWUI::IndexInterface"
         params[:interface][:index]        = SHDM::Index.find(index_id) unless index_id.blank?
+      elsif class_name == "SWUI::ComponentInterface"
+        params[:interface].delete(:rhet_spec)
       end
 
       klass      = eval(class_name)
       @interface = klass.create(interface, params[:interface])
+      @interface.rdf::type = klass
     
     end
     
