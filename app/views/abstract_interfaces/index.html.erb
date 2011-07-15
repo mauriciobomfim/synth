@@ -10,7 +10,7 @@
     <td><%=h interface.interface_name.first %></td>
     <td><%=h display_type(interface) %></td>
     <td><%= link_to 'Edit', :action => "edit", :id => interface %></td>
-		<td><%= (interface.widget_decription_type.first != 'concrete') ? link_to('[Mappings]', :action => "xslt", :id => interface) : 'Concrete' %></td>
+		<td><%= (interface.widget_decription_type && interface.widget_decription_type.first != 'concrete') ? link_to('[Mappings]', :action => "xslt", :id => interface) : 'Concrete' %></td>
     <td><%= link_to 'Remove', { :action => "destroy", :id => interface }, :confirm => 'Are you sure?', :method => :delete %></td>
 	</td>
   </tr>
