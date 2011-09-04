@@ -1,24 +1,18 @@
 INTRODUCTION
 ------------
-Synth is a development environment for building applications that are modeled 
-according to SHDM. It provides a set of modules that receive, as input, models 
-generated in each step of SHDM and produces, as output, the hypermedia application 
-described by these models. Synth also provides an authoring environment that 
-facilitates the adding and editing of these models through a GUI that can run on 
-any web browser.
 
-Synth is a development environment for building applications that are modeled  
-according to SHDM (Semantic Hypermedia Design Method). It provides a set of 
-modules that receive, as input, models  generated in each step of SHDM and produces, 
-as output, the hypermedia application  described by these models. 
-
-Synth also provides an authoring environment that  facilitates the adding and editing 
-of these models through a GUI that can run on  any web browser. 
+Synth is a development environment for building hypermedia applications that are modeled 
+according to SHDM (Semantic Hypermedia Design Method). It provides a set of modules that 
+receive, as input, models  generated in each step of SHDM and produces, as output, the 
+hypermedia application described by these models. Synth also provides an authoring environment 
+that facilitates the adding and editing of these models through a GUI that can run on 
+any web browser. 
 
 Synth was built as the implementation task for the master thesis of 
-Mauricio Henrique de Souza Bomfim on Informatics at PUC-Rio. It is on very early stage. 
+Mauricio Henrique de Souza Bomfim on Informatics at PUC-Rio. 
 
-Use Synth advised that you can find some bugs. If you find some bug, please report.
+It is on very early stage. Use Synth advised that you can find some bugs. 
+If you find some bug, please report.
 
 INSTALLING
 ----------
