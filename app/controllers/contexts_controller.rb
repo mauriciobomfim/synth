@@ -84,6 +84,20 @@ class ContextsController < ApplicationController
     jqgrid_children_index('context_parameters', [:id, :context_parameter_name])
   end
   
+  def edit_context_parameter
+    parameter = params[:id] ? SHDM::ContextParameter.find(params[:id]).attributes : {}
+    render :json => parameter
+  end
+  
+  def edit_context_parameter_post_data
+    if params[:id].empty?
+       RDFS::Resource.find(parent).send(children_attribute) << children_class.create(values)
+     else
+       children_class.find(id).update_attributes(values)
+     end
+    render :text => params.inspect
+  end
+  
   def context_parameters_post_data
     jqgrid_children_post_data(SHDM::ContextParameter, 'context_parameters')
   end

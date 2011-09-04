@@ -1,0 +1,41 @@
+.ui-dform-form input {}
+code.ui-dform-form,blockquote.ui-dform-form {
+	background-color: #FFFFFF;
+}
+
+label.ui-dform-form {
+	display: block;
+
+}
+hr.ui-dform-hr{display:block;height:1px;background-color:#A6C9E2; border: 0px solid #003399;}
+
+label.ui-dform-checkbox,label.ui-dform-radio {
+	display: inline !important;
+}
+
+.ui-dform-label{
+  /*color:#003399;*/
+  font-size:0.7em;
+  display: block;
+  float:left;
+  min-width:80px;
+  height:20px;
+}
+.ui-dform-span,.ui-dform-tabs {
+	margin: 10px 0;
+  height:19px;
+}
+input.ui-dform-text{
+	font-size:10px;min-width:150px;
+}
+
+input.ui-dform-submit{
+	display: block;margin:10px 10px;font-size:12px;float:left;
+}
+
+.ui-tabs-nav .ui-dform-label { margin: 0; }
+
+
+.ui-dform-radio, .ui-dform-checkbox {
+	float: left;
+}
