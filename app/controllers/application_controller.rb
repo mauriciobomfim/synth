@@ -14,21 +14,6 @@ class ApplicationController < ActionController::Base
   def index
     render :template => 'welcome'
   end
-  
-  def form_hash(element, fields, action)
-    form_tpl = { :action => action, :method => 'post', 'elements' => [ ], :ajax => {:success => 'showRequest'} } 
-    fields.each{ |field|
-      puts field[:name]
-      value = element.has_key?(field[:name]) ? element[field[:name]] : ''
-      type  = field[:type] ? field[:type] : 'text'
-      field[:caption] = nil if type == 'hidden'
-      form_tpl['elements'] << { :name => field[:name], :caption => field[:caption], :type => type, :value => value }.clone
-    }
-    form_tpl['elements'] << { :type => "submit", :value => "Submit" }
-    
-    return form_tpl
-    
-  end
    
   def jqgrid_children_index(children_attribute, attributes)
      if params[:id].present?

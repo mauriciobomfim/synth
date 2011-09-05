@@ -24,8 +24,13 @@
 
 <script type="text/javascript">
  function open_parameters_window(id) {
-    var elements = [{ "name" : "id", "type" : "hidden", "class" : "hidden" }, { "type" : "br" }, { "name" : "context_parameter_name", "caption" : "Name" },{ "type" : "hr" },];
-    create_window_modal(id, '/contexts/edit_context_parameter/','/contexts/context_parameters_post_data', {parent:'<%= CGI::escape(@context.uri) %>'}, 'Parameters', elements, function() {$("#context_parameters").trigger("reloadGrid");});
+    var elements = [{ "name" : "id", "type" : "hidden", "class" : "hidden" }, { "type" : "br" }, { "name" : "context_parameter_name", "caption" : "Name" }];
+    create_window_modal(id, '/contexts/get_resource_attributes/','/contexts/context_parameters_post_data', {parent:'<%= CGI::escape(@context.uri) %>'}, 'Parameters', elements, function() {$("#context_parameters").trigger("reloadGrid");});
+  }
+  
+  function open_preconditions_window(id) {
+    var elements = [{ "name" : "id", "type" : "hidden", "class" : "hidden" }, { "type" : "br" }, { "name" : "pre_condition_name", "caption" : "Name" },{ "type" : "hr" },{ "name" : "pre_condition_expression", "type" : "textarea", "caption" : "Expression"} ,{ "type" : "hr" },{ "name" : "pre_condition_failure_handling", "type" : "textarea", "caption" : "Failure Handling"}];
+    create_window_modal(id, '/contexts/get_resource_attributes/','/contexts/pre_conditions_post_data', {parent:'<%= CGI::escape(@context.uri) %>'}, 'Pre Condition', elements, function() {$("#pre_conditions").trigger("reloadGrid");});
   }
  </script>
 
@@ -35,14 +40,14 @@
 		{ :field => "context_parameter_name", :label => "Name", :editable => true, :width => 360, :align => 'center' }
 	],
 	{
-    :selection_handler => "open_parameters_window", :direct_selection => true, :delete => true,
+    :selection_handler => "open_parameters_window", :direct_selection => false, :delete => true,
     :edit_url => "/contexts/context_parameters_post_data?parent=#{CGI::escape(@context.uri)}"
     #:add => false, :edit => false, :inline_edit => false, :delete => true, :search => false, :hiddengrid => 'false', :height => 50,
 	  
     }
 )%>
-<a href='javascript:void(0)' onclick='open_parameters_window()'>Add Parameter</a>
-<br /><br />
+<p><a href='javascript:void(0)' onclick='open_parameters_window()'>New Parameter</a></p>
+
 <%=jqgrid("Pre Conditions", "pre_conditions", "/contexts/pre_conditions/#{CGI::escape(@context.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -50,8 +55,10 @@
 		{ :field => "pre_condition_expression", :label => "Expression",	:editable => true, :width => 220, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
 		{ :field => "pre_condition_failure_handling", :label => "Failure handling",	:editable => true, :width => 220, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
 	],
-	{ :add => true, :edit => true, :inline_edit => false, :delete => true, :search => false, :hiddengrid => @context.context_pre_conditions.to_a.empty? ? 'true' : 'false',:height => 100,
-	  :edit_url => "/contexts/pre_conditions_post_data?parent=#{CGI::escape(@context.uri)}" }
+	{ #:add => true, :edit => true, :inline_edit => false, :delete => true, :search => false, :hiddengrid => @context.context_pre_conditions.to_a.empty? ? 'true' : 'false',:height => 100,
+	  :selection_handler => "open_preconditions_window", :direct_selection => false, :delete => true,
+    :edit_url => "/contexts/pre_conditions_post_data?parent=#{CGI::escape(@context.uri)}" }
 )%>
+<p><a href='javascript:void(0)' onclick='open_preconditions_window()'>New Pre Condition</a></p>
 <br/>
 <%= link_to 'Back', contexts_path %>

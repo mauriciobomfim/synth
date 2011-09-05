@@ -7,6 +7,7 @@ label.ui-dform-form {
 	display: block;
 
 }
+
 hr.ui-dform-hr{display:block;height:1px;background-color:#A6C9E2; border: 0px solid #003399;}
 
 label.ui-dform-checkbox,label.ui-dform-radio {
@@ -18,18 +19,19 @@ label.ui-dform-checkbox,label.ui-dform-radio {
   font-size:0.7em;
   display: block;
   float:left;
-  min-width:80px;
+  min-width:95px;
   height:20px;
 }
 .ui-dform-span,.ui-dform-tabs {
 	margin: 10px 0;
   height:19px;
 }
-input.ui-dform-text{
-	font-size:10px;min-width:150px;
+input.ui-dform-text,textarea.ui-dform-textarea{
+	font-size:11px;min-width:250px;
 }
 
-input.ui-dform-submit{
+
+input.ui-dform-submit, button.ui-dform-button{
 	display: block;margin:10px 10px;font-size:12px;float:left;
 }
 

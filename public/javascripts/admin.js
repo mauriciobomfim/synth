@@ -37,18 +37,30 @@ function register_toogle() {
 
 function create_window(form_hash,window_name){
   $('#__modal-box').remove();
-  var box = $('<div id="__modal-box" title='+window_name+'>').appendTo('body');
+  var box = $('<div id="__modal-box" title="'+window_name+'">').appendTo('body');
   box.dialog({
         autoOpen: false,
         width: 400,
         modal: true
     });
+    $.dform.subscribe("type", function(type, options) {
+    if(type == "button")
+    {
+        this.click(function() {
+            box.dialog( "close" );
+            return false;
+        });
+    }
+ });
     box.buildForm(form_hash);
     box.dialog( "open" );
     return box;
  }
  function create_window_modal(id, url_request, url_post, parameters, window_name, elements, callback){
    var dialog_box;
+   if(!id){
+    window_name = "New "+window_name;
+   }
    if(parameters){
     url_post += "?"+decodeURIComponent($.param(parameters));
    }
@@ -71,11 +83,15 @@ function create_window(form_hash,window_name){
         default_field['caption'] = default_field['type'] == 'hidden' ? '' : value['caption']
         // Push fields
         form_data['elements'].push ( jQuery.extend(true, {}, default_field));
+        
       });
+      form_data['elements'].push({ "type" : "hr" });
+      form_data['elements'].push({ "type" : "br" });
       form_data['elements'].push({ "type" : "submit", "value" : "Confirm" });
       if(id){
         form_data['elements'].push({ "type" : "submit", "name" : 'oper', "value" : "Delete"});
       }
+      form_data['elements'].push({ "type" : "button", "name" : "cancel", "html" : "Cancel" });
       dialog_box = create_window(form_data, window_name);
       //alert(form_data.toSource());
     });
