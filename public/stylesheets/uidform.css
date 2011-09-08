@@ -1,4 +1,4 @@
-.ui-dform-form input {}
+.ui-dform-form input {margin-bottom:5px;}
 code.ui-dform-form,blockquote.ui-dform-form {
 	background-color: #FFFFFF;
 }
@@ -21,13 +21,14 @@ label.ui-dform-checkbox,label.ui-dform-radio {
   float:left;
   min-width:95px;
   height:20px;
+  margin-bottom:5px;
 }
 .ui-dform-span,.ui-dform-tabs {
 	margin: 10px 0;
   height:19px;
 }
-input.ui-dform-text,textarea.ui-dform-textarea{
-	font-size:11px;min-width:250px;
+input.ui-dform-text,textarea.ui-dform-textarea,select.ui-dform-select,hidden.ui-dform-hidden{
+	font-size:11px;min-width:250px;margin-bottom:6px;height:20px;
 }
 
 
@@ -39,5 +40,5 @@ input.ui-dform-submit, button.ui-dform-button{
 
 
 .ui-dform-radio, .ui-dform-checkbox {
-	float: left;
+	float: left;margin-bottom:6px;
 }

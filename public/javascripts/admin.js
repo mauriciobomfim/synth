@@ -35,6 +35,15 @@ function register_toogle() {
 	);
 }
 
+function array_options_hash(options_array){
+    var options_hash = {}
+    $.each(options_array, function( key, value ){
+      var value_a = value.toString().split(",");
+      options_hash[value_a[0]] = { 'value' : value_a[0], 'selected' : false, 'html': value_a[1]};
+    });
+    return options_hash;
+}
+
 function create_window(form_hash,window_name){
   $('#__modal-box').remove();
   var box = $('<div id="__modal-box" title="'+window_name+'">').appendTo('body');
@@ -81,12 +90,18 @@ function create_window(form_hash,window_name){
         default_field['type']    = value['type'] ? value['type'] : 'text';
         default_field['caption'] = value['caption'] ? value['caption'] : value['name'];
         default_field['caption'] = default_field['type'] == 'hidden' ? '' : value['caption']
+        jQuery.extend(true, value, default_field)
+        if(default_field['type'] == 'select' && value['options']){
+          $.each(value['options'], function(k, v){alert( data[value['name']]+'\n'+v.value); if(v.value == data[value['name']]){ alert(v.value);v.selected = true; }} );
+        }
+        
         // Push fields
-        form_data['elements'].push ( jQuery.extend(true, {}, default_field));
+        form_data['elements'].push ( value );
         
       });
-      form_data['elements'].push({ "type" : "hr" });
       form_data['elements'].push({ "type" : "br" });
+      form_data['elements'].push({ "type" : "hr" });
+      
       form_data['elements'].push({ "type" : "submit", "value" : "Confirm" });
       if(id){
         form_data['elements'].push({ "type" : "submit", "name" : 'oper', "value" : "Delete"});
