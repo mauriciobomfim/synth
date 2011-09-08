@@ -8,11 +8,11 @@ hypermedia application described by these models. Synth also provides an authori
 that facilitates the adding and editing of these models through a GUI that can run on 
 any web browser. 
 
-Synth was built as the implementation task for the master thesis of 
-Mauricio Henrique de Souza Bomfim on Informatics at PUC-Rio. 
+Synth was built as part of the master thesis dissertation in Informatics of 
+Mauricio Henrique de Souza Bomfim, at PUC-Rio.
 
-It is on very early stage. Use Synth advised that you can find some bugs. 
-If you find some bug, please report.
+It is in a very early stage; please be advised you may find some bugs when using Synth. 
+Please report if you find any bug.
 
 INSTALLING
 ----------
