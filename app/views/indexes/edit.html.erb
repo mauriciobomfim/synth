@@ -25,10 +25,11 @@
 <script type="text/javascript">
  function open_index_attributes_window(id) {
     var options_hash = array_options_hash(<%= SHDM::Index.find_all.map{|v| [v.uri, v.index_name.first]}.to_json %>);
+    
     var elements = [
                     { "name" : "navigation_attribute_name", "caption" : "Name" },
                     { "name" : "index_navigation_attribute_index", "caption" : "Index", "type" : "select", "options": options_hash },
-                    { "name" : "navigation_attribute_index_position", "caption" : "Position" },
+                    { "name" : "navigation_attribute_index_position", "caption" : "Position", "type" : "select", "options" : numeric_options(1,20) },
                     { "name" : "id", "type" : "hidden", "class" : "hidden"}
                     ];
     create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/index_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, 'Parameters', elements, function() {$("#index_attributes").trigger("reloadGrid");});

@@ -35,6 +35,14 @@ function register_toogle() {
 	);
 }
 
+function numeric_options(ini, end){
+  var hash = {};
+  for(i=ini;i<=end;i++){
+    hash[i.toString()] = i.toString()
+  }
+  return hash
+}
+
 function array_options_hash(options_array){
     var options_hash = {}
     $.each(options_array, function( key, value ){

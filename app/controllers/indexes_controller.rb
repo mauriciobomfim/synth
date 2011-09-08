@@ -88,7 +88,7 @@ class IndexesController < ApplicationController
   
   def get_resource_attributes
     attrs = params[:id] ? RDFS::Resource.find(params[:id]).attributes : {}
-    attrs.each{ |k, v| attrs[k] = v.to_s }.inspect
+    attrs.each{ |k, v| attrs[k] = v.to_s }
     render :json => attrs
   end
   
