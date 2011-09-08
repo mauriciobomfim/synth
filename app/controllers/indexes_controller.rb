@@ -22,7 +22,7 @@ class IndexesController < ApplicationController
   # GET /indexes/new
   # GET /indexes/new.xml
   def new
-    @contexts = SHDM::Context.find_all.map{ |v| [ v.context_name.first, v.uri ] }.delete_if{|v| v.first == "Any"}
+    @contexts = SHDM::Context.find_all{ |v| [ v.context_name.first, v.uri ] }.delete_if{|v| v.first == "Any"}
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @index }
@@ -84,6 +84,12 @@ class IndexesController < ApplicationController
       format.html { redirect_to(indexes_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def get_resource_attributes
+    attrs = params[:id] ? RDFS::Resource.find(params[:id]).attributes : {}
+    attrs.each{ |k, v| attrs[k] = v.to_s }.inspect
+    render :json => attrs
   end
   
   def computed_attributes

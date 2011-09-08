@@ -3,7 +3,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :applications, :collection => { :shutdown => :get }
   map.resources :operations
   map.resources :contexts,  :collection => { :get_resource_attributes => :get }
-  map.resources :indexes,   :collection => { :navigation_attribute_index_parameters                 => :get, 
+  map.resources :indexes,   :collection => { 
+                                           :get_resource_attributes                               => :get,
+                                           :navigation_attribute_index_parameters                 => :get, 
                                            :navigation_attribute_index_parameters_post_data       => :get,
                                            :navigation_attribute_context_parameters               => :get, 
                                            :navigation_attribute_context_parameters_post_data     => :get,

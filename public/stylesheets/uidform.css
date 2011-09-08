@@ -15,20 +15,19 @@ label.ui-dform-checkbox,label.ui-dform-radio {
 }
 
 .ui-dform-label{
-  /*color:#003399;*/
   font-size:0.7em;
   display: block;
-  float:left;
+/*  float:left;
   min-width:95px;
   height:20px;
-  margin-bottom:5px;
+  margin-bottom:5px;*/
 }
 .ui-dform-span,.ui-dform-tabs {
 	margin: 10px 0;
   height:19px;
 }
 input.ui-dform-text,textarea.ui-dform-textarea,select.ui-dform-select,hidden.ui-dform-hidden{
-	font-size:11px;min-width:250px;margin-bottom:6px;height:20px;
+	font-size:11px;min-width:290px;margin:7px 0px 10px 0px;
 }
 
 

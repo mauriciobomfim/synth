@@ -24,12 +24,12 @@
 
 <script type="text/javascript">
  function open_parameters_window(id) {
-    var elements = [{ "name" : "id", "type" : "hidden", "class" : "hidden" }, { "type" : "hr" }, { "name" : "context_parameter_name", "caption" : "Name" }];
+    var elements = [ { "name" : "context_parameter_name", "caption" : "Name" }, { "name" : "id", "type" : "hidden", "class" : "hidden" }];
     create_window_modal(id, '/contexts/get_resource_attributes/','/contexts/context_parameters_post_data', {parent:'<%= CGI::escape(@context.uri) %>'}, 'Parameters', elements, function() {$("#context_parameters").trigger("reloadGrid");});
   }
   
   function open_preconditions_window(id) {
-    var elements = [{ "name" : "id", "type" : "hidden", "class" : "hidden" }, { "type" : "br" }, { "name" : "pre_condition_name", "caption" : "Name" },{ "type" : "hr" },{ "name" : "pre_condition_expression", "type" : "textarea", "caption" : "Expression"} ,{ "type" : "hr" },{ "name" : "pre_condition_failure_handling", "type" : "textarea", "caption" : "Failure Handling"}];
+    var elements = [ { "name" : "pre_condition_name", "caption" : "Name" },{ "name" : "pre_condition_expression", "type" : "textarea", "caption" : "Expression"} ,{ "name" : "pre_condition_failure_handling", "type" : "textarea", "caption" : "Failure Handling"},{ "name" : "id", "type" : "hidden", "class" : "hidden" }];
     create_window_modal(id, '/contexts/get_resource_attributes/','/contexts/pre_conditions_post_data', {parent:'<%= CGI::escape(@context.uri) %>'}, 'Pre Condition', elements, function() {$("#pre_conditions").trigger("reloadGrid");});
   }
  </script>

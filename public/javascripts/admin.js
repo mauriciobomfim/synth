@@ -92,14 +92,18 @@ function create_window(form_hash,window_name){
         default_field['caption'] = default_field['type'] == 'hidden' ? '' : value['caption']
         jQuery.extend(true, value, default_field)
         if(default_field['type'] == 'select' && value['options']){
-          $.each(value['options'], function(k, v){alert( data[value['name']]+'\n'+v.value); if(v.value == data[value['name']]){ alert(v.value);v.selected = true; }} );
+          $.each(value['options'], function(k, v){
+                                    if(v.value == data[value['name']]){
+                                      v.selected = true; 
+                                    }
+                                    });
         }
         
         // Push fields
         form_data['elements'].push ( value );
         
       });
-      form_data['elements'].push({ "type" : "br" });
+     // form_data['elements'].push({ "type" : "br" });
       form_data['elements'].push({ "type" : "hr" });
       
       form_data['elements'].push({ "type" : "submit", "value" : "Confirm" });

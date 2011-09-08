@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def index
     render :template => 'welcome'
   end
-   
+     
   def jqgrid_children_index(children_attribute, attributes)
      if params[:id].present?
        children = RDFS::Resource.find(params[:id]).send(children_attribute).to_a
