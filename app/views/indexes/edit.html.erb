@@ -22,6 +22,14 @@
   </p>
 <% end %>
 
+<script type="text/javascript">
+ function open_index_attributes_window(id) {
+    var elements = [{ "name" : "id", "type" : "hidden", "class" : "hidden" }, { "type" : "br" }, { "name" : "navigation_attribute_name", "caption" : "Name" },{ "name" : "index_navigation_attribute_index", "caption" : "Index" },{ "name" : "navigation_attribute_index_position", "caption" : "Position" }];
+    create_window_modal(id, '/contexts/get_resource_attributes/','/contexts/context_parameters_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, 'Parameters', elements, function() {$("#index_attributes").trigger("reloadGrid");});
+  }
+
+</script>
+
 <%=jqgrid("Index Attributes", "index_attributes", "/indexes/index_attributes/#{CGI::escape(@index.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -31,7 +39,8 @@
  		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
 	],
 	{ 
-	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.index_index_attributes.to_a.empty? ? 'true' : 'false', :height => 70,
+	  :selection_handler => "open_index_attributes_window", :direct_selection => false, :delete => true,
+    :add => true, :inline_edit => false, :delete => true, :search => false, :hiddengrid => @index.index_index_attributes.to_a.empty? ? 'true' : 'false', :height => 70,
 	  :edit_url => "/indexes/index_attributes_post_data?parent=#{CGI::escape(@index.uri)}",
 		:subgrid => { 
 					
