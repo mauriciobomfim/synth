@@ -95,11 +95,12 @@ function create_window(form_hash,window_name, include_after){
    // dialog_box = create_window(hash, window_name, include_after);
  }
  
- function create_form_hash(id, url_request, url_post, parameters, elements, callback_on_submit, run_with_hash){
+ function create_form_hash(id, url_request, url_post, post_parameters, elements, callback_on_submit, run_with_hash){
    //var dialog_box;
   
-   if(parameters){
-    url_post += "?"+decodeURIComponent($.param(parameters));
+   if(post_parameters){
+    url_post += "?"+decodeURIComponent($.param(post_parameters));
+    
    }
    var send_to_post = function(value, options) { 
     if(value){
@@ -111,7 +112,7 @@ function create_window(form_hash,window_name, include_after){
    
    var default_field = { "name" : "", "caption" : "", "type" : "text", "value" : "" }
    
-   $.getJSON(url_request + (id ? id : ''),
+   $.getJSON(url_request + (id ? id : ''),{},
     function(data) {
       $.each(elements, function( key, value ){
         default_field['value']   = data[value['name']] ? data[value['name']] : value['value'];

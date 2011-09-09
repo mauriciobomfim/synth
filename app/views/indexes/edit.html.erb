@@ -37,12 +37,29 @@
                     { "name" : "id", "type" : "hidden", "class" : "hidden"}
                     ];
    
-    create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/index_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, 'Index Attribute', elements, callback_indexes_attributes,'<h3>dfddfdf</h3><a href="javascript:void(0)" onclick="teste(333)">click</a>');
+    create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/index_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, 'Index Attribute', elements, callback_indexes_attributes,'<h3>dfddfdf</h3>');
+    //xxx(id);
   }
-  function teste(){
-    var id = 'xxxx'
-    create_window_modal(id, '/indexes/qualquer/','/indexes/index_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, 'Parameters', [{"type":"hr"}], function() {$("#index_attributes").trigger("reloadGrid");});
+  /*function get_attrs(id)
+   $.getJSON(url_request + (id ? id : ''),{},
+    function(data) {
+    
+    });*/
+  
+  function xxx(id){
+    var elements = [
+                      { "name" : "navigation_attribute_parameter_name", "caption" : "Name" },
+                      { "name" : "navigation_attribute_parameter_value_expression", "caption" : "Expression" },
+                      { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                      
+                    ];
+    var run_with_hash = function(v){ alert(v.toSource());}
+    //create_window_modal(id, '/indexes/get_resource_children_attributes/','/indexes/index_attributes_post_data', {'children_attribute':'index_navigation_attribute_index_parameters'},'janelinha' ,elements);
+    create_form_hash(id, '/indexes/get_resource_children_attributes/','/indexes/index_attributes_post_data', {'children_attribute':'index_navigation_attribute_index_parameters'}, elements, null, run_with_hash);
   }
+  
+  
+  
 </script>
 
 <%=jqgrid("Index Attributes", "index_attributes", "/indexes/index_attributes/#{CGI::escape(@index.uri)}",

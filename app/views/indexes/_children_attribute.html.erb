@@ -1,0 +1,10 @@
+<% form_for :index, :url => { :action => "update" } do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag :id, children_attribute['id'] %>
+  <p>
+  <%= f.text_field :navigation_attribute_parameter_name, :value => children_attribute['navigation_attribute_parameter_name'] %> 
+	<%= f.text_field :navigation_attribute_parameter_value_expression, :value => children_attribute['navigation_attribute_parameter_value_expression'] %>
+  <%= f.submit 'Save' %> <%= f.submit 'Delete' %>
+  </p>
+
+<% end %>
