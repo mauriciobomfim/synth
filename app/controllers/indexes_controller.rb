@@ -149,6 +149,11 @@ class IndexesController < ApplicationController
   end
 	
 	#INDEX ATTRIBUTES
+  
+  def qualquer
+    render :text => '{ id: 33333}'
+  end
+  
   def index_attributes
     jqgrid_children_index('index_index_attributes', [:id, 
       :navigation_attribute_name, 

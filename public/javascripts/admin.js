@@ -52,9 +52,10 @@ function array_options_hash(options_array){
     return options_hash;
 }
 
-function create_window(form_hash,window_name){
-  $('#__modal-box').remove();
-  var box = $('<div id="__modal-box" title="'+window_name+'">').appendTo('body');
+function create_window(form_hash,window_name, include_after){
+  var modal_name = '_modal-box-'+ window_name.replace(' ', '-');
+  $('#'+modal_name).remove();
+  var box = $('<div id="'+modal_name+'" title="'+window_name+'">').appendTo('body');
   box.dialog({
         autoOpen: false,
         width: 400,
@@ -70,10 +71,13 @@ function create_window(form_hash,window_name){
     }
  });
     box.buildForm(form_hash);
+    if(include_after){
+      $('<div id="after'+modal_name+'" >'+include_after+'</div>').appendTo(box);
+    }
     box.dialog( "open" );
     return box;
  }
- function create_window_modal(id, url_request, url_post, parameters, window_name, elements, callback){
+ function create_window_modal(id, url_request, url_post, parameters, window_name, elements, callback_on_submit, include_after){
    var dialog_box;
    if(!id){
     window_name = "New "+window_name;
@@ -83,7 +87,7 @@ function create_window(form_hash,window_name){
    }
    var send_to_post = function(value, options) { 
     if(value){
-       if(callback){callback.call();}
+       if(callback_on_submit){callback_on_submit.call();}
        dialog_box.dialog('close');
     }
    };
@@ -111,7 +115,7 @@ function create_window(form_hash,window_name){
         form_data['elements'].push ( value );
         
       });
-     // form_data['elements'].push({ "type" : "br" });
+     
       form_data['elements'].push({ "type" : "hr" });
       
       form_data['elements'].push({ "type" : "submit", "value" : "Confirm" });
@@ -119,7 +123,9 @@ function create_window(form_hash,window_name){
         form_data['elements'].push({ "type" : "submit", "name" : 'oper', "value" : "Delete"});
       }
       form_data['elements'].push({ "type" : "button", "name" : "cancel", "html" : "Cancel" });
-      dialog_box = create_window(form_data, window_name);
+      
+      
+      dialog_box = create_window(form_data, window_name, include_after);
       //alert(form_data.toSource());
     });
 
