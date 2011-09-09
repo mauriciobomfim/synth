@@ -77,21 +77,38 @@ function create_window(form_hash,window_name, include_after){
     box.dialog( "open" );
     return box;
  }
+ 
  function create_window_modal(id, url_request, url_post, parameters, window_name, elements, callback_on_submit, include_after){
-   var dialog_box;
-   if(!id){
-    window_name = "New "+window_name;
-   }
+    var dialog_box;
+    var on_submit = function(){
+     dialog_box.dialog('close');
+     if(callback_on_submit){callback_on_submit.call();}
+    }
+    var run_with_hash = function(hash){
+       if(!id){window_name = "New "+window_name; }
+      dialog_box = create_window(hash, window_name, include_after);
+    }
+   
+    var hash = create_form_hash(id, url_request, url_post, parameters, elements, on_submit, run_with_hash);
+    
+   
+   // dialog_box = create_window(hash, window_name, include_after);
+ }
+ 
+ function create_form_hash(id, url_request, url_post, parameters, elements, callback_on_submit, run_with_hash){
+   //var dialog_box;
+  
    if(parameters){
     url_post += "?"+decodeURIComponent($.param(parameters));
    }
    var send_to_post = function(value, options) { 
     if(value){
        if(callback_on_submit){callback_on_submit.call();}
-       dialog_box.dialog('close');
+       //dialog_box.dialog('close');
     }
    };
-   var form_data = { "action" : url_post, "method" : "post", "ajax" : send_to_post, "elements" : [ ] };
+   form_data = { "action" : url_post, "method" : "post", "ajax" : send_to_post, "elements" : [ ] };
+   
    var default_field = { "name" : "", "caption" : "", "type" : "text", "value" : "" }
    
    $.getJSON(url_request + (id ? id : ''),
@@ -112,21 +129,16 @@ function create_window(form_hash,window_name, include_after){
         }
         
         // Push fields
-        form_data['elements'].push ( value );
-        
+        form_data['elements'].push ( jQuery.extend(true, {}, value) );
       });
      
       form_data['elements'].push({ "type" : "hr" });
-      
       form_data['elements'].push({ "type" : "submit", "value" : "Confirm" });
       if(id){
         form_data['elements'].push({ "type" : "submit", "name" : 'oper', "value" : "Delete"});
       }
       form_data['elements'].push({ "type" : "button", "name" : "cancel", "html" : "Cancel" });
-      
-      
-      dialog_box = create_window(form_data, window_name, include_after);
-      //alert(form_data.toSource());
+      run_with_hash(form_data);
     });
-
+    //return form_data;
  } 
