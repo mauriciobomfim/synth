@@ -23,9 +23,9 @@ label.ui-dform-checkbox,label.ui-dform-radio {
   height:19px;
 }
 input.ui-dform-text,textarea.ui-dform-textarea,select.ui-dform-select,hidden.ui-dform-hidden{
-	font-size:11px;width:290px;margin:7px 0px 10px 0px;
+	font-size:11px;width:350px;margin:7px 0px 10px 0px;
 }
-
+textarea.ui-dform-textarea{height:80px;}
 
 input.ui-dform-submit, button.ui-dform-button{
 	display: block;margin:7px 10px 5px 0px;font-size:12px;float:left;

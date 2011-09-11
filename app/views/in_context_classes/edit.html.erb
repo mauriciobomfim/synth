@@ -27,6 +27,40 @@
 
 <% end %>
 
+<script type="text/javascript">
+ function open_index_attributes_window(id) {
+    var callback_indexes_attributes = function() { $("#index_attributes").trigger("reloadGrid"); }
+    
+    var options_hash = array_options_hash(<%= SHDM::Index.find_all.map{|v| [v.uri, v.index_name.first]}.to_json %>);
+    var window_name = 'Index Attribute';
+    var elements = [
+                    { "name" : "navigation_attribute_name", "caption" : "Name" },
+                    { "name" : "index_navigation_attribute_index", "caption" : "Index", "type" : "select", "options": options_hash },
+                    { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var run_after = function(modal_name){
+      
+      if(id){ index_attr_parameters(id, modal_name); }
+    }
+    var html_after_parameters = !id ? '' : '<h3>Target Index Parameters</h3> <a href="javascript:void(0)" onclick="index_attr_parameters(\''+id+'\',\''+create_window_modal_name(window_name)+'\',{})">New</a><br /><label>Name</label><label style="float:none;">Value Expression</label><br />';
+    create_window_modal(id, '/in_context_classes/get_resource_attributes/','/in_context_classes/index_attributes_post_data', {parent:'<%= CGI::escape(@in_context_class.uri) %>'}, window_name, elements, callback_indexes_attributes, html_after_parameters,run_after);
+    
+  }
+  
+  function index_attr_parameters(id,modal_name, data){
+    var elements = [
+                      { "name" : "navigation_attribute_parameter_name", "caption" : "" },
+                      { "name" : "navigation_attribute_parameter_value_expression", "caption" : "" },
+                      { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var target_element_id = 'after'+modal_name;
+    var run_on_submit = function(){ $('#'+target_element_id+ ' form').remove();index_attr_parameters(id,modal_name); }
+    
+    multiple_forms_in_target(id, target_element_id, data, '/in_context_classes/get_resource_children_attributes/', { 'children_attribute' : 'index_navigation_attribute_index_parameters' }, '/in_context_classes/index_navigation_attribute_index_parameters_post_data', { 'parent_id' : id }, elements, run_on_submit)
+  }
+  
+</script>
+
 <%=jqgrid("Index Attributes", "index_attributes", "/in_context_classes/index_attributes/#{CGI::escape(@in_context_class.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -35,26 +69,47 @@
 		  :editoptions => { :value => SHDM::Index.find_all.map{|v| [CGI::escape(v.uri), v.index_name.first]} } }
 	],
 	{ 
-	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_index_attributes.to_a.empty? ? 'true' : 'false', :height => 70,
-	  :edit_url => "/in_context_classes/index_attributes_post_data?parent=#{CGI::escape(@in_context_class.uri)}",
-		:subgrid => { 
-					
-					:url => "/in_context_classes/index_navigation_attribute_index_parameters",
-					:columns => [
-						{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
-						{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
-				    ],
-					:add => true, 
-					:edit => true, 
-					:delete => true, 
-					:search => false, 
-					:inline_edit => true,
-					:edit_url => "/in_context_classes/index_navigation_attribute_index_parameters_post_data"
-		}
+	  :selection_handler => "open_index_attributes_window", :direct_selection => false, :add => false, :inline_edit => false, :delete => false, :search => false, :hiddengrid => @in_context_class.in_context_class_index_attributes.to_a.empty? ? 'true' : 'false', :height => 70,
 	}
 )%>
+<p><a href='javascript:void(0)' onclick='open_index_attributes_window()'>New Index Attribute</a></p>
 <br />
+
+<script type="text/javascript">
+ function open_context_anchor_attributes_window(id) {
+    var callback_context_anchor_attributes = function() { $("#context_anchor_attributes").trigger("reloadGrid"); }
+    
+    var target_context_options = array_options_hash(<%= SHDM::Context.find_all.map{|v| [v.uri, v.context_name.first]}.to_json %>);
+    var window_name = 'Context Anchor Attribute';
+    var elements = [
+                    { "name" : "navigation_attribute_name", "caption" : "Name" },
+                    { "name" : "context_anchor_navigation_attribute_label_expression", "caption" : "Label expression", "type" : "textarea" },
+                    { "name" : "context_anchor_navigation_attribute_target_context", "caption" : "Target context", "type" : "select", "options" : target_context_options },
+                    { "name" : "context_anchor_navigation_attribute_target_node_expression", "caption" : "Target node expression", "type" : "textarea" },
+                    { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var run_after = function(modal_name){
+      if(id){ index_anchor_parameters(id, modal_name); }
+    }
+    var html_after_parameters = !id ? '' : '<h3>Context Anchor Parameters</h3> <a href="javascript:void(0)" onclick="index_anchor_parameters(\''+id+'\',\''+create_window_modal_name(window_name)+'\',{})">New</a><br /><label>Name</label><label style="float:none;">Value Expression</label><br />';
+    create_window_modal(id, '/in_context_classes/get_resource_attributes/','/in_context_classes/context_anchor_attributes_post_data', {parent:'<%= CGI::escape(@in_context_class.uri) %>'}, window_name, elements, callback_context_anchor_attributes, html_after_parameters,run_after);
+    
+  }
+  
+  function index_anchor_parameters(id,modal_name, data){
+    var elements = [
+                      { "name" : "navigation_attribute_parameter_name", "caption" : "" },
+                      { "name" : "navigation_attribute_parameter_value_expression", "caption" : "" },
+                      { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var target_element_id = 'after'+modal_name;
+    var run_on_submit = function(){ $('#'+target_element_id+ ' form').remove();index_anchor_parameters(id,modal_name); }
+    
+    multiple_forms_in_target(id, target_element_id, data, '/in_context_classes/get_resource_children_attributes/', { 'children_attribute' : 'context_anchor_navigation_attribute_target_parameters' }, '/in_context_classes/navigation_attribute_context_parameters_post_data', { 'parent_id' : id }, elements, run_on_submit)
+  }
+  
+</script>
+
 <%=jqgrid("Context Anchor Attributes", "context_anchor_attributes", "/in_context_classes/context_anchor_attributes/#{CGI::escape(@in_context_class.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -65,26 +120,46 @@
   	{ :field => "context_anchor_navigation_attribute_target_node_expression", :label => "Target node expression", :editable => true, :width => 200, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
 	],
 	{ 
-	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_context_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
-	  :edit_url => "/in_context_classes/context_anchor_attributes_post_data?parent=#{CGI::escape(@in_context_class.uri)}",
-		:subgrid => { 
-					
-					:url => "/in_context_classes/navigation_attribute_context_parameters",
-					:columns => [
-						{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
-						{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
-				    ],
-					:add => true, 
-					:edit => true, 
-					:delete => true, 
-					:search => false, 
-					:inline_edit => true,
-					:edit_url => "/in_context_classes/navigation_attribute_context_parameters_post_data"
-		}
+	  :selection_handler => "open_context_anchor_attributes_window", :search => false, :direct_selection => false, :hiddengrid => @in_context_class.in_context_class_context_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
 	}
 )%>
+<p><a href='javascript:void(0)' onclick='open_context_anchor_attributes_window()'>New Context Anchor Attribute</a></p>
 <br/>
+
+<script type="text/javascript">
+ function open_index_anchor_attributes_window(id) {
+    var callback_indexes_attributes = function() { $("#index_anchor_attributes").trigger("reloadGrid"); }
+    
+    var target_index_options = array_options_hash(<%=  SHDM::Index.find_all.map{|v| [v.uri, v.index_name.first]}.to_json %>);
+    var window_name = 'Index Anchor Attribute';
+    var elements = [
+                    { "name" : "navigation_attribute_name", "caption" : "Name" },
+                    { "name" : "index_anchor_navigation_attribute_label_expression", "caption" : "Label expression", "type" : "textarea" },
+                    { "name" : "index_anchor_navigation_attribute_target_index", "caption" : "Target index", "type" : "select", "options" : target_index_options },
+                    { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var run_after = function(modal_name){
+      if(id){ index_anchor_navigation_parameters(id, modal_name); }
+    }
+    var html_after_parameters = !id ? '' : '<h3>Context Anchor Parameters</h3> <a href="javascript:void(0)" onclick="index_anchor_navigation_parameters(\''+id+'\',\''+create_window_modal_name(window_name)+'\',{})">New</a><br /><label>Name</label><label style="float:none;">Value Expression</label><br />';
+    create_window_modal(id, '/in_context_classes/get_resource_attributes/','/in_context_classes/index_anchor_attributes_post_data', {parent:'<%= CGI::escape(@in_context_class.uri) %>'}, window_name, elements, callback_indexes_attributes, html_after_parameters,run_after);
+    
+  }
+  
+  function index_anchor_navigation_parameters(id,modal_name, data){
+    var elements = [
+                      { "name" : "navigation_attribute_parameter_name", "caption" : "" },
+                      { "name" : "navigation_attribute_parameter_value_expression", "caption" : "" },
+                      { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var target_element_id = 'after'+modal_name;
+    var run_on_submit = function(){ $('#'+target_element_id+ ' form').remove();index_anchor_navigation_parameters(id,modal_name); }
+    
+    multiple_forms_in_target(id, target_element_id, data, '/in_context_classes/get_resource_children_attributes/', { 'children_attribute' : 'index_anchor_navigation_attribute_target_parameters' }, '/in_context_classes/navigation_attribute_index_parameters_post_data', { 'parent_id' : id }, elements, run_on_submit)
+  }
+  
+</script>
+
 <%=jqgrid("Index Anchor Attributes", "index_anchor_attributes", "/in_context_classes/index_anchor_attributes/#{CGI::escape(@in_context_class.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -94,35 +169,35 @@
 		  :editoptions => { :value => SHDM::Index.find_all.map{|v| [CGI::escape(v.uri), v.index_name.first]} } }
 	],
 	{ 
-	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_index_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
-	  :edit_url => "/in_context_classes/index_anchor_attributes_post_data?parent=#{CGI::escape(@in_context_class.uri)}",
-	  :subgrid => { 
-
-						:url => "/in_context_classes/navigation_attribute_index_parameters",
-						:columns => [
-							{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-							{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
-							{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
-					    ],
-						:add => true, 
-						:edit => true, 
-						:delete => true, 
-						:search => false, 
-						:inline_edit => true,
-						:edit_url => "/in_context_classes/navigation_attribute_index_parameters_post_data"
-		}
+	  :selection_handler => "open_index_anchor_attributes_window", :direct_selection => false, :search => false, :hiddengrid => @in_context_class.in_context_class_index_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
 	}
 )%>
+<p><a href='javascript:void(0)' onclick='open_index_anchor_attributes_window()'>New Index Anchor Attribute</a></p>
 <br />
+
+<script type="text/javascript">
+ function open_computed_attributes_window(id) {
+    var callback_computed_attributes = function() { $("#computed_attributes").trigger("reloadGrid");}
+    var window_name = 'Computed Attribute';
+    var elements = [
+                    { "name" : "navigation_attribute_name", "caption" : "Name" },
+                    { "name" : "computed_navigation_attribute_value_expression", "caption" : "Value expression", "type" : "textarea", "size" : 5 },
+                    { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    create_window_modal(id, '/in_context_classes/get_resource_attributes/','/in_context_classes/computed_attributes_post_data', {parent:'<%= CGI::escape(@in_context_class.uri) %>'}, window_name, elements, callback_computed_attributes);
+  }
+</script>
+
 <%=jqgrid("Computed Attributes", "computed_attributes", "/in_context_classes/computed_attributes/#{CGI::escape(@in_context_class.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
 		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 220, :align => 'center' },
 		{ :field => "computed_navigation_attribute_value_expression", :label => "Value expression", :editable => true, :width => 500, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
 	],
-	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @in_context_class.in_context_class_computed_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
-	  :edit_url => "/in_context_classes/computed_attributes_post_data?parent=#{CGI::escape(@in_context_class.uri)}" }
+	{ 
+    :selection_handler => "open_computed_attributes_window", :direct_selection => false, :search => false, :hiddengrid => @in_context_class.in_context_class_computed_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+  }
 )%>
-
+<p><a href='javascript:void(0)' onclick='open_computed_attributes_window()'>New Computed Attribute</a></p>
 <br/>
 <%= link_to 'Back', in_context_classes_path %>

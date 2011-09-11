@@ -134,16 +134,20 @@ function create_window(form_hash,window_name, include_after, run_after){
    if(post_parameters){
     url_post += "?"+decodeURIComponent($.param(post_parameters));
    }
-   var send_to_post = function(value, options) { 
+   var run_on_submit = function(value, options) { 
     if(value){
        if(callback_on_submit){callback_on_submit.call();}
     }
    };
-   $.getJSON(url_request + (id ? id : ''),{},
-    function(data) {
-      var form_data = format_base_form_hash(data, elements, url_post, send_to_post);
-      run_with_hash(form_data);
-    });
+   var instance_hash = function(data) {
+       var form_hash = format_base_form_hash(data, elements, url_post, run_on_submit);
+       run_with_hash(form_hash);
+   }
+   if(!id){
+      instance_hash({});
+   }else{
+      $.getJSON(url_request + (id ? id : ''),{}, instance_hash);
+   }
  }
  
  function multiple_forms_in_target(id, target_element_id, data, url_request, request_params, url_post, post_parameters, elements, run_on_submit){
@@ -154,7 +158,7 @@ function create_window(form_hash,window_name, include_after, run_after){
      }
     var instance_form = function(key, value) {
        var form_hash = format_base_form_hash(value, jQuery.extend(true, {}, elements), url_post, run_on_submit);
-       $('#'+target_element_id).buildForm(form_hash)
+       $('#'+target_element_id).buildForm(form_hash);
     }
     if(data){
       instance_form(null, data);
