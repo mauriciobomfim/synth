@@ -85,7 +85,7 @@ class IndexesController < ApplicationController
       format.xml  { head :ok }
     end
   end
- ### 
+
   def get_resource_attributes
     attrs = params[:id] ? RDFS::Resource.find(params[:id]).attributes : {}
     attrs.each{ |k, v| attrs[k] = v.to_s }
@@ -93,16 +93,9 @@ class IndexesController < ApplicationController
   end
   
   def get_resource_children_attributes
-    params[:children_attribute] ||= 'index_navigation_attribute_index_parameters'
     render :json => children_attributes(params[:id], params[:children_attribute])
   end
   
-  def resource_children_form
-    params[:children_attribute] ||= 'index_navigation_attribute_index_parameters'
-    @children_attributes = children_attributes(params[:id], params[:children_attribute]).to_a
-    render :resource_children_form, :layout => false
-  end
-###  
   def computed_attributes
     jqgrid_children_index('computed_attributes', [:id, 
       :navigation_attribute_name, 

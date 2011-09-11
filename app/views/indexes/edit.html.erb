@@ -24,41 +24,35 @@
 
 <script type="text/javascript">
  function open_index_attributes_window(id) {
-    
-    var callback_indexes_attributes = function() {
-      $("#index_attributes").trigger("reloadGrid");
-    }
+    var callback_indexes_attributes = function() { $("#index_attributes").trigger("reloadGrid"); }
     
     var options_hash = array_options_hash(<%= SHDM::Index.find_all.map{|v| [v.uri, v.index_name.first]}.to_json %>);
+    var window_name = 'Index Attribute';
     var elements = [
                     { "name" : "navigation_attribute_name", "caption" : "Name" },
                     { "name" : "index_navigation_attribute_index", "caption" : "Index", "type" : "select", "options": options_hash },
                     { "name" : "navigation_attribute_index_position", "caption" : "Position", "type" : "select", "options" : numeric_options(1,20) },
                     { "name" : "id", "type" : "hidden", "class" : "hidden"}
                     ];
-   
-    create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/index_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, 'Index Attribute', elements, callback_indexes_attributes,'<h3>dfddfdf</h3>');
-    //xxx(id);
-  }
-  /*function get_attrs(id)
-   $.getJSON(url_request + (id ? id : ''),{},
-    function(data) {
+    var run_after = function(modal_name){
+      if(id){ index_attr_parameters(id, modal_name); }
+    }
+    var html_after_parameters = '<h3>Target Index Parameters</h3> <a href="javascript:void(0)" onclick="index_attr_parameters(\''+id+'\',\''+create_window_modal_name(window_name)+'\',{})">New</a><br /><label>Name</label><label style="float:none;">Value Expression</label><br />';
+    create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/index_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, window_name, elements, callback_indexes_attributes, html_after_parameters,run_after);
     
-    });*/
-  
-  function xxx(id){
-    var elements = [
-                      { "name" : "navigation_attribute_parameter_name", "caption" : "Name" },
-                      { "name" : "navigation_attribute_parameter_value_expression", "caption" : "Expression" },
-                      { "name" : "id", "type" : "hidden", "class" : "hidden"}
-                      
-                    ];
-    var run_with_hash = function(v){ alert(v.toSource());}
-    //create_window_modal(id, '/indexes/get_resource_children_attributes/','/indexes/index_attributes_post_data', {'children_attribute':'index_navigation_attribute_index_parameters'},'janelinha' ,elements);
-    create_form_hash(id, '/indexes/get_resource_children_attributes/','/indexes/index_attributes_post_data', {'children_attribute':'index_navigation_attribute_index_parameters'}, elements, null, run_with_hash);
   }
   
-  
+  function index_attr_parameters(id,modal_name, data){
+    var elements = [
+                      { "name" : "navigation_attribute_parameter_name", "caption" : "" },
+                      { "name" : "navigation_attribute_parameter_value_expression", "caption" : "" },
+                      { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var target_element_id = 'after'+modal_name;
+    var run_on_submit = function(){ $('#'+target_element_id+ ' form').remove();index_attr_parameters(id,modal_name); }
+    
+    multiple_forms_in_target(id, target_element_id, data, '/indexes/get_resource_children_attributes/', { 'children_attribute' : 'index_navigation_attribute_index_parameters' }, '/indexes/index_navigation_attribute_index_parameters_post_data', { 'parent_id' : id }, elements, run_on_submit)
+  }
   
 </script>
 
@@ -71,28 +65,49 @@
  		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
 	],
 	{ 
-	  :selection_handler => "open_index_attributes_window", :direct_selection => false, :delete => true,
-    :add => true, :inline_edit => false, :delete => true, :search => false, :hiddengrid => @index.index_index_attributes.to_a.empty? ? 'true' : 'false', :height => 70,
-	  :edit_url => "/indexes/index_attributes_post_data?parent=#{CGI::escape(@index.uri)}",
-		:subgrid => { 
-					
-					:url => "/indexes/index_navigation_attribute_index_parameters",
-					:columns => [
-						{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
-						{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
-				    ],
-					:add => true, 
-					:edit => true, 
-					:delete => true, 
-					:search => false, 
-					:inline_edit => true,
-					:edit_url => "/indexes/index_navigation_attribute_index_parameters_post_data"
-		}
+	  :selection_handler => "open_index_attributes_window", :direct_selection => false, :delete => false, :hiddengrid => @index.index_index_attributes.to_a.empty? ? 'true' : 'false'
 	}
 )%>
 <p><a href='javascript:void(0)' onclick='open_index_attributes_window()'>New Index Attribute</a></p>
 <br />
+
+
+<script type="text/javascript">
+ function open_context_anchor_attributes_window(id) {
+    var callback_indexes_attributes = function() { $("#context_anchor_attributes").trigger("reloadGrid"); }
+    
+    var target_context_options = array_options_hash(<%= SHDM::Context.find_all.map{|v| [v.uri, v.context_name.first]}.to_json %>);
+    var window_name = 'Context Anchor Attribute';
+    var elements = [
+                    { "name" : "navigation_attribute_name", "caption" : "Name" },
+                    { "name" : "context_anchor_navigation_attribute_label_expression", "caption" : "Label expression", "type" : "textarea" },
+                    { "name" : "context_anchor_navigation_attribute_target_context", "caption" : "Target context", "type" : "select", "options" : target_context_options },
+                    { "name" : "context_anchor_navigation_attribute_target_node_expression", "caption" : "Target node expression", "type" : "textarea" },
+                    { "name" : "navigation_attribute_index_position", "caption" : "Position", "type" : "select", "options" : numeric_options(1,20) },
+                    { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var run_after = function(modal_name){
+      if(id){ index_anchor_parameters(id, modal_name); }
+    }
+    var html_after_parameters = '<h3>Context Anchor Parameters</h3> <a href="javascript:void(0)" onclick="index_anchor_parameters(\''+id+'\',\''+create_window_modal_name(window_name)+'\',{})">New</a><br /><label>Name</label><label style="float:none;">Value Expression</label><br />';
+    create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/context_anchor_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, window_name, elements, callback_indexes_attributes, html_after_parameters,run_after);
+    
+  }
+  
+  function index_anchor_parameters(id,modal_name, data){
+    var elements = [
+                      { "name" : "navigation_attribute_parameter_name", "caption" : "" },
+                      { "name" : "navigation_attribute_parameter_value_expression", "caption" : "" },
+                      { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var target_element_id = 'after'+modal_name;
+    var run_on_submit = function(){ $('#'+target_element_id+ ' form').remove();index_anchor_parameters(id,modal_name); }
+    
+    multiple_forms_in_target(id, target_element_id, data, '/indexes/get_resource_children_attributes/', { 'children_attribute' : 'context_anchor_navigation_attribute_target_parameters' }, '/indexes/navigation_attribute_context_parameters_post_data', { 'parent_id' : id }, elements, run_on_submit)
+  }
+  
+</script>
+
 <%=jqgrid("Context Anchor Attributes", "context_anchor_attributes", "/indexes/context_anchor_attributes/#{CGI::escape(@index.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -104,26 +119,46 @@
 		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
 	],
 	{ 
-	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.context_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
-	  :edit_url => "/indexes/context_anchor_attributes_post_data?parent=#{CGI::escape(@index.uri)}",
-		:subgrid => { 
-					
-					:url => "/indexes/navigation_attribute_context_parameters",
-					:columns => [
-						{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
-						{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
-				    ],
-					:add => true, 
-					:edit => true, 
-					:delete => true, 
-					:search => false, 
-					:inline_edit => true,
-					:edit_url => "/indexes/navigation_attribute_context_parameters_post_data"
-				  }
+	  :selection_handler => "open_context_anchor_attributes_window", :direct_selection => false, :delete => false, :hiddengrid => @index.context_anchor_attributes.to_a.empty? ? 'true' : 'false',
 	}
 )%>
-<br/>
+<p><a href='javascript:void(0)' onclick='open_context_anchor_attributes_window()'>New Context Anchor Attribute</a></p>
+<br />
+
+<script type="text/javascript">
+ function open_index_anchor_attributes_window(id) {
+    var callback_indexes_attributes = function() { $("#index_anchor_attributes").trigger("reloadGrid"); }
+    
+    var target_index_options = array_options_hash(<%=  SHDM::Index.find_all.map{|v| [v.uri, v.index_name.first]}.to_json %>);
+    var window_name = 'Index Anchor Attribute';
+    var elements = [
+                    { "name" : "navigation_attribute_name", "caption" : "Name" },
+                    { "name" : "index_anchor_navigation_attribute_label_expression", "caption" : "Label expression", "type" : "textarea" },
+                    { "name" : "index_anchor_navigation_attribute_target_index", "caption" : "Target index", "type" : "select", "options" : target_index_options },
+                    { "name" : "navigation_attribute_index_position", "caption" : "Position", "type" : "select", "options" : numeric_options(1,20) },
+                    { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var run_after = function(modal_name){
+      if(id){ index_anchor_navigation_parameters(id, modal_name); }
+    }
+    var html_after_parameters = '<h3>Context Anchor Parameters</h3> <a href="javascript:void(0)" onclick="index_anchor_navigation_parameters(\''+id+'\',\''+create_window_modal_name(window_name)+'\',{})">New</a><br /><label>Name</label><label style="float:none;">Value Expression</label><br />';
+    create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/index_anchor_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, window_name, elements, callback_indexes_attributes, html_after_parameters,run_after);
+    
+  }
+  
+  function index_anchor_navigation_parameters(id,modal_name, data){
+    var elements = [
+                      { "name" : "navigation_attribute_parameter_name", "caption" : "" },
+                      { "name" : "navigation_attribute_parameter_value_expression", "caption" : "" },
+                      { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    var target_element_id = 'after'+modal_name;
+    var run_on_submit = function(){ $('#'+target_element_id+ ' form').remove();index_anchor_navigation_parameters(id,modal_name); }
+    
+    multiple_forms_in_target(id, target_element_id, data, '/indexes/get_resource_children_attributes/', { 'children_attribute' : 'index_anchor_navigation_attribute_target_parameters' }, '/indexes/navigation_attribute_index_parameters_post_data', { 'parent_id' : id }, elements, run_on_submit)
+  }
+  
+</script>
 <%=jqgrid("Index Anchor Attributes", "index_anchor_attributes", "/indexes/index_anchor_attributes/#{CGI::escape(@index.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -136,26 +171,44 @@
 		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
 	],
 	{ 
-	  :add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.index_anchor_attributes.to_a.empty? ? 'true' : 'false',:height => 150,
-	  :edit_url => "/indexes/index_anchor_attributes_post_data?parent=#{CGI::escape(@index.uri)}",
-	  :subgrid => { 
-					
-					:url => "/indexes/navigation_attribute_index_parameters",
-					:columns => [
-						{ :field => "id", :label => "ID", :width => 1, :resizable => false },
-						{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
-						{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
-				    ],
-					:add => true, 
-					:edit => true, 
-					:delete => true, 
-					:search => false, 
-					:inline_edit => true,
-					:edit_url => "/indexes/navigation_attribute_index_parameters_post_data"
-				  }
+	  :selection_handler => "open_index_anchor_attributes_window", :direct_selection => false, :delete => false, :hiddengrid => @index.index_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+    #:add => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.index_anchor_attributes.to_a.empty? ? 'true' : 'false',:height => 150,
+	  #:edit_url => "/indexes/index_anchor_attributes_post_data?parent=#{CGI::escape(@index.uri)}",
+	  #:subgrid => { 
+		#			
+		#			:url => "/indexes/navigation_attribute_index_parameters",
+		#			:columns => [
+		#				{ :field => "id", :label => "ID", :width => 1, :resizable => false },
+		#				{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true },
+		#				{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true }
+		#		    ],
+		#			:add => true, 
+		#			:edit => true, 
+		#			:delete => true, 
+		#			:search => false, 
+		#			:inline_edit => true,
+		#			:edit_url => "/indexes/navigation_attribute_index_parameters_post_data"
+		#		  }
 	}
 )%>
-<br/>
+<p><a href='javascript:void(0)' onclick='open_index_anchor_attributes_window()'>New Index Anchor Attribute</a></p>
+<br />
+
+
+<script type="text/javascript">
+ function open_computed_attributes_window(id) {
+    var callback_computed_attributes = function() { $("#computed_attributes").trigger("reloadGrid");}
+    var window_name = 'Computed Attribute';
+    var elements = [
+                    { "name" : "navigation_attribute_name", "caption" : "Name" },
+                    { "name" : "computed_navigation_attribute_value_expression", "caption" : "Value expression", "type" : "textarea" },
+                    { "name" : "navigation_attribute_index_position", "caption" : "Position", "type" : "select", "options" : numeric_options(1,20) },
+                    { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/computed_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, window_name, elements, callback_computed_attributes);
+  }
+</script>
+
 <%=jqgrid("Computed Attributes", "computed_attributes", "/indexes/computed_attributes/#{CGI::escape(@index.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -163,10 +216,27 @@
 		{ :field => "computed_navigation_attribute_value_expression", :label => "Value expression", :editable => true, :width => 450, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 70 } },
 		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
 	],
-	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.computed_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
-	  :edit_url => "/indexes/computed_attributes_post_data?parent=#{CGI::escape(@index.uri)}" }	
+	{ 
+    :selection_handler => "open_computed_attributes_window", :direct_selection => false, :delete => false, :hiddengrid => @index.index_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+    #:add => false, :edit => false, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.computed_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+	  #:edit_url => "/indexes/computed_attributes_post_data?parent=#{CGI::escape(@index.uri)}" 
+  }	
 )%>
+<p><a href='javascript:void(0)' onclick='open_computed_attributes_window()'>New Computed Attribute</a></p>
 <br />
+<script type="text/javascript">
+ function open_pre_condition_attributes_window(id) {
+    var callback_computed_attributes = function() { $("#pre_conditions").trigger("reloadGrid");}
+    var window_name = 'Pre Conditions';
+    var elements = [
+                    { "name" : "pre_condition_name", "caption" : "Name" },
+                    { "name" : "pre_condition_expression", "caption" : "Expression", "type" : "textarea" },
+                    { "name" : "pre_condition_failure_handling", "caption" : "Position", "type" : "textarea" },
+                    { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                    ];
+    create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/pre_conditions_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, window_name, elements, callback_computed_attributes);
+  }
+</script>
 <%=jqgrid("Pre Conditions", "pre_conditions", "/indexes/pre_conditions/#{CGI::escape(@index.uri)}",
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
@@ -174,8 +244,12 @@
 		{ :field => "pre_condition_expression", :label => "Expression",	:editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
 		{ :field => "pre_condition_failure_handling", :label => "Failure handling",	:editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
 	],
-	{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.index_pre_conditions.to_a.empty? ? 'true' : 'false',:height => 150,
-	  :edit_url => "/indexes/pre_conditions_post_data?parent=#{CGI::escape(@index.uri)}" }
+	{ 
+    :selection_handler => "open_pre_condition_attributes_window", :direct_selection => false, :delete => false, :hiddengrid => @index.index_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+    #:add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :hiddengrid => @index.index_pre_conditions.to_a.empty? ? 'true' : 'false',:height => 150,
+	  #:edit_url => "/indexes/pre_conditions_post_data?parent=#{CGI::escape(@index.uri)}"
+  }
 )%>
+<p><a href='javascript:void(0)' onclick='open_pre_condition_attributes_window()'>New Pre condition</a></p>
 <br/>
 <%= link_to 'Back', indexes_path %>
