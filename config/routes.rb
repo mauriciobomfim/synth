@@ -3,7 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :applications, :collection => { :shutdown => :get }
   map.resources :operations
   map.resources :contexts
-  map.resources :indexes, :collection => { :navigation_attribute_index_parameters                 => :get, 
+  map.resources :indexes,   :collection => { 
+                                           :navigation_attribute_index_parameters                 => :get, 
                                            :navigation_attribute_index_parameters_post_data       => :get,
                                            :navigation_attribute_context_parameters               => :get, 
                                            :navigation_attribute_context_parameters_post_data     => :get,
@@ -18,7 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :effects
   map.resources :concrete_widgets
   map.resources :concrete_interfaces
-  map.resources :in_context_classes, :collection => { :navigation_attribute_index_parameters                 => :get, 
+  map.resources :in_context_classes, :collection => { 
+                                                      :navigation_attribute_index_parameters                 => :get, 
                                                       :navigation_attribute_index_parameters_post_data       => :get,
                                                       :navigation_attribute_context_parameters               => :get,
                                                       :navigation_attribute_context_parameters_post_data     => :get,

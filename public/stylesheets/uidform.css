@@ -1,0 +1,49 @@
+form.ui-dform-form{clear:both;}
+code.ui-dform-form,blockquote.ui-dform-form {
+	background-color: #FFFFFF;
+}
+
+label.ui-dform-form {
+	display: block;
+
+}
+
+hr.ui-dform-hr{display:block;height:1px;background-color:#A6C9E2; border: 0px solid #003399;}
+
+label.ui-dform-checkbox,label.ui-dform-radio {
+	display: inline !important;
+}
+
+.ui-dform-label{
+  font-size:0.7em;
+  display: block;
+}
+.ui-dform-span,.ui-dform-tabs {
+	margin: 10px 0;
+  height:19px;
+}
+input.ui-dform-text,textarea.ui-dform-textarea,select.ui-dform-select,hidden.ui-dform-hidden{
+	font-size:11px;width:350px;margin:7px 0px 10px 0px;
+}
+textarea.ui-dform-textarea{height:80px;}
+
+input.ui-dform-submit, button.ui-dform-button{
+	display: block;margin:7px 10px 5px 0px;font-size:12px;float:left;
+}
+
+button.cancel_button {float:none;}
+
+.ui-tabs-nav .ui-dform-label { margin: 0; }
+
+
+.ui-dform-radio, .ui-dform-checkbox {
+	float: left;margin-bottom:6px;
+}
+.after_form input {height:25px;}
+.after_form input.confirm_button, .after_form input.delete_button {display:block;}
+.after_form h3 {font-size:20px;display:block;float:none;margin:14px 0px 5px 0px;}
+.after_form button.cancel_button {display:none;}
+.after_form input.delete_button {margin-top:7px;float:right;}
+.after_form input.ui-dform-text {width:94px;float:left;margin-right:15px;}
+.after_form a {font-size:0.7em;line-height:25px;}
+.after_form label {font-size:0.7em;font-weight:bold;width:109px;float:left;}

@@ -84,6 +84,11 @@ class ContextsController < ApplicationController
     jqgrid_children_index('context_parameters', [:id, :context_parameter_name])
   end
   
+  def get_resource_attributes
+    attrs = params[:id] ? RDFS::Resource.find(params[:id]).attributes : {}
+    render :json => attrs
+  end
+  
   def context_parameters_post_data
     jqgrid_children_post_data(SHDM::ContextParameter, 'context_parameters')
   end

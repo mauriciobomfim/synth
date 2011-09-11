@@ -14,7 +14,14 @@ class ApplicationController < ActionController::Base
   def index
     render :template => 'welcome'
   end
-  
+  def children_attributes(id, children_attribute)
+    attrs = RDFS::Resource.find(id).send(children_attribute)
+    elements = []
+    attrs.each{ |attr| 
+      elements << attr.attributes
+    }
+    return elements
+  end
   def jqgrid_children_index(children_attribute, attributes)
      if params[:id].present?
        children = RDFS::Resource.find(params[:id]).send(children_attribute).to_a
@@ -36,7 +43,8 @@ class ApplicationController < ActionController::Base
      end
      render :text => new_children.to_jqgrid_json(attributes, 1, total_entries + 1, total_entries).gsub("\n", "\\n")
    end
-
+   
+   
    def jqgrid_children_post_data(children_class, children_attribute=nil)
        id                 = params.delete(:id)
        oper               = params.delete(:oper)
@@ -57,10 +65,10 @@ class ApplicationController < ActionController::Base
                                    end                                  
                                    }
 
-       if oper == "del"
+       if oper == "del" or oper == "Delete"
          children_class.find(id).destroy
        else      
-         if id == "_empty"
+         if id == "_empty" or id.empty?
 				   RDFS::Resource.find(parent).send(children_attribute) << children_class.create(values)
          else
 					 children_class.find(id).update_attributes(values)

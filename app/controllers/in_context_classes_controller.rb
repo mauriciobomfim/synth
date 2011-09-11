@@ -123,6 +123,16 @@ class InContextClassesController < ApplicationController
     end
   end
 
+  def get_resource_attributes
+    attrs = params[:id] ? RDFS::Resource.find(params[:id]).attributes : {}
+    attrs.each{ |k, v| attrs[k] = v.to_s }
+    render :json => attrs
+  end
+  
+  def get_resource_children_attributes
+    render :json => children_attributes(params[:id], params[:children_attribute])
+  end
+  
   #CONTEXT ANCHOR ATTRIBUTES
   def context_anchor_attributes
     jqgrid_children_index('in_context_class_context_anchor_attributes', [:id, 
