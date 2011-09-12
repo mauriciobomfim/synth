@@ -75,17 +75,19 @@ function create_window(form_hash,window_name, include_after, run_after){
         });
     }
  });
-    box.buildForm(form_hash);
-    var after_modal_name = create_window_modal_name(window_name, true);
-    $('<div id="'+after_modal_name+'" class="after_form" >').appendTo(box);
-    if(include_after){
-      $(include_after).appendTo('#'+after_modal_name);
-    }
-    box.dialog( "open" );
-    if(run_after){
-      run_after(modal_name);
-    }
-    return box;
+
+  box.buildForm(form_hash);
+  
+  var after_modal_name = create_window_modal_name(window_name, true);
+  $('<div id="'+after_modal_name+'" class="after_form" >').appendTo(box);
+  if(include_after){
+    $(include_after).appendTo('#'+after_modal_name);
+  }
+  box.dialog( "open" );
+  if(run_after){
+    run_after(modal_name);
+  }
+  return box;
  }
  
  function create_window_modal(id, url_request, url_post, parameters, window_name, elements, callback_on_submit, include_after, run_after){
@@ -122,9 +124,9 @@ function create_window(form_hash,window_name, include_after, run_after){
         // Push fields
         form_data['elements'].push ( jQuery.extend(true, {}, value) );
       });
-      form_data['elements'].push({ "type" : "submit", "value" : "Confirm", "class" : "confirm_button" });
+      form_data['elements'].push({ "type" : "submit", "value" : "Save", "class" : "confirm_button" });
       if(data['id']){
-        form_data['elements'].push({ "type" : "submit", "name" : 'oper', "value" : "Delete", "class" : "delete_button" });
+        form_data['elements'].push({ "type" : "submit", "name" : 'oper', "value" : "Delete", "class" : "delete_button", "onclick" : "if(!confirm('Are you sure?')){return false;}" });
       }
       form_data['elements'].push({ "type" : "button", "name" : "cancel", "html" : "Cancel", "class": "cancel_button" });
       return form_data;
