@@ -33,15 +33,30 @@
 	    <%= f.submit 'Save' %>
 	  </p>
 	  
+    <script type="text/javascript">
+      function open_target_index_parameters_window(id) {
+        var callback_index_parameters = function() { $("#target_index_parameters").trigger("reloadGrid");}
+        var window_name = 'Target Index Parameter';
+        var elements = [
+                        { "name" : "navigation_attribute_parameter_name", "caption" : "Name" },
+                        { "name" : "navigation_attribute_parameter_value_expression", "caption" : "Expression", "type" : "textarea" },
+                        { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                        ];
+        create_window_modal(id, '/landmarks/get_resource_attributes/','/landmarks/target_index_parameters_post_data', {parent:'<%= CGI::escape(@navigation_attribute.uri) %>'}, window_name, elements, callback_index_parameters);
+      }
+    </script>
+    
 		<%=jqgrid("Target Index Parameters", "target_index_parameters", "/landmarks/target_index_parameters/#{CGI::escape(@navigation_attribute.uri)}",
 			[			
 				{ :field => "id", :label => "ID", :width => 1, :resizable => false },
 				{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true, :width => 250, :align => 'center' },
 				{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
 			],
-			{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :height => 100,
-			  :edit_url => "/landmarks/target_index_parameters_post_data?parent=#{CGI::escape(@navigation_attribute.uri)}" }
+			{ 
+        :selection_handler => "open_target_index_parameters_window", :search => false, :direct_selection => false, :height => 100,
+      }
 		)%>
+    <p><a href='javascript:void(0)' onclick='open_target_index_parameters_window()'>New Target Index Parameter</a></p>
 	<% else %>
 		<%= f.label :label_expression %>
 		<p>
@@ -61,17 +76,30 @@
 	  <p>
 	    <%= f.submit 'Save' %>
 	  </p>
-
+    <script type="text/javascript">
+      function open_target_context_parameters_window(id) {
+        var callback_target_context_parameters = function() { $("#target_context_parameters").trigger("reloadGrid");}
+        var window_name = 'Target Index Parameter';
+        var elements = [
+                        { "name" : "navigation_attribute_parameter_name", "caption" : "Name" },
+                        { "name" : "navigation_attribute_parameter_value_expression", "caption" : "Expression", "type" : "textarea" },
+                        { "name" : "id", "type" : "hidden", "class" : "hidden"}
+                        ];
+        create_window_modal(id, '/landmarks/get_resource_attributes/','/landmarks/target_context_parameters_post_data', {parent:'<%= CGI::escape(@navigation_attribute.uri) %>'}, window_name, elements, callback_target_context_parameters);
+      }
+    </script>
 		<%=jqgrid("Target Context Parameters", "target_context_parameters", "/landmarks/target_context_parameters/#{CGI::escape(@navigation_attribute.uri)}",
 			[			
 				{ :field => "id", :label => "ID", :width => 1, :resizable => false },
 				{ :field => "navigation_attribute_parameter_name", :label => "Name", :editable => true, :width => 250, :align => 'center' },
 				{ :field => "navigation_attribute_parameter_value_expression", :label => "Value expression", :editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
 			],
-			{ :add => true, :edit => true, :inline_edit => true, :delete => true, :search => false, :height => 100,
-			  :edit_url => "/landmarks/target_context_parameters_post_data?parent=#{CGI::escape(@navigation_attribute.uri)}" }
+			{ 
+        :selection_handler => "open_target_context_parameters_window", :search => false, :direct_selection => false, :height => 100,
+      }
 		)%>
-	<% end %>
+	<p><a href='javascript:void(0)' onclick='open_target_context_parameters_window()'>New Target Context Parameter</a></p>
+  <% end %>
 	
 <% end %>
 <br/>
