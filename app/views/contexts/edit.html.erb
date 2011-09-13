@@ -40,9 +40,14 @@
 		{ :field => "context_parameter_name", :label => "Name", :editable => true, :width => 360, :align => 'center' }
 	],
 	{
-    :selection_handler => "open_parameters_window", :direct_selection => false, :delete => false, :search => false,
+    :selection_handler => "open_parameters_window", :direct_selection => false, :delete => false, :search => false, :height => 50,
   }
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#context_parameters").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_parameters_window()'>New Parameter</a></p>
 
 <%=jqgrid("Pre Conditions", "pre_conditions", "/contexts/pre_conditions/#{CGI::escape(@context.uri)}",
@@ -52,8 +57,13 @@
 		{ :field => "pre_condition_expression", :label => "Expression",	:editable => true, :width => 220, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
 		{ :field => "pre_condition_failure_handling", :label => "Failure handling",	:editable => true, :width => 220, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
 	],
-	{ :selection_handler => "open_preconditions_window", :direct_selection => false, :search => false, :delete => false, :hiddengrid => @context.context_pre_conditions.to_a.empty? ? 'true' : 'false',:height => 100 }
+	{ :selection_handler => "open_preconditions_window", :direct_selection => false, :search => false, :delete => false, :height => 50 }
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#pre_conditions").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_preconditions_window()'>New Pre Condition</a></p>
 <br/>
 <%= link_to 'Back', contexts_path %>

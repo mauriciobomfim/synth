@@ -69,9 +69,14 @@
 		  :editoptions => { :value => SHDM::Index.find_all.map{|v| [CGI::escape(v.uri), v.index_name.first]} } }
 	],
 	{ 
-	  :selection_handler => "open_index_attributes_window", :direct_selection => false, :add => false, :inline_edit => false, :delete => false, :search => false, :hiddengrid => @in_context_class.in_context_class_index_attributes.to_a.empty? ? 'true' : 'false', :height => 70,
+	  :selection_handler => "open_index_attributes_window", :direct_selection => false, :add => false, :inline_edit => false, :delete => false, :search => false, :height => 70,
 	}
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#index_attributes").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_index_attributes_window()'>New Index Attribute</a></p>
 <br />
 
@@ -120,9 +125,14 @@
   	{ :field => "context_anchor_navigation_attribute_target_node_expression", :label => "Target node expression", :editable => true, :width => 200, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } },
 	],
 	{ 
-	  :selection_handler => "open_context_anchor_attributes_window", :search => false, :direct_selection => false, :hiddengrid => @in_context_class.in_context_class_context_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+	  :selection_handler => "open_context_anchor_attributes_window", :search => false, :direct_selection => false, :height => 150,
 	}
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#context_anchor_attributes").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_context_anchor_attributes_window()'>New Context Anchor Attribute</a></p>
 <br/>
 
@@ -169,9 +179,14 @@
 		  :editoptions => { :value => SHDM::Index.find_all.map{|v| [CGI::escape(v.uri), v.index_name.first]} } }
 	],
 	{ 
-	  :selection_handler => "open_index_anchor_attributes_window", :direct_selection => false, :search => false, :hiddengrid => @in_context_class.in_context_class_index_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+	  :selection_handler => "open_index_anchor_attributes_window", :direct_selection => false, :search => false, :height => 150,
 	}
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#index_anchor_attributes").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_index_anchor_attributes_window()'>New Index Anchor Attribute</a></p>
 <br />
 
@@ -192,12 +207,17 @@
 	[
 		{ :field => "id", :label => "ID", :width => 1, :resizable => false },
 		{ :field => "navigation_attribute_name", :label => "Name", :editable => true, :width => 220, :align => 'center' },
-		{ :field => "computed_navigation_attribute_value_expression", :label => "Value expression", :editable => true, :width => 500, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
+		{ :field => "computed_navigation_attribute_value_expression", :label => "Value expression", :editable => true, :width => 480, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
 	],
 	{ 
-    :selection_handler => "open_computed_attributes_window", :direct_selection => false, :search => false, :hiddengrid => @in_context_class.in_context_class_computed_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+    :selection_handler => "open_computed_attributes_window", :direct_selection => false, :search => false, :height => 150,
   }
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#computed_attributes").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_computed_attributes_window()'>New Computed Attribute</a></p>
 <br/>
 <%= link_to 'Back', in_context_classes_path %>

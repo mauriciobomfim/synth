@@ -56,6 +56,12 @@
         :selection_handler => "open_target_index_parameters_window", :search => false, :direct_selection => false, :height => 100,
       }
 		)%>
+    <script type="text/javascript">
+     jQuery(document).ready(function(){
+        $("#target_index_parameters").jqGrid("setGridHeight", 'auto');
+      });
+    </script>
+    
     <p><a href='javascript:void(0)' onclick='open_target_index_parameters_window()'>New Target Index Parameter</a></p>
 	<% else %>
 		<%= f.label :label_expression %>
@@ -98,6 +104,11 @@
         :selection_handler => "open_target_context_parameters_window", :search => false, :direct_selection => false, :height => 100,
       }
 		)%>
+     <script type="text/javascript">
+     jQuery(document).ready(function(){
+        $("#target_context_parameters").jqGrid("setGridHeight", 'auto');
+      });
+    </script>
 	<p><a href='javascript:void(0)' onclick='open_target_context_parameters_window()'>New Target Context Parameter</a></p>
   <% end %>
 	
