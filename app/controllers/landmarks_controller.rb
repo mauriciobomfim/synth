@@ -106,7 +106,13 @@ class LandmarksController < ApplicationController
       format.xml  { head :ok }
     end
   end
-      
+  
+  def get_resource_attributes
+    attrs = params[:id] ? RDFS::Resource.find(params[:id]).attributes : {}
+    attrs.each{ |k, v| attrs[k] = v.to_s }
+    render :json => attrs
+  end
+  
   def target_index_parameters
      jqgrid_children_index('index_anchor_navigation_attribute_target_parameters', [:id, :navigation_attribute_parameter_name, :navigation_attribute_parameter_value_expression])
   end
