@@ -23,6 +23,7 @@
 <% end %>
 
 <script type="text/javascript">
+ 
  function open_index_attributes_window(id) {
     var callback_indexes_attributes = function() { $("#index_attributes").trigger("reloadGrid"); }
     
@@ -66,9 +67,14 @@
  		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
 	],
 	{ 
-	  :selection_handler => "open_index_attributes_window", :direct_selection => false, :delete => false, :search => false, :hiddengrid => @index.index_index_attributes.to_a.empty? ? 'true' : 'false'
+	  :selection_handler => "open_index_attributes_window", :direct_selection => false, :height => 20 , :delete => false, :search => false
 	}
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#index_attributes").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_index_attributes_window()'>New Index Attribute</a></p>
 <br />
 
@@ -120,9 +126,14 @@
 		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
 	],
 	{ 
-	  :selection_handler => "open_context_anchor_attributes_window", :direct_selection => false, :search => false, :delete => false, :hiddengrid => @index.context_anchor_attributes.to_a.empty? ? 'true' : 'false',
+	  :selection_handler => "open_context_anchor_attributes_window", :direct_selection => false, :search => false, :delete => false, :height => 50
 	}
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#context_anchor_attributes").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_context_anchor_attributes_window()'>New Context Anchor Attribute</a></p>
 <br />
 
@@ -172,9 +183,14 @@
 		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
 	],
 	{ 
-	  :selection_handler => "open_index_anchor_attributes_window", :direct_selection => false, :search => false, :delete => false, :hiddengrid => @index.index_anchor_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+	  :selection_handler => "open_index_anchor_attributes_window", :direct_selection => false, :search => false, :delete => false, :height => 50,
 	}
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#index_anchor_attributes").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_index_anchor_attributes_window()'>New Index Anchor Attribute</a></p>
 <br />
 
@@ -201,9 +217,14 @@
 		{ :field => "navigation_attribute_index_position", :label => "Position", :editable => true, :width => 50, :align => 'center' }
 	],
 	{ 
-    :selection_handler => "open_computed_attributes_window", :direct_selection => false, :search => false, :delete => false, :hiddengrid => @index.computed_attributes.to_a.empty? ? 'true' : 'false', :height => 150,
+    :selection_handler => "open_computed_attributes_window", :direct_selection => false, :search => false, :delete => false, :height => 50,
   }	
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#computed_attributes").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_computed_attributes_window()'>New Computed Attribute</a></p>
 <br />
 <script type="text/javascript">
@@ -227,9 +248,14 @@
 		{ :field => "pre_condition_failure_handling", :label => "Failure handling",	:editable => true, :width => 250, :edittype => "textarea", :editoptions => { :rows => 5, :cols => 40 } }
 	],
 	{ 
-    :selection_handler => "open_pre_condition_attributes_window", :search => false, :direct_selection => false, :delete => false, :hiddengrid => @index.index_pre_conditions.to_a.empty? ? 'true' : 'false', :height => 150,
+    :selection_handler => "open_pre_condition_attributes_window", :search => false, :direct_selection => false, :delete => false, :height => 50,
   }
 )%>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+    $("#pre_conditions").jqGrid("setGridHeight", 'auto');
+  });
+</script>
 <p><a href='javascript:void(0)' onclick='open_pre_condition_attributes_window()'>New Pre condition</a></p>
 <br/>
 <%= link_to 'Back', indexes_path %>
