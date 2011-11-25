@@ -78,6 +78,7 @@ class Application
   
   def load_defaults
     ActiveRDF::FederationManager.invalidates_cache
+    $page_cache.clear unless $page_cache.nil?
     SHDM::Operation.load_external_operations
     @db.load_namespaces
   end
