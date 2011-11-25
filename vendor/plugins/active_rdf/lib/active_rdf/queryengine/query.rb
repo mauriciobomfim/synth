@@ -132,7 +132,7 @@ module ActiveRDF
     # regular expression
     def regexp(variable, regexp)
       raise(ActiveRdfError, "regexp must be a ruby regexp") unless regexp.is_a? Regexp
-      filter(variable,:regexp,regexp.inspect.gsub('/',''))
+      filter(variable,:regexp,regexp.inspect.gsub(/^\/|\/$/, ''))
     end
     alias :regex :regexp
 
