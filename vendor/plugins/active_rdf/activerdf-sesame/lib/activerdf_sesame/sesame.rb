@@ -147,6 +147,9 @@ module ActiveRDF
 
       begin
         @db.remove(params[0], params[1], params[2], wrap_contexts(c))
+        if(params[2].is_a?(org.openrdf.model.Literal))
+          @db.remove(params[0], params[1], wrap(o,nil,true), wrap_contexts(c))
+        end 
         true
       rescue Exception => e
         raise ActiveRdfError, "Sesame delete triple failed: #{e.message}"
@@ -420,7 +423,7 @@ module ActiveRDF
     # converts item into sesame object (RDFS::Resource into 
     # valueFactory.createURI etc.). You can opt to preserve the
     # nil values, otherwise they'll be transformed
-    def wrap(item, use_nil = false)
+    def wrap(item, use_nil = false, nodatatype = false)
       result = 
       if(item.respond_to?(:uri))
         if (item.uri.to_s[0..4].match(/http:/).nil?)
@@ -435,7 +438,11 @@ module ActiveRDF
         when NilClass
           use_nil ? nil : @valueFactory.createLiteral('')
         else
-          @valueFactory.createLiteral(item.to_s, @valueFactory.createURI(item.datatype.uri)) #Added typed uri
+          if nodatatype then
+            @valueFactory.createLiteral(item.to_s)
+          else 
+            @valueFactory.createLiteral(item.to_s, @valueFactory.createURI(item.datatype.uri)) #Added typed uri
+          end
         end
       end
       return result      
