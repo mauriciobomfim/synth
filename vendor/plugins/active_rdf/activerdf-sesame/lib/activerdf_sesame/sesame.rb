@@ -28,6 +28,9 @@ module ActiveRDF
       WrapperForSesame2 = org.activerdf.wrapper.sesame2.WrapperForSesame2
       QueryLanguage = org.openrdf.query.QueryLanguage
       NTriplesWriter = org.openrdf.rio.ntriples.NTriplesWriter
+      N3Writer = org.openrdf.rio.n3.N3Writer
+      RDFXMLPrettyWriter = org.openrdf.rio.rdfxml.util.RDFXMLPrettyWriter
+      TurtleWriter = org.openrdf.rio.turtle.TurtleWriter
       RDFFormat = org.openrdf.rio.RDFFormat
     rescue Exception => e
       puts e.backtrace
@@ -195,13 +198,23 @@ module ActiveRDF
     end
 
     # returns all triples in the datastore
-    def dump
+    def dump(syntax="ntriples", context=nil)
       # the sesame connection has an export method, which writes all explicit statements to
       # a to a RDFHandler, which we supply, by constructing a NTriplesWriter, which writes to StringWriter,
       # and we kindly ask that StringWriter to make a string for us. Note, you have to use stringy.to_s,
       # somehow stringy.toString does not work. yes yes, those wacky jruby guys ;)
+      case syntax.to_s
+      when "ntriples"
+        writer = NTriplesWriter
+      when "n3" 
+        writer = N3Writer
+      when "rdfxml"
+        writer = RDFXMLPrettyWriter
+      when "turtle"
+        writer = TurtleWriter
+      end
       _string = StringWriter.new
-      sesameWriter = NTriplesWriter.new(_string)
+      sesameWriter = writer.new(_string)
       @db.export(sesameWriter)
       return _string.to_s
     end
