@@ -9,6 +9,10 @@
 		.button:hover {
 			color: #003399;
 		}
+    .acResults li{
+      border-bottom: solid 1px black;
+    };
+
 	</style>
 
 	<table class="hor-zebra">
@@ -69,6 +73,7 @@
 			var editing;
 			var showing;
 
+      
 			$('.editable').click(start_edition);
 			//$('.editable').focusout(save);
 
@@ -93,7 +98,7 @@
 																																 }
 																																});
 				$('.property_label').find(':input').autocomplete({ 
-						url: "/resources/search", 
+						url: "/resources/search_property", 
 						minChars: 3,
 						onItemSelect: function(selected){ 
 								var new_row = '\
@@ -120,6 +125,7 @@
 																						if(input.val().trim() == ""){ 
 																							input.parents('tr').remove();
 									 													} });
+                add_autocomplete(input);
 								original = "";
 								input.parents('.editable').keypress(mykeypress);								
                 input.focus();
@@ -127,13 +133,41 @@
 				});
 			}
 
+      function add_autocomplete(input){
+        var class_properties = ["http://www.w3.org/1999/02/22-rdf-syntax-ns#type", 
+                              "http://www.w3.org/2000/01/rdf-schema#domain",
+                              "http://www.w3.org/2000/01/rdf-schema#range",
+                              "http://www.w3.org/2000/01/rdf-schema#subClassOf"];
+
+        var prop_properties =  ["http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+                              "http://www.w3.org/2002/07/owl#inverseOf"];
+        
+        property_uri = input.attr('id');
+        
+        if ($.inArray(property_uri, class_properties) != -1)
+          search_url = "/resources/search_class";
+        else if ($.inArray(property_uri, prop_properties) != -1)
+          search_url = "/resources/search_property";
+        else
+          search_url = "/resources/search_resource";
+
+				input.autocomplete({ 
+						url: search_url, 
+						minChars: 3,
+						onItemSelect: function(selected){ 
+                input.val(selected['data']);
+						},
+				});
+      }
+
 			function add_value(){
 				original = "";
+        var property_uri = $(this).parent().find('.property_label a').attr('property');
 				var input_value = '\
 					<div class="editable">\
 					<div class="showing"></div>\
 					<div class="editing">\
-						<input type="text" name="property" value="" id=\''+$(this).parent().find('.property_label a').attr('property')+'\'/></div></div></li>';
+						<input type="text" name="property" value="" id=\''+property_uri+'\'/></div></div></li>';
 
 				var parent = $(this).parent().parent().find('.editable').last().parent().parent();
 
@@ -147,12 +181,13 @@
 				editing.show();
 
 				editing.find(':input').focus();		
-									
+        add_autocomplete(editing.find(':input'));
+        					
 			}
 
 			function added_focusout(){
 				if($(this).find(":input").val().trim() == ""){
-					$(this).parent().remove();				
+					$(this).remove();				
 				}
 			}
 
@@ -164,6 +199,7 @@
 				showing.hide();
 				editing.show();
 				editing.find(":input").focus();
+        add_autocomplete(editing.find(":input")); 
 			}
 
 			function mykeypress(e){

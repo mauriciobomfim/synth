@@ -17,10 +17,30 @@ class ResourcesController < ApplicationController
     @meta_classes      = RDFS::Class.meta_classes.sort{|a,b| a.compact_uri <=> b.compact_uri }
     render :template   => 'resources/show'
   end
-  
-  def search
+ 
+  def search_resource
     text   = params[:q]
-    from_label = RDF::Property.find_by.rdfs::label(:regex => (/#{text}/i)).execute #TODO: checar se o /i tá certo
+    result = RDFS::Resource.find_by.rdfs::label(:regex => (/#{text}/)).execute
+    result.uniq!
+    result = result.map{|v| "#{v.rdfs::label.first || v.compact_uri}|#{v.uri}"}
+    result = result.join("\n")
+    render :text => result
+  end
+  
+  def search_class
+    text   = params[:q]
+    from_label = RDFS::Class.find_by.rdfs::label(:regex => (/#{text}/)).execute
+    from_uri   = ActiveRDF::Query.new.distinct(:s).where(:s,RDF::type,RDFS::Class).regexp(:s, (/#{text}/)).execute
+    result = from_label + from_uri
+    result.uniq!
+    result = result.map{|v| "#{v.compact_uri}|#{v.uri}"}
+    result = result.join("\n")
+    render :text => result
+  end
+  
+  def search_property
+    text   = params[:q]
+    from_label = RDF::Property.find_by.rdfs::label(:regex => (/#{text}/)).execute
     from_uri   = ActiveRDF::Query.new.distinct(:s).where(:s,RDF::type,RDF::Property).regexp(:s, (/#{text}/)).execute
     result = from_label + from_uri
     result.uniq!

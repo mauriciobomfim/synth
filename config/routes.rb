@@ -27,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
                                                       :index_navigation_attribute_index_parameters           => :get,
                                                       :index_navigation_attribute_index_parameters_post_data => :get
                                         }
-  map.resources :resources, :requirements => { :id => /.*/ }, :collection => { :search => :get }
+  map.resources :resources, :requirements => { :id => /.*/ }, :collection => { :search_property => :get , :search_class => :get, :search_resource => :get}
   map.resources :classes,   :requirements => { :id => /.*/ }
   map.resources :properties,:requirements => { :id => /.*/ }
   map.resources :datasets
