@@ -282,31 +282,40 @@ module ActiveRDF
       if size_of_variables == 1 then
         # the counter keeps track of the number of values, so we can insert them into the results at the right position
         counter = 0
-        while tuplequeryresult.hasNext
-          solution = tuplequeryresult.next
-
-          temparray = []
-          # get the value associated with a variable in this specific solution
-          temparray[0] = convertSesame2ActiveRDF(solution.getValue(variables[0]), query.resource_class, query)
-          results[counter] = temparray
-          counter = counter + 1
+        #TODO: check a better alternative. This stops on the first exception
+        begin 
+          while tuplequeryresult.hasNext
+            solution = tuplequeryresult.next
+            temparray = []
+            # get the value associated with a variable in this specific solution
+            temparray[0] = convertSesame2ActiveRDF(solution.getValue(variables[0]), query.resource_class, query)
+            results[counter] = temparray
+            counter = counter + 1
+          end
+        rescue => ex
+          puts "Failed: "+ex.inspect
         end
       else
         # if there is more then one variable the results array looks like this:
         # results = [ [Value From First Solution For First Variable, Value From First Solution For Second Variable, ...],
         #             [Value From Second Solution For First Variable, Value From Second Solution for Second Variable, ...], ...]
         counter = 0
-        while tuplequeryresult.hasNext
-          solution = tuplequeryresult.next
+        begin
+          while tuplequeryresult.hasNext
+            solution = tuplequeryresult.next
 
-          temparray = []
-          for n in 1..size_of_variables
-            value = convertSesame2ActiveRDF(solution.getValue(variables[n-1]), query.resource_class, query)
-            temparray[n-1] = value
+            temparray = []
+            for n in 1..size_of_variables
+              value = convertSesame2ActiveRDF(solution.getValue(variables[n-1]), query.resource_class, query)
+              temparray[n-1] = value
+            end
+            results[counter] = temparray
+            counter = counter + 1
           end
-          results[counter] = temparray
-          counter = counter + 1
+        rescue => ex
+          puts "Failed: "+ex.inspect
         end
+
       end
 
       if query.count?
