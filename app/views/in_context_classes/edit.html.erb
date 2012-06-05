@@ -28,6 +28,14 @@
 <% end %>
 
 <script type="text/javascript">
+  var target_index_changing_warning = function(x) { 
+      var id = this.form.id.value;
+      if(id){
+        var text = "You have changed the Target Index.\n\n Consider update the Target Index Parameters.\n";
+        alert(text);
+      }
+ } 
+
  function open_index_attributes_window(id) {
     var callback_indexes_attributes = function() { $("#index_attributes").trigger("reloadGrid"); }
     
@@ -35,7 +43,7 @@
     var window_name = 'Index Attribute';
     var elements = [
                     { "name" : "navigation_attribute_name", "caption" : "Name" },
-                    { "name" : "index_navigation_attribute_index", "caption" : "Index", "type" : "select", "options": options_hash },
+                    { "name" : "index_navigation_attribute_index", "caption" : "Index", "type" : "select", "options": options_hash, "change" : "target_index_changing_warning" },
                     { "name" : "id", "type" : "hidden", "class" : "hidden"}
                     ];
     var run_after = function(modal_name){
@@ -81,6 +89,15 @@
 <br />
 
 <script type="text/javascript">
+  var target_context_changing_warning = function(x) { 
+      var id = this.form.id.value;
+      if(id){
+        var text = "You have changed the Target Context.\n\n Consider update the Context Anchor Parameters.\n";
+        alert(text);
+        //alert('ID do elemento da Janela: '+ id+ '\nID do elemento do select:'+this.value);
+      }
+  } 
+
  function open_context_anchor_attributes_window(id) {
     var callback_context_anchor_attributes = function() { $("#context_anchor_attributes").trigger("reloadGrid"); }
     
@@ -89,7 +106,7 @@
     var elements = [
                     { "name" : "navigation_attribute_name", "caption" : "Name" },
                     { "name" : "context_anchor_navigation_attribute_label_expression", "caption" : "Label expression", "type" : "textarea" },
-                    { "name" : "context_anchor_navigation_attribute_target_context", "caption" : "Target context", "type" : "select", "options" : target_context_options },
+                    { "name" : "context_anchor_navigation_attribute_target_context", "caption" : "Target context", "type" : "select", "options" : target_context_options , "change" : "target_context_changing_warning" },
                     { "name" : "context_anchor_navigation_attribute_target_node_expression", "caption" : "Target node expression", "type" : "textarea" },
                     { "name" : "id", "type" : "hidden", "class" : "hidden"}
                     ];
@@ -145,7 +162,7 @@
     var elements = [
                     { "name" : "navigation_attribute_name", "caption" : "Name" },
                     { "name" : "index_anchor_navigation_attribute_label_expression", "caption" : "Label expression", "type" : "textarea" },
-                    { "name" : "index_anchor_navigation_attribute_target_index", "caption" : "Target index", "type" : "select", "options" : target_index_options },
+                    { "name" : "index_anchor_navigation_attribute_target_index", "caption" : "Target index", "type" : "select", "options" : target_index_options , "change" : "target_index_changing_warning" },
                     { "name" : "id", "type" : "hidden", "class" : "hidden"}
                     ];
     var run_after = function(modal_name){

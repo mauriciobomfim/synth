@@ -66,6 +66,16 @@ function create_window(form_hash,window_name, include_after, run_after){
         width: 400,
         modal: true
     });
+   
+    $.dform.subscribe('change', function(options, type) { 
+        var handler = options; 
+        if($.isFunction(window[options])) { 
+                handler = window[options]; 
+        } 
+        $(this).change(handler); 
+    }); 
+
+    
     $.dform.subscribe("type", function(type, options) {
     if(type == "button")
     {
