@@ -17,4 +17,7 @@ class SHDM::InContextClass
 
   property SHDM::in_context_class_context_anchor_attributes,  'rdfs:range' => SHDM::ContextAnchorNavigationAttribute, 
                                                               'rdfs:subPropertyOf' => SHDM::in_context_class_navigation_attributes
+  def base_context
+    self.shdm::in_context_class_context.first
+  end
 end

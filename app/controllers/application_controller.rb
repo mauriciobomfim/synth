@@ -69,7 +69,11 @@ class ApplicationController < ActionController::Base
          children_class.find(id).destroy
        else      
          if id == "_empty" or id.empty?
-				   RDFS::Resource.find(parent).send(children_attribute) << children_class.create(values)
+				   parent_resource = RDFS::Resource.find(parent)
+           if parent_resource.is_a?(SHDM::Index) || parent_resource.is_a?(SHDM::InContextClass)
+             values[:navigation_attribute_parent] = parent_resource
+           end
+           parent_resource.send(children_attribute) << children_class.create(values)
          else
 					 children_class.find(id).update_attributes(values)
          end

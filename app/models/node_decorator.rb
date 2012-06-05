@@ -6,6 +6,7 @@ class NodeDecorator
   attr_reader :resource, :context, :default_index, :parameters_values, :attributes_names, :attributes_hash
 
   alias :parameters :parameters_values
+  alias :p :parameters_values
 
   # in fact it should return the same resource, with the new properties and methods. 
   def initialize(resource, context)

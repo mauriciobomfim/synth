@@ -43,7 +43,11 @@ class SHDM::ContextIndex;  sub_class_of(SHDM::Index)
   def new(parameters_values={})
     ContextIndexInstance.new(parameters_values, self)
   end
-  
+ 
+  def base_context
+    self.shdm::context_index_context.first
+  end
+ 
   class ContextIndexInstance
     
     attr_reader :index, :context_instance, :parameters_values

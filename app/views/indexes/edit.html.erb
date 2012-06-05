@@ -153,7 +153,7 @@
     var run_after = function(modal_name){
       if(id){ index_anchor_navigation_parameters(id, modal_name); }
     }
-    var html_after_parameters = !id ? '' : '<h3>Context Anchor Parameters</h3> <a href="javascript:void(0)" onclick="index_anchor_navigation_parameters(\''+id+'\',\''+create_window_modal_name(window_name)+'\',{})">New</a><br /><label>Name</label><label style="float:none;">Value Expression</label><br />';
+    var html_after_parameters = !id ? '' : '<h3>Index Anchor Parameters</h3> <a href="javascript:void(0)" onclick="index_anchor_navigation_parameters(\''+id+'\',\''+create_window_modal_name(window_name)+'\',{})">New</a><br /><label>Name</label><label style="float:none;">Value Expression</label><br />';
     create_window_modal(id, '/indexes/get_resource_attributes/','/indexes/index_anchor_attributes_post_data', {parent:'<%= CGI::escape(@index.uri) %>'}, window_name, elements, callback_indexes_attributes, html_after_parameters,run_after);
     
   }

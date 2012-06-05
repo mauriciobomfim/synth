@@ -8,6 +8,7 @@ class IndexEntryDecorator
   attr_reader :node, :index, :parameters_values, :attributes_names, :attributes_hash
 
   alias :parameters :parameters_values
+  alias :p :parameters_values
 
   # in fact it should return the same node, with the new properties and methods. 
   def initialize(node, index)

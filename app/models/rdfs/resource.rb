@@ -28,13 +28,15 @@ module RDFSClass
     end
   
     def property(resource, options = {})      
-      #property_name = ActiveRDF::Namespace.localname(resource)
+      property = resource
+      unless resource.rdfs::domain.include?(self)
+        property_name = ActiveRDF::Namespace.localname(resource)
     
-      #property               = RDF::Property.create(resource, options)
-      #property.rdfs::domain << self
-      #property.rdfs::label  << property_name if property.rdfs::label.empty?
-    
-      #property      
+        property               = RDF::Property.create(resource, options)
+        property.rdfs::domain << self
+        property.rdfs::label  << property_name if property.rdfs::label.empty?
+      end 
+      property
     end
 
     def create(resource=nil, options={})

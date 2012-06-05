@@ -422,6 +422,12 @@
     <rdfs:domain rdf:resource="http://shdm#NavigationAttribute"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
   </rdf:Description>
+  
+  <rdf:Description rdf:about="http://shdm#navigation_attribute_parent">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_attribute_parent</rdfs:label>
+    <rdfs:domain rdf:resource="http://shdm#NavigationAttribute"/>
+  </rdf:Description>
+
   <rdf:Description rdf:about="http://swui#dynamic">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dynamic</rdfs:label>
     <rdfs:domain rdf:resource="http://swui#AbsInterface"/>
