@@ -35,6 +35,6 @@ $ jgem install json
 RUNNING
 -------
 $ cd /path/to/synth
-$ jruby -S script/server
+$ jruby --1.8 -S script/server
 
 Open on your internet browser: http://localhost:3000
