@@ -79,6 +79,8 @@ module ActiveRDF
             "datatype(?#{variable}) = #{operand.to_literal_s}"
           when :regex,:regexp
             "regex(str(?#{variable}), '#{operand.to_s}', 'i')" #MAURICIO: I've added 'i' to case insensitive regexp
+          else
+            "?#{variable} #{operator} #{operand.inspect}"
         end
       end
       "FILTER (#{filters.join(" && ")})" if filters.size > 0
