@@ -7,12 +7,14 @@ class RDFS::Class
   
   def self.domain_classes(options={})
     excluded_namespaces = [:xsd, :rdf, :rdfs, :owl, :shdm, :swui, :symph, :void]
-    RDFS::Class.find_all(options).reject{ |c| excluded_namespaces.include?(ActiveRDF::Namespace.prefix(c))  }
+    (RDFS::Class.find_all(options).reject{ |c| excluded_namespaces.include?(ActiveRDF::Namespace.prefix(c))  } +
+    OWL::Class.find_all(options).reject{ |c| excluded_namespaces.include?(ActiveRDF::Namespace.prefix(c))  }).uniq
   end
   
   def self.meta_classes(options={})
     included_namespaces = [:rdf, :rdfs, :owl, :shdm, :swui, :symph, :void]
-    RDFS::Class.find_all(options).select{ |c| included_namespaces.include?(ActiveRDF::Namespace.prefix(c))  }
+    (RDFS::Class.find_all(options).select{ |c| included_namespaces.include?(ActiveRDF::Namespace.prefix(c))  } +
+    OWL::Class.find_all(options).select{ |c| included_namespaces.include?(ActiveRDF::Namespace.prefix(c))  }).uniq
   end
   
   def alpha(property=RDFS::label)
