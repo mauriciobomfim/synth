@@ -87,6 +87,10 @@ class SHDM::Context
       variables = @parameters_values.map{|i,v| "#{i} = @parameters_values[#{i.inspect}]"}.join("\n")
       query = @context.context_query.first
       @resources ||= instance_eval(variables + " \n " + query)  
+      if @resources.is_a?(String)
+        @resources = ActiveRDF::FederationManager.execute(@resources)  
+      end
+      return @resources
     end
 
     def nodes

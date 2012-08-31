@@ -256,7 +256,7 @@ module ActiveRDF
       results = []
 
       # translate the query object into a SPARQL query string
-      qs = Query2SPARQL.translate(query)
+      qs = query.is_a?(String) ? query : Query2SPARQL.translate(query)
 
       begin
         # evaluate the query on the sesame triple store
@@ -277,6 +277,14 @@ module ActiveRDF
 
       # TODO: null handling, if a value is null...
 
+      if query.is_a?(String)
+        local_resource_class = RDFS::Resource
+        local_query = ActiveRDF::Query.new
+      else
+        local_resource_class = query.resource_class
+        local_query = query          
+      end
+
       # if there only was one variable, then the results array should look like this:
       # results = [ [first Value For The Variable], [second Value], ...]
       if size_of_variables == 1 then
@@ -288,7 +296,7 @@ module ActiveRDF
             solution = tuplequeryresult.next
             temparray = []
             # get the value associated with a variable in this specific solution
-            temparray[0] = convertSesame2ActiveRDF(solution.getValue(variables[0]), query.resource_class, query)
+            temparray[0] = convertSesame2ActiveRDF(solution.getValue(variables[0]), local_resource_class, local_query)
             results[counter] = temparray
             counter = counter + 1
           end
@@ -306,7 +314,7 @@ module ActiveRDF
 
             temparray = []
             for n in 1..size_of_variables
-              value = convertSesame2ActiveRDF(solution.getValue(variables[n-1]), query.resource_class, query)
+              value = convertSesame2ActiveRDF(solution.getValue(variables[n-1]), local_resource_class, local_query)
               temparray[n-1] = value
             end
             results[counter] = temparray
@@ -318,7 +326,7 @@ module ActiveRDF
 
       end
 
-      if query.count?
+      if query.is_a?(ActiveRDF::Query) && query.count?
         return results.size
       end
 

@@ -111,7 +111,7 @@ module ActiveRDF
         end
 
         # count
-        return results.flatten.inject{|mem,c| mem + c} if q.count?
+        return results.flatten.inject{|mem,c| mem + c} if (q.is_a?(Query) && q.count?)
 
         # filter the empty results
         results.reject {|ary| ary.empty? }
@@ -120,11 +120,11 @@ module ActiveRDF
         # adapters if asked for distinct query
         # (adapters return only distinct results,
         # but they cannot check duplicates against each other)
-        results.uniq! if q.distinct?
+        results.uniq! if (q.is_a?(Query) && q.distinct?)
 
         # flatten results array if only one select clause
         # to prevent unnecessarily nested array [[eyal],[renaud],...]
-        results.flatten! if q.select_clauses.size == 1 or q.ask?
+        results.flatten! if results.first && results.first.size == 1 
 
         # remove array (return single value or nil) if asked to
         if options[:flatten]
