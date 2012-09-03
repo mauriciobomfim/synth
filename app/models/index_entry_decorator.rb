@@ -5,7 +5,7 @@ class IndexEntryDecorator
 
   include ActionView::Helpers
 
-  attr_reader :node, :index, :parameters_values, :attributes_names, :attributes_hash
+  attr_reader :node, :index, :parameters_values, :attributes_names, :attributes_hash, :main_anchor
 
   alias :parameters :parameters_values
   alias :p :parameters_values
@@ -21,8 +21,15 @@ class IndexEntryDecorator
     @attributes_hash   = Hash.new 
     
     for attribute in @index.index_attributes.each do 
-      @attributes_hash[attribute.navigation_attribute_name.first] = NodeAttributeFactory.create(attribute, self) 
-    end    
+      current_attribute = NodeAttributeFactory.create(attribute, self) 
+      @attributes_hash[attribute.navigation_attribute_name.first] = current_attribute
+
+      if attribute.is_a?(SHDM::ContextAnchorNavigationAttribute)
+        @main_anchor ||= current_attribute
+      end
+    end
+    
+    @main_anchor ||= @attributes_hash['item'] 
     
   end
   

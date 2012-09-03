@@ -41,7 +41,7 @@ class ContextsController < ApplicationController
     
     respond_to do |format|
       if @context.save
-        flash[:notice] = 'Context was successfully created.'
+        flash[:notice] = "Context was successfully created. The Index '#{@context.context_name}Idx' was automatically created."
         format.html { redirect_to :action => 'edit', :id => @context }
         format.xml  { render :xml => @context, :status => :created, :location => @context }
       else

@@ -22,6 +22,7 @@ class SHDM::Context
   property SHDM::context_in_context_class, 'rdfs:range' => SHDM::InContextClass, 'owl:inverseOf' => SHDM::in_context_class_context
   
   before_destroy :remove_dependents
+  after_create   :add_context_index
 
   def new(parameters_values={})
     ContextInstance.new(parameters_values, self)
@@ -101,6 +102,10 @@ class SHDM::Context
   
     def index
 
+      if self.shdm::context_index.first
+        @index ||= self.shdm::context_index.first.new(@parameters_values)
+      end
+
       label_expression = "
         label = self.rdfs::label
         unless label.nil? || label.to_a.empty?
@@ -128,6 +133,8 @@ class SHDM::Context
                   })
                 ]
             }))
+
+      @index
     end
  
     def method_missing(method_name, *args, &block)
@@ -143,6 +150,33 @@ class SHDM::Context
     InContextClass.find_by.in_context_class_context(self).execute.each{|icc| icc.destroy}
   end
     
+  def add_context_index
+    label_expression = "
+      label = self.rdfs::label
+      unless label.nil? || label.to_a.empty?
+        label
+      else
+        self.compact_uri
+      end
+    "
+    context_anchor = SHDM::ContextAnchorNavigationAttribute.create({
+      :navigation_attribute_name => "Default Label",
+      :navigation_attribute_index_position => "1",
+      :context_anchor_navigation_attribute_label_expression => label_expression,
+      :context_anchor_navigation_attribute_target_context => self,
+      :context_anchor_navigation_attribute_target_node_expression => "self"
+    })
+    
+    context_index = SHDM::ContextIndex.create({
+      :index_name => "#{self.shdm::context_name}Idx",
+      :index_title => "#{self.shdm::context_title} Idx",
+      :context_index_context => self,
+      :context_anchor_attributes => context_anchor
+    })
+    self.shdm::context_index = context_index
+    self.save
+  end
+  
 end
 
 class SHDM::ContextParameter

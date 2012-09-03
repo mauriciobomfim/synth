@@ -67,7 +67,7 @@ class NodeDecorator
   end
   
   def anchor
-    default_index.entries[node_position].item
+    default_index.entries[node_position].main_anchor
   end
   
   #responds to attribute's name and returns the NodeAttribute instance  

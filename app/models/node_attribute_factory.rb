@@ -7,6 +7,9 @@ class NodeAttribute
      @resource = resource
   end
 
+  def target_url
+    ""
+  end
 end
 
 class IndexNodeAttribute < NodeAttribute
