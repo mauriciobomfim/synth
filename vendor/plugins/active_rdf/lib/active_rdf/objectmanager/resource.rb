@@ -397,8 +397,8 @@ module RDFS
       # eyal.age is a custom-written method in class Person
       # evidence: eyal type ?c, ?c.methods includes age
       # action: return results from calling custom method
-      classes.each do |klass|
-        if klass.instance_methods.include?(method.to_s)
+      self.classes.each do |klass|
+        if klass.instance_methods.include?(method.to_sym) or klass.instance_methods.include?(method.to_s)
           _dup = klass.new(uri)
           return _dup.send(method,*args)
         end

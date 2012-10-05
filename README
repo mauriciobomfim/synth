@@ -18,13 +18,13 @@ Please report if you find any bug.
 
 INSTALLING
 ----------
-Install JRuby (http://jruby.org) 1.5 or later
+Install JRuby (http://jruby.org) 1.6 or later
 
 Install the gem jruby-openssl: 
 $ jgem install jruby-openssl
 
-Install Rails 2.3.8: 
-$ jgem install rails -v=2.3.8
+Install Rails 2.3.14: 
+$ jgem install rails -v=2.3.14
 
 Install the dependencies listed below:
 
@@ -32,9 +32,9 @@ $ jgem install uuidtools
 $ jgem install dsl
 $ jgem install json
 
-RUNNING
+RUNNING (Ruby 1.8 or 1.9)
 -------
 $ cd /path/to/synth
-$ jruby --1.8 -S script/server
+$ jruby -S script/server
 
 Open on your internet browser: http://localhost:3000
