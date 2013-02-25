@@ -29,7 +29,7 @@ $ jgem install rails -v=2.3.14
 Install the dependencies listed below:
 
 $ jgem install uuidtools
-$ jgem install dsl
+$ jgem install dsl -v=0.1.4
 $ jgem install json
 
 RUNNING (Ruby 1.8 or 1.9)
